@@ -1,0 +1,63 @@
+﻿@using Walter.ViewModels;
+@model MountainViewModel
+@{
+    ViewBag.Title = "Mountains";
+}
+<br />
+<br />
+<a href="/mountain/addMountain/">Add Mountain</a>
+<table border="1" cellspacing="1" cellpadding="2" id="myTable" class="normal tablesorter">
+    <thead>
+        <tr>
+            <th align="left" style="cursor:pointer" class="caption" title="Initially the list is sorted by order climbed, with most recent on top. Click to sort asc, and click again for desc">
+                Mountain
+            </th> <!-- Needs to be a TH for sorting to work -->
+            <td class="caption">
+                Elevation
+            </td>
+            <td class="caption">
+                Summit Date
+            </td>
+            <td class="caption">
+                Location
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Walter.ViewModels.Mountain item in Model.Mountains)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>
+                    @item.Elevation.ToString("###,###") ft
+                    <br />
+                    (@Math.Round((double)item.Elevation * 0.3048).ToString("###,###") m)
+                </td>
+                <td>
+                    @if(item.SummitLog.Any())
+                    { 
+                    <ol>
+                        @foreach (var sl in item.SummitLog)
+                        {
+                            <li>
+                                @String.Format("{0:MMM d, yyyy}", sl.SummitDate)
+                                @if (!String.IsNullOrEmpty(sl.SummitNote))
+                                {
+                                    var x = " (" + sl.SummitNote + ")";
+                                    @x;
+                                }
+                            </li>
+                        }
+                    </ol>
+                    }
+                    <a href="/mountain/addLog?MountainName=@item.Name&MountainID=@item.Id">Add Climb Date</a>
+                </td>
+                <td>
+                    @string.Format("{0:#,#.#####}", item.Latitude) / @string.Format("{0:#,#.#####}", item.Longitude)
+                    <br />
+                    <b>@item.Country/@item.State</b>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WalterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Mountains">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Elevation" Type="int" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Latitude" Type="decimal" Precision="30" Scale="10" />
+          <Property Name="Longitude" Type="decimal" Precision="30" Scale="10" />
+          <Property Name="MountainNote" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="MountainSummitLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MountainID" Type="int" Nullable="false" />
+          <Property Name="SummitDate" Type="date" />
+          <Property Name="SummitNote" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_MountainSummitLog_Mountains">
+          <End Role="Mountains" Type="Self.Mountains" Multiplicity="1" />
+          <End Role="MountainSummitLog" Type="Self.MountainSummitLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mountains">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MountainSummitLog">
+              <PropertyRef Name="MountainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WalterModelStoreContainer">
+          <EntitySet Name="Mountains" EntityType="Self.Mountains" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MountainSummitLog" EntityType="Self.MountainSummitLog" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MountainSummitLog_Mountains" Association="Self.FK_MountainSummitLog_Mountains">
+            <End Role="Mountains" EntitySet="Mountains" />
+            <End Role="MountainSummitLog" EntitySet="MountainSummitLog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WalterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Mountain">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Elevation" Type="Int32" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="Decimal" Precision="30" Scale="10" />
+          <Property Name="Longitude" Type="Decimal" Precision="30" Scale="10" />
+          <Property Name="MountainNote" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MountainSummitLogs" Relationship="Self.FK_MountainSummitLog_Mountains" FromRole="Mountains" ToRole="MountainSummitLog" />
+        </EntityType>
+        <EntityType Name="MountainSummitLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MountainID" Type="Int32" Nullable="false" />
+          <Property Name="SummitDate" Type="DateTime" Precision="0" />
+          <Property Name="SummitNote" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Mountain" Relationship="Self.FK_MountainSummitLog_Mountains" FromRole="MountainSummitLog" ToRole="Mountains" />
+        </EntityType>
+        <Association Name="FK_MountainSummitLog_Mountains">
+          <End Role="Mountains" Type="Self.Mountain" Multiplicity="1" />
+          <End Role="MountainSummitLog" Type="Self.MountainSummitLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mountains">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MountainSummitLog">
+              <PropertyRef Name="MountainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WalterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Mountains" EntityType="Self.Mountain" />
+          <EntitySet Name="MountainSummitLogs" EntityType="Self.MountainSummitLog" />
+          <AssociationSet Name="FK_MountainSummitLog_Mountains" Association="Self.FK_MountainSummitLog_Mountains">
+            <End Role="Mountains" EntitySet="Mountains" />
+            <End Role="MountainSummitLog" EntitySet="MountainSummitLogs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WalterModelStoreContainer" CdmEntityContainer="WalterEntities">
+          <EntitySetMapping Name="Mountains">
+            <EntityTypeMapping TypeName="WalterModel.Mountain">
+              <MappingFragment StoreEntitySet="Mountains">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Elevation" ColumnName="Elevation" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="MountainNote" ColumnName="MountainNote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MountainSummitLogs">
+            <EntityTypeMapping TypeName="WalterModel.MountainSummitLog">
+              <MappingFragment StoreEntitySet="MountainSummitLog">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="MountainID" ColumnName="MountainID" />
+                <ScalarProperty Name="SummitDate" ColumnName="SummitDate" />
+                <ScalarProperty Name="SummitNote" ColumnName="SummitNote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

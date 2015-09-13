@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Add Mountain";
+}
+<br />
+<br />
+<h2>Add Mountain</h2>
+<div>
+    <form action="/Mountain/SaveMountain" method="post">
+        <table>
+            <tr>
+                <td>Mountain Name</td>
+                <td><input type="text" name="Name" /></td>
+            </tr>
+            <tr>
+                <td>Elevation</td>
+                <td><input type="text" name="Elevation" /></td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td><input type="text" id="txtCountry" name="Country" value="" /></td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td><input type="text" id="txtState" name="State" value="" /></td>
+            </tr>
+            <tr>
+                <td>Latitude</td>
+                <td><input type="text" id="txtLatitude" name="Latitude" value="" /></td>
+            </tr>
+            <tr>
+                <td>Longitude</td>
+                <td><input type="text" id="txtLongitude" name="Longitude" value="" /></td>
+            </tr>
+            <tr>
+                <td>Mountain Note</td>
+                <td><textarea rows="2" name="MountainNote" style="width:100%"></textarea></td>
+            </tr>
+            <tr>
+                <td>Summit Date</td>
+                <td><input type="text" name="SummitDate"></td>
+            </tr>
+            <tr>
+                <td>Summit Note</td>
+                <td>
+                    <textarea rows="2" name="SummitNote" style="width:100%"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" name="BtnSave" value="Save" />
+                    <input type="reset" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
