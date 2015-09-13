@@ -28,12 +28,19 @@ namespace Walter.Controllers
             return View();
         }
 
-        public ActionResult SaveMountain(Mountain m, string SummitDate, string SummitNote)
+        public ActionResult SaveMountain(Mountain m, string SummitDate, string SummitNote, string Stay)
         {
             MountainBusinessLayer x = new MountainBusinessLayer();
             x.SaveMountain(m, SummitDate, SummitNote);
 
-            return RedirectToAction("Index");
+            if (string.IsNullOrEmpty(Stay))
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("AddMountain");
+            }
         }
 
         public ActionResult SaveLog(int MountainID, string SummitDate, string SummitNote)

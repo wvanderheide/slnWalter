@@ -27,3 +27,4 @@ C:\websites\Walter\slnWalter\Walter\bin\Antlr3.Runtime.pdb
 C:\websites\Walter\slnWalter\Walter\bin\Newtonsoft.Json.xml
 C:\websites\Walter\slnWalter\Walter\obj\Debug\Walter.dll
 C:\websites\Walter\slnWalter\Walter\obj\Debug\Walter.pdb
+C:\websites\Walter\slnWalter\Walter\obj\Debug\Walter.csprojResolveAssemblyReference.cache
