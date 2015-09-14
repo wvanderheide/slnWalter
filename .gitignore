@@ -82,3 +82,8 @@ ipch/
 
 # ReSharper is a .NET coding add-in
 _ReSharper*
+
+
+# Others
+[Bb]in
+[Oo]bj
