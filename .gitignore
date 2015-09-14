@@ -41,3 +41,44 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+# User-specific files
+*.suo
+*.user
+
+# Build results
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.vspscc
+.builds
+**/*.dotCover
+
+## TODO: If you have NuGet Package Restore enabled, uncomment this
+#**/packages/
+
+# Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+
+# Visual Studio profiler
+*.psess
+*.vsp
+
+# ReSharper is a .NET coding add-in
+_ReSharper*
