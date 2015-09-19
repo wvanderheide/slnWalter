@@ -30,18 +30,30 @@ namespace Walter.Controllers
 
         public ActionResult SaveMountain(Mountain m, string SummitDate, string SummitNote, string Stay)
         {
-            MountainBusinessLayer x = new MountainBusinessLayer();
-            x.SaveMountain(m, SummitDate, SummitNote);
-
-            if (string.IsNullOrEmpty(Stay))
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                MountainBusinessLayer x = new MountainBusinessLayer();
+                x.SaveMountain(m, SummitDate, SummitNote);
+
+                if (string.IsNullOrEmpty(Stay))
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("AddMountain");
+                }
             }
             else
             {
-                return RedirectToAction("AddMountain");
+                var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y => y.Count > 0)
+                           .ToList();
+
+                return View("AddMountain");
             }
         }
+
 
         public ActionResult SaveLog(int MountainID, string SummitDate, string SummitNote)
         {
