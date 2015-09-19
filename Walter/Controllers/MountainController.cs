@@ -28,27 +28,28 @@ namespace Walter.Controllers
             return View();
         }
 
-        public ActionResult SaveMountain(Mountain m, string SummitDate, string SummitNote, string Stay)
-        {
+        public ActionResult SaveMountain(Walter.ViewModels.Mountain m, string SummitDate, string SummitNote, string Stay)
+        {          
+
             if (ModelState.IsValid)
             {
                 MountainBusinessLayer x = new MountainBusinessLayer();
                 x.SaveMountain(m, SummitDate, SummitNote);
 
-                if (string.IsNullOrEmpty(Stay))
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
+                //if (string.IsNullOrEmpty(Stay))
+                //{
+                //    return RedirectToAction("Index");
+                //}
+                //else
+                //{
                     return RedirectToAction("AddMountain");
-                }
+                //}
             }
             else
             {
                 var errors = ModelState.Select(x => x.Value.Errors)
                            .Where(y => y.Count > 0)
-                           .ToList();
+                           .ToList();                
 
                 return View("AddMountain");
             }

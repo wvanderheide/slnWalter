@@ -13,17 +13,26 @@ namespace Walter.Models
             return db.Mountains.ToList();
         }
 
-        public bool SaveMountain(Mountain m, string SummitDate, string SummitNote)
+        public bool SaveMountain(Walter.ViewModels.Mountain m, string SummitDate, string SummitNote)
         {
             bool rtnVal = true;
 
             try
             {
+                var mtn = new Walter.Models.Mountain();
+                mtn.Name = m.Name;
+                mtn.Elevation = m.Elevation;
+                mtn.Country = m.Country;
+                mtn.Latitude = mtn.Latitude;
+                mtn.Longitude = mtn.Longitude;
+                mtn.MountainNote = mtn.MountainNote;
+
+
                 WalterEntities db = new WalterEntities();
-                db.Mountains.Add(m);
+                db.Mountains.Add(mtn);
                 db.SaveChanges();
                 
-                rtnVal = SaveLog(m.id, SummitDate, SummitNote);
+                rtnVal = SaveLog(mtn.id, SummitDate, SummitNote);
 
                 if(!rtnVal)
                 {
