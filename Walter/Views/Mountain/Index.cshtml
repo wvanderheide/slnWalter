@@ -24,12 +24,12 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (Walter.ViewModels.Mountain item in Model.Mountains)
+        @foreach (Mountain item in Model.Mountains)
         {
             <tr>
                 <td>@item.Name</td>
                 <td>
-                    @item.Elevation.ToString("###,###") ft
+                    @System.Convert.ToInt32(item.Elevation).ToString("###,###") ft
                     <br />
                     (@Math.Round((double)item.Elevation * 0.3048).ToString("###,###") m)
                 </td>

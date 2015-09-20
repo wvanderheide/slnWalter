@@ -21,7 +21,7 @@ namespace Walter.Models
             {
                 var mtn = new Walter.Models.Mountain();
                 mtn.Name = m.Name;
-                mtn.Elevation = m.Elevation;
+                mtn.Elevation = (int)m.Elevation;
                 mtn.Country = m.Country;
                 mtn.Latitude = mtn.Latitude;
                 mtn.Longitude = mtn.Longitude;

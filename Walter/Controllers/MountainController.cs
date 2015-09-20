@@ -25,7 +25,7 @@ namespace Walter.Controllers
 
         public ActionResult AddMountain()
         {
-            return View();
+            return View("AddMountain", new Walter.ViewModels.Mountain());
         }
 
         public ActionResult SaveMountain(Walter.ViewModels.Mountain m, string SummitDate, string SummitNote, string Stay)
@@ -41,12 +41,12 @@ namespace Walter.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("AddMountain");
+                    return RedirectToAction("AddMountain", new Walter.ViewModels.Mountain());
                 }
             }
             else
             {
-                return View("AddMountain");
+                return View("AddMountain", m);
             }
         }
 
@@ -106,57 +106,6 @@ namespace Walter.Controllers
 
                 mountainList.Add(m);
             }
-
-
-            // var mountainList = new List<Walter.ViewModels.Mountain>();
-
-            //using (var db = new WalterEntities())
-            //{
-            //    var mountains = db.Mountains.SqlQuery("Select * from Mountains").ToList<Mountain>();
-
-            //    foreach (var mtn in mountains)
-            //    {
-            //        var m = new ViewModels.Mountain
-            //        {
-            //            Name = mtn.Name
-            //            ,
-            //            Elevation = mtn.Elevation
-            //            ,
-            //            Country = mtn.Country
-            //            ,
-            //            State = mtn.State
-            //            ,
-            //            Latitude = mtn.Latitude
-            //            ,
-            //            Longitude = mtn.Longitude
-            //            ,
-            //            MountainNote = mtn.MountainNote
-
-            //        };
-
-
-            //        if (mtn.MountainSummitLogs.Count > 0)
-            //        {
-            //            List<Walter.ViewModels.MountainSummitLog> SummitLog = new List<Walter.ViewModels.MountainSummitLog>();
-
-            //            foreach (var l in mtn.MountainSummitLogs)
-            //            {
-            //                Walter.ViewModels.MountainSummitLog sl = new ViewModels.MountainSummitLog();
-
-            //                sl.Id = l.id;
-            //                sl.MountainId = l.MountainID;
-            //                sl.SummitDate = l.SummitDate;
-            //                sl.SummitNote = l.SummitNote;
-
-            //                SummitLog.Add(sl);
-            //            }
-
-            //            m.SummitLog = SummitLog;
-            //        }
-
-            //        mountainList.Add(m);
-            //    }
-            //}
 
             return View("Index", new MountainViewModel { Mountains = mountainList });
         }

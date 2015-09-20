@@ -1,36 +1,38 @@
-﻿@{
+﻿@using Walter.ViewModels;
+@model Mountain
+@{
     ViewBag.Title = "Add Mountain";
 }
 <br />
 <br />
 <h2>Add Mountain</h2>
-<div>    
-    @Html.ValidationSummary() 
+<div>
+    @Html.ValidationSummary()
     <form action="/Mountain/SaveMountain" method="post">
         <table>
             <tr>
                 <td>Mountain Name</td>
-                <td><input type="text" name="Name" /></td>
+                <td><input type="text" name="Name" value="@Model.Name" /></td>
             </tr>
             <tr>
                 <td>Elevation</td>
-                <td><input type="text" name="Elevation" /></td>
+                <td><input type="text" name="Elevation" value="@Model.Elevation" /></td>
             </tr>
             <tr>
                 <td>Country</td>
-                <td><input type="text" id="txtCountry" name="Country" value="" /></td>
+                <td><input type="text" id="txtCountry" name="Country" value="@Model.Country" /></td>
             </tr>
             <tr>
                 <td>State</td>
-                <td><input type="text" id="txtState" name="State" value="" /></td>
+                <td><input type="text" id="txtState" name="State" /></td>
             </tr>
             <tr>
                 <td>Latitude</td>
-                <td><input type="text" id="txtLatitude" name="Latitude" value="" /></td>
+                <td><input type="text" id="txtLatitude" name="Latitude" /></td>
             </tr>
             <tr>
                 <td>Longitude</td>
-                <td><input type="text" id="txtLongitude" name="Longitude" value="" /></td>
+                <td><input type="text" id="txtLongitude" name="Longitude" /></td>
             </tr>
             <tr>
                 <td>Mountain Note</td>
@@ -51,7 +53,7 @@
                 <td>
                     <input type="submit" name="BtnSave" value="Save" />
                     <input type="reset" />
-                    <input type="checkbox" name="Stay" value="yes" checked="checked" /> Check to stay on this page 
+                    <input type="checkbox" name="Stay" value="yes" checked="checked" /> Check to stay on this page
                 </td>
             </tr>
         </table>

@@ -14,7 +14,7 @@ namespace Walter.ViewModels
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Elevation is required")]
-        public int Elevation { get; set; }
+        public int? Elevation{ get; set; }
 
         [Required(ErrorMessage = "Country is required")]
         public string Country { get; set; }
