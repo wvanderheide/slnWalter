@@ -45,8 +45,15 @@ namespace Walter.Controllers
 
 		public ActionResult SaveLog(int mountainId, string summitDate, string summitNote)
 		{
-			var x = new MountainBusinessLayer();
-			x.SaveLog(mountainId, summitDate, summitNote);
+			
+			DateTime tempDate;
+			if (!DateTime.TryParse(summitDate, out tempDate))
+				return View("AddLog");
+
+			var biz = new MountainBusinessLayer();
+
+			if (!biz.SaveLog(mountainId, summitDate, summitNote))
+				return View("AddLog");
 
 			return RedirectToAction("Index");
 		}

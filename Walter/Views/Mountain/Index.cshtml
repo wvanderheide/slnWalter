@@ -26,7 +26,13 @@
             @foreach (Mountain item in Model.Mountains)
             {
                 <tr>
-                    <td>@item.Name</td>
+                    <td>
+                        @item.Name
+                    @if (!string.IsNullOrWhiteSpace(item.MountainNote))
+                    {
+                        @: <br />@item.MountainNote
+                    }
+                    </td>
                     <td>
                         @System.Convert.ToInt32(item.Elevation).ToString("###,###") ft &nbsp;(@Math.Round(System.Convert.ToDouble(item.Elevation) * 0.3048).ToString("###,###") m)
                     </td>
