@@ -98,7 +98,7 @@ namespace Walter.Controllers
 					SummitNote = l.SummitNote
 		        }).ToList().OrderBy(y => y.SummitDate).ToList()
 	        }).ToList();
-
+			
 	        return View("Index", new MountainViewModel { Mountains = mountainList });
         }
     }
