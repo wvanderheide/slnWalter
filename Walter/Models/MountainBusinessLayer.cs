@@ -9,35 +9,36 @@ namespace Walter.Models
     {
         public List<Mountain> GetMountains()
         {
-            WalterEntities db = new WalterEntities();
+            var db = new WalterEntities();
             return db.Mountains.ToList();
         }
 
-        public bool SaveMountain(Walter.ViewModels.Mountain m, string SummitDate, string SummitNote)
+        public bool SaveMountain(Walter.ViewModels.Mountain m, string summitDate, string summitNote)
         {
             bool rtnVal = true;
 
             try
             {
-                var mtn = new Walter.Models.Mountain();
-                mtn.Name = m.Name;
-                mtn.Elevation = (int)m.Elevation;
-                mtn.Country = m.Country;
-                mtn.Latitude = mtn.Latitude;
-                mtn.Longitude = mtn.Longitude;
-                mtn.MountainNote = mtn.MountainNote;
+                var mtn = new Walter.Models.Mountain
+                {
+	                Name = m.Name,
+	                Elevation = Convert.ToInt32(m.Elevation),
+	                Country = m.Country,
+	                Latitude = m.Latitude,
+	                Longitude = m.Longitude,
+	                MountainNote = m.MountainNote
+                };
 
-
-                WalterEntities db = new WalterEntities();
+	            var db = new WalterEntities();
                 db.Mountains.Add(mtn);
                 db.SaveChanges();
                 
-                rtnVal = SaveLog(mtn.id, SummitDate, SummitNote);
+                rtnVal = SaveLog(mtn.id, summitDate, summitNote);
 
                 if(!rtnVal)
                 {
                     //TODO: Rollback Mountain add if Save Log returns false
-                    Exception ex = new Exception("Saving Mountain Log failed");
+                    var ex = new Exception("Saving Mountain Log failed");
                     throw ex;
                 }
             }
@@ -49,19 +50,21 @@ namespace Walter.Models
             return rtnVal;
         }
 
-        public bool SaveLog(int MountainId, string SummitDate, string SummitNote)
+        public bool SaveLog(int mountainId, string summitDate, string summitNote)
         {
             bool rtnVal = true;
 
             try
             {
-                WalterEntities db = new WalterEntities();
-                MountainSummitLog log = new MountainSummitLog();
-                log.MountainID = MountainId;
-                log.SummitNote = SummitNote;
-                log.SummitDate = Convert.ToDateTime(SummitDate);
+                var db = new WalterEntities();
+                var log = new MountainSummitLog
+                {
+	                MountainID = mountainId,
+	                SummitNote = summitNote,
+	                SummitDate = Convert.ToDateTime(summitDate)
+                };
 
-                db.MountainSummitLogs.Add(log);
+	            db.MountainSummitLogs.Add(log);
                 db.SaveChanges();
             }
             catch

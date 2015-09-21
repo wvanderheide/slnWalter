@@ -32,7 +32,7 @@ namespace Walter.Controllers
         {
             if (ModelState.IsValid)
             {
-                MountainBusinessLayer x = new MountainBusinessLayer();
+                var x = new MountainBusinessLayer();
                 x.SaveMountain(m, SummitDate, SummitNote);
 
                 if (string.IsNullOrEmpty(Stay))
@@ -53,7 +53,7 @@ namespace Walter.Controllers
 
         public ActionResult SaveLog(int MountainID, string SummitDate, string SummitNote)
         {
-            MountainBusinessLayer x = new MountainBusinessLayer();
+            var x = new MountainBusinessLayer();
             x.SaveLog(MountainID, SummitDate, SummitNote);
 
             return RedirectToAction("Index");
@@ -103,23 +103,10 @@ namespace Walter.Controllers
                     MountainNote = mtn.MountainNote
                 };
 
-                //Create the summitlog
-                List<Walter.ViewModels.MountainSummitLog> SummitLog = new List<Walter.ViewModels.MountainSummitLog>();
-
-                int count = mtn.MountainSummitLogs.Count;
-                foreach (var l in mtn.MountainSummitLogs)
+	            m.SummitLog = mtn.MountainSummitLogs.Select(l => new ViewModels.MountainSummitLog
                 {
-                    Walter.ViewModels.MountainSummitLog sl = new ViewModels.MountainSummitLog();
-
-                    sl.Id = l.id;
-                    sl.MountainId = l.MountainID;
-                    sl.SummitDate = Convert.ToDateTime(l.SummitDate);
-                    sl.SummitNote = l.SummitNote;
-
-                    SummitLog.Add(sl);
-                }
-
-                m.SummitLog = SummitLog.OrderBy(y => y.SummitDate).ToList();
+	                Id = l.id, MountainId = l.MountainID, SummitDate = Convert.ToDateTime(l.SummitDate), SummitNote = l.SummitNote
+                }).ToList().OrderBy(y => y.SummitDate).ToList();
 
                 mountainList.Add(m);
             }
