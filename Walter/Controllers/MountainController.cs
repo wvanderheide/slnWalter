@@ -59,18 +59,18 @@ namespace Walter.Controllers
             return RedirectToAction("Index");
         }
 
-        [ChildActionOnly]
-        public ActionResult GetAddNewLink()
-        {
-            if (Convert.ToBoolean(Session["IsAdmin"]))
-            {
-                return PartialView("_AddNewLink");
-            }
-            else
-            {
-                return new EmptyResult();
-            }
-        }
+        //[ChildActionOnly]
+        //public ActionResult GetAddNewLink()
+        //{
+        //    if (Convert.ToBoolean(Session["IsAdmin"]))
+        //    {
+        //        return PartialView("_AddNewLink");
+        //    }
+        //    else
+        //    {
+        //        return new EmptyResult();
+        //    }
+        //}
 
         public ActionResult Index()
         {
@@ -103,26 +103,27 @@ namespace Walter.Controllers
                     MountainNote = mtn.MountainNote
                 };
 
-
+                //Create the summitlog
                 List<Walter.ViewModels.MountainSummitLog> SummitLog = new List<Walter.ViewModels.MountainSummitLog>();
 
+                var count = mtn.MountainSummitLogs.Count;
                 foreach (var l in mtn.MountainSummitLogs)
                 {
                     Walter.ViewModels.MountainSummitLog sl = new ViewModels.MountainSummitLog();
 
                     sl.Id = l.id;
                     sl.MountainId = l.MountainID;
-                    sl.SummitDate = l.SummitDate;
+                    sl.SummitDate = Convert.ToDateTime(l.SummitDate);
                     sl.SummitNote = l.SummitNote;
 
                     SummitLog.Add(sl);
                 }
 
-                m.SummitLog = SummitLog;
+                m.SummitLog = SummitLog.OrderBy(y => y.SummitDate).ToList();
 
                 mountainList.Add(m);
             }
-
+            
             return View("Index", new MountainViewModel { Mountains = mountainList });
         }
     }
