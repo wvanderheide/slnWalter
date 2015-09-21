@@ -25,36 +25,29 @@ namespace Walter.Controllers
 
         public ActionResult AddMountain()
         {
-            return View("AddMountain", new Walter.ViewModels.Mountain());
+            return View("AddMountain", new ViewModels.Mountain());
         }
 
-        public ActionResult SaveMountain(Walter.ViewModels.Mountain m, string SummitDate, string SummitNote, string Stay)
+        public ActionResult SaveMountain(ViewModels.Mountain m, string summitDate, string summitNote)
         {
-            if (ModelState.IsValid)
-            {
-                var x = new MountainBusinessLayer();
-                x.SaveMountain(m, SummitDate, SummitNote);
+	        if (ModelState.IsValid && !string.IsNullOrWhiteSpace(summitDate))
+	        {
+		        var x = new MountainBusinessLayer();
+		        x.SaveMountain(m, summitDate, summitNote);
+	        }
+	        else
+	        {
+				return View("AddMountain", m);
+	        }
 
-                if (string.IsNullOrEmpty(Stay))
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return RedirectToAction("AddMountain", new Walter.ViewModels.Mountain());
-                }
-            }
-            else
-            {
-                return View("AddMountain", m);
-            }
+	        return RedirectToAction("Index");
         }
 
 
-        public ActionResult SaveLog(int MountainID, string SummitDate, string SummitNote)
+        public ActionResult SaveLog(int mountainId, string summitDate, string summitNote)
         {
             var x = new MountainBusinessLayer();
-            x.SaveLog(MountainID, SummitDate, SummitNote);
+            x.SaveLog(mountainId, summitDate, summitNote);
 
             return RedirectToAction("Index");
         }
