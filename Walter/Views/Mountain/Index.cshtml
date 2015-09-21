@@ -3,61 +3,85 @@
 @{
     ViewBag.Title = "Mountains";
 }
-<br />
-<br />
-<a href="/mountain/addMountain/">Add Mountain</a>
-<table border="1" cellspacing="1" cellpadding="2" id="myTable" class="normal tablesorter">
-    <thead>
-        <tr>
-            <th align="left" style="cursor:pointer" class="caption" title="Initially the list is sorted by order climbed, with most recent on top. Click to sort asc, and click again for desc">
-                Mountain
-            </th> <!-- Needs to be a TH for sorting to work -->
-            <td class="caption">
-                Elevation
-            </td>
-            <td class="caption">
-                Summit Date
-            </td>
-            <td class="caption">
-                Location
-            </td>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Mountain item in Model.Mountains)
-        {
+<h2>Mountains</h2>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
             <tr>
-                <td>@item.Name</td>
-                <td>
-                    @System.Convert.ToInt32(item.Elevation).ToString("###,###") ft
-                    <br />
-                    (@Math.Round((double)item.Elevation * 0.3048).ToString("###,###") m)
-                </td>
-                <td>
-                    @if(item.SummitLog.Any())
-                    { 
-                    <ol>
-                        @foreach (var sl in item.SummitLog)
-                        {
-                            <li>
-                                @String.Format("{0:MMM d, yyyy}", sl.SummitDate)
-                                @if (!String.IsNullOrEmpty(sl.SummitNote))
-                                {
-                                    var x = " (" + sl.SummitNote + ")";
-                                    @x;
-                                }
-                            </li>
-                        }
-                    </ol>
+                <th>
+                    Mountain
+                    @if (Convert.ToBoolean(Session["IsAdmin"]))
+                    {
+                        <a href="mountain/AddMountain">
+                            <i class="fa fa-plus-square" title="Add Mountain"></i>
+                        </a>
                     }
-                    <a href="/mountain/addLog?MountainName=@item.Name&MountainID=@item.Id">Add Climb Date</a>
-                </td>
-                <td>
-                    @string.Format("{0:#,#.#####}", item.Latitude) / @string.Format("{0:#,#.#####}", item.Longitude)
-                    <br />
-                    <b>@item.Country/@item.State</b>
-                </td>
+                </th>
+                <th>Elevation</th>
+                <th>Location</th>
+                <th>Summit Date</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (Mountain item in Model.Mountains)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>
+                        @System.Convert.ToInt32(item.Elevation).ToString("###,###") ft &nbsp;(@Math.Round((double)item.Elevation * 0.3048).ToString("###,###") m)
+                    </td>
+                    <td>
+                        @{
+                            @item.Country
+                if (!string.IsNullOrWhiteSpace(item.State))
+                {
+                    @:/@item.State
+            }
+
+                if (item.Latitude != null && item.Longitude != null)
+                {
+                    @: <p class="small">@string.Format("{0:#,#.#####}", item.Latitude) / @string.Format("{0:#,#.#####}", item.Longitude)</p>
+            }
+                        }
+                    </td>
+                    <td>
+                        @if (item.SummitLog.Any())
+                        {
+                            <ol class="small">
+                                @{
+                            int loopCount = 0;
+                            foreach (var sl in item.SummitLog)
+                            {
+                                loopCount++;
+                                <li style="margin-left: -20px; padding-left: 0px;">
+                                    @String.Format("{0:MMM d, yyyy}", sl.SummitDate)
+                                    @if (!String.IsNullOrEmpty(sl.SummitNote))
+                                    {
+                                        @:(@sl.SummitNote)
+                                }
+                                    @if (loopCount == item.SummitLog.Count && (Convert.ToBoolean(Session["IsAdmin"])))
+                                    {
+                                    <a href="/mountain/addLog?MountainName=@item.Name&MountainID=@item.Id">
+                                        <i class="fa fa-plus-square" title="Add Climb"></i>
+                                    </a>
+                                    }
+                                </li>
+                            }
+                                }
+                            </ol>
+                        }
+                        else
+                        {
+                            if (Convert.ToBoolean(Session["IsAdmin"]))
+                            {
+                                <a href="/mountain/addLog?MountainName=@item.Name&MountainID=@item.Id">
+                                    <i class="fa fa-plus-square" title="Add Climb"></i>
+                                </a>
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

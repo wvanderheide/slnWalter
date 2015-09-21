@@ -59,8 +59,24 @@ namespace Walter.Controllers
             return RedirectToAction("Index");
         }
 
+        [ChildActionOnly]
+        public ActionResult GetAddNewLink()
+        {
+            if (Convert.ToBoolean(Session["IsAdmin"]))
+            {
+                return PartialView("_AddNewLink");
+            }
+            else
+            {
+                return new EmptyResult();
+            }
+        }
+
         public ActionResult Index()
         {
+            //TODO:  Once I add authentication this Session Var will be come "real";
+            Session["IsAdmin"] = true;
+
             var mountainList = new List<Walter.ViewModels.Mountain>();
 
             var b = new MountainBusinessLayer();
