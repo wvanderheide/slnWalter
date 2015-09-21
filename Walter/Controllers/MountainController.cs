@@ -106,7 +106,7 @@ namespace Walter.Controllers
                 //Create the summitlog
                 List<Walter.ViewModels.MountainSummitLog> SummitLog = new List<Walter.ViewModels.MountainSummitLog>();
 
-                var count = mtn.MountainSummitLogs.Count;
+                int count = mtn.MountainSummitLogs.Count;
                 foreach (var l in mtn.MountainSummitLogs)
                 {
                     Walter.ViewModels.MountainSummitLog sl = new ViewModels.MountainSummitLog();
@@ -123,7 +123,7 @@ namespace Walter.Controllers
 
                 mountainList.Add(m);
             }
-            
+                        
             return View("Index", new MountainViewModel { Mountains = mountainList });
         }
     }

@@ -16,23 +16,5 @@ namespace Walter.ViewModels
         {
             return SummitDate.CompareTo(other.SummitDate);
         }
-
-
-        //public int CompareTo(object obj)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public int CompareTo(object obj)
-        //{
-        //    if (obj == null) return 1;
-
-        //    MountainSummitLog otherMountainSummitLog = obj as MountainSummitLog;
-        //    if (otherMountainSummitLog != null)
-        //        return this.SummitDate.CompareTo(otherMountainSummitLog.SummitDate);
-        //    else
-        //        throw new ArgumentException("Object is not a Temperature");
-        //}
-
     }
 }

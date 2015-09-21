@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Walter.ViewModels
 {
-    public class Mountain
+    public class Mountain 
     {
         public int Id { get; set; }
 
