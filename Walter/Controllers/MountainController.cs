@@ -80,35 +80,38 @@ namespace Walter.Controllers
             var mountainList = new List<Walter.ViewModels.Mountain>();
 
             var b = new MountainBusinessLayer();
-            List<Mountain> mtns = b.GetMountains();
+            var mtns = b.GetMountains();
 
             foreach (var mtn in mtns)
             {
                 var m = new ViewModels.Mountain
                 {
-                    Id = mtn.id
-                    ,
-                    Name = mtn.Name
-                    ,
-                    Elevation = mtn.Elevation
-                    ,
-                    Country = mtn.Country
-                    ,
-                    State = mtn.State
-                    ,
-                    Latitude = mtn.Latitude
-                    ,
-                    Longitude = mtn.Longitude
-                    ,
-                    MountainNote = mtn.MountainNote
+	                Id = mtn.id
+	                ,
+	                Name = mtn.Name
+	                ,
+	                Elevation = mtn.Elevation
+	                ,
+	                Country = mtn.Country
+	                ,
+	                State = mtn.State
+	                ,
+	                Latitude = mtn.Latitude
+	                ,
+	                Longitude = mtn.Longitude
+	                ,
+	                MountainNote = mtn.MountainNote
+					,
+	                SummitLog = mtn.MountainSummitLogs.Select(l => new ViewModels.MountainSummitLog
+	                {
+		                Id = l.id,
+		                MountainId = l.MountainID,
+		                SummitDate = Convert.ToDateTime(l.SummitDate),
+		                SummitNote = l.SummitNote
+	                }).ToList().OrderBy(y => y.SummitDate).ToList()
                 };
 
-	            m.SummitLog = mtn.MountainSummitLogs.Select(l => new ViewModels.MountainSummitLog
-                {
-	                Id = l.id, MountainId = l.MountainID, SummitDate = Convert.ToDateTime(l.SummitDate), SummitNote = l.SummitNote
-                }).ToList().OrderBy(y => y.SummitDate).ToList();
-
-                mountainList.Add(m);
+	            mountainList.Add(m);
             }
                         
             return View("Index", new MountainViewModel { Mountains = mountainList });
