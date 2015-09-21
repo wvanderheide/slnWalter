@@ -77,44 +77,29 @@ namespace Walter.Controllers
             //TODO:  Once I add authentication this Session Var will be come "real";
             Session["IsAdmin"] = true;
 
-            var mountainList = new List<Walter.ViewModels.Mountain>();
-
-            var b = new MountainBusinessLayer();
+	        var b = new MountainBusinessLayer();
             var mtns = b.GetMountains();
 
-            foreach (var mtn in mtns)
-            {
-                var m = new ViewModels.Mountain
-                {
-	                Id = mtn.id
-	                ,
-	                Name = mtn.Name
-	                ,
-	                Elevation = mtn.Elevation
-	                ,
-	                Country = mtn.Country
-	                ,
-	                State = mtn.State
-	                ,
-	                Latitude = mtn.Latitude
-	                ,
-	                Longitude = mtn.Longitude
-	                ,
-	                MountainNote = mtn.MountainNote
-					,
-	                SummitLog = mtn.MountainSummitLogs.Select(l => new ViewModels.MountainSummitLog
-	                {
-		                Id = l.id,
-		                MountainId = l.MountainID,
-		                SummitDate = Convert.ToDateTime(l.SummitDate),
-		                SummitNote = l.SummitNote
-	                }).ToList().OrderBy(y => y.SummitDate).ToList()
-                };
+	        var mountainList = mtns.Select(mtn => new ViewModels.Mountain
+	        {
+		        Id = mtn.id, 
+				Name = mtn.Name, 
+				Elevation = mtn.Elevation, 
+				Country = mtn.Country, 
+				State = mtn.State, 
+				Latitude = mtn.Latitude, 
+				Longitude = mtn.Longitude, 
+				MountainNote = mtn.MountainNote, 
+				SummitLog = mtn.MountainSummitLogs.Select(l => new ViewModels.MountainSummitLog
+		        {
+			        Id = l.id, 
+					MountainId = l.MountainID, 
+					SummitDate = Convert.ToDateTime(l.SummitDate), 
+					SummitNote = l.SummitNote
+		        }).ToList().OrderBy(y => y.SummitDate).ToList()
+	        }).ToList();
 
-	            mountainList.Add(m);
-            }
-                        
-            return View("Index", new MountainViewModel { Mountains = mountainList });
+	        return View("Index", new MountainViewModel { Mountains = mountainList });
         }
     }
 }
