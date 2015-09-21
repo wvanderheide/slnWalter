@@ -24,6 +24,7 @@ namespace Walter.Models
 	                Name = m.Name,
 	                Elevation = Convert.ToInt32(m.Elevation),
 	                Country = m.Country,
+					State = m.State,
 	                Latitude = m.Latitude,
 	                Longitude = m.Longitude,
 	                MountainNote = m.MountainNote
