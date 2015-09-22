@@ -5,107 +5,111 @@
 
     var TotalClimbCount = 0;
 }
-<h2 id="MountainTitle" title="Mountain Count: @Model.Mountains.Count, Climb Count:"><span class="glyphicon glyphicon-picture fa-lg"></span> Mountains</h2>
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Mountain
-                    @if (Convert.ToBoolean(Session["IsAdmin"]))
-                    {
-                        <a href="/mountain/AddMountain">
-                            <i class="fa fa-plus-square" title="Add Mountain"></i>
-                        </a>
-                    }
-                </th>
-                <th>Elevation</th>
-                <th>Location</th>
-                <th>Summit Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (Mountain item in Model.Mountains)
-            {
+<br/>
+<div class="well well-sm">
+    <h2 id="MountainTitle" title="Mountain Count: @Model.Mountains.Count, Climb Count:"><span class="glyphicon glyphicon-picture fa-lg"></span> Mountains</h2>
+    Below is a list of mountains I have climbed.
+</div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>
-                        @item.Name
-                    @if (!string.IsNullOrWhiteSpace(item.MountainNote))
-                    {
-                        @: <br /><span class="small">@item.MountainNote</span>
-                    }
-                    </td>
-                    <td>
-                        @System.Convert.ToInt32(item.Elevation).ToString("###,###") ft &nbsp;(@Math.Round(System.Convert.ToDouble(item.Elevation) * 0.3048).ToString("###,###") m)
-                    </td>
-                    <td>
-                     @{                            
-                        if (!string.IsNullOrWhiteSpace(item.State))
+                    <th>
+                        Mountain
+                        @if (Convert.ToBoolean(Session["IsAdmin"]))
                         {
-                            @item.Country@:/@item.State
+                            <a href="/mountain/AddMountain">
+                                <i class="fa fa-plus-square" title="Add Mountain"></i>
+                            </a>
                         }
-                        else
-                        {
-                            @item.Country
-                        }
-
-                        if (item.Latitude != null && item.Longitude != null)
-                        {
-                            @: <p class="small">@string.Format("{0:#,#.#####}", item.Latitude) / @string.Format("{0:#,#.#####}", item.Longitude)</p>
-                        }
-                     }
-                    </td>
-                    <td>
-                        @if (item.SummitLog.Any())
-                        {
-                            <ol class="small">
-                            @{
-                            int loopCount = 0;
-                            foreach (var sl in item.SummitLog)
+                    </th>
+                    <th>Elevation</th>
+                    <th>Location</th>
+                    <th>Summit Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Mountain item in Model.Mountains)
+                {
+                    <tr>
+                        <td>
+                            @item.Name
+                            @if (!string.IsNullOrWhiteSpace(item.MountainNote))
                             {
-                                TotalClimbCount++;
-                                loopCount++;
-                                <li style="margin-left: -20px; padding-left: 0px;">
-                                    @String.Format("{0:MMM d, yyyy}", sl.SummitDate)
-                                    @if (!String.IsNullOrEmpty(sl.SummitNote))
-                                    {
-                                        @:(@sl.SummitNote)
+                                @: <br /><span class="small">@item.MountainNote</span>
+                    }
+                        </td>
+                        <td>
+                            @System.Convert.ToInt32(item.Elevation).ToString("###,###") ft &nbsp;(@Math.Round(System.Convert.ToDouble(item.Elevation) * 0.3048).ToString("###,###") m)
+                        </td>
+                        <td>
+                            @{
+                    if (!string.IsNullOrWhiteSpace(item.State))
+                    {
+                        @item.Country@:/@item.State
+                        }
+                    else
+                    {
+                        @item.Country
+                    }
+
+                    if (item.Latitude != null && item.Longitude != null)
+                    {
+                        @: <p class="small">@string.Format("{0:#,#.#####}", item.Latitude) / @string.Format("{0:#,#.#####}", item.Longitude)</p>
+                        }
+                            }
+                        </td>
+                        <td>
+                            @if (item.SummitLog.Any())
+                            {
+                                <ol class="small">
+                                    @{
+                                int loopCount = 0;
+                                foreach (var sl in item.SummitLog)
+                                {
+                                    TotalClimbCount++;
+                                    loopCount++;
+                                    <li style="margin-left: -20px; padding-left: 0px;">
+                                        @String.Format("{0:MMM d, yyyy}", sl.SummitDate)
+                                        @if (!String.IsNullOrEmpty(sl.SummitNote))
+                                        {
+                                            @:(@sl.SummitNote)
                                 }
-                                    @if (loopCount == item.SummitLog.Count && (Convert.ToBoolean(Session["IsAdmin"])))
-                                    {
+                                        @if (loopCount == item.SummitLog.Count && (Convert.ToBoolean(Session["IsAdmin"])))
+                                        {
+                                            <a href="/mountain/addLog?MountainName=@item.Name&MountainID=@item.Id">
+                                                <i class="fa fa-plus-square" title="Add Climb"></i>
+                                            </a>
+                                        }
+                                    </li>
+                                }
+                                    }
+                                </ol>
+                            }
+                            else
+                            {
+                                if (Convert.ToBoolean(Session["IsAdmin"]))
+                                {
                                     <a href="/mountain/addLog?MountainName=@item.Name&MountainID=@item.Id">
                                         <i class="fa fa-plus-square" title="Add Climb"></i>
                                     </a>
-                                    }
-                                </li>
+                                }
                             }
-                           }
-                            </ol>
-                        }
-                        else
-                        {
-                            if (Convert.ToBoolean(Session["IsAdmin"]))
-                            {
-                                <a href="/mountain/addLog?MountainName=@item.Name&MountainID=@item.Id">
-                                    <i class="fa fa-plus-square" title="Add Climb"></i>
-                                </a>
-                            }
-                        }
-                    </td>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>Mountain Total: @Model.Mountains.Count</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>Summit Total: <span id="TotalClimbCount">@TotalClimbCount</span></td>
                 </tr>
-            }
-            <tr>
-                <td>Mountain Total: @Model.Mountains.Count</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>Summit Total: <span id="TotalClimbCount">@TotalClimbCount</span></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<script>
-    $(document).ready(function () {
-        var TitleText = $("#MountainTitle").prop("title")  + " " + $("#TotalClimbCount").html();
-        $("#MountainTitle").prop("title", TitleText);
-   });
-</script>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var TitleText = $("#MountainTitle").prop("title") + " " + $("#TotalClimbCount").html();
+            $("#MountainTitle").prop("title", TitleText);
+        });
+    </script>

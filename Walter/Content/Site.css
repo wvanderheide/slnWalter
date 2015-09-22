@@ -33,3 +33,13 @@ background-image: none;
 /*.navbar-inverse .navbar-nav>li>a {
     color: whitesmoke;
 }*/
+
+.carousel{
+    background: #ffffff;
+}
+.carousel .item img{
+    margin: 0 auto; /* Align slide image horizontally center */
+}
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
