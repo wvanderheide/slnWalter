@@ -27,8 +27,10 @@ namespace Walter
             //          "~/Content/bootstrap.css",
             //          "~/Content/site.css"));
 
+             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+            
             // Include line below to bundle Javascript and minimize them.  
-            //BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Walter.ViewModels
 {
-    public class Mountain 
+    public class Mountain
     {
         public int Id { get; set; }
 
@@ -14,7 +14,7 @@ namespace Walter.ViewModels
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Elevation is required")]
-        public int? Elevation{ get; set; } //nullable so that default isn't ZERO
+        public int? Elevation { get; set; } //nullable so that default isn't ZERO
 
         [Required(ErrorMessage = "Country is required")]
         public string Country { get; set; }

@@ -98,15 +98,14 @@
                 <td>Mountain Total: @Model.Mountains.Count</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
-                <td>Summit Total: <span id="TotatClimbCount">@TotalClimbCount</span></td>
+                <td>Summit Total: <span id="TotalClimbCount">@TotalClimbCount</span></td>
             </tr>
         </tbody>
     </table>
 </div>
 <script>
     $(document).ready(function () {
-        // $("#MountainTitle").prop('title', 'your new title');
-        document.getElementById('MountainTitle').title = 'your new title';
-        alert(1);
-    });   
+        var TitleText = $("#MountainTitle").prop("title")  + " " + $("#TotalClimbCount").html();
+        $("#MountainTitle").prop("title", TitleText);
+   });
 </script>
