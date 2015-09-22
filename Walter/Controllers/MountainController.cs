@@ -31,13 +31,12 @@ namespace Walter.Controllers
         public ActionResult SaveMountain(ViewModels.Mountain m, string summitDate, string summitNote)
         {
             DateTime tempDate;
-            if (!ModelState.IsValid || !DateTime.TryParse(summitDate, out tempDate))
-                return View("AddMountain", m);
-
-
-            var biz = new MountainBusinessLayer();
-            if (!biz.SaveMountain(m, summitDate, summitNote))
-                return View("AddMountain", m);
+            
+            if (ModelState.IsValid && DateTime.TryParse(summitDate, out tempDate))
+            {
+                var biz = new MountainBusinessLayer();
+                biz.SaveMountain(m, summitDate, summitNote);
+            }
 
             return RedirectToAction("Index");
         }
