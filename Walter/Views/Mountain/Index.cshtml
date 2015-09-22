@@ -38,11 +38,15 @@
                     </td>
                     <td>
                         @{
-                            @item.Country
+                            
                 if (!string.IsNullOrWhiteSpace(item.State))
                 {
-                    @:/@item.State
-            }
+                    @item.Country@:/@item.State
+                }
+                else
+                {
+                    @item.Country
+                }
 
                 if (item.Latitude != null && item.Longitude != null)
                 {
