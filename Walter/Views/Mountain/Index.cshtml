@@ -86,6 +86,7 @@
         </div>
     </div>
     <!-- End Add Mountain-->
+
     <!-- Add Climb as Modal -->
     <div class="modal fade" id="ModalAddClimb" role="dialog">
         <div class="modal-dialog">
@@ -121,6 +122,7 @@
         </div>
     </div>
     <!-- End Add Climb as Modal -->
+
     <!-- Mtn Table-->
     <div class="table-responsive" id="MtnTable">
         <table class="table">
@@ -157,7 +159,7 @@
                     if (!string.IsNullOrWhiteSpace(item.State))
                     {
                         @item.Country@:/@item.State
-                                }
+                    }
                     else
                     {
                         @item.Country
@@ -166,8 +168,8 @@
                     if (item.Latitude != null && item.Longitude != null)
                     {
                         @: <p class="small">@string.Format("{0:#,#.#####}", item.Latitude) / @string.Format("{0:#,#.#####}", item.Longitude)</p>
-                                }
-                            }
+                    }
+                  }
                         </td>
                         <td>
                             @if (item.SummitLog.Any())
@@ -212,7 +214,7 @@
                     <td><strong>Mountain Total:</strong> <span class="badge">@Model.Mountains.Count</span></td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td><strong>Summit Total:</strong> <span class="badge" id="TotalClimbCount">@TotalClimbCount</span></td>
+                    <td><strong>Total Climbs:</strong> <span class="badge" id="TotalClimbCount">@TotalClimbCount</span></td>
                 </tr>
             </tbody>
         </table>
