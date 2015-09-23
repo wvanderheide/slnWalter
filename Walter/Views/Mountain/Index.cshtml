@@ -6,90 +6,95 @@
     var TotalClimbCount = 0;
 }
 <div class="container">
-    <br/>
+    <br />
     <div class="well well-sm">
         <h2 id="MountainTitle" title="Mountain Count: @Model.Mountains.Count, Climb Count:"><span class="glyphicon glyphicon-picture fa-lg"></span> Mountains</h2>
         Below is a list of mountains I have climbed.
     </div>
-    <!-- Add Mountain -->
-    <div id="AddMtn" style="display: none;">
-        <h3>Add Mountain</h3>
-        <form class="form-horizontal" role="form" action="/Mountain/SaveMountain" method="post">
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="Name">Mountain Name:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Name" name="Name" placeholder="Mountain Name" required />
+    <!-- Add Mountain as Modal -->
+    <div class="modal fade" id="ModalAddMtn" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="padding:10px">
+                <button type="button" class="close" data-dismiss="modal" style="padding: 10px">&times;</button>
+                <div class="well well-sm">
+                    <h4>Add Mountain</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" action="/Mountain/SaveMountain" method="post">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="Name">Mountain Name:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Name" name="Name" placeholder="Mountain Name" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="Elevation">Elevation<br /><span class="small">(in feet)</span>:</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="Elevation" name="Elevation" placeholder="Elevation in feet" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="Country">Country:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Country" name="Country" placeholder="Country" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="State">Region:<br /><span class="small">(i.e State/Province)</span></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="State" name="State" placeholder="Region" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="Latitude">Latitude:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Latitude" name="Latitude" placeholder="Latitude" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="Longitude">Longitude:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Longitude" name="Longitude" placeholder="Longitude" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="MountainNote">Mountain Note:</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="5" id="MountainNote" name="MountainNote" placeholder="Mountain Note"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="SummitDate">Summit Date:</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" id="SummitDate" name="SummitDate" placeholder="Summit Date" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="SummitNote">Summit Note:</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="5" id="SummitNote" name="summitNote" placeholder="Summit Note"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="Elevation">Elevation<br /><span class="small">(in feet)</span>:</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control" id="Elevation" name="Elevation" placeholder="Elevation in feet" required />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="Country">Country:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Country" name="Country" placeholder="Country" required />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="State">Region:<br /><span class="small">(i.e State/Province)</span></label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="State" name="State" placeholder="Region" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="Latitude">Latitude:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Latitude" name="Latitude" placeholder="Latitude" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="Longitude">Longitude:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Longitude" name="Longitude" placeholder="Longitude" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="MountainNote">Mountain Note:</label>
-                <div class="col-sm-10">
-                    <textarea class="form-control" rows="5" id="MountainNote" name="MountainNote" placeholder="Mountain Note"></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="SummitDate">Summit Date:</label>
-                <div class="col-sm-10">
-                    <input type="date" class="form-control" id="SummitDate" name="SummitDate" placeholder="Summit Date" required />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="SummitNote">Summit Note:</label>
-                <div class="col-sm-10">
-                    <textarea class="form-control" rows="5" id="SummitNote" name="summitNote" placeholder="Summit Note"></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <a class="btn btn-info" onclick="$('#MtnTable').fadeIn('slow'); $('#AddMtn').hide();">Cancel</a>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
     <!-- End Add Mountain-->
-    
-    <!-- Add Log as Modal -->
-    <!-- Modal -->
+    <!-- Add Climb as Modal -->
     <div class="modal fade" id="ModalAddClimb" role="dialog">
         <div class="modal-dialog">
-            <!-- Modal content-->
             <div class="modal-content" style="padding:10px">
-                    <button type="button" class="close" data-dismiss="modal" style="padding: 10px">&times;</button>
-                    <div class="well well-sm">
-                        <h4 id="MtnName"></h4>
-                        <h6>Add climb information</h6>
-                    </div>
+                <button type="button" class="close" data-dismiss="modal" style="padding: 10px">&times;</button>
+                <div class="well well-sm">
+                    <h4 id="MtnName"></h4>
+                    <h6>Add climb information</h6>
+                </div>
                 <div class="modal-body">
                     <form class="form-horizontal" role="form" action="/Mountain/SaveLog" method="post">
                         <div class="form-group">
@@ -114,9 +119,8 @@
                 </div>
             </div>
         </div>
-    </div> 
-    <!-- End Log as Modal -->
-
+    </div>
+    <!-- End Add Climb as Modal -->
     <!-- Mtn Table-->
     <div class="table-responsive" id="MtnTable">
         <table class="table">
@@ -126,7 +130,7 @@
                         Mountain
                         @if (Convert.ToBoolean(Session["IsAdmin"]))
                         {
-                            <a><i class="fa fa-plus-square" title="Add Mountain" style="cursor:pointer" onclick="$('#AddMtn').fadeIn('slow'); $('#MtnTable').hide();"></i></a>
+                            <a><i class="fa fa-plus-square" title="Add Mountain" style="cursor:pointer" onclick="OpenModalAddMtn()"></i></a>
                         }
                     </th>
                     <th>Elevation</th>
@@ -150,18 +154,18 @@
                         </td>
                         <td>
                             @{
-                                if (!string.IsNullOrWhiteSpace(item.State))
-                                {
-                                    @item.Country@:/@item.State
+                    if (!string.IsNullOrWhiteSpace(item.State))
+                    {
+                        @item.Country@:/@item.State
                                 }
-                                else
-                                {
-                                    @item.Country
-                                }
+                    else
+                    {
+                        @item.Country
+                    }
 
-                                if (item.Latitude != null && item.Longitude != null)
-                                {
-                                    @: <p class="small">@string.Format("{0:#,#.#####}", item.Latitude) / @string.Format("{0:#,#.#####}", item.Longitude)</p>
+                    if (item.Latitude != null && item.Longitude != null)
+                    {
+                        @: <p class="small">@string.Format("{0:#,#.#####}", item.Latitude) / @string.Format("{0:#,#.#####}", item.Longitude)</p>
                                 }
                             }
                         </td>
@@ -170,25 +174,25 @@
                             {
                                 <ol class="small">
                                     @{
-                                        int loopCount = 0;
-                                        foreach (var sl in item.SummitLog)
+                                int loopCount = 0;
+                                foreach (var sl in item.SummitLog)
+                                {
+                                    TotalClimbCount++;
+                                    loopCount++;
+                                    <li style="margin-left: -20px; padding-left: 0px;">
+                                        @String.Format("{0:MMM d, yyyy}", sl.SummitDate)
+                                        @if (!String.IsNullOrEmpty(sl.SummitNote))
                                         {
-                                            TotalClimbCount++;
-                                            loopCount++;
-                                            <li style="margin-left: -20px; padding-left: 0px;">
-                                                @String.Format("{0:MMM d, yyyy}", sl.SummitDate)
-                                                @if (!String.IsNullOrEmpty(sl.SummitNote))
-                                                {
-                                                    @:(@sl.SummitNote)
+                                            @:(@sl.SummitNote)
                                                 }
-                                                @if (loopCount == item.SummitLog.Count && (Convert.ToBoolean(Session["IsAdmin"])))
-                                                {
-                                                    <a onclick="OpenAddClimbModel(@(item.Id), '@(item.Name)')" style="cursor:pointer">
-                                                        <i class="fa fa-plus-square" title="Add Climb"></i>
-                                                    </a>
-                                                }
-                                            </li>
+                                        @if (loopCount == item.SummitLog.Count && (Convert.ToBoolean(Session["IsAdmin"])))
+                                        {
+                                            <a onclick="OpenAddClimbModel(@(item.Id), '@(item.Name)')" style="cursor:pointer">
+                                                <i class="fa fa-plus-square" title="Add Climb"></i>
+                                            </a>
                                         }
+                                    </li>
+                                }
                                     }
                                 </ol>
                             }
@@ -220,6 +224,10 @@
         var TitleText = $("#MountainTitle").prop("title") + " " + $("#TotalClimbCount").html();
         $("#MountainTitle").prop("title", TitleText);
     });
+
+    function OpenModalAddMtn(){
+        $("#ModalAddMtn").modal();
+    }
 
     function OpenAddClimbModel(MtnID, MtnName) {
         $("#MountainID").val(MtnID);
