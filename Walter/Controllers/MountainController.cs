@@ -11,31 +11,6 @@ namespace Walter.Controllers
 {
     public class MountainController : Controller
     {
-        public ActionResult SaveMountain(ViewModels.Mountain m, string summitDate, string summitNote)
-        {
-            DateTime tempDate;
-
-            if (ModelState.IsValid && DateTime.TryParse(summitDate, out tempDate))
-            {
-                var biz = new MountainBusinessLayer();
-                biz.SaveMountain(m, summitDate, summitNote);
-            }
-
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult SaveLog(int mountainId, string summitDate, string summitNote)
-        {
-            DateTime tempDate;
-            if (DateTime.TryParse(summitDate, out tempDate))
-            {
-                var biz = new MountainBusinessLayer();
-                biz.SaveLog(mountainId, summitDate, summitNote);
-            }
-
-            return RedirectToAction("Index");
-        }
-
         public ActionResult Index()
         {
             //TODO:  Once I add authentication this Session Var will be come "real";
@@ -64,6 +39,33 @@ namespace Walter.Controllers
             }).ToList();
 
             return View("Index", new MountainViewModel { Mountains = mountainList.OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList() });
+        }
+
+        [HttpPost]
+        public ActionResult SaveMountain(ViewModels.Mountain m, string summitDate, string summitNote)
+        {
+            DateTime tempDate;
+
+            if (ModelState.IsValid && DateTime.TryParse(summitDate, out tempDate))
+            {
+                var biz = new MountainBusinessLayer();
+                biz.SaveMountain(m, summitDate, summitNote);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult SaveLog(int mountainId, string summitDate, string summitNote)
+        {
+            DateTime tempDate;
+            if (DateTime.TryParse(summitDate, out tempDate))
+            {
+                var biz = new MountainBusinessLayer();
+                biz.SaveLog(mountainId, summitDate, summitNote);
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
