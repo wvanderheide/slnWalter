@@ -1,10 +1,13 @@
-﻿@using Walter.ViewModels;
+﻿@using Microsoft.Ajax.Utilities
+@using Walter.ViewModels;
 @model MountainViewModel
 @{
     ViewBag.Title = "Mountains";
 
-    var TotalClimbCount = 0;
+    var totalClimbCount = 0;
+    var totalMtns = 0;
 }
+<a id="MtnTableTop"></a>
 <div class="container">
     <br />
     <div class="well well-sm">
@@ -69,7 +72,7 @@
                             <div style="width:99%; text-align: right">
                                 <a style="color: #337ab7; cursor: pointer;" onclick="ShowSection(2)">
                                     Next
-                                    <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                                    <i class="fa fa-hand-o-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -92,7 +95,7 @@
                                 </div>
                                 <div style="width:48%; vertical-align: text-bottom">
                                     <a style="color: #337ab7; cursor: pointer;" onclick="ShowSection(1)">
-                                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                                        <i class="fa fa-hand-o-left"></i>
                                         Previous
                                     </a>
                                 </div>
@@ -170,7 +173,10 @@
                 {
                     <tr>
                         <td>
-                            @item.Name
+                            @{
+                                totalMtns++;
+                            }
+                            <span title="@(totalMtns) of @(Model.Mountains.Count)">@item.Name</span>
                             @if (!string.IsNullOrWhiteSpace(item.MountainNote))
                             {
                                 @: <br /><span class="small">@item.MountainNote</span>
@@ -204,7 +210,7 @@
                                 int loopCount = 0;
                                 foreach (var sl in item.SummitLog)
                                 {
-                                    TotalClimbCount++;
+                                    totalClimbCount++;
                                     loopCount++;
                                     <li style="margin-left: -20px; padding-left: 0px;">
                                         @String.Format("{0:MMM d, yyyy}", sl.SummitDate)
@@ -239,16 +245,19 @@
                     <td>
                         @if (Convert.ToBoolean(Session["IsAdmin"]))
                         {
-                            <a name="MtnCount"><i class="fa fa-plus-square" title="Add Mountain" style="cursor:pointer" onclick="OpenModalAddMtn()"></i></a>
+                            <a id="MtnCount"><i class="fa fa-plus-square" title="Add Mountain" style="cursor:pointer" onclick="OpenModalAddMtn()"></i></a>
                         }<strong>Mountain Total:</strong> <span class="badge">@Model.Mountains.Count</span>
                     </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td><strong>Total Climbs:</strong> <span class="badge" id="TotalClimbCount">@TotalClimbCount</span></td>
+                    <td><strong>Total Climbs:</strong> <span class="badge" id="TotalClimbCount">@totalClimbCount</span></td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <a href="#MtnTableTop">
+        <div style="width:99%; text-align: right;" title="Jump to top"><i class="fa fa-hand-o-up"></i></div>
+    </a>
     <!-- End Mtn Table-->
 </div>
 <script>
