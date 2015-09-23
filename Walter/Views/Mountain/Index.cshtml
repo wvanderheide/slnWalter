@@ -84,11 +84,12 @@
     <div class="modal fade" id="ModalAddClimb" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4>Add Climb</h4>
-                </div>
+            <div class="modal-content" style="padding:10px">
+                    <button type="button" class="close" data-dismiss="modal" style="padding: 10px">&times;</button>
+                    <div class="well well-sm">
+                        <h4 id="MtnName"></h4>
+                        <h6>Add climb information</h6>
+                    </div>
                 <div class="modal-body">
                     <form class="form-horizontal" role="form" action="/Mountain/SaveLog" method="post">
                         <div class="form-group">
@@ -106,7 +107,6 @@
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-primary">Save</button>
-                                <a onclick="alert($('#MountainID').val());">MtdID</a>
                             </div>
                         </div>
                         <input type="hidden" name="MountainID" id="MountainID" />
@@ -126,7 +126,7 @@
                         Mountain
                         @if (Convert.ToBoolean(Session["IsAdmin"]))
                         {
-                            <a><i class="fa fa-plus-square" title="Add Mountain" onclick="$('#AddMtn').fadeIn('slow'); $('#MtnTable').hide();"></i></a>
+                            <a><i class="fa fa-plus-square" title="Add Mountain" style="cursor:pointer" onclick="$('#AddMtn').fadeIn('slow'); $('#MtnTable').hide();"></i></a>
                         }
                     </th>
                     <th>Elevation</th>
@@ -183,10 +183,9 @@
                                                 }
                                                 @if (loopCount == item.SummitLog.Count && (Convert.ToBoolean(Session["IsAdmin"])))
                                                 {
-                                                    <a href="/mountain/addLog?MountainName=@item.Name&MountainID=@item.Id">
+                                                    <a onclick="OpenAddClimbModel(@(item.Id), '@(item.Name)')" style="cursor:pointer">
                                                         <i class="fa fa-plus-square" title="Add Climb"></i>
                                                     </a>
-    <button type="button" class="btn btn-default btn-sm" id="BtnOpenModal@(item.Id)">Open</button>
                                                 }
                                             </li>
                                         }
@@ -216,18 +215,15 @@
     </div>
     <!-- End Mtn Table-->
 </div>
-
 <script>
     $(document).ready(function () {
         var TitleText = $("#MountainTitle").prop("title") + " " + $("#TotalClimbCount").html();
         $("#MountainTitle").prop("title", TitleText);
-    
-        $("button[id^='BtnOpenModal']").click(function () {
-            var MtnID = event.target.id.replace('BtnOpenModal', '');
-            //alert("x" + MtnID + 'x');
-            $("#MountainID").val(MtnID);
-
-            $("#ModalAddClimb").modal();
-        });
     });
+
+    function OpenAddClimbModel(MtnID, MtnName) {
+        $("#MountainID").val(MtnID);
+        $("#MtnName").text(MtnName);
+        $("#ModalAddClimb").modal();
+    }
 </script>

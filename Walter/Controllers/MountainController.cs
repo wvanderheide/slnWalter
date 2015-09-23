@@ -11,27 +11,10 @@ namespace Walter.Controllers
 {
     public class MountainController : Controller
     {
-        public ActionResult AddLog()
-        {
-            if (string.IsNullOrEmpty(Request.QueryString["MountainID"]))
-            {
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.MountainName = Request.QueryString["MountainName"];
-            ViewBag.MountainID = Request.QueryString["MountainID"];
-            return View();
-        }
-
-        public ActionResult AddMountain()
-        {
-            return View("AddMountain", new ViewModels.Mountain());
-        }
-
         public ActionResult SaveMountain(ViewModels.Mountain m, string summitDate, string summitNote)
         {
             DateTime tempDate;
-            
+
             if (ModelState.IsValid && DateTime.TryParse(summitDate, out tempDate))
             {
                 var biz = new MountainBusinessLayer();
@@ -41,34 +24,17 @@ namespace Walter.Controllers
             return RedirectToAction("Index");
         }
 
-
         public ActionResult SaveLog(int mountainId, string summitDate, string summitNote)
         {
-
             DateTime tempDate;
-            if (!DateTime.TryParse(summitDate, out tempDate))
-                return View("AddLog");
-
-            var biz = new MountainBusinessLayer();
-
-            if (!biz.SaveLog(mountainId, summitDate, summitNote))
-                return View("AddLog");
+            if (DateTime.TryParse(summitDate, out tempDate))
+            {
+                var biz = new MountainBusinessLayer();
+                biz.SaveLog(mountainId, summitDate, summitNote);
+            }
 
             return RedirectToAction("Index");
         }
-
-        //[ChildActionOnly]
-        //public ActionResult GetAddNewLink()
-        //{
-        //    if (Convert.ToBoolean(Session["IsAdmin"]))
-        //    {
-        //        return PartialView("_AddNewLink");
-        //    }
-        //    else
-        //    {
-        //        return new EmptyResult();
-        //    }
-        //}
 
         public ActionResult Index()
         {
