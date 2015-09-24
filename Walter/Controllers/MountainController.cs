@@ -38,7 +38,11 @@ namespace Walter.Controllers
                 }).ToList().OrderBy(y => y.SummitDate).ToList()
             }).ToList();
 
-            return View("Index", new MountainViewModel { Mountains = mountainList.OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList() });
+            //Most Recent Summit Date on top
+            //return View("Index", new MountainViewModel { Mountains = mountainList.OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList() });
+
+            //Most recent on bottom
+            return View("Index", new MountainViewModel { Mountains = mountainList.OrderBy(x => x.SummitLog.Last().SummitDate).ToList() });
         }
 
         [HttpPost]
