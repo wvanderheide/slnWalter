@@ -7,6 +7,6 @@ namespace Walter.ViewModels
 {
     public class MountainViewModel
     {
-        public List<Walter.ViewModels.Mountain> Mountains { get; set; }
+        public List<VMmountain> Mountains { get; set; }
     }
 }

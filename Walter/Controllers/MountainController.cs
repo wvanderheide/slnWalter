@@ -18,35 +18,16 @@ namespace Walter.Controllers
 
             var b = new MountainBusinessLayer();
             var mtns = b.GetMountains();
-
-            var mountainList = mtns.Select(mtn => new ViewModels.Mountain
-            {
-                Id = mtn.id,
-                Name = mtn.Name,
-                Elevation = mtn.Elevation,
-                Country = mtn.Country,
-                State = mtn.State,
-                Latitude = mtn.Latitude,
-                Longitude = mtn.Longitude,
-                MountainNote = mtn.MountainNote,
-                SummitLog = mtn.MountainSummitLogs.Select(l => new ViewModels.MountainSummitLog
-                {
-                    Id = l.id,
-                    MountainId = l.MountainID,
-                    SummitDate = Convert.ToDateTime(l.SummitDate),
-                    SummitNote = l.SummitNote
-                }).ToList().OrderBy(y => y.SummitDate).ToList()
-            }).ToList();
-
+            
             //Most Recent Summit Date on top
-            //return View("Index", new MountainViewModel { Mountains = mountainList.OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList() });
+            //return View("Index", new MountainViewModel { Mountains = mtns.OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList() });
 
             //Most recent on bottom
-            return View("Index", new MountainViewModel { Mountains = mountainList.OrderBy(x => x.SummitLog.Last().SummitDate).ToList() });
+            return View("Index", new MountainViewModel { Mountains = mtns.OrderBy(x => x.SummitLog.Last().SummitDate).ToList() });
         }
 
         [HttpPost]
-        public ActionResult SaveMountain(ViewModels.Mountain m, string mtnSummitDate, string mtnSummitNote)
+        public ActionResult SaveMountain(ViewModels.VMmountain m, string mtnSummitDate, string mtnSummitNote)
         {
             DateTime tempDate;
             if (ModelState.IsValid && DateTime.TryParse(mtnSummitDate, out tempDate))

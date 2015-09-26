@@ -5,14 +5,14 @@ using System.Web;
 
 namespace Walter.ViewModels
 {
-    public class MountainSummitLog : IComparable<MountainSummitLog>
+    public class VMmountainSummitLog : IComparable<VMmountainSummitLog>
     {
         public int Id { get; set; }
         public int MountainId { get; set; }
         public DateTime SummitDate { get; set; }
         public string SummitNote { get; set; }
 
-        public int CompareTo(MountainSummitLog other)
+        public int CompareTo(VMmountainSummitLog other)
         {
             return SummitDate.CompareTo(other.SummitDate);
         }

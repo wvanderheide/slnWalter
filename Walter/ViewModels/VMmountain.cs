@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Walter.ViewModels
 {
-    public class Mountain
+    public class VMmountain
     {
         public int Id { get; set; }
 
@@ -23,6 +23,6 @@ namespace Walter.ViewModels
         public decimal? Latitude { get; set; }
         public decimal? Longitude { get; set; }
         public string MountainNote { get; set; }
-        public List<MountainSummitLog> SummitLog { get; set; }
+        public List<VMmountainSummitLog> SummitLog { get; set; }
     }
 }

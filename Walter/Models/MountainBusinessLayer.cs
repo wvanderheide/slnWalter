@@ -2,18 +2,40 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Walter.ViewModels;
 
 namespace Walter.Models
 {
     public class MountainBusinessLayer
     {
-        public List<Mountain> GetMountains()
+        public List<VMmountain> GetMountains()
         {
             var db = new WalterEntities();
-            return db.Mountains.ToList();
+            var mtns = db.Mountains.ToList();
+
+            var mountainList = mtns.Select(mtn => new VMmountain
+            {
+                Id = mtn.id,
+                Name = mtn.Name,
+                Elevation = mtn.Elevation,
+                Country = mtn.Country,
+                State = mtn.State,
+                Latitude = mtn.Latitude,
+                Longitude = mtn.Longitude,
+                MountainNote = mtn.MountainNote,
+                SummitLog = mtn.MountainSummitLogs.Select(l => new VMmountainSummitLog
+                {
+                    Id = l.id,
+                    MountainId = l.MountainID,
+                    SummitDate = Convert.ToDateTime(l.SummitDate),
+                    SummitNote = l.SummitNote
+                }).ToList().OrderBy(y => y.SummitDate).ToList()
+            }).ToList();
+
+            return mountainList;
         }
 
-        public bool SaveMountain(Walter.ViewModels.Mountain m, string summitDate, string summitNote)
+        public bool SaveMountain(VMmountain m, string summitDate, string summitNote)
         {
             bool rtnVal = true;
 
@@ -39,11 +61,10 @@ namespace Walter.Models
                 if(!rtnVal)
                 {
                     //TODO: Rollback Mountain add if Save Log returns false
-                    var ex = new Exception("Saving Mountain Log failed");
-                    throw ex;
+                    new Exception("Saving Mountain Log failed");
                 }
             }
-            catch(Exception ex)
+            catch
             {
                 rtnVal = false;
             }

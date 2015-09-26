@@ -27,5 +27,6 @@ namespace Walter.Models
     
         public virtual DbSet<Mountain> Mountains { get; set; }
         public virtual DbSet<MountainSummitLog> MountainSummitLogs { get; set; }
+        public virtual DbSet<Photo> Photos { get; set; }
     }
 }
