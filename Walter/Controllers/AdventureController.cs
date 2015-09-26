@@ -19,44 +19,61 @@ namespace Walter.Controllers
 
             var grouped = photos.GroupBy(y => y.Year).Select(group => new { Year = group.Key, Count = group.Count() });
 
-            int itemsInFirstColumn = 0;
-            int itemsInSecondColumn = 0;
-            int itemsInThirdColumn = 0;
+            int[] itemsPerCol = new int[4];
 
             foreach (var year in grouped)
             {
                 var oneYear = photos.Where(y => y.Year == year.Year).ToList();
 
-                decimal remain = decimal.Remainder((decimal)oneYear.Count, 3m);
-                itemsInThirdColumn = oneYear.Count / 3;
-                itemsInSecondColumn = itemsInThirdColumn;
-                itemsInFirstColumn = itemsInThirdColumn;
+                int remain = Convert.ToInt32(decimal.Remainder((decimal)oneYear.Count, 4m));
+                itemsPerCol[0] = itemsPerCol[1] = itemsPerCol[2] = itemsPerCol[3] = oneYear.Count / 4;
 
-                if (remain > 0)
+                switch (remain)
                 {
-                    itemsInFirstColumn++;
-                    if (remain > 1.5m) itemsInSecondColumn++;
+                    case 1:
+                        itemsPerCol[0]++;
+                        break;
+                    case 2:
+                        itemsPerCol[0]++;
+                        itemsPerCol[1]++;
+                        break;
+                    case 3:
+                        itemsPerCol[0]++;
+                        itemsPerCol[1]++;
+                        itemsPerCol[2]++;
+                        break;
                 }
 
                 int loopCounter = 0;
+                string t = "col1\n";
                 foreach (var item in oneYear)
                 {
                     loopCounter++;
 
-                    if (loopCounter <= itemsInFirstColumn)
+                    if (loopCounter <= itemsPerCol[0])
                     {
                         //column 1
-
+                        t = t + item.Title + item.Month.ToString() + item.Day.ToString() + "\n";
                     }
-                    else if (loopCounter <= itemsInSecondColumn)
+                    else if (loopCounter <= (itemsPerCol[0] + itemsPerCol[1]))
                     {
+                        if (loopCounter == (itemsPerCol[0]+1))
+                        {
+                            t = t + "col2\n";
+                        }
                         //column 2
+                        t = t + item.Title + item.Month.ToString() + item.Day.ToString() + "\n";
                     }
-                    else
+                    else if (loopCounter <= (itemsPerCol[0] + itemsPerCol[1] + itemsPerCol[2]))
                     {
                         //column 3
                     }
-                };
+                    else
+                    {
+                        //col 4
+                    }
+                }
+                int stop = 0;
             }
 
 
