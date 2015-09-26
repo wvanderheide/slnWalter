@@ -18,7 +18,5 @@ namespace Walter.Models
         public int MountainID { get; set; }
         public Nullable<System.DateTime> SummitDate { get; set; }
         public string SummitNote { get; set; }
-    
-        public virtual Mountain Mountain { get; set; }
     }
 }

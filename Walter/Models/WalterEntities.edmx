@@ -76,7 +76,6 @@
           <Property Name="MountainID" Type="Int32" Nullable="false" />
           <Property Name="SummitDate" Type="DateTime" Precision="0" />
           <Property Name="SummitNote" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Mountain" Relationship="Self.FK_MountainSummitLog_Mountains" FromRole="MountainSummitLog" ToRole="Mountains" />
         </EntityType>
         <Association Name="FK_MountainSummitLog_Mountains">
           <End Role="Mountains" Type="Self.Mountain" Multiplicity="1" />
