@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Adventures";
     int lagYear = 0;
+    string jumpTo = string.Empty;
 }
 
 <div class="container">
@@ -13,11 +14,13 @@
     </div>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     <br />
+    <div id="jumpTo"></div>
     @foreach (var y in Model.PhotoYears)
     {
         if (lagYear != y.Year)
         {
             lagYear = y.Year;
+            jumpTo += y.Year + ",";
             @YearHeader(y.Year)
         }
         <div class="row">
@@ -43,6 +46,27 @@
             </div>
         </div>
     }
+    @{
+        int length = jumpTo.Length - 1;
+        jumpTo = jumpTo.Substring(0, length);
+        jumpTo = "[" + jumpTo + "];";
+    }
+    <script>
+        $(document).ready(function () {
+            var jumpTo = @jumpTo;
+            var jumpToMenu = "";
+            var lastIndex = jumpTo.length -1;
+            $.each( jumpTo, function( index, value ){
+                jumpToMenu +=  "<a href='#Year" + value + "'>" + value + "</a>";
+                if(index < lastIndex)
+                {
+                    jumpToMenu += " | ";
+                }
+            });
+
+            $('#jumpTo').html("Jump to: " + jumpToMenu);
+        });
+    </script>
 </div>
 @* -----------------------------------------------------------------------------
        Helper Methods
@@ -51,6 +75,7 @@
 {
     <br />
     <div class="row">
+        <a id="Year@(year)"></a>
         <div class="col-sm-12" style="background-color:#eee; color:black; font-weight:bold;">@year</div>
     </div>
 }

@@ -20,135 +20,77 @@ namespace Walter.Models
                 Year = x.Date.Year
             }).OrderByDescending(y => y.Year).ThenBy(m => m.Month).ThenBy(d => d.Day).ToList();
 
-            return SortPhotos(photos);
+            return putPhotosInColumns(photos);
         }
 
-        private List<VMPhotoYear> SortPhotos(List<VMphoto> photos)
+        private void calculateColumnCounts(int totalItems, out int[] colCounts)
         {
-            //TODO:  Break this method into smaller methods, and consider renaming it
-            var PhotoYears = new List<VMPhotoYear>();
             int[] itemsPerCol = new int[4];
+            int remain = Convert.ToInt32(decimal.Remainder((decimal)totalItems, 4m));
+            itemsPerCol[0] = itemsPerCol[1] = itemsPerCol[2] = itemsPerCol[3] = totalItems / 4;
 
+            switch (remain)
+            {
+                case 1:
+                    itemsPerCol[0]++;
+                    break;
+                case 2:
+                    itemsPerCol[0]++;
+                    itemsPerCol[1]++;
+                    break;
+                case 3:
+                    itemsPerCol[0]++;
+                    itemsPerCol[1]++;
+                    itemsPerCol[2]++;
+                    break;
+            }
+
+            colCounts = itemsPerCol;
+        }
+
+        private List<VMPhotoYear> putPhotosInColumns(List<VMphoto> photos)
+        {
+            var photoYears = new List<VMPhotoYear>();
+            int[] itemsPerCol = new int[4];
             var grouped = photos.GroupBy(y => y.Year).Select(group => new { Year = group.Key, Count = group.Count() });
 
             foreach (var year in grouped)
             {
-                var col1 = new List<VMphoto>();
-                var col2 = new List<VMphoto>();
-                var col3 = new List<VMphoto>();
-                var col4 = new List<VMphoto>();
-
-                var oneYear = photos.Where(y => y.Year == year.Year).ToList();
-
-                int remain = Convert.ToInt32(decimal.Remainder((decimal)oneYear.Count, 4m));
-                itemsPerCol[0] = itemsPerCol[1] = itemsPerCol[2] = itemsPerCol[3] = oneYear.Count / 4;
-
-                switch (remain)
-                {
-                    case 1:
-                        itemsPerCol[0]++;
-                        break;
-                    case 2:
-                        itemsPerCol[0]++;
-                        itemsPerCol[1]++;
-                        break;
-                    case 3:
-                        itemsPerCol[0]++;
-                        itemsPerCol[1]++;
-                        itemsPerCol[2]++;
-                        break;
-                }
-
+                var thisYear = photos.Where(y => y.Year == year.Year).ToList();
                 int loopCounter = 0;
                 var photoYear = new VMPhotoYear();
-
-                //TODO Can Col1-4 be instanitated in the get set of their class?
+                photoYear.Year = year.Year;
+                //TODO: Can Col1-4 be instanitated in the get set of their class?
                 photoYear.Col1 = new List<VMphoto>();
                 photoYear.Col2 = new List<VMphoto>();
                 photoYear.Col3 = new List<VMphoto>();
                 photoYear.Col4 = new List<VMphoto>();
+                calculateColumnCounts(thisYear.Count, out itemsPerCol);
 
-                foreach (var item in oneYear)
+                foreach (var item in thisYear)
                 {
                     loopCounter++;
 
                     if (loopCounter <= itemsPerCol[0])
                     {
-                        if (loopCounter == 1)
-                        {
-                            photoYear.Year = item.Year;
-                        }
-                        //column 1
-                        //t = t + item.Title + item.Month.ToString() + item.Day.ToString() + "\n";
-
-                        var x = new VMphoto
-                        {
-                            Title = item.Title,
-                            URL = item.URL,
-                            Day = item.Day,
-                            Month = item.Month
-                        };
-
-                        photoYear.Col1.Add(x);
-
+                        photoYear.Col1.Add(item);
                     }
                     else if (loopCounter <= (itemsPerCol[0] + itemsPerCol[1]))
                     {
-                        if (loopCounter == (itemsPerCol[0] + 1))
-                        {
-                            //t = t + "end col 1\n\nstart col2\n";
-                            photoYear.Year = item.Year;
-                        }
-                        //column 2
-                        var x = new VMphoto
-                        {
-                            Title = item.Title,
-                            URL = item.URL,
-                            Day = item.Day,
-                            Month = item.Month
-                        };
-
-                        photoYear.Col2.Add(x);
+                        photoYear.Col2.Add(item);
                     }
                     else if (loopCounter <= (itemsPerCol[0] + itemsPerCol[1] + itemsPerCol[2]))
                     {
-                        if (loopCounter == (itemsPerCol[0] + itemsPerCol[1] + 1))
-                        {
-                            //t = t + "end col 1\n\nstart col2\n";
-                            photoYear.Year = item.Year;
-                        }
-                        //column 3
-                        var x = new VMphoto
-                        {
-                            Title = item.Title,
-                            URL = item.URL,
-                            Day = item.Day,
-                            Month = item.Month
-                        };
-
-                        photoYear.Col3.Add(x);
+                        photoYear.Col3.Add(item);
                     }
                     else
                     {
-                        if (loopCounter == (itemsPerCol[0] + itemsPerCol[1] + itemsPerCol[2] + 1))
-                        {
-                            photoYear.Year = item.Year;
-                        }
-                        //column 4
-                        var x = new VMphoto
-                        {
-                            Title = item.Title,
-                            URL = item.URL,
-                            Day = item.Day,
-                            Month = item.Month
-                        };
-
-                        photoYear.Col4.Add(x);
+                        photoYear.Col4.Add(item);
                     }
                 }
-                PhotoYears.Add(photoYear);
+                photoYears.Add(photoYear);
             }
-            return PhotoYears;
+            return photoYears;
         }
     }
 }
