@@ -18,7 +18,7 @@ namespace Walter.Models
                 Day = x.Date.Day,
                 Month = x.Date.Month,
                 Year = x.Date.Year
-            }).OrderBy(y => y.Year).ThenBy(m => m.Month).ThenBy(d => d.Day).ToList();
+            }).OrderByDescending(y => y.Year).ThenBy(m => m.Month).ThenBy(d => d.Day).ToList();
 
             return SortPhotos(photos);
         }
@@ -61,6 +61,13 @@ namespace Walter.Models
 
                 int loopCounter = 0;
                 var photoYear = new VMPhotoYear();
+
+                //TODO Can Col1-4 be instanitated in the get set of their class?
+                photoYear.Col1 = new List<VMphoto>();
+                photoYear.Col2 = new List<VMphoto>();
+                photoYear.Col3 = new List<VMphoto>();
+                photoYear.Col4 = new List<VMphoto>();
+
                 foreach (var item in oneYear)
                 {
                     loopCounter++;
@@ -82,15 +89,7 @@ namespace Walter.Models
                             Month = item.Month
                         };
 
-                        if (photoYear.Col1 != null)
-                        {
-                            photoYear.Col1.Add(x);
-                        }
-                        else
-                        {
-                            photoYear.Col1 = new List<VMphoto>();
-                            photoYear.Col1.Add(x);
-                        }
+                        photoYear.Col1.Add(x);
 
                     }
                     else if (loopCounter <= (itemsPerCol[0] + itemsPerCol[1]))
@@ -109,15 +108,7 @@ namespace Walter.Models
                             Month = item.Month
                         };
 
-                        if (photoYear.Col2 != null)
-                        {
-                            photoYear.Col2.Add(x);
-                        }
-                        else
-                        {
-                            photoYear.Col2 = new List<VMphoto>();
-                            photoYear.Col2.Add(x);
-                        }
+                        photoYear.Col2.Add(x);
                     }
                     else if (loopCounter <= (itemsPerCol[0] + itemsPerCol[1] + itemsPerCol[2]))
                     {
@@ -135,15 +126,7 @@ namespace Walter.Models
                             Month = item.Month
                         };
 
-                        if (photoYear.Col3 != null)
-                        {
-                            photoYear.Col3.Add(x);
-                        }
-                        else
-                        {
-                            photoYear.Col3 = new List<VMphoto>();
-                            photoYear.Col3.Add(x);
-                        }
+                        photoYear.Col3.Add(x);
                     }
                     else
                     {
@@ -160,15 +143,7 @@ namespace Walter.Models
                             Month = item.Month
                         };
 
-                        if (photoYear.Col4 != null)
-                        {
-                            photoYear.Col4.Add(x);
-                        }
-                        else
-                        {
-                            photoYear.Col4 = new List<VMphoto>();
-                            photoYear.Col4.Add(x);
-                        }
+                        photoYear.Col4.Add(x);
                     }
                 }
                 PhotoYears.Add(photoYear);

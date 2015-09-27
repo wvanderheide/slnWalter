@@ -2,6 +2,7 @@
 @model AdventureViewModel
 @{
     ViewBag.Title = "Adventures";
+    int lagYear = 0;
 }
 
 <div class="container">
@@ -12,105 +13,52 @@
     </div>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     <br />
-    @{
-        int lagYear = 0;
-    }
     @foreach (var y in Model.PhotoYears)
     {
         if (lagYear != y.Year)
         {
-            <br />
-            <div class="row">
-                <div class="col-sm-12" style="background-color:#eee; color:black; font-weight:bold;">@y.Year</div>
-            </div>
             lagYear = y.Year;
+            @YearHeader(y.Year)
         }
         <div class="row">
             <div class="col-sm-3">
                 <ul>
-                    @if (y.Col1 != null)
-                    {
-                        foreach (var item in y.Col1)
-                        {
-                            @: <li>@item.Title <span class="small">(@item.Month/@item.Day)</span></li>
-                        }
-                    }
+                    @ListItems(y.Col1)
                 </ul>
             </div>
             <div class="col-sm-3">
-                @if (y.Col2 != null)
-                {
-                    foreach (var item in y.Col2)
-                    {
-                        @item.Title <br />
-                    }
-                }
+                <ul>
+                    @ListItems(y.Col2)
+                </ul>
             </div>
             <div class="col-sm-3">
-                @if (y.Col3 != null)
-                {
-                    foreach (var item in y.Col3)
-                    {
-                        @item.Title <br />
-                    }
-                }
+                <ul>
+                    @ListItems(y.Col3)
+                </ul>
             </div>
             <div class="col-sm-3">
-                @if (y.Col4 != null)
-                {
-                    foreach (var item in y.Col4)
-                    {
-                        @item.Title <br />
-                    }
-                }
+                <ul>
+                    @ListItems(y.Col4)
+                </ul>
             </div>
         </div>
     }
-    <br />
-    <br />
-    <div class="row">
-        <div class="col-sm-12" style="background-color:gray; color:white; font-weight:bold;">2015</div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-3">
-            <ul>
-                <li><a href="https://picasaweb.google.com/107082436175597733376/GreenRiver?authuser=0&authkey=Gv1sRgCPiPidiusezFNA&feat=directlink">Green River</a> (8/27)</li>
-                <li><a href="https://picasaweb.google.com/107082436175597733376/AlbertaSummer2015?authuser=0&authkey=Gv1sRgCNfBhPGm4NyqtAE&feat=directlink">Alberta</a> <span class="small">(8/15)</span></li>
-                <li><a href="https://picasaweb.google.com/107082436175597733376/HawkinsHorseshoe?authuser=0&authkey=Gv1sRgCKWak93H3Yqp9gE&feat=directlink">Hawkins Horseshoe</a> <span class="small">(8/10)</span></li>
-            </ul>
-        </div>
-        <div class="col-sm-3">
-            <ul>
-                <li><a href="https://picasaweb.google.com/107082436175597733376/GreenRiver?authuser=0&authkey=Gv1sRgCPiPidiusezFNA&feat=directlink">Green River</a> (8/27)</li>
-                <li><a href="https://picasaweb.google.com/107082436175597733376/AlbertaSummer2015?authuser=0&authkey=Gv1sRgCNfBhPGm4NyqtAE&feat=directlink">Alberta</a> <span class="small">(8/15)</span></li>
-                <li><a href="https://picasaweb.google.com/107082436175597733376/HawkinsHorseshoe?authuser=0&authkey=Gv1sRgCKWak93H3Yqp9gE&feat=directlink">Hawkins Horseshoe</a> <span class="small">(8/10)</span></li>
-            </ul>
-        </div>
-        <div class="col-sm-3">
-            <ul>
-                <li><a href="https://picasaweb.google.com/107082436175597733376/GreenRiver?authuser=0&authkey=Gv1sRgCPiPidiusezFNA&feat=directlink">Green River</a> (8/27)</li>
-                <li><a href="https://picasaweb.google.com/107082436175597733376/AlbertaSummer2015?authuser=0&authkey=Gv1sRgCNfBhPGm4NyqtAE&feat=directlink">Alberta</a> <span class="small">(8/15)</span></li>
-                <li><a href="https://picasaweb.google.com/107082436175597733376/HawkinsHorseshoe?authuser=0&authkey=Gv1sRgCKWak93H3Yqp9gE&feat=directlink">Hawkins Horseshoe</a> <span class="small">(8/10)</span></li>
-            </ul>
-        </div>
-        <div class="col-sm-3">
-            <ul>
-                <li><a href="https://picasaweb.google.com/107082436175597733376/GreenRiver?authuser=0&authkey=Gv1sRgCPiPidiusezFNA&feat=directlink">Green River</a> (8/27)</li>
-                <li><a href="https://picasaweb.google.com/107082436175597733376/AlbertaSummer2015?authuser=0&authkey=Gv1sRgCNfBhPGm4NyqtAE&feat=directlink">Alberta</a> <span class="small">(8/15)</span></li>
-                <li><a href="https://picasaweb.google.com/107082436175597733376/HawkinsHorseshoe?authuser=0&authkey=Gv1sRgCKWak93H3Yqp9gE&feat=directlink">Hawkins Horseshoe</a> <span class="small">(8/10)</span></li>
-            </ul>
-        </div>
-    </div>
-    <br />
-    <br />
-    <div class="row">
-        <div class="col-sm-12" style="background-color:gray; color:white; font-weight:900;">2014</div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-4">.col-sm-4</div>
-        <div class="col-sm-4">.col-sm-4</div>
-        <div class="col-sm-4">.col-sm-4</div>
-    </div>
 </div>
+@* -----------------------------------------------------------------------------
+       Helper Methods
+    ------------------------------------------------------------------------------- *@
+@helper YearHeader(int year)
+{
+    <br />
+    <div class="row">
+        <div class="col-sm-12" style="background-color:#eee; color:black; font-weight:bold;">@year</div>
+    </div>
+}
+
+@helper ListItems(List<VMphoto> col)
+{
+    foreach (var item in col)
+    {
+        <li><a target="_blank" href="@item.URL">@item.Title</a> <span class="small">(@item.Month/@item.Day)</span></li>
+    }
+}
