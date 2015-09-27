@@ -7,7 +7,6 @@ namespace Walter.ViewModels
 {
     public class AdventureViewModel
     {
-        public List<VMphoto> Photos { get; set; } 
-       // public List<KeyValuePair<string, int>> GroupNameCounts{ get; set; } 
+        public List<VMPhotoYear> PhotoYears { get; set; } 
     }
 }

@@ -14,7 +14,6 @@ namespace Walter.Models
 
             return db.Photos.ToList().Select(x => new VMphoto
             {
-                id = x.id,
                 Title = x.Title,
                 URL = x.URL,
                 Day = x.Date.Day,
