@@ -18,7 +18,7 @@ namespace Walter.Models
                 Day = x.Date.Day,
                 Month = x.Date.Month,
                 Year = x.Date.Year
-            }).OrderByDescending(y => y.Year).ThenBy(m => m.Month).ThenBy(d => d.Day).ToList();
+            }).OrderByDescending(y => y.Year).ThenByDescending(m => m.Month).ThenByDescending(d => d.Day).ToList();
 
             return putPhotosInColumns(photos);
         }
