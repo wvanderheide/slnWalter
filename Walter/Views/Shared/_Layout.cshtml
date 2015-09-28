@@ -15,43 +15,90 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/" title="Intro"><i class="fa fa-home fa-lg"></i> Walter</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/Mountain" title="Mountains"><span class="glyphicon glyphicon-picture fa-lg"></span> Mountains</a></li>
-                    <li><a href="/Adventure" title="Adventures"><i class="fa fa-camera-retro fa-lg"></i> Adventures</a></li>
-                    <li><a href="/Contact" title="Contact Us"><i class="fa fa-envelope fa-lg"></i> Contact</a></li>
-                </ul>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/" title="Intro"><i class="fa fa-home fa-lg"></i> Walter</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/Mountain" title="Mountains"><span class="glyphicon glyphicon-picture fa-lg"></span> Mountains</a></li>
+                        <li><a href="/Adventure" title="Adventures"><i class="fa fa-camera-retro fa-lg"></i> Adventures</a></li>
+                        <li><a href="/Contact" title="Contact Us"><i class="fa fa-envelope fa-lg"></i> Contact</a></li>
+                    </ul>
                 
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
                 
 
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p class="small">
-                &copy; Graphic design and programming by Walter VanderHeide, see <a href="../resume/index.aspx">
-                    resume
-                </a> for contact details.
-            </p>
-        </footer>
-    </div>
-</body>
+        <div class="container">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p class="small">
+                    &copy; Graphic design and programming by Walter VanderHeide, see <a href="../resume/index.aspx">
+                                                                                         resume
+                                                                                     </a> for contact details.
+                </p>
+            </footer>
+        </div>
+        <!-- The div below is the Scroll to Top -->
+        <!-- See http://www.webtipblog.com/adding-scroll-top-button-website/ -->
+        <div class="scroll-top-wrapper" title="Jump to top">
+            <span class="scroll-top-inner">
+                <i class="fa fa-2x fa-arrow-circle-up"></i>
+            </span>
+        </div>
+    </body>
 </html>
+
+<script>
+    //This function is part of the the Scroll to Top
+    //this function is To show and hide the button
+    $(function () {
+
+        $(document).on('scroll', function () {
+
+            if ($(window).scrollTop() > 100) {
+                $('.scroll-top-wrapper').addClass('show');
+            } else {
+                $('.scroll-top-wrapper').removeClass('show');
+            }
+        });
+    });
+
+
+    //This function is part of the the Scroll to Top
+    // Handle a button click and scroll to the top of the page.
+    $(function () {
+        $(document).on('scroll', function () {
+
+            if ($(window).scrollTop() > 100) {
+                $('.scroll-top-wrapper').addClass('show');
+            } else {
+                $('.scroll-top-wrapper').removeClass('show');
+            }
+        });
+
+        $('.scroll-top-wrapper').on('click', scrollToTop);
+    });
+
+    function scrollToTop() {
+        verticalOffset = typeof (verticalOffset) != 'undefined' ? verticalOffset : 0;
+        element = $('body');
+        offset = element.offset();
+        offsetTop = offset.top;
+        $('html, body').animate({ scrollTop: offsetTop }, 500, 'linear');
+    }
+</script>
