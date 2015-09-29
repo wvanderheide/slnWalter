@@ -6,8 +6,8 @@ INSERT INTO [dbo].[Photos]
            ,[URL]
            ,[Date])
      VALUES
-           ('Maple Canyon'
-           ,'https://picasaweb.google.com/107082436175597733376/MapleCanyon03?authuser=0&authkey=Gv1sRgCLWctqX0g5X75gE&feat=directlink'
-           ,'Sep 12, 2014')
+           ('Yosemite'
+           ,'https://picasaweb.google.com/107082436175597733376/Yosemite?authuser=0&authkey=Gv1sRgCN26pqDe1pPNYA&feat=directlink'
+           ,'Oct 8, 2014')
 GO
 
