@@ -182,7 +182,7 @@
                             }
                         </td>
                         <td>
-                            @System.Convert.ToInt32(item.Elevation).ToString("###,###") ft<br /><span class="small">(@Math.Round(System.Convert.ToDouble(item.Elevation) * 0.3048).ToString("###,###") m)</span>
+                            @Convert.ToInt32(item.Elevation).ToString("###,###") ft<br /><span class="small">(@Math.Round(Convert.ToDouble(item.Elevation) * 0.3048).ToString("###,###") m)</span>
                         </td>
                         <td>
                             @{
@@ -258,8 +258,8 @@
 </div>
 <script>
     $(document).ready(function () {
-        var TitleText = $("#MountainTitle").prop("title") + " " + $("#TotalClimbCount").html();
-        $("#MountainTitle").prop("title", TitleText);
+        var titleText = $("#MountainTitle").prop("title") + " " + $("#TotalClimbCount").html();
+        $("#MountainTitle").prop("title", titleText);
     });
 
     function OpenModalAddMtn() {
@@ -267,9 +267,9 @@
         $("#ModalAddMtn").modal();
     }
 
-    function OpenAddClimbModel(MtnID, MtnName) {
-        $("#MountainID").val(MtnID);
-        $("#MtnName").text(MtnName);
+    function OpenAddClimbModel(mtnId, mtnName) {
+        $("#MountainID").val(mtnId);
+        $("#MtnName").text(mtnName);
         $("#ModalAddClimb").modal();
     }
 

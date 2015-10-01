@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Walter.ViewModels;
 
 namespace Walter.Models
@@ -41,7 +40,7 @@ namespace Walter.Models
 
             try
             {
-                var mtn = new Walter.Models.Mountain
+                var mtn = new Models.Mountain
                 {
 	                Name = m.Name,
 	                Elevation = Convert.ToInt32(m.Elevation),

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Walter.ViewModels;
 
 namespace Walter.Models
@@ -14,19 +13,19 @@ namespace Walter.Models
             List<VMphoto> photos = db.Photos.ToList().Select(x => new VMphoto
             {
                 Title = x.Title,
-                URL = x.URL,
+                Url = x.URL,
                 Day = x.Date.Day,
                 Month = x.Date.Month,
                 Year = x.Date.Year
             }).OrderByDescending(y => y.Year).ThenByDescending(m => m.Month).ThenByDescending(d => d.Day).ToList();
 
-            return putPhotosInColumns(photos);
+            return PutPhotosInColumns(photos);
         }
 
-        private void calculateColumnCounts(int totalItems, out int[] colCounts)
+        private void CalculateColumnCounts(int totalItems, out int[] colCounts)
         {
-            int[] itemsPerCol = new int[4];
-            int remain = Convert.ToInt32(decimal.Remainder((decimal)totalItems, 4m));
+            var itemsPerCol = new int[4];
+            int remain = Convert.ToInt32(decimal.Remainder(totalItems, 4m));
             itemsPerCol[0] = itemsPerCol[1] = itemsPerCol[2] = itemsPerCol[3] = totalItems / 4;
 
             switch (remain)
@@ -48,24 +47,26 @@ namespace Walter.Models
             colCounts = itemsPerCol;
         }
 
-        private List<VMPhotoYear> putPhotosInColumns(List<VMphoto> photos)
+        private List<VMPhotoYear> PutPhotosInColumns(List<VMphoto> photos)
         {
             var photoYears = new List<VMPhotoYear>();
-            int[] itemsPerCol = new int[4];
+            var itemsPerCol = new int[4];
             var grouped = photos.GroupBy(y => y.Year).Select(group => new { Year = group.Key, Count = group.Count() });
 
             foreach (var year in grouped)
             {
                 var thisYear = photos.Where(y => y.Year == year.Year).ToList();
                 int loopCounter = 0;
-                var photoYear = new VMPhotoYear();
-                photoYear.Year = year.Year;
-                //TODO: Can Col1-4 be instanitated in the get set of their class?
-                photoYear.Col1 = new List<VMphoto>();
-                photoYear.Col2 = new List<VMphoto>();
-                photoYear.Col3 = new List<VMphoto>();
-                photoYear.Col4 = new List<VMphoto>();
-                calculateColumnCounts(thisYear.Count, out itemsPerCol);
+                var photoYear = new VMPhotoYear
+                {
+                    Year = year.Year,
+                    Col1 = new List<VMphoto>(),
+                    Col2 = new List<VMphoto>(),
+                    Col3 = new List<VMphoto>(),
+                    Col4 = new List<VMphoto>()
+                };
+
+                CalculateColumnCounts(thisYear.Count, out itemsPerCol);
 
                 foreach (var item in thisYear)
                 {
