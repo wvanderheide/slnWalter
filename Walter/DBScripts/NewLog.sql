@@ -6,9 +6,9 @@ INSERT INTO [dbo].[MountainSummitLog]
            ,[SummitDate]
            ,[SummitNote])
      VALUES
-           (59
-           ,'July 31 2009'
-           ,null)
+           (66
+           ,'9/23/2011'
+           ,'East Buttress')
 GO
 
 
