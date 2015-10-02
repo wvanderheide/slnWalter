@@ -10,12 +10,12 @@ INSERT INTO [dbo].[Mountains]
            ,[Longitude]
            ,[MountainNote])
      VALUES
-           ('Bald Mountain'
-           ,11947                     
+           ('Mt. Dromedary'
+           ,11107                         
            ,'USA'
            ,'UT'
-           ,40.69900 
-           ,-110.902 
+           ,40.59310 
+           ,-111.7061 
            ,null)
 
 
@@ -30,7 +30,7 @@ INSERT INTO [dbo].[MountainSummitLog]
            ,[SummitNote])
      VALUES
            ( SCOPE_IDENTITY()
-           ,'7/15/2011'
+           ,'May 27 2011'
            ,null)
 GO
 
