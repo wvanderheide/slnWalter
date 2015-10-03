@@ -6,8 +6,8 @@ INSERT INTO [dbo].[Photos]
            ,[URL]
            ,[Date])
      VALUES
-           ('Alberta'
+           (''
            ,''
-           ,'12/25/2012')
+           ,'')
 GO
 
