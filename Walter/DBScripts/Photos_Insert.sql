@@ -1,6 +1,7 @@
 USE [Walter]
 GO
 
+
 INSERT INTO [dbo].[Photos]
            ([Title]
            ,[URL]
@@ -10,4 +11,3 @@ INSERT INTO [dbo].[Photos]
            ,''
            ,'')
 GO
-

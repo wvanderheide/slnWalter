@@ -4,6 +4,7 @@
     ViewBag.Title = "Adventures";
     int lagYear = 0;
     string jumpTo = string.Empty;
+    int albumsPerYear = 0;
 }
 
 <div class="container">
@@ -21,7 +22,8 @@
         {
             lagYear = y.Year;
             jumpTo += y.Year + ",";
-            @YearHeader(y.Year)
+            albumsPerYear = y.Col1.Count + y.Col2.Count + y.Col3.Count + y.Col4.Count;
+            @YearHeader(y.Year, albumsPerYear)
         }
         <div class="row">
             <div class="col-sm-3">
@@ -71,12 +73,12 @@
 @* -----------------------------------------------------------------------------
        Helper Methods
     ------------------------------------------------------------------------------- *@
-@helper YearHeader(int year)
+@helper YearHeader(int year, int count)
 {
     <br />
     <div class="row">
         <a id="Year@(year)"></a>
-        <div class="col-sm-12" style="background-color:#eee; color:black; font-weight:bold;">@year</div>
+        <div class="col-sm-12" style="background-color:#eee; color:black; font-weight:bold;" title="Total albums for @year = @count">@year</div>
     </div>
 }
 
