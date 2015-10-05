@@ -86,6 +86,6 @@
 {
     foreach (var item in col)
     {
-        <li><a target="_blank" href="@item.Url">@item.Title</a> <span class="small">(@item.Month/@item.Day)</span></li>
+        <li><a target="_blank" href="@item.Url">@item.Title</a> <span class="small" title="@item.Id">(@item.Month/@item.Day)</span></li>
     }
 }

@@ -16,7 +16,8 @@ namespace Walter.Models
                 Url = x.URL,
                 Day = x.Date.Day,
                 Month = x.Date.Month,
-                Year = x.Date.Year
+                Year = x.Date.Year,
+                Id = x.id
             }).OrderByDescending(y => y.Year).ThenByDescending(m => m.Month).ThenByDescending(d => d.Day).ToList();
 
             return PutPhotosInColumns(photos);
