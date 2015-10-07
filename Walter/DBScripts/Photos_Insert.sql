@@ -9,7 +9,9 @@ INSERT INTO [dbo].[Photos]
      VALUES
            (''
            ,''
-           ,'4/1/2008')
+           ,'3/4/2006')
 GO
 
---Update Photos set date = '6/25/2008' where id =266
+print @@identity
+
+--Update Photos set date = '8/12/2007' where id =282
