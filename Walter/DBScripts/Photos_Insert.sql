@@ -9,7 +9,7 @@ INSERT INTO [dbo].[Photos]
      VALUES
            (''
            ,''
-           ,'3/4/2006')
+           ,'8/10/2005')
 GO
 
 print @@identity
