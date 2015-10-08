@@ -7,11 +7,13 @@ INSERT INTO [dbo].[Photos]
            ,[URL]
            ,[Date])
      VALUES
-           (''
+           ('Big Schloss'
            ,''
-           ,'8/10/2005')
+           ,'11/6/2004')
 GO
 
 print @@identity
 
---Update Photos set date = '8/12/2007' where id =282
+--SElect * from photos where title = 'DC'
+-- Delete from Photos where id = 190
+--Update Photos set title = 'Bears Den' where id =311
