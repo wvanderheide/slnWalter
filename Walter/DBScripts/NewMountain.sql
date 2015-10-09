@@ -10,12 +10,12 @@ INSERT INTO [dbo].[Mountains]
            ,[Longitude]
            ,[MountainNote])
      VALUES
-           (''
-           ,                               
+           ('Gilbert Peak'
+           ,      13442                          
            ,'USA'
            ,'UT'
-           , 
-           ,-
+           , 40.8235 
+           ,-110.3396
            ,null)
 
 
@@ -30,7 +30,7 @@ INSERT INTO [dbo].[MountainSummitLog]
            ,[SummitNote])
      VALUES
            ( SCOPE_IDENTITY()
-           ,''
+           ,'July 25 2008'
            ,null)
 GO
 
