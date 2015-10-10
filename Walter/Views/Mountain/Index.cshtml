@@ -1,5 +1,5 @@
 ﻿@using Walter.ViewModels;
-@model MountainViewModel
+@model List<VMmountain>
 @{
     ViewBag.Title = "Mountains";
 
@@ -10,10 +10,14 @@
 <div class="container">
     <br />
     <div class="well well-sm">
-        <h2 id="MountainTitle" title="Mountain Count: @Model.Mountains.Count, Climb Count:"><span class="glyphicon glyphicon-picture fa-lg"></span> Mountains</h2>
+        <h2 id="MountainTitle" title="Mountain Count: @Model.Count, Climb Count:"><span class="glyphicon glyphicon-picture fa-lg"></span> Mountains</h2>
         Below is a list of mountains I have climbed
     </div>
-    <span style="color:red; font-weight: bold">TO DO: </span>Add ability to see Mountains climbed by Year.
+    <span style="color:red; font-weight: bold">TO DO: </span>
+    <ul>
+    <li>Add ability to see Mountains climbed by Year (like photos page).</li>
+    <li>Add ability to see Mountain climbed with in a certain time frame (ie 40 at 40)</li>
+    </ul>
     <!-- ----------------------------------------------------------------------------- -->
     <!--  Add Mountain as Modal -->
     <!-- ----------------------------------------------------------------------------- -->
@@ -169,14 +173,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Mountains)
+                @foreach (var item in Model)
                 {
                     <tr>
                         <td>
                             @{
                                 totalMtns++;
                             }
-                            <span title="@(totalMtns) of @(Model.Mountains.Count)">@item.Name</span>
+                            <span title="@(totalMtns) of @(Model.Count)">@item.Name</span>
                             @if (!string.IsNullOrWhiteSpace(item.MountainNote))
                             {
                                 @: <br /><span class="small">@item.MountainNote</span>
@@ -246,7 +250,7 @@
                         @if (Convert.ToBoolean(Session["IsAdmin"]))
                         {
                             <a id="MtnCount"><i class="fa fa-plus-square" title="Add Mountain" style="cursor:pointer" onclick="OpenModalAddMtn()"></i></a>
-                        }<strong>Mountain Total:</strong> <span class="badge">@Model.Mountains.Count</span>
+                        }<strong>Mountain Total:</strong> <span class="badge">@Model.Count</span>
                     </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>

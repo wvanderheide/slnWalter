@@ -9,7 +9,7 @@ namespace Walter.Controllers
         public ActionResult Index()
         {
             var b = new AdventureBusinessLayer();
-            return View("Index", new AdventureViewModel { PhotoYears = b.GetPhotoYears() });
+            return View("Index",  b.GetPhotoYears());
         }
     }
 }

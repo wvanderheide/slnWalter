@@ -153,10 +153,8 @@
       <DependentUpon>WalterEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\AdventureViewModel.cs" />
     <Compile Include="ViewModels\VMmountain.cs" />
     <Compile Include="ViewModels\VMmountainSummitLog.cs" />
-    <Compile Include="ViewModels\MountainViewModel.cs" />
     <Compile Include="ViewModels\VMphoto.cs" />
     <Compile Include="ViewModels\VMPhotoYear.cs" />
   </ItemGroup>

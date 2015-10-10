@@ -30,7 +30,7 @@ namespace Walter.Models
                     SummitNote = l.SummitNote
                 }).ToList().OrderBy(y => y.SummitDate).ToList()
             }).ToList();
-
+            
             return mountainList;
         }
 

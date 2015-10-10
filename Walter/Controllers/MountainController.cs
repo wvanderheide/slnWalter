@@ -20,7 +20,7 @@ namespace Walter.Controllers
             //return View("Index", new MountainViewModel { Mountains = mtns.OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList() });
 
             //Most recent on bottom
-            return View("Index", new MountainViewModel { Mountains = mtns.OrderBy(x => x.SummitLog.Last().SummitDate).ToList() });
+            return View("Index",  mtns.OrderByDescending(x => x.SummitLog.Last().Id).ToList());
         }
 
         [HttpPost]

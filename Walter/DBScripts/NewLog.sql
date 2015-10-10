@@ -6,9 +6,17 @@ INSERT INTO [dbo].[MountainSummitLog]
            ,[SummitDate]
            ,[SummitNote])
      VALUES
-           (90
-           ,'November 28 2009'
-           ,null)
+           (150
+           ,'November 11 2002'
+           ,  null)
 GO
 
+print scope_identity()
+--Select * from [MountainSummitLog] order by id desc
 
+Update MountainSummitLog set SummitNote ='Date is uncertain' where id =271
+/*	
+	
+
+(?)
+*/
