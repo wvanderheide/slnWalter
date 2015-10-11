@@ -15,12 +15,9 @@ namespace Walter.Controllers
 
             var b = new MountainBusinessLayer();
             var mtns = b.GetMountains();
-            
-            //Most Recent Summit Date on top
-            //return View("Index", new MountainViewModel { Mountains = mtns.OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList() });
 
-            //Most recent on bottom
-            return View("Index",  mtns.OrderByDescending(x => x.SummitLog.Last().Id).ToList());
+            //Most Recent Summit Date on top
+            return View("Index", mtns.OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList());
         }
 
         [HttpPost]
