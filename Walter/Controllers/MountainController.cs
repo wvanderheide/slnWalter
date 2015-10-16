@@ -20,6 +20,15 @@ namespace Walter.Controllers
             return View("Index", mtns.OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList());
         }
 
+        [HttpGet]
+        public ActionResult Map()
+        {
+            ViewBag.lat = Request["lat"];
+            ViewBag.lng = Request["lng"];
+            ViewBag.mtnName = Request["name"];
+            return View();
+        }
+
         [HttpPost]
         public ActionResult SaveMountain(ViewModels.VMmountain m, string mtnSummitDate, string mtnSummitNote)
         {

@@ -212,6 +212,7 @@
     <Content Include="Views\Mountain\Index.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Adventure\Index.cshtml" />
+    <Content Include="Views\Mountain\Map.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

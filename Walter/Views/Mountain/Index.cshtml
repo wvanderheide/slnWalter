@@ -15,9 +15,9 @@
     </div>
     <span style="color:red; font-weight: bold">TO DO: </span>
     <ul>
-    <li>Add ability to see Mountains climbed by Year (like photos page).</li>
-    <li>Add ability to see Mountain climbed with in a certain time frame (ie 40 at 40)</li>
-<li>Google Map:  See http://mantascode.com/javascript-plot-point-on-googlemaps-using-coordinates-latitude-and-longitude/ </li>
+        <li>Add ability to see Mountains climbed by Year (like photos page).</li>
+        <li>Add ability to see Mountain climbed with in a certain time frame (ie 40 at 40)</li>
+        <li>Google Map:  See http://mantascode.com/javascript-plot-point-on-googlemaps-using-coordinates-latitude-and-longitude/ </li>
     </ul>
     <!-- ----------------------------------------------------------------------------- -->
     <!--  Add Mountain as Modal -->
@@ -179,7 +179,7 @@
                     <tr>
                         <td>
                             @{
-                                totalMtns++;
+                    totalMtns++;
                             }
                             <span title="@(totalMtns) of @(Model.Count)">@item.Name</span>
                             @if (!string.IsNullOrWhiteSpace(item.MountainNote))
@@ -203,8 +203,13 @@
 
                     if (item.Latitude != null && item.Longitude != null)
                     {
-                        @: <p class="small">@string.Format("{0:#,#.#####}", item.Latitude) / @string.Format("{0:#,#.#####}", item.Longitude)</p>
-                                }
+                        <p class="small">
+                            <a target="_blank" href="map?name=@item.Name&lat=@item.Latitude&lng=@item.Longitude">
+                                @string.Format("{0:#,#.#####}", item.Latitude) / @string.Format("{0:#,#.#####}", item.Longitude)
+                                <br />
+                            </a>
+                        </p>
+                    }
                             }
                         </td>
                         <td>
