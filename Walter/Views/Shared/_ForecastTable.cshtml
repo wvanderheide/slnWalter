@@ -1,0 +1,65 @@
+﻿@using System.Collections;
+@using Walter.ViewModels;
+@model VMForecast
+@{
+    Layout = null;
+
+    ArrayList HiddenRowIds = new ArrayList();
+    string RowId = "";
+}
+<table>
+    <tr>
+        <th style="padding: 10px">-/+</th>
+        <th>ProductID</th>
+        <th style="padding: 10px">ProductName</th>
+        <th>Forecast</th>
+    </tr>
+    @foreach (var p in Model.AllProducts)
+    {
+        var rowItem = new VMphoto();
+        var RDForecastThisItem = Model.RdForecast.Where(t => t.Title == p.Title).Where(m => m.Month == (int)ViewBag.MonthInt).ToList();
+
+        if (RDForecastThisItem.Count == 0)
+        {
+            RowId = "Row_" + Model.ForecastYearId.ToString() + "_" + ViewBag.MonthInt.ToString() + "_" + p.Id.ToString();
+            HiddenRowIds.Add(RowId);
+            @Row(RowId, p);
+        }
+        else
+        {
+            var temp = RDForecastThisItem[0];
+            RowId = "Row_" + Model.ForecastYearId.ToString() + "_" + ViewBag.MonthInt.ToString() + "_" + temp.Id.ToString();
+            if (temp.Day == 0)
+            {
+
+            }
+
+            @Row(RowId, temp);
+        }
+    }
+</table>
+<b>Add: </b>
+@foreach (var item in HiddenRowIds)
+{
+<span onclick="$('#@item').show();">@item</span> @:|&nbsp; 
+}
+
+@* -----------------------------------------------------------------------------
+       Helper Methods
+    ------------------------------------------------------------------------------- *@
+@helper Row(string RowId, VMphoto item)
+{
+    string display = "";
+
+    if (item.Day == 0)
+    {
+        display = "style=display:none;";
+    }
+    <tr id="@RowId" @display>
+        <td style="padding: 10px" onclick="$('#@RowId').hide();">-/+</td>
+        <td>@item.Id</td>
+        <td style="padding: 10px">@item.Title</td>
+        <td>@item.Day</td>
+    </tr>
+}
+

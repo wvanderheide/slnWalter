@@ -15,16 +15,23 @@ namespace Walter.Models
             {
                 Title = x.Title,
                 Id = x.id,
-                Year = x.Date.Year
-            }).Where(z => z.Year == 2015).OrderBy(y => y.Title).Take(takeThisMany).ToList();
+                Year = x.Date.Year,
+                Month = x.Date.Month
+            }).Where(z => z.Year == 2015).OrderBy(t => t.Title).Take(takeThisMany).ToList();
 
             return prods;
         }
 
         public List<VMphoto> GetRdForecast(int ForecastYearId)
         {
-            var retVal = GetAllProducts(1);
-            retVal[0].Day = 1000;
+            var retVal = GetAllProducts(2);
+            
+            foreach(var v in retVal)
+            {
+                v.Day = 999; //Day = a forecast amount for this example
+                v.Month = 1;
+            }
+
             return retVal;
         }
 
