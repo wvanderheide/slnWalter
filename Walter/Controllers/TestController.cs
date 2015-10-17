@@ -9,11 +9,11 @@ namespace Walter.Controllers
 {
     public class TestController : Controller
     {
-        // GET: Test
         public ActionResult Index()
         {
             var b = new TestBusinessLayer();
-            return View("Index", b.GetAllProducts(4));
+            var x = b.GetVmForecast(2015, 4);
+            return View("Index", x);
         }
     }
 }

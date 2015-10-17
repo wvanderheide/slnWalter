@@ -155,6 +155,7 @@
       <DependentUpon>WalterEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\VMForecast.cs" />
     <Compile Include="ViewModels\VMmountain.cs" />
     <Compile Include="ViewModels\VMmountainSummitLog.cs" />
     <Compile Include="ViewModels\VMphoto.cs" />

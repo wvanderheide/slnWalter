@@ -1,5 +1,5 @@
 ﻿@using Walter.ViewModels;
-@model List<VMphoto>
+@model VMForecast
 @{
     ViewBag.Title = "Test";
 }
@@ -12,9 +12,24 @@
     {
         @MonthName(i, 2016);
         <table>
-            @foreach (var p in Model)
+            <tr>
+                <th>ProductID</th>
+                <th>ProductName</th>
+                <th>Forecast</th>
+            </tr>
+            @foreach (var p in Model.AllProducts)
             {
-                @Row(p.Id, p.Title)
+                var rowItem = new VMphoto();
+                var RDForecastThisItem = Model.RdForecast.Where(t => t.Title == p.Title).ToList();
+
+                if (RDForecastThisItem.Count == 0)
+                {
+                    @Row(p)
+                }
+                else
+                {
+                    @Row(RDForecastThisItem[0]);
+                }
             }
         </table>
     }
@@ -33,11 +48,11 @@
     </div>
 }
 
-@helper Row(int productId, string productName)
+@helper Row(VMphoto item)
 {
     <tr>
-        <td>@productId</td>
-        <td>&nbsp;</td>
-        <td>@productName</td>
+        <td>@item.Id</td>
+        <td style="padding: 10px">@item.Title</td>
+        <td>@item.Day</td>
     </tr>
 }
