@@ -1,0 +1,43 @@
+﻿@using Walter.ViewModels;
+@model List<VMphoto>
+@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Learning Partial Views</h2>
+
+<br />
+<div>
+    @for (int i = 1; i < 13; i++)
+    {
+        @MonthName(i, 2016);
+        <table>
+            @foreach (var p in Model)
+            {
+                @Row(p.Id, p.Title)
+            }
+        </table>
+    }
+</div>
+@* -----------------------------------------------------------------------------
+       Helper Methods
+    ------------------------------------------------------------------------------- *@
+@helper MonthName(int month, int year)
+{
+    DateTime dtDate = new DateTime(year, month, 1);
+    string monthNameShort = dtDate.ToString("MMM");
+    string monthName = dtDate.ToString("MMMM");
+
+    <div class="well well-sm" style="margin-top: 20px;margin-bottom: 0px">
+        @monthName @year
+    </div>
+}
+
+@helper Row(int productId, string productName)
+{
+    <tr>
+        <td>@productId</td>
+        <td>&nbsp;</td>
+        <td>@productName</td>
+    </tr>
+}
