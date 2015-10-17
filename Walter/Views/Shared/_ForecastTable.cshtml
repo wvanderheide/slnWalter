@@ -4,12 +4,14 @@
 @{
     Layout = null;
 
-    ArrayList HiddenRowIds = new ArrayList();
+    var HiddenRows = new Dictionary<string, string>();
+
     string RowId = "";
+    bool hasNoForecasts = true;
 }
 <table>
     <tr>
-        <th style="padding: 10px">-/+</th>
+        <th style="padding: 10px">&nbsp;</th>
         <th>ProductID</th>
         <th style="padding: 10px">ProductName</th>
         <th>Forecast</th>
@@ -22,27 +24,34 @@
         if (RDForecastThisItem.Count == 0)
         {
             RowId = "Row_" + Model.ForecastYearId.ToString() + "_" + ViewBag.MonthInt.ToString() + "_" + p.Id.ToString();
-            HiddenRowIds.Add(RowId);
+            HiddenRows.Add(RowId, p.Title);
             @Row(RowId, p);
         }
         else
         {
             var temp = RDForecastThisItem[0];
             RowId = "Row_" + Model.ForecastYearId.ToString() + "_" + ViewBag.MonthInt.ToString() + "_" + temp.Id.ToString();
-            if (temp.Day == 0)
-            {
-
-            }
-
+            hasNoForecasts = false;
             @Row(RowId, temp);
         }
     }
+    @if(hasNoForecasts)
+    {
+    <tr id="trNoForecast@(ViewBag.MonthInt)">
+        <td colspan="4">You have no forecast this month, please pick a product to forecast on.</td>
+    </tr>
+    }
 </table>
+<br /><br />
 <b>Add: </b>
-@foreach (var item in HiddenRowIds)
-{
-<span onclick="$('#@item').show();">@item</span> @:|&nbsp; 
-}
+<select id="Add_@ViewBag.MonthInt">
+    @foreach (var item in HiddenRows)
+    {
+        @*<span onclick="$('#@item').show();">@item</span> @:|&nbsp;*@
+
+        <option value="@item.Key">@item.Value</option>
+    }
+</select> <i class="fa fa-plus-square" onclick="var v = $('#Add_@ViewBag.MonthInt').val(); $('#' + v).show(); $('#Add_@ViewBag.MonthInt option[value=' + v + ']').remove(); $('#trNoForecast@(ViewBag.MonthInt)').hide();"></i>
 
 @* -----------------------------------------------------------------------------
        Helper Methods
@@ -51,15 +60,16 @@
 {
     string display = "";
 
-    if (item.Day == 0)
+    if (item.Day == 0) //Day = forecast for this example
     {
         display = "style=display:none;";
     }
     <tr id="@RowId" @display>
-        <td style="padding: 10px" onclick="$('#@RowId').hide();">-/+</td>
+        <td style="padding: 10px" onclick="$('#@RowId').hide();$('#Add_@ViewBag.MonthInt').append($('<option></option>').attr('value','@RowId').text('@item.Title'));">
+            <i class="fa fa-times"></i>
+        </td>
         <td>@item.Id</td>
         <td style="padding: 10px">@item.Title</td>
         <td>@item.Day</td>
     </tr>
 }
-

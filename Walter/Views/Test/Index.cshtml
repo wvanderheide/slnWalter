@@ -3,7 +3,7 @@
 @model VMForecast
 @{
     ViewBag.Title = "Test";
-
+    string t;
 }
 
 <h2>Learning Partial Views</h2>
@@ -14,7 +14,12 @@
     <div class="well well-sm" style="margin-top: 20px;margin-bottom: 0px" onclick="$('#Div@(i)_@(Model.ForecastYearId)').slideDown('slow');">
         @MonthName(i, 2016)
     </div>
-    <div id="Div@(i)_@(Model.ForecastYearId)" > @*  style="display: none;"  *@
+    t = "display: none";
+    if(i == 1)
+    {
+        t = "";
+    }
+    <div id="Div@(i)_@(Model.ForecastYearId)" style="@t">
         @{ Html.RenderPartial("~/Views/Shared/_ForecastTable.cshtml", Model);}
     </div>
 }
