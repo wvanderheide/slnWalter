@@ -8,54 +8,118 @@
 
     string RowId = "";
     bool hasNoForecasts = true;
-}
-<table>
-    <tr>
-        <th style="padding: 10px">&nbsp;</th>
-        <th>ProductID</th>
-        <th style="padding: 10px">ProductName</th>
-        <th>Forecast</th>
-    </tr>
-    @foreach (var p in Model.AllProducts)
-    {
-        var rowItem = new VMphoto();
-        var RDForecastThisItem = Model.RdForecast.Where(t => t.Title == p.Title).Where(m => m.Month == (int)ViewBag.MonthInt).ToList();
 
-        if (RDForecastThisItem.Count == 0)
+    string Expanded = "display: none";
+    if (@ViewBag.MonthInt == @ViewBag.ExpandThisMonth)
+    {
+        Expanded = "";
+
+        <script>
+            function RemoveForecastProduct(rowIdToHide, itemTitle, selectId, trNoForecastId) {
+                $('#' + rowIdToHide).hide();
+                $('#' + selectId).append($('<option></option>').attr('value', rowIdToHide).text(itemTitle));
+
+                //get count of options in select
+                var options = $('#' + selectId).children('option').length;
+               // alert(options);
+                if (options == @Model.AllProducts.Count + 1) {
+                    $('#' + trNoForecastId).slideDown('slow');
+                }
+
+                sortDropDownListByText(selectId);
+                $('#' + selectId).val(-1);
+            }
+
+            function AddForecastProduct(trNoForecastId, selectId) {
+                var v = $('#' + selectId).val();
+                if (v != -1) {
+                    $('#' + v).show();
+                    $('#' + selectId + ' option[value=' + v + ']').remove();
+                    $('#' + trNoForecastId).hide();
+                }
+            }
+
+            function sortDropDownListByText(selectId) {
+                // Loop for each select element on the page.
+                $("#" + selectId).each(function () {
+                    // Keep track of the selected option.
+                    var selectedValue = $(this).val();
+                    // Sort all the options by text.
+                    $(this).html($("option", $(this)).sort(function (a, b) {
+                        return a.text == b.text ? 0 : a.text < b.text ? -1 : 1
+                    }));
+                });
+            }
+        </script>
+    }
+}
+
+<div class="well well-sm" style="margin-top: 20px;margin-bottom: 0px" onclick="$('#Div@(ViewBag.MonthInt)_@(Model.ForecastYearId)').slideDown('slow');">
+    @MonthName(@ViewBag.MonthInt, 2016)
+</div>
+<div id="Div@(ViewBag.MonthInt)_@(Model.ForecastYearId)" style="@Expanded">
+    <table>
+        <tr>
+            <th style="padding: 10px">&nbsp;</th>
+            <th>ProductID</th>
+            <th style="padding: 10px">ProductName</th>
+            <th>Forecast</th>
+        </tr>
+        @foreach (var p in Model.AllProducts)
         {
-            RowId = "Row_" + Model.ForecastYearId.ToString() + "_" + ViewBag.MonthInt.ToString() + "_" + p.Id.ToString();
-            HiddenRows.Add(RowId, p.Title);
-            @Row(RowId, p);
+            var rowItem = new VMphoto();
+            var RDForecastThisItem = Model.RdForecast.Where(t => t.Title == p.Title).Where(m => m.Month == ViewBag.MonthInt).ToList();
+
+            if (RDForecastThisItem.Count == 0)
+            {
+                RowId = "Row_" + Model.ForecastYearId.ToString() + "_" + ViewBag.MonthInt.ToString() + "_" + p.Id.ToString();
+                HiddenRows.Add(RowId, p.Title);
+                @Row(RowId, p);
+            }
+            else
+            {
+                var temp = RDForecastThisItem[0];
+                RowId = "Row_" + Model.ForecastYearId.ToString() + "_" + ViewBag.MonthInt.ToString() + "_" + temp.Id.ToString();
+                hasNoForecasts = false;
+                @Row(RowId, temp);
+            }
+        }
+
+        @if (!hasNoForecasts)
+        {
+            Expanded = "display: none";
         }
         else
         {
-            var temp = RDForecastThisItem[0];
-            RowId = "Row_" + Model.ForecastYearId.ToString() + "_" + ViewBag.MonthInt.ToString() + "_" + temp.Id.ToString();
-            hasNoForecasts = false;
-            @Row(RowId, temp);
+            Expanded = string.Empty;
         }
-    }
-    @if(hasNoForecasts)
-    {
-    <tr id="trNoForecast@(ViewBag.MonthInt)">
-        <td colspan="4">You have no forecast this month, please pick a product to forecast on.</td>
-    </tr>
-    }
-</table>
-<br /><br />
-<b>Add: </b>
-<select id="Add_@ViewBag.MonthInt">
-    @foreach (var item in HiddenRows)
-    {
-        @*<span onclick="$('#@item').show();">@item</span> @:|&nbsp;*@
-
-        <option value="@item.Key">@item.Value</option>
-    }
-</select> <i class="fa fa-plus-square" onclick="var v = $('#Add_@ViewBag.MonthInt').val(); $('#' + v).show(); $('#Add_@ViewBag.MonthInt option[value=' + v + ']').remove(); $('#trNoForecast@(ViewBag.MonthInt)').hide();"></i>
+        <tr id="trNoForecast@(ViewBag.MonthInt)" style="@Expanded">
+            <td colspan="4">You have no @MonthName(@ViewBag.MonthInt, 2016) forecasts, please pick a product to forecast on.</td>
+        </tr>
+    </table>
+    <br /><br />
+    <b>Add: </b>
+    <select id="Add_@ViewBag.MonthInt" onchange="AddForecastProduct('trNoForecast@(ViewBag.MonthInt)','Add_@ViewBag.MonthInt')">
+        <option value="-1">--Add Product--</option>
+        @foreach (var item in HiddenRows)
+        {
+            <option value="@item.Key">@item.Value</option>
+        }
+    </select> 
+</div>
 
 @* -----------------------------------------------------------------------------
        Helper Methods
     ------------------------------------------------------------------------------- *@
+@helper MonthName(int month, int year)
+{
+    DateTime dtDate = new DateTime(year, month, 1);
+    string monthNameShort = dtDate.ToString("MMM");
+    string monthName = dtDate.ToString("MMMM");
+
+    @(monthName)@:&nbsp;@(year)
+}
+
 @helper Row(string RowId, VMphoto item)
 {
     string display = "";
@@ -65,7 +129,7 @@
         display = "style=display:none;";
     }
     <tr id="@RowId" @display>
-        <td style="padding: 10px" onclick="$('#@RowId').hide();$('#Add_@ViewBag.MonthInt').append($('<option></option>').attr('value','@RowId').text('@item.Title'));">
+        <td style="padding: 10px" onclick="RemoveForecastProduct('@RowId', '@item.Title', 'Add_@ViewBag.MonthInt', 'trNoForecast@(ViewBag.MonthInt)');">
             <i class="fa fa-times"></i>
         </td>
         <td>@item.Id</td>

@@ -3,7 +3,7 @@
 @model VMForecast
 @{
     ViewBag.Title = "Test";
-    string t;
+    ViewBag.ExpandThisMonth = 1;
 }
 
 <h2>Learning Partial Views</h2>
@@ -11,27 +11,5 @@
 @for (int i = 1; i < 13; i++)
 {
     ViewBag.MonthInt = i;
-    <div class="well well-sm" style="margin-top: 20px;margin-bottom: 0px" onclick="$('#Div@(i)_@(Model.ForecastYearId)').slideDown('slow');">
-        @MonthName(i, 2016)
-    </div>
-    t = "display: none";
-    if(i == 1)
-    {
-        t = "";
-    }
-    <div id="Div@(i)_@(Model.ForecastYearId)" style="@t">
-        @{ Html.RenderPartial("~/Views/Shared/_ForecastTable.cshtml", Model);}
-    </div>
-}
-
-@* -----------------------------------------------------------------------------
-       Helper Methods
-    ------------------------------------------------------------------------------- *@
-@helper MonthName(int month, int year)
-{
-    DateTime dtDate = new DateTime(year, month, 1);
-    string monthNameShort = dtDate.ToString("MMM");
-    string monthName = dtDate.ToString("MMMM");
-
-    @(monthName)@:&nbsp;@(year)
+    Html.RenderPartial("~/Views/Shared/_ForecastTable.cshtml", Model);
 }
