@@ -23,10 +23,26 @@ namespace Walter.Controllers
         [HttpGet]
         public ActionResult Map()
         {
-            ViewBag.lat = Request["lat"];
-            ViewBag.lng = Request["lng"];
-            ViewBag.mtnName = Request["name"];
-            return View();
+            var b = new MountainBusinessLayer();
+            var mtns = b.GetMountains();
+            if (Request["Id"] != null)
+            {
+                ViewBag.Zoom = 14;
+                return View("Map", mtns.Where(s => s.Id == Convert.ToInt32(Request["Id"])).ToList());
+            }
+            else if (Request["State"] != null)
+            {
+                ViewBag.Zoom = 7;
+                return View("Map", mtns.Where(s => s.State == Request["State"]).OrderBy(a => a.Name).ToList());
+            }
+            else if (Request["Country"] != null)
+            {
+                ViewBag.Zoom = 4;
+                return View("Map", mtns.Where(s => s.Country == Request["Country"]).OrderBy(a => a.Name).ToList());
+            }
+            //All
+            ViewBag.Zoom = 3;
+            return View("Map", mtns.OrderBy(a => a.Name).ToList());
         }
 
         [HttpPost]

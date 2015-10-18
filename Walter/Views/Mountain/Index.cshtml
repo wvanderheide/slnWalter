@@ -11,13 +11,12 @@
     <br />
     <div class="well well-sm">
         <h2 id="MountainTitle" title="Mountain Count: @Model.Count, Climb Count:"><span class="glyphicon glyphicon-picture fa-lg"></span> Mountains</h2>
-        Below is a list of mountains I have climbed
+        Below is a list of mountains I have climbed.  See all @Model.Count mountains plotted on a <a href="../mountain/Map" target="_blank">map</a>.
     </div>
     <span style="color:red; font-weight: bold">TO DO: </span>
     <ul>
         <li>Add ability to see Mountains climbed by Year (like photos page).</li>
         <li>Add ability to see Mountain climbed with in a certain time frame (ie 40 at 40)</li>
-        <li>Google Map:  See http://mantascode.com/javascript-plot-point-on-googlemaps-using-coordinates-latitude-and-longitude/ </li>
     </ul>
     <!-- ----------------------------------------------------------------------------- -->
     <!--  Add Mountain as Modal -->
@@ -194,8 +193,8 @@
                             @{
                     if (!string.IsNullOrWhiteSpace(item.State))
                     {
-                        @item.Country @:/ @item.State
-                                }
+                        <a href="../mountain/Map?Country=@item.Country" target="_blank">@item.Country</a> @:/ <a href="../mountain/Map?State=@item.State" target="_blank">@item.State</a>
+                    }
                     else
                     {
                         @item.Country
@@ -204,9 +203,8 @@
                     if (item.Latitude != null && item.Longitude != null)
                     {
                         <p class="small">
-                            <a target="_blank" href="../mountain/map?name=@item.Name&lat=@item.Latitude&lng=@item.Longitude">
+                            <a href="../mountain/Map?Id=@item.Id" target="_blank">
                                 @string.Format("{0:#,#.#####}", item.Latitude) / @string.Format("{0:#,#.#####}", item.Longitude)
-                                <br />
                             </a>
                         </p>
                     }
