@@ -9,6 +9,7 @@ namespace Walter.Controllers
 {
     public class TestController : Controller
     {
+        //hot-fix change 1
         public ActionResult Index()
         {
             var b = new TestBusinessLayer();
