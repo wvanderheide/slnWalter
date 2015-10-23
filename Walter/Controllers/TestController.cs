@@ -11,6 +11,8 @@ namespace Walter.Controllers
     {
         public ActionResult Index()
         {
+            //Branch 2 , change 2
+
             var b = new TestBusinessLayer();
             var x = b.GetVmForecast(2015, 4);
             return View("Index", x);
