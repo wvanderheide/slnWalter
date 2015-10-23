@@ -9,6 +9,8 @@ namespace Walter.Controllers
 {
     public class TestController : Controller
     {
+        //hot fix on main branch
+        //hot fix on hot fix branch
         public ActionResult Index()
         {
             //this change made on master
