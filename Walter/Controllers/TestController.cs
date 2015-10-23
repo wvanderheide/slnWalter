@@ -9,8 +9,6 @@ namespace Walter.Controllers
 {
     public class TestController : Controller
     {
-        //change made on master
-        //hot fix on main branch
         public ActionResult Index()
         {
             var b = new TestBusinessLayer();
