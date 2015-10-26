@@ -101,7 +101,7 @@
 										@if (!String.IsNullOrEmpty(sl.SummitNote))
 										{
 											@:(@sl.SummitNote)
-                                                }
+										}
 										@if (loopCount == item.SummitLog.Count && (Convert.ToBoolean(Session["IsAdmin"])))
 										{
 											<a onclick="OpenAddClimbModal(@(item.Id), '@(item.Name)')" style="cursor:pointer">
@@ -146,50 +146,4 @@
 		var titleText = $("#MountainTitle").prop("title") + " " + $("#TotalClimbCount").html();
 		$("#MountainTitle").prop("title", titleText);
 	});
-
-	function OpenModalAddMtn() {
-		ShowSection(1);
-		$("#ModalAddMtn").modal();
-	}
-
-	function OpenAddClimbModal(mtnId, mtnName) {
-		$("#MountainID").val(mtnId);
-		$("#MtnName").text(mtnName);
-		$("#ModalAddClimb").modal();
-	}
-
-	function ShowSection(num) {
-		if (num == 1) {
-			$("#Section2").hide();
-			$("#Section1").fadeIn('slow');
-		}
-
-		if (num == 2) {
-			var mtnName = $('#Name').val().trim().length;
-			var mtnElevation = $('#Elevation').val().trim().length;
-			var mtnCountry = $('#Country').val().trim().length;
-
-
-			if (mtnName == 0) {
-				$('#Name').focus();
-				return false;
-			}
-
-			if (mtnElevation == 0) {
-				$('#Elevation').focus();
-				return false;
-			}
-
-			if (mtnCountry == 0) {
-				$('#Country').focus();
-				return false;
-			}
-
-			if ((mtnName > 0 && mtnElevation > 0 && mtnCountry > 0)) {
-				$("#Section1").hide();
-				$("#Section2").fadeIn('slow');
-			}
-		}
-
-	}
 </script>

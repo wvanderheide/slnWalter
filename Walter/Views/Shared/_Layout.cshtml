@@ -64,43 +64,4 @@
         </div>
     </body>
 </html>
-
-<script>
-    //This function is part of the the Scroll to Top
-    //this function is To show and hide the button
-    $(function () {
-
-        $(document).on('scroll', function () {
-
-            if ($(window).scrollTop() > 100) {
-                $('.scroll-top-wrapper').addClass('show');
-            } else {
-                $('.scroll-top-wrapper').removeClass('show');
-            }
-        });
-    });
-
-
-    //This function is part of the the Scroll to Top
-    // Handle a button click and scroll to the top of the page.
-    $(function () {
-        $(document).on('scroll', function () {
-
-            if ($(window).scrollTop() > 100) {
-                $('.scroll-top-wrapper').addClass('show');
-            } else {
-                $('.scroll-top-wrapper').removeClass('show');
-            }
-        });
-
-        $('.scroll-top-wrapper').on('click', scrollToTop);
-    });
-
-    function scrollToTop() {
-        verticalOffset = typeof (verticalOffset) != 'undefined' ? verticalOffset : 0;
-        element = $('body');
-        offset = element.offset();
-        offsetTop = offset.top;
-        $('html, body').animate({ scrollTop: offsetTop }, 500, 'linear');
-    }
-</script>
+<script src="~/Scripts/site.js"></script><!-- Not in bundle cause I think bundle needs both regular and min versions -->
