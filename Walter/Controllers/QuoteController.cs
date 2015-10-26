@@ -7,13 +7,15 @@ using Walter.Models;
 
 namespace Walter.Controllers
 {
-    public class TestController : Controller
+    public class QuoteController : Controller
     {
+        // GET: Quote
         public ActionResult Index()
         {
-            var b = new TestBusinessLayer();
-            var x = b.GetVmForecast(2015, 4);
-            return View("Index", x);
+            var b = new QuoteBusinessLayer();
+            var q = b.GetQuotes();
+
+            return View("Index", q.OrderByDescending(x => x.Id).ToList());
         }
     }
 }

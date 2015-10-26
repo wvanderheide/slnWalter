@@ -9,6 +9,7 @@
         <EntityTypeShape EntityType="WalterModel.MountainSummitLog" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="WalterModel.FK_MountainSummitLog_Mountains" ManuallyRouted="false" />
         <EntityTypeShape EntityType="WalterModel.Photo" Width="1.5" PointX="5.375" PointY="1.125" />
+        <EntityTypeShape EntityType="WalterModel.Quote" Width="1.5" PointX="4" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

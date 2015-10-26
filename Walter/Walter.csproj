@@ -123,7 +123,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MountainController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\QuoteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -138,7 +138,10 @@
     <Compile Include="Models\Photo.cs">
       <DependentUpon>WalterEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TestBusinessLayer.cs" />
+    <Compile Include="Models\Quote.cs">
+      <DependentUpon>WalterEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuoteBusinessLayer.cs" />
     <Compile Include="Models\WalterEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -160,6 +163,7 @@
     <Compile Include="ViewModels\VMmountainSummitLog.cs" />
     <Compile Include="ViewModels\VMphoto.cs" />
     <Compile Include="ViewModels\VMPhotoYear.cs" />
+    <Compile Include="ViewModels\VMQuote.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -215,9 +219,9 @@
     <Content Include="Views\Mountain\Index.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Adventure\Index.cshtml" />
-    <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Shared\_ForecastTable.cshtml" />
     <Content Include="Views\Mountain\Map.cshtml" />
+    <Content Include="Views\Quote\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
