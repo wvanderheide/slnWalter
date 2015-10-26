@@ -1,0 +1,90 @@
+﻿
+<div class="modal fade" id="ModalAddMtn" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content" style="padding:10px">
+			<button type="button" class="close" data-dismiss="modal" style="padding: 10px">&times;</button>
+			<div class="well well-sm">
+				<h4>Add Mountain</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" role="form" action="/Mountain/SaveMountain" method="post">
+					<div id="Section1">
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="Name">Mountain Name:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="Name" name="Name" placeholder="Mountain Name" required />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="Elevation">Elevation<br /><span class="small">(in feet)</span>:</label>
+							<div class="col-sm-10">
+								<input type="number" step="500" min="0" max="29029" class="form-control" id="Elevation" name="Elevation" placeholder="Elevation in feet" required />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="Country">Country:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="Country" name="Country" value="USA" placeholder="Country" required />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="State">Region:<br /><span class="small">(i.e State/Province)</span></label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="State" name="State" value="UT" placeholder="Region" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="Latitude">Latitude:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="Latitude" name="Latitude" placeholder="Latitude" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="Longitude">Longitude:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="Longitude" name="Longitude" value="-" placeholder="Longitude" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="MountainNote">Mountain Note:</label>
+							<div class="col-sm-10">
+								<textarea class="form-control" rows="5" id="MountainNote" name="MountainNote" placeholder="Mountain Note"></textarea>
+							</div>
+						</div>
+						<div style="width:99%; text-align: right">
+							<a style="color: #337ab7; cursor: pointer;" onclick="ShowSection(2)">
+								Next
+								<i class="fa fa-hand-o-right"></i>
+							</a>
+						</div>
+					</div>
+					<div id="Section2" style="display: none;">
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="SummitDate">Summit Date:</label>
+							<div class="col-sm-10">
+								<input type="date" class="form-control" id="mtnSummitDate" name="mtnSummitDate" placeholder="Summit Date" required />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="SummitNote">Summit Note:</label>
+							<div class="col-sm-10">
+								<textarea class="form-control" rows="5" id="mtnSummitNote" name="mtnSummitNote" placeholder="Summit Note"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10" style="width: 48%; float: right; text-align: right;">
+								<button type="submit" class="btn btn-primary">Save</button>
+							</div>
+							<div style="width:48%; vertical-align: text-bottom">
+								<a style="color: #337ab7; cursor: pointer;" onclick="ShowSection(1)">
+									<i class="fa fa-hand-o-left"></i>
+									Previous
+								</a>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

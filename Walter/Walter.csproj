@@ -231,6 +231,8 @@
     <Content Include="Views\Adventure\Index.cshtml" />
     <Content Include="Views\Mountain\Map.cshtml" />
     <Content Include="Views\Quote\Index.cshtml" />
+    <Content Include="Views\Shared\_AddMtn.cshtml" />
+    <Content Include="Views\Shared\_AddClimb.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
