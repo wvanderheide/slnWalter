@@ -104,7 +104,7 @@
                                                 }
 										@if (loopCount == item.SummitLog.Count && (Convert.ToBoolean(Session["IsAdmin"])))
 										{
-											<a onclick="OpenAddClimbModel(@(item.Id), '@(item.Name)')" style="cursor:pointer">
+											<a onclick="OpenAddClimbModal(@(item.Id), '@(item.Name)')" style="cursor:pointer">
 												<i class="fa fa-plus-square" title="Add Climb"></i>
 											</a>
 										}
@@ -152,7 +152,7 @@
 		$("#ModalAddMtn").modal();
 	}
 
-	function OpenAddClimbModel(mtnId, mtnName) {
+	function OpenAddClimbModal(mtnId, mtnName) {
 		$("#MountainID").val(mtnId);
 		$("#MtnName").text(mtnName);
 		$("#ModalAddClimb").modal();
