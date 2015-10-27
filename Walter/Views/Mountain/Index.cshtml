@@ -17,137 +17,13 @@
 	<ul>
 		<li>Add ability to see Mountains climbed by Year (like photos page).</li>
 		<li>Add ability to see Mountain climbed with in a certain time frame (ie 40 at 40)</li>
+		<li>Convert <a href="../ScreenScrapper.aspx">ScreenScrapper.aspx</a> to MVC.
 	</ul>
-	<!-- ----------------------------------------------------------------------------- -->
-	<!--  Add Mountain as Modal -->
-	<!-- ----------------------------------------------------------------------------- -->
-	<div class="modal fade" id="ModalAddMtn" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content" style="padding:10px">
-				<button type="button" class="close" data-dismiss="modal" style="padding: 10px">&times;</button>
-				<div class="well well-sm">
-					<h4>Add Mountain</h4>
-				</div>
-				<div class="modal-body">
-					<form class="form-horizontal" role="form" action="/Mountain/SaveMountain" method="post">
-						<div id="Section1">
-							<div class="form-group">
-								<label class="control-label col-sm-2" for="Name">Mountain Name:</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="Name" name="Name" placeholder="Mountain Name" required />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-2" for="Elevation">Elevation<br /><span class="small">(in feet)</span>:</label>
-								<div class="col-sm-10">
-									<input type="number" class="form-control" id="Elevation" name="Elevation" placeholder="Elevation in feet" required />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-2" for="Country">Country:</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="Country" name="Country" value="USA" placeholder="Country" required />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-2" for="State">Region:<br /><span class="small">(i.e State/Province)</span></label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="State" name="State" value="UT" placeholder="Region" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-2" for="Latitude">Latitude:</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="Latitude" name="Latitude" placeholder="Latitude" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-2" for="Longitude">Longitude:</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="Longitude" name="Longitude" value="-" placeholder="Longitude" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-2" for="MountainNote">Mountain Note:</label>
-								<div class="col-sm-10">
-									<textarea class="form-control" rows="5" id="MountainNote" name="MountainNote" placeholder="Mountain Note"></textarea>
-								</div>
-							</div>
-							<div style="width:99%; text-align: right">
-								<a style="color: #337ab7; cursor: pointer;" onclick="ShowSection(2)">
-									Next
-									<i class="fa fa-hand-o-right"></i>
-								</a>
-							</div>
-						</div>
-						<div id="Section2" style="display: none;">
-							<div class="form-group">
-								<label class="control-label col-sm-2" for="SummitDate">Summit Date:</label>
-								<div class="col-sm-10">
-									<input type="date" class="form-control" id="mtnSummitDate" name="mtnSummitDate" placeholder="Summit Date" required />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-2" for="SummitNote">Summit Note:</label>
-								<div class="col-sm-10">
-									<textarea class="form-control" rows="5" id="mtnSummitNote" name="mtnSummitNote" placeholder="Summit Note"></textarea>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-offset-2 col-sm-10" style="width: 48%; float: right; text-align: right;">
-									<button type="submit" class="btn btn-primary">Save</button>
-								</div>
-								<div style="width:48%; vertical-align: text-bottom">
-									<a style="color: #337ab7; cursor: pointer;" onclick="ShowSection(1)">
-										<i class="fa fa-hand-o-left"></i>
-										Previous
-									</a>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Add Mountain-->
-	<!-- ----------------------------------------------------------------------------- -->
-	<!-- Add Climb as Modal -->
-	<!-- ----------------------------------------------------------------------------- -->
-	<div class="modal fade" id="ModalAddClimb" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content" style="padding:10px">
-				<button type="button" class="close" data-dismiss="modal" style="padding: 10px">&times;</button>
-				<div class="well well-sm">
-					<h4 id="MtnName"></h4>
-					Add climb information
-				</div>
-				<div class="modal-body">
-					<form class="form-horizontal" id="AddMtnForm" role="form" action="/Mountain/SaveLog" method="post">
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="SummitDate">Summit Date:</label>
-							<div class="col-sm-10">
-								<input type="date" class="form-control" id="SummitDate" name="SummitDate" placeholder="Summit Date" required />
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="SummitNote">Summit Note:</label>
-							<div class="col-sm-10">
-								<textarea class="form-control" rows="5" id="SummitNote" name="summitNote" placeholder="Summit Note"></textarea>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-10">
-								<button type="submit" class="btn btn-primary">Save</button>
-							</div>
-						</div>
-						<input type="hidden" name="MountainID" id="MountainID" />
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Add Climb as Modal -->
+	@{
+		Html.RenderPartial("~/Views/Shared/_AddMtn.cshtml", Model);
+		Html.RenderPartial("~/Views/Shared/_AddClimb.cshtml", Model);
+	}
+
 	<!-- ----------------------------------------------------------------------------- -->
 	<!-- Mtn Table-->
 	<!-- ----------------------------------------------------------------------------- -->
@@ -225,10 +101,10 @@
 										@if (!String.IsNullOrEmpty(sl.SummitNote))
 										{
 											@:(@sl.SummitNote)
-                                                }
+										}
 										@if (loopCount == item.SummitLog.Count && (Convert.ToBoolean(Session["IsAdmin"])))
 										{
-											<a onclick="OpenAddClimbModel(@(item.Id), '@(item.Name)')" style="cursor:pointer">
+											<a onclick="OpenAddClimbModal(@(item.Id), '@(item.Name)')" style="cursor:pointer">
 												<i class="fa fa-plus-square" title="Add Climb"></i>
 											</a>
 										}
@@ -270,50 +146,4 @@
 		var titleText = $("#MountainTitle").prop("title") + " " + $("#TotalClimbCount").html();
 		$("#MountainTitle").prop("title", titleText);
 	});
-
-	function OpenModalAddMtn() {
-		ShowSection(1);
-		$("#ModalAddMtn").modal();
-	}
-
-	function OpenAddClimbModel(mtnId, mtnName) {
-		$("#MountainID").val(mtnId);
-		$("#MtnName").text(mtnName);
-		$("#ModalAddClimb").modal();
-	}
-
-	function ShowSection(num) {
-		if (num == 1) {
-			$("#Section2").hide();
-			$("#Section1").fadeIn('slow');
-		}
-
-		if (num == 2) {
-			var mtnName = $('#Name').val().trim().length;
-			var mtnElevation = $('#Elevation').val().trim().length;
-			var mtnCountry = $('#Country').val().trim().length;
-
-
-			if (mtnName == 0) {
-				$('#Name').focus();
-				return false;
-			}
-
-			if (mtnElevation == 0) {
-				$('#Elevation').focus();
-				return false;
-			}
-
-			if (mtnCountry == 0) {
-				$('#Country').focus();
-				return false;
-			}
-
-			if ((mtnName > 0 && mtnElevation > 0 && mtnCountry > 0)) {
-				$("#Section1").hide();
-				$("#Section2").fadeIn('slow');
-			}
-		}
-
-	}
 </script>
