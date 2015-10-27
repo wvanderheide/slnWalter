@@ -120,7 +120,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdventureController.cs" />
-    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\ResumeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MountainController.cs" />
     <Compile Include="Controllers\QuoteController.cs" />
@@ -228,12 +229,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Mountain\Index.cshtml" />
-    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Resume\Index.cshtml" />
     <Content Include="Views\Adventure\Index.cshtml" />
     <Content Include="Views\Mountain\Map.cshtml" />
     <Content Include="Views\Quote\Index.cshtml" />
     <Content Include="Views\Shared\_AddMtn.cshtml" />
     <Content Include="Views\Shared\_AddClimb.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

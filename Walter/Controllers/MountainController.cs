@@ -16,6 +16,11 @@ namespace Walter.Controllers
             var b = new MountainBusinessLayer();
             var mtns = b.GetMountains();
 
+            var q = new QuoteBusinessLayer();
+            var temp = q.RandomQuote();
+            ViewBag.RandomQuote = temp.Quote;
+            ViewBag.Author = temp.Author;
+
             //Most Recent Summit Date on top
             return View("Index", mtns.OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList());
         }

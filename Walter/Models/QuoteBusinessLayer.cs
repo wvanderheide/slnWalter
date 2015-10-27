@@ -8,6 +8,15 @@ namespace Walter.Models
 {
     public class QuoteBusinessLayer
     {
+        public VMQuote RandomQuote()
+        {
+            var temp = GetQuotes();
+
+            var rnd = new Random(DateTime.Now.Millisecond);
+
+            return temp[rnd.Next(0, temp.Count - 1)];
+        }
+
         public List<VMQuote> GetQuotes()
         {
             var db = new WalterEntities();

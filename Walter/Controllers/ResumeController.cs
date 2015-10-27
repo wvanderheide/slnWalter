@@ -3,7 +3,7 @@ using Walter.Models;
 
 namespace Walter.Controllers
 {
-    public class HomeController : Controller
+    public class ResumeController : Controller
     {
         public ActionResult Index()
         {
@@ -14,12 +14,5 @@ namespace Walter.Controllers
 
             return View();
         }
-        
-        //public ActionResult Contact()
-        //{
-        //    ViewBag.Message = "Your contact page.";
-
-        //    return View();
-        //}
     }
 }

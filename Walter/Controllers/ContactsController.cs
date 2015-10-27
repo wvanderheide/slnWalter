@@ -1,10 +1,15 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 using Walter.Models;
 
 namespace Walter.Controllers
 {
-    public class HomeController : Controller
+    public class ContactsController : Controller
     {
+        // GET: Contacts
         public ActionResult Index()
         {
             var q = new QuoteBusinessLayer();
@@ -14,12 +19,5 @@ namespace Walter.Controllers
 
             return View();
         }
-        
-        //public ActionResult Contact()
-        //{
-        //    ViewBag.Message = "Your contact page.";
-
-        //    return View();
-        //}
     }
 }

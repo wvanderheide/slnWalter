@@ -8,6 +8,11 @@ namespace Walter.Controllers
     {
         public ActionResult Index()
         {
+            var q = new QuoteBusinessLayer();
+            var temp = q.RandomQuote();
+            ViewBag.RandomQuote = temp.Quote;
+            ViewBag.Author = temp.Author;
+
             var b = new AdventureBusinessLayer();
             return View("Index",  b.GetPhotoYears());
         }

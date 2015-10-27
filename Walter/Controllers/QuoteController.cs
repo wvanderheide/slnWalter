@@ -14,6 +14,10 @@ namespace Walter.Controllers
         {
             var b = new QuoteBusinessLayer();
             var q = b.GetQuotes();
+            
+            var temp = b.RandomQuote();
+            ViewBag.RandomQuote = temp.Quote;
+            ViewBag.Author = temp.Author;
 
             return View("Index", q.OrderByDescending(x => x.Id).ToList());
         }
