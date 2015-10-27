@@ -14,9 +14,11 @@ namespace Walter.Models
     
     public partial class MountainSummitLog
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public int MountainID { get; set; }
         public Nullable<System.DateTime> SummitDate { get; set; }
         public string SummitNote { get; set; }
+    
+        public virtual Mountain Mountain { get; set; }
     }
 }

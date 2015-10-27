@@ -5,10 +5,10 @@ using System.Web;
 
 namespace Walter.ViewModels
 {
-    public class VMForecast
+    public class VmForecast
     {
         public int ForecastYearId { get; set; }
-        public List<VMphoto> AllProducts { get; set; }
-        public List<VMphoto> RdForecast { get; set; }
+        public List<VmPhoto> AllProducts { get; set; }
+        public List<VmPhoto> RdForecast { get; set; }
     }
 }

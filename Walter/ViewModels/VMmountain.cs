@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Walter.ViewModels
 {
-    public class VMmountain
+    public class VmMountain
     {
         public int Id { get; set; }
 
@@ -20,6 +20,6 @@ namespace Walter.ViewModels
         public decimal? Latitude { get; set; }
         public decimal? Longitude { get; set; }
         public string MountainNote { get; set; }
-        public List<VMmountainSummitLog> SummitLog { get; set; }
+        public List<VmMountainSummitLog> SummitLog { get; set; }
     }
 }

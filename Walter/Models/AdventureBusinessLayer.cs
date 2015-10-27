@@ -7,17 +7,17 @@ namespace Walter.Models
 {
     public class AdventureBusinessLayer
     {
-        public List<VMPhotoYear> GetPhotoYears()
+        public List<VmPhotoYear> GetPhotoYears()
         {
             var db = new WalterEntities();
-            List<VMphoto> photos = db.Photos.ToList().Select(x => new VMphoto
+            List<VmPhoto> photos = db.Photos.ToList().Select(x => new VmPhoto
             {
                 Title = x.Title,
                 Url = x.URL,
                 Day = x.Date.Day,
                 Month = x.Date.Month,
                 Year = x.Date.Year,
-                Id = x.id
+                Id = x.Id
             }).OrderByDescending(y => y.Year).ThenByDescending(m => m.Month).ThenByDescending(d => d.Day).ToList();
 
             return PutPhotosInColumns(photos);
@@ -48,9 +48,9 @@ namespace Walter.Models
             colCounts = itemsPerCol;
         }
 
-        private List<VMPhotoYear> PutPhotosInColumns(List<VMphoto> photos)
+        private List<VmPhotoYear> PutPhotosInColumns(List<VmPhoto> photos)
         {
-            var photoYears = new List<VMPhotoYear>();
+            var photoYears = new List<VmPhotoYear>();
             var itemsPerCol = new int[4];
             var grouped = photos.GroupBy(y => y.Year).Select(group => new { Year = group.Key, Count = group.Count() });
 
@@ -58,13 +58,13 @@ namespace Walter.Models
             {
                 var thisYear = photos.Where(y => y.Year == year.Year).ToList();
                 int loopCounter = 0;
-                var photoYear = new VMPhotoYear
+                var photoYear = new VmPhotoYear
                 {
                     Year = year.Year,
-                    Col1 = new List<VMphoto>(),
-                    Col2 = new List<VMphoto>(),
-                    Col3 = new List<VMphoto>(),
-                    Col4 = new List<VMphoto>()
+                    Col1 = new List<VmPhoto>(),
+                    Col2 = new List<VmPhoto>(),
+                    Col3 = new List<VmPhoto>(),
+                    Col4 = new List<VmPhoto>()
                 };
 
                 CalculateColumnCounts(thisYear.Count, out itemsPerCol);

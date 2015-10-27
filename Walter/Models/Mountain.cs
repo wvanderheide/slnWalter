@@ -19,7 +19,7 @@ namespace Walter.Models
             this.MountainSummitLogs = new HashSet<MountainSummitLog>();
         }
     
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Elevation { get; set; }
         public string Country { get; set; }

@@ -129,6 +129,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AdventureBusinessLayer.cs" />
+    <Compile Include="Models\Contact.cs">
+      <DependentUpon>WalterEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContactsBusinessLayer.cs" />
     <Compile Include="Models\Mountain.cs">
       <DependentUpon>WalterEntities.tt</DependentUpon>
     </Compile>
@@ -166,6 +170,7 @@
     <Compile Include="ScreenScrapper.aspx.designer.cs">
       <DependentUpon>ScreenScrapper.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\VMContact.cs" />
     <Compile Include="ViewModels\VMForecast.cs" />
     <Compile Include="ViewModels\VMmountain.cs" />
     <Compile Include="ViewModels\VMmountainSummitLog.cs" />

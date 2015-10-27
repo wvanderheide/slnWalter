@@ -25,9 +25,10 @@ namespace Walter.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Quote> Quotes { get; set; }
+        public virtual DbSet<Photo> Photos { get; set; }
         public virtual DbSet<Mountain> Mountains { get; set; }
         public virtual DbSet<MountainSummitLog> MountainSummitLogs { get; set; }
-        public virtual DbSet<Photo> Photos { get; set; }
-        public virtual DbSet<Quote> Quotes { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
     }
 }

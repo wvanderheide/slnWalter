@@ -1,6 +1,6 @@
 ﻿namespace Walter.ViewModels
 {
-    public class VMphoto 
+    public class VmPhoto 
     {
         public string Title { get; set; }
         public string Url { get; set; }

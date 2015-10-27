@@ -2,14 +2,14 @@
 
 namespace Walter.ViewModels
 {
-    public class VMmountainSummitLog : IComparable<VMmountainSummitLog>
+    public class VmMountainSummitLog : IComparable<VmMountainSummitLog>
     {
         public int Id { get; set; }
         public int MountainId { get; set; }
         public DateTime SummitDate { get; set; }
         public string SummitNote { get; set; }
 
-        public int CompareTo(VMmountainSummitLog other)
+        public int CompareTo(VmMountainSummitLog other)
         {
             return SummitDate.CompareTo(other.SummitDate);
         }

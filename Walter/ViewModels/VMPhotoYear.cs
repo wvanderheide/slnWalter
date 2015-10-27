@@ -2,12 +2,12 @@
 
 namespace Walter.ViewModels
 {
-    public class VMPhotoYear
+    public class VmPhotoYear
     {
         public int Year { get; set; }
-        public List<VMphoto> Col1 { get; set; }
-        public List<VMphoto> Col2 { get; set; }
-        public List<VMphoto> Col3 { get; set; }
-        public List<VMphoto> Col4 { get; set; } 
+        public List<VmPhoto> Col1 { get; set; }
+        public List<VmPhoto> Col2 { get; set; }
+        public List<VmPhoto> Col3 { get; set; }
+        public List<VmPhoto> Col4 { get; set; } 
     }
 }

@@ -14,7 +14,7 @@ namespace Walter.Models
     
     public partial class Photo
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public string URL { get; set; }
         public System.DateTime Date { get; set; }

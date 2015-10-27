@@ -51,7 +51,7 @@ namespace Walter.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveMountain(ViewModels.VMmountain m, string mtnSummitDate, string mtnSummitNote)
+        public ActionResult SaveMountain(ViewModels.VmMountain m, string mtnSummitDate, string mtnSummitNote)
         {
             DateTime tempDate;
             if (ModelState.IsValid && DateTime.TryParse(mtnSummitDate, out tempDate))

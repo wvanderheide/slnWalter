@@ -1,15 +1,42 @@
-﻿@{
-    ViewBag.Title = "Contacts";
+﻿@using Walter.ViewModels;
+@model List<VmContact>
+@{
+	ViewBag.Title = "Contacts";
+	var altColor = "#ccc";
+	int loopCounter = 0;
 }
 
 <div class="container">
-    <br />
-    <div class="well well-sm">
-        <h2><i class="fa fa-envelope fa-lg"></i> Contacts</h2>
-        Below are my contacts.
-    </div>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    <br /><br />
-    <h1>Coming soon</h1>
-</div>
+	<br />
+	<div class="well well-sm">
+		<h2><i class="fa fa-envelope fa-lg" title="You have @Model.Count contacts."></i> Contacts</h2>
+		Below are my contacts.
+	</div>
+	@foreach (var r in Model)
+	{
+		loopCounter++;
 
+		if (loopCounter%2 == 0)
+		{
+			altColor = "#fff";
+		}
+		else
+		{
+			altColor = "#eee";
+		}
+		
+		<div class="row" style="background-color: @altColor">
+			<div class="col-sm-2">
+				<span title="Nickname = @r.Nickname">@r.FirstName</span>
+				@if (!string.IsNullOrEmpty(r.Spouse))
+				{
+					@:& @r.Spouse
+			}
+			</div>
+			<div class="col-sm-2">@r.LastName</div>
+			<div class="col-sm-2">@r.MobilePhone</div>
+			<div class="col-sm-2">@r.HomePhone</div>
+			<div class="col-sm-2">@r.HomeStreet @r.HomeCity @r.HomeState @r.HomeCountry <br />@r.HomePostalCode</div>
+			<div class="col-sm-2">@r.Notes</div>
+		</div>
+	}

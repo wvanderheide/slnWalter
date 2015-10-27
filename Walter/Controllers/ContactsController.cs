@@ -17,7 +17,8 @@ namespace Walter.Controllers
             ViewBag.RandomQuote = temp.Quote;
             ViewBag.Author = temp.Author;
 
-            return View();
+            var b = new ContactsBusinessLayer();
+            return View("Index", b.GetContacts());
         }
     }
 }

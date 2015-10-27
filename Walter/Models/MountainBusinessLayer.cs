@@ -7,14 +7,14 @@ namespace Walter.Models
 {
     public class MountainBusinessLayer
     {
-        public List<VMmountain> GetMountains()
+        public List<VmMountain> GetMountains()
         {
             var db = new WalterEntities();
             var mtns = db.Mountains.ToList();
 
-            var mountainList = mtns.Select(mtn => new VMmountain
+            var mountainList = mtns.Select(mtn => new VmMountain
             {
-                Id = mtn.id,
+                Id = mtn.Id,
                 Name = mtn.Name,
                 Elevation = mtn.Elevation,
                 Country = mtn.Country,
@@ -22,9 +22,9 @@ namespace Walter.Models
                 Latitude = mtn.Latitude,
                 Longitude = mtn.Longitude,
                 MountainNote = mtn.MountainNote,
-                SummitLog = mtn.MountainSummitLogs.Select(l => new VMmountainSummitLog
+                SummitLog = mtn.MountainSummitLogs.Select(l => new VmMountainSummitLog
                 {
-                    Id = l.id,
+                    Id = l.Id,
                     MountainId = l.MountainID,
                     SummitDate = Convert.ToDateTime(l.SummitDate),
                     SummitNote = l.SummitNote
@@ -34,7 +34,7 @@ namespace Walter.Models
             return mountainList;
         }
 
-        public bool SaveMountain(VMmountain m, string summitDate, string summitNote)
+        public bool SaveMountain(VmMountain m, string summitDate, string summitNote)
         {
             bool rtnVal = true;
 
@@ -55,7 +55,7 @@ namespace Walter.Models
                 db.Mountains.Add(mtn);
                 db.SaveChanges();
                 
-                rtnVal = SaveLog(mtn.id, summitDate, summitNote);
+                rtnVal = SaveLog(mtn.Id, summitDate, summitNote);
 
                 if(!rtnVal)
                 {
