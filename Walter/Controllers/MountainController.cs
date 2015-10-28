@@ -24,6 +24,18 @@ namespace Walter.Controllers
             //Most Recent Summit Date on top
             return View("Index", mtns.OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList());
         }
+        
+        [HttpPost]
+        public string GetSpHtml(string Url)
+        {
+            var b = new MountainBusinessLayer();
+            return b.GetSpHtml(Url);
+        }
+
+        public ActionResult ScreenScrapper()
+        {
+            return View();
+        }
 
         [HttpGet]
         public ActionResult Map()

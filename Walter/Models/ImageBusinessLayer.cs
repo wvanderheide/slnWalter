@@ -22,7 +22,6 @@ namespace Walter.Models
         
         public List<VmImage> Get10RandomImages()
         {
-            int lastRandom = -1;
             List<VmImage> retVal = new List<VmImage>();
             var images = GetImages();
 

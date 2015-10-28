@@ -249,6 +249,7 @@
     <Content Include="Views\Shared\_AddClimb.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Image\Index.cshtml" />
+    <Content Include="Views\Mountain\ScreenScrapper.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
