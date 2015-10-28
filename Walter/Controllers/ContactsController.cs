@@ -18,7 +18,25 @@ namespace Walter.Controllers
             ViewBag.Author = temp.Author;
 
             var b = new ContactsBusinessLayer();
-            return View("Index", b.GetContacts());
+            var contacts = b.GetContacts();
+
+            contacts = contacts.OrderBy(f => f.FirstName).ToList();
+            ViewBag.SortByLastName = false;
+
+            if (TempData["SortByLastName"] != null)
+            {
+                contacts = contacts.OrderBy(x => x.LastName).ToList();
+                ViewBag.SortByLastName = true;
+            }
+
+            return View("Index", contacts);
+        }
+
+        public ActionResult Sort(bool? SortByLastName)
+        {
+            TempData["SortByLastName"] = SortByLastName;
+
+            return RedirectToAction("Index");
         }
     }
 }
