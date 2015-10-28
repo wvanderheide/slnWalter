@@ -6,9 +6,8 @@ using Walter.ViewModels;
 
 namespace Walter.Models
 {
-    public class ContactsBusinessLayer
+    public class ContactBusinessLayer
     {
-
         public List<VmContact> GetContacts()
         {
             var db = new WalterEntities();

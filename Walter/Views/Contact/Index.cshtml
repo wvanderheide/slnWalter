@@ -12,7 +12,7 @@
         <h2><i class="fa fa-envelope fa-lg" title="You have @Model.Count contacts."></i> Contacts</h2>
         Below are my contacts.
     </div>
-	<form method="post" id="form1" name="form1" action="@Url.Action("Sort", "Contacts")">
+	<form method="post" id="form1" name="form1" action="@Url.Action("Sort", "Contact")">
 		<input id="SortByLastName" name="SortByLastName" value="true" type="checkbox" checked="@ViewBag.SortByLastName" onchange="document.getElementById('form1').submit();"/>
 		<b>Order By Last Name</b>
 	</form>

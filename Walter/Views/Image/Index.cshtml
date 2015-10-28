@@ -1,0 +1,37 @@
+﻿@using Walter.ViewModels;
+@model List<VmImage>
+
+@{
+	ViewBag.Title = "Images";
+}
+
+<div class="container">
+	<br />
+	<div class="well well-sm">
+		<h2 title="@Model.Count">Images</h2>
+	</div>
+	<form method="post" id="form1" name="form1">
+		@foreach (var image in Model)
+		{
+			<div id="div@(image.Id)" style="border: 1px solid black;">
+				<img width="450" src="@image.Url"/>
+				<input type="radio" name="Id" id="Id" value="@image.Id" onchange="if (confirm('Really?')) { deleteImage(@image.Id); }"/> Delete
+			</div>
+			<br/>
+			<br/>
+		}
+
+	</form>
+</div>
+<script>
+	function deleteImage(Id) {
+		$.post("@Url.Action("DeleteImage", "Image")",
+			{
+				Id: Id
+			},
+			function (data, status) {
+				//alert("Data: " + data + "\nStatus: " + status);
+				$('#div' + Id).hide();
+			});
+		}
+</script>

@@ -24,6 +24,13 @@
           <Property Name="Nickname" Type="varchar" MaxLength="50" />
           <Property Name="Notes" Type="varchar" MaxLength="1000" />
         </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Url" Type="varchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Mountains">
           <Key>
             <PropertyRef Name="Id" />
@@ -77,6 +84,7 @@
         </Association>
         <EntityContainer Name="WalterModelStoreContainer">
           <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mountains" EntityType="Self.Mountains" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MountainSummitLog" EntityType="Self.MountainSummitLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
@@ -100,6 +108,7 @@
             <End Role="MountainSummitLog" EntitySet="MountainSummitLogs" />
           </AssociationSet>
           <EntitySet Name="Contacts" EntityType="WalterModel.Contact" />
+          <EntitySet Name="Images" EntityType="WalterModel.Image" />
         </EntityContainer>
         <EntityType Name="Quote">
           <Key>
@@ -173,6 +182,13 @@
           <Property Name="Nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -238,6 +254,14 @@
                 <ScalarProperty Name="Middle_Name" ColumnName="Middle Name" />
                 <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
                 <ScalarProperty Name="First_Name" ColumnName="First Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="WalterModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="Url" ColumnName="Url" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

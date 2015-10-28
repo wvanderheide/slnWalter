@@ -120,7 +120,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdventureController.cs" />
-    <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MountainController.cs" />
@@ -132,7 +133,11 @@
     <Compile Include="Models\Contact.cs">
       <DependentUpon>WalterEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ContactsBusinessLayer.cs" />
+    <Compile Include="Models\ContactBusinessLayer.cs" />
+    <Compile Include="Models\Image.cs">
+      <DependentUpon>WalterEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ImageBusinessLayer.cs" />
     <Compile Include="Models\Mountain.cs">
       <DependentUpon>WalterEntities.tt</DependentUpon>
     </Compile>
@@ -172,11 +177,19 @@
     </Compile>
     <Compile Include="ViewModels\VMContact.cs" />
     <Compile Include="ViewModels\VMForecast.cs" />
+    <Compile Include="ViewModels\VMImage.cs" />
     <Compile Include="ViewModels\VMmountain.cs" />
     <Compile Include="ViewModels\VMmountainSummitLog.cs" />
     <Compile Include="ViewModels\VMphoto.cs" />
     <Compile Include="ViewModels\VMPhotoYear.cs" />
     <Compile Include="ViewModels\VMQuote.cs" />
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -187,6 +200,8 @@
     <Content Include="ScreenScrapper.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="WebForm1.html" />
+    <Content Include="WebForm1.aspx" />
     <EntityDeploy Include="Models\WalterEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>WalterEntities.Designer.cs</LastGenOutput>
@@ -232,7 +247,8 @@
     <Content Include="Views\Quote\Index.cshtml" />
     <Content Include="Views\Shared\_AddMtn.cshtml" />
     <Content Include="Views\Shared\_AddClimb.cshtml" />
-    <Content Include="Views\Contacts\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Image\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

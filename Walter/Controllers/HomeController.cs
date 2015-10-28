@@ -12,14 +12,10 @@ namespace Walter.Controllers
             ViewBag.RandomQuote = temp.Quote;
             ViewBag.Author = temp.Author;
 
-            return View();
-        }
-        
-        //public ActionResult Contact()
-        //{
-        //    ViewBag.Message = "Your contact page.";
+            var i = new ImageBusinessLayer();
+            var vm = i.Get10RandomImages();
 
-        //    return View();
-        //}
+            return View("Index", vm);
+        }
     }
 }

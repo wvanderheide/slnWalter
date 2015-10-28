@@ -7,7 +7,7 @@ using Walter.Models;
 
 namespace Walter.Controllers
 {
-    public class ContactsController : Controller
+    public class ContactController : Controller
     {
         // GET: Contacts
         public ActionResult Index()
@@ -17,7 +17,7 @@ namespace Walter.Controllers
             ViewBag.RandomQuote = temp.Quote;
             ViewBag.Author = temp.Author;
 
-            var b = new ContactsBusinessLayer();
+            var b = new ContactBusinessLayer();
             var contacts = b.GetContacts();
 
             contacts = contacts.OrderBy(f => f.FirstName).ToList();
