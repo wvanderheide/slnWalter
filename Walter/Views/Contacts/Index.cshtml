@@ -12,67 +12,91 @@
         <h2><i class="fa fa-envelope fa-lg" title="You have @Model.Count contacts."></i> Contacts</h2>
         Below are my contacts.
     </div>
-    <form method="post" id="form1" name="form1" action="@Url.Action("Sort","Contacts")">
-        <input id="SortByLastName" name="SortByLastName" value="true" type="checkbox" checked="@ViewBag.SortByLastName" onchange="document.getElementById('form1').submit();" />
-        <b>Order By Last Name</b>
-    </form>
+	<form method="post" id="form1" name="form1" action="@Url.Action("Sort", "Contacts")">
+		<input id="SortByLastName" name="SortByLastName" value="true" type="checkbox" checked="@ViewBag.SortByLastName" onchange="document.getElementById('form1').submit();"/>
+		<b>Order By Last Name</b>
+	</form>
 
-    @foreach (var r in Model)
-    {
-        loopCounter++;
+	<div class="row">
+		@if (ViewBag.SortByLastName != false)
+		{
+			<div class="col-sm-3">
+				<b>Last Name</b>
+			</div>
+		}
+		<div class="col-sm-3">
+			<b>First Name</b>
+		</div>
+		@if (ViewBag.SortByLastName == false)
+		{
+			<div class="col-sm-3">
+				<b>Last Name</b>
+			</div>
+		}
+		<div class="col-sm-3">
+			<b>Phone</b>
+		</div>
+		<div class="col-sm-3">
+			<b>Address</b>
+		</div>
+	</div>
 
-        if (loopCounter % 2 == 0)
-        {
-            altColor = "#fff";
-        }
-        else
-        {
-            altColor = "#eee";
-        }
+	@foreach (var r in Model)
+	{
+		loopCounter++;
 
-        <div class="row" style="background-color: @altColor">
-            @if (ViewBag.SortByLastName != false)
-            {
-                <div class="col-sm-3">
-                    @r.LastName
-                </div>
-            }
-            <div class="col-sm-3">
-                <span style="white-space:nowrap">
-                @r.FirstName
-                @if (!string.IsNullOrEmpty(r.Nickname))
-                {
-                    @:&nbsp;<i>@r.Nickname</i>
-                }
-                </span>
-                @if (!string.IsNullOrEmpty(r.Spouse))
-                {
-                    @:& @r.Spouse
-                }
-                @if (!string.IsNullOrEmpty(r.Notes))
-                {
-                    <br />
-                    @r.Notes
-                }
-            </div>
-            @if (ViewBag.SortByLastName == false)
-            { 
-            <div class="col-sm-3">
-                @r.LastName
-            </div>
-            }
-            <div class="col-sm-3">
-                @if (!string.IsNullOrEmpty(r.MobilePhone))
-                {
-                    <span style="white-space:nowrap">@r.MobilePhone (m)</span>
-                }
-                @if (!string.IsNullOrEmpty(r.HomePhone))
-                {
-                    <br />
-                    <span style="white-space:nowrap">@r.HomePhone (h)</span>
-                }
-            </div>
-            <div class="col-sm-3">@r.HomeStreet @r.HomeCity @r.HomeState @r.HomeCountry <br />@r.HomePostalCode</div>
-        </div>
-    }
+		if (loopCounter%2 == 0)
+		{
+			altColor = "#fff";
+		}
+		else
+		{
+			altColor = "#eee";
+		}
+
+		<div class="row" style="background-color: @altColor">
+			@if (ViewBag.SortByLastName != false)
+			{
+				<div class="col-sm-3">
+					@r.LastName
+				</div>
+			}
+			<div class="col-sm-3">
+				<span style="white-space: nowrap">
+						@r.FirstName
+						@if (!string.IsNullOrEmpty(r.Nickname))
+						{
+							@:&nbsp;<i>@r.Nickname</i>
+						}
+					</span>
+				@if (!string.IsNullOrEmpty(r.Spouse))
+				{
+					@:& @r.Spouse
+				}
+				@if (!string.IsNullOrEmpty(r.Notes))
+				{
+					<br/>
+					@r.Notes
+				}
+			</div>
+			@if (ViewBag.SortByLastName == false)
+			{
+				<div class="col-sm-3">
+					@r.LastName
+				</div>
+			}
+			<div class="col-sm-3">
+				@if (!string.IsNullOrEmpty(r.MobilePhone))
+				{
+					<span style="white-space: nowrap">@r.MobilePhone (m)</span>
+				}
+				@if (!string.IsNullOrEmpty(r.HomePhone))
+				{
+					<br/>
+					<span style="white-space: nowrap">@r.HomePhone (h)</span>
+				}
+			</div>
+			<div class="col-sm-3">@r.HomeStreet @r.HomeCity @r.HomeState @r.HomeCountry <br/>@r.HomePostalCode</div>
+		</div>
+	}
 </div>
