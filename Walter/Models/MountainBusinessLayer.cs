@@ -11,7 +11,7 @@ namespace Walter.Models
     public class MountainBusinessLayer
     {
        // private string _subString = string.Empty;
-        private string _csvUrls = string.Empty;
+        //private string _csvUrls = string.Empty;
         private const string _startReplace = "||s||";
 
         public List<VmMountain> GetMountains()
@@ -101,14 +101,15 @@ namespace Walter.Models
 
             //Loop substring, all the while extracting URLs from it and then shortening it, until it runs out of anchor tags
             string newHtml = string.Empty;
+            string csv = string.Empty;
             while (Html.IndexOf("</a>") >= 0)
             {
                 //Make a CVS list of the URLs, each these pages in turn will need to be screen scraped
-                _csvUrls = _csvUrls + GetURLandShortenSubstring(Html, out newHtml) + ",";
+                csv = csv + GetURLandShortenSubstring(Html, out newHtml) + ",";
                 Html = newHtml;
             }
 
-            retVal += "<div style='float: left'>" + timeStamp + GetHitsVotesScoreAndReturnAsTable(Html)
+            retVal += "<div style='float: left'>" + timeStamp + GetHitsVotesScoreAndReturnAsTable(Html, csv)
                 + "<i>(Click a column header above to sort by that column)</i>"
                 + "</div>"; 
             retVal += "<div style='float: left; padding-left:5px;'>" + power + "<br />"
@@ -228,11 +229,11 @@ namespace Walter.Models
             return sb.ToString();
         }
 
-        private string GetHitsVotesScoreAndReturnAsTable(string html)
+        private string GetHitsVotesScoreAndReturnAsTable(string html, string csv)
         {
             string startTag = "";
             string endTag = "";
-            string[] URLs = _csvUrls.Split(Convert.ToChar(","));
+            string[] URLs = csv.Split(Convert.ToChar(","));
             string Created = string.Empty;
             string Edited = string.Empty;
             string Hits = string.Empty;
