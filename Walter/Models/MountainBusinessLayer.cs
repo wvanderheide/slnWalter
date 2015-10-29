@@ -10,10 +10,6 @@ namespace Walter.Models
 {
     public class MountainBusinessLayer
     {
-       // private string _subString = string.Empty;
-        //private string _csvUrls = string.Empty;
-        private const string _startReplace = "||s||";
-
         public List<VmMountain> GetMountains()
         {
             var db = new WalterEntities();
@@ -37,12 +33,13 @@ namespace Walter.Models
                     SummitNote = l.SummitNote
                 }).ToList().OrderBy(y => y.SummitDate).ToList()
             }).ToList();
-            
+
             return mountainList;
         }
 
         public string GetSpHtml(string summitPostUserUrl)
         {
+            const string startReplace = "||s||";
             string retVal = string.Empty;
             string Html = ScrapeHTML(summitPostUserUrl);
 
@@ -60,15 +57,15 @@ namespace Walter.Models
             startTag = "My Mountains";
             endTag = "My Routes";
             Html = fnSubstring(startTag, endTag, Html, true, false);
-            
+
             string title = Html;
             endTag = "</div>";
             title = fnSubstring(startTag, endTag, title, true, false);
-            
+
             string userName = summitPostUserUrl;  //http://www.summitpost.org/users/vanman798/23249 
-            userName = userName.Replace("http://www.summitpost.org/users/", _startReplace);
+            userName = userName.Replace("http://www.summitpost.org/users/", startReplace);
             userName = userName.Replace("/", "/");
-            userName = fnSubstring(_startReplace, "/", userName, false, false);
+            userName = fnSubstring(startReplace, "/", userName, false, false);
 
             startTag = "<a href='/" + userName + "/";
             endTag = "<span class=basics>";
@@ -109,15 +106,15 @@ namespace Walter.Models
                 Html = newHtml;
             }
 
-            retVal += "<div style='float: left'>" + timeStamp + GetHitsVotesScoreAndReturnAsTable(Html, csv)
+            retVal += "<div style='float: left'>" + timeStamp + GetHitsVotesScoreAndReturnAsTable(Html, csv, startReplace)
                 + "<i>(Click a column header above to sort by that column)</i>"
-                + "</div>"; 
+                + "</div>";
             retVal += "<div style='float: left; padding-left:5px;'>" + power + "<br />"
                 + "<a style='text-decoration:none; color:black;' href='" + summitPostUserUrl + "' target='_blank'>" + img + "</a></div>";
 
             return retVal;
         }
-        
+
         public bool SaveMountain(VmMountain m, string summitDate, string summitNote)
         {
             bool rtnVal = true;
@@ -126,22 +123,22 @@ namespace Walter.Models
             {
                 var mtn = new Models.Mountain
                 {
-	                Name = m.Name,
-	                Elevation = Convert.ToInt32(m.Elevation),
-	                Country = m.Country,
-					State = m.State,
-	                Latitude = m.Latitude,
-	                Longitude = m.Longitude,
-	                MountainNote = m.MountainNote
+                    Name = m.Name,
+                    Elevation = Convert.ToInt32(m.Elevation),
+                    Country = m.Country,
+                    State = m.State,
+                    Latitude = m.Latitude,
+                    Longitude = m.Longitude,
+                    MountainNote = m.MountainNote
                 };
 
-	            var db = new WalterEntities();
+                var db = new WalterEntities();
                 db.Mountains.Add(mtn);
                 db.SaveChanges();
-                
+
                 rtnVal = SaveLog(mtn.Id, summitDate, summitNote);
 
-                if(!rtnVal)
+                if (!rtnVal)
                 {
                     //TODO: Rollback Mountain add if Save Log returns false
                     new Exception("Saving Mountain Log failed");
@@ -164,12 +161,12 @@ namespace Walter.Models
                 var db = new WalterEntities();
                 var log = new MountainSummitLog
                 {
-	                MountainID = mountainId,
-	                SummitNote = summitNote,
-	                SummitDate = Convert.ToDateTime(summitDate)
+                    MountainID = mountainId,
+                    SummitNote = summitNote,
+                    SummitDate = Convert.ToDateTime(summitDate)
                 };
 
-	            db.MountainSummitLogs.Add(log);
+                db.MountainSummitLogs.Add(log);
                 db.SaveChanges();
             }
             catch
@@ -229,7 +226,7 @@ namespace Walter.Models
             return sb.ToString();
         }
 
-        private string GetHitsVotesScoreAndReturnAsTable(string html, string csv)
+        private string GetHitsVotesScoreAndReturnAsTable(string html, string csv, string startReplace)
         {
             string startTag = "";
             string endTag = "";
@@ -307,8 +304,8 @@ namespace Walter.Models
                     Score = fnSubstring(startTag, endTag, html, false, false); //returns something like this: 88.43
 
                     //Get Mt Name
-                    string mt = URLs[i].Replace("http://www.summitpost.org/", _startReplace);
-                    mt = fnSubstring(_startReplace, "/", mt, false, false);
+                    string mt = URLs[i].Replace("http://www.summitpost.org/", startReplace);
+                    mt = fnSubstring(startReplace, "/", mt, false, false);
                     mt = mt.Replace("-", "&nbsp;");
 
                     bldr.Append("<tr>\r\n");
