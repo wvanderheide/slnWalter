@@ -130,11 +130,9 @@ namespace Walter.Models
                 _csvUrls = _csvUrls + GetURLandShortenSubstring(_subString, out yy) + ",";
                 _subString = yy;
             }
-
-            //lt1.Text += GetHitsVotesScoreAndReturnAsTable();
-
-
-            retVal += "<div style='float: left'>" + timeStamp + GetHitsVotesScoreAndReturnAsTable() + "<i>(Click a column header above to sort by that column)</i></div>";
+            
+            retVal += "<div style='float: left'>" + timeStamp + GetHitsVotesScoreAndReturnAsTable()
+                + "</div>"; //<i>(Click a column header above to sort by that column)</i>
             retVal += "<div style='float: left; padding-left:5px;'>" + power + "<br />"
                 + "<a style='text-decoration:none; color:black;' href='" + Url + "' target='_blank'>" + img + "</a></div>";
 
