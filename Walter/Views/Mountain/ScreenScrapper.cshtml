@@ -11,7 +11,7 @@
         from <a href="http://www.summitpost.org/users/vanman798/23249" target="_blank">summitpost.org</a>
     </div>
 
-    <form method="post" id="form1" name="form1" action="@Url.Action("GetSpHtml", "Mountain")">
+    <form method="post" id="form1" name="form1" action="@Url.Action("UpdateHtml", "Mountain")">
         This tool looks up the hits, votes, and page score for all the mountains & rocks
         belonging to a particular <a href="http://www.summitpost.org/users" target="_blank">summitpost user</a>.
         <br />
@@ -31,11 +31,11 @@
         <br />
 
         <div style="float: left;">
-            <input name="txtUserPageURL" type="text" value="http://www.summitpost.org/users/vanman798/23249" id="txtUserPageURL" style="width: 400px;" class="form-control" />
+			<input name="SummitPostUrl" type="text" value="http://www.summitpost.org/users/vanman798/23249" id="SummitPostUrl" style="width: 400px;" class="form-control" />
         </div>
         <div style="float: left; padding-left: 5px">&nbsp;</div>
         <div style="float: left;">
-            <input type="submit" name="btnGo" value="Go!" onclick="GetSpHtml(); return false;" id="btnGo" class="btn btn-primary" />
+            <input type="submit" name="btnGo" value="Go!" onclick="ShowWaiting(); return false;" id="btnGo" class="btn btn-primary" />
         </div>
         <div style="clear:both"></div>
         <div id="DivWait" style="display: none">
@@ -44,35 +44,22 @@
         </div>
         <br />
         <br />
-        <div id="DivData"></div>
+	    <div id="DivData">
+		   @Html.Raw(ViewBag.html)
+	    </div>
     </form>
 </div>
 
 
 <script>
     $(document).ready(function () {
-       // $("#myTable").tablesorter();
-        GetSpHtml();
+       $("#myTable").tablesorter();
     });
 
 
-    function GetSpHtml() {
-        $('#DivWait').slideDown('slow');
-        $.post("@Url.Action("GetSpHtml", "Mountain")",
-			{
-			    Url: $('#txtUserPageURL').val()
-			},
-			function (data, status) {
-			    // alert("Data: " + data + "\nStatus: " + status);
-
-			    if (status) {
-			        $('#DivData').html(data);
-
-			        $('#DivWait').slideUp('slow');
-			    }
-			    else {
-			        alert("Error!");
-			    }
-			});
+    function ShowWaiting() {
+	    $('#DivData').fadeOut('slow');
+    	$('#DivWait').slideDown('slow');
+    	document.getElementById("form1").submit();
     }
 </script>

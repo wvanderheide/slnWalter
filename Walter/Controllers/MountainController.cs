@@ -26,10 +26,12 @@ namespace Walter.Controllers
         }
         
         [HttpPost]
-        public string GetSpHtml(string Url)
+        public ActionResult UpdateHtml(string SummitPostUrl)
         {
             var b = new MountainBusinessLayer();
-            return b.GetSpHtml(Url);
+            TempData["html"] = b.GetSpHtml(SummitPostUrl);
+
+            return RedirectToAction("ScreenScrapper");
         }
 
         public ActionResult ScreenScrapper()
@@ -38,6 +40,13 @@ namespace Walter.Controllers
             var temp = q.RandomQuote();
             ViewBag.RandomQuote = temp.Quote;
             ViewBag.Author = temp.Author;
+
+            if (TempData["html"] == null)
+            {
+                UpdateHtml("http://www.summitpost.org/users/vanman798/23249");
+            }
+
+            ViewBag.html = TempData["html"];
 
             return View();
         }

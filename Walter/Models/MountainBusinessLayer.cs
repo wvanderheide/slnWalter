@@ -132,14 +132,14 @@ namespace Walter.Models
             }
             
             retVal += "<div style='float: left'>" + timeStamp + GetHitsVotesScoreAndReturnAsTable()
-                + "</div>"; //<i>(Click a column header above to sort by that column)</i>
+                + "<i>(Click a column header above to sort by that column)</i>"
+                + "</div>"; 
             retVal += "<div style='float: left; padding-left:5px;'>" + power + "<br />"
                 + "<a style='text-decoration:none; color:black;' href='" + Url + "' target='_blank'>" + img + "</a></div>";
 
             return retVal;
         }
-
-
+        
         public bool SaveMountain(VmMountain m, string summitDate, string summitNote)
         {
             bool rtnVal = true;
@@ -202,6 +202,7 @@ namespace Walter.Models
             return rtnVal;
         }
 
+        #region Helper Method
         private string ScrapeHTML(string FromThisURL)
         {
             StringBuilder sb = new StringBuilder();
@@ -452,5 +453,6 @@ namespace Walter.Models
 
             return RetVal;
         }
+        #endregion
     }
 }
