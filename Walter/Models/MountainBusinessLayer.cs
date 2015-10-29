@@ -37,84 +37,6 @@ namespace Walter.Models
             return mountainList;
         }
 
-        public string GetSpHtml(string summitPostUserUrl)
-        {
-            const string startReplace = "||s||";
-            string retVal = string.Empty;
-            string Html = ScrapeHTML(summitPostUserUrl);
-
-            string img = Html; //save all the html to later get the user image from it.
-
-            string startTag = "<span class=power>";
-            string endTag = "<b>Occupation: </b>";
-
-            string power = fnSubstring(startTag, endTag, Html, true, false); // returns something like this: <span class=power> Power = 139 (Vote Weight = 88.57%)<span class="ajax_info" onClick='javascript:get_help_js("1111171270", 171270)'><img src='/images/layout/info.png'></img></span>   <div id='1111171270' class="helpdiv" style="display: none;">     Loading... </div></span></p><br><p>
-
-            power = fnSubstring(startTag, @"<span class=""ajax_info""", power, false, false); // returns something like this: Power = 139 (Vote Weight = 88.57%)
-
-
-            //Substring Html
-            startTag = "My Mountains";
-            endTag = "My Routes";
-            Html = fnSubstring(startTag, endTag, Html, true, false);
-
-            string title = Html;
-            endTag = "</div>";
-            title = fnSubstring(startTag, endTag, title, true, false);
-
-            string userName = summitPostUserUrl;  //http://www.summitpost.org/users/vanman798/23249 
-            userName = userName.Replace("http://www.summitpost.org/users/", startReplace);
-            userName = userName.Replace("/", "/");
-            userName = fnSubstring(startReplace, "/", userName, false, false);
-
-            startTag = "<a href='/" + userName + "/";
-            endTag = "<span class=basics>";
-            img = fnSubstring(startTag, endTag, img, false, false);
-            startTag = "src='/";
-            endTag = "'></img>";
-            img = fnSubstring(startTag, endTag, img, true, false);
-            img = img.Replace("src='/", "src='http://www.summitpost.org/");
-            img = "<img " + img + "' alt='" + userName + "' title='" + power + "' />";
-
-            userName = userName.ToUpper() + "'s ";
-
-            //Mark up Title for the retVal
-            retVal += "<h3 style='margin:0;'><a style='text-decoration:none; color:black;' href='" + summitPostUserUrl + "' target='_blank'>"
-                + title.Replace("My", userName)
-                + "</a></h3>\r\n";
-
-            //time stamp
-            string timeStamp = GetTmeStamp();
-
-
-            //Get just the <table> of My Mountains  
-            startTag = "<center>";
-            endTag = "</center>";
-            Html = fnSubstring(startTag, endTag, Html, false, false);
-
-
-            //Make the URLs absolute
-            Html = Html.Replace("href='/", "href='http://www.summitpost.org/");
-
-            //Loop substring, all the while extracting URLs from it and then shortening it, until it runs out of anchor tags
-            string newHtml = string.Empty;
-            string csv = string.Empty;
-            while (Html.IndexOf("</a>") >= 0)
-            {
-                //Make a CVS list of the URLs, each these pages in turn will need to be screen scraped
-                csv = csv + GetURLandShortenSubstring(Html, out newHtml) + ",";
-                Html = newHtml;
-            }
-
-            retVal += "<div style='float: left'>" + timeStamp + GetHitsVotesScoreAndReturnAsTable(Html, csv, startReplace)
-                + "<i>(Click a column header above to sort by that column)</i>"
-                + "</div>";
-            retVal += "<div style='float: left; padding-left:5px;'>" + power + "<br />"
-                + "<a style='text-decoration:none; color:black;' href='" + summitPostUserUrl + "' target='_blank'>" + img + "</a></div>";
-
-            return retVal;
-        }
-
         public bool SaveMountain(VmMountain m, string summitDate, string summitNote)
         {
             bool rtnVal = true;
@@ -176,17 +98,88 @@ namespace Walter.Models
 
             return rtnVal;
         }
+        
+        public string GetSpHtml(string summitPostUserUrl)
+        {
+            const string startReplace = "||s||";
 
+            var html = ScrapeHTML(summitPostUserUrl);
+            var img = html; //save all the html to later get the user image from it.
+
+            var startTag = "<span class=power>";
+            var endTag = "<b>Occupation: </b>";
+
+            var power = Substring(startTag, endTag, html, true, false); // returns something like this: <span class=power> Power = 139 (Vote Weight = 88.57%)<span class="ajax_info" onClick='javascript:get_help_js("1111171270", 171270)'><img src='/images/layout/info.png'></img></span>   <div id='1111171270' class="helpdiv" style="display: none;">     Loading... </div></span></p><br><p>
+
+            power = Substring(startTag, @"<span class=""ajax_info""", power, false, false); // returns something like this: Power = 139 (Vote Weight = 88.57%)
+
+            startTag = "My Mountains";
+            endTag = "My Routes";
+            html = Substring(startTag, endTag, html, true, false);
+
+            var title = html;
+            endTag = "</div>";
+            title = Substring(startTag, endTag, title, true, false);
+
+            var userName = summitPostUserUrl;  //http://www.summitpost.org/users/vanman798/23249 
+            userName = userName.Replace("http://www.summitpost.org/users/", startReplace);
+            userName = userName.Replace("/", "/");
+            userName = Substring(startReplace, "/", userName, false, false);
+
+            startTag = "<a href='/" + userName + "/";
+            endTag = "<span class=basics>";
+            img = Substring(startTag, endTag, img, false, false);
+            startTag = "src='/";
+            endTag = "'></img>";
+            img = Substring(startTag, endTag, img, true, false);
+            img = img.Replace("src='/", "src='http://www.summitpost.org/");
+            img = "<img " + img + "' alt='" + userName + "' title='" + power + "' />";
+
+            userName = userName.ToUpper() + "'s ";
+
+            //Mark up Title for the retVal
+            var retVal = "<h3 style='margin:0;'><a style='text-decoration:none; color:black;' href='" + summitPostUserUrl + "' target='_blank'>"
+                + title.Replace("My", userName)
+                + "</a></h3>\r\n";
+
+            var timeStamp = GetTmeStamp();
+
+            //Get just the <table> of My Mountains  
+            startTag = "<center>";
+            endTag = "</center>";
+            html = Substring(startTag, endTag, html, false, false);
+
+            //Make the URLs absolute
+            html = html.Replace("href='/", "href='http://www.summitpost.org/");
+
+            //Loop substring, all the while extracting URLs from it and then shortening it, until it runs out of anchor tags
+            var newHtml = string.Empty;
+            var csv = string.Empty;
+            while (html.IndexOf("</a>") >= 0)
+            {
+                //Make a CVS list of the URLs, each these pages in turn will need to be screen scraped
+                csv = csv + GetURLandShortenSubstring(html, out newHtml) + ",";
+                html = newHtml;
+            }
+
+            retVal += "<div style='float: left'>" + timeStamp + GetHitsVotesScoreAndReturnAsTable(html, csv, startReplace)
+                + "<i>(Click a column header above to sort by that column)</i>"
+                + "</div>";
+            retVal += "<div style='float: left; padding-left:5px;'>" + power + "<br />"
+                + "<a style='text-decoration:none; color:black;' href='" + summitPostUserUrl + "' target='_blank'>" + img + "</a></div>";
+
+            return retVal;
+        }
+       
         #region Helper Method
-
         private string GetTmeStamp()
         {
-            DateTime RightNow = DateTime.Now;
-            string timeStamp = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(RightNow.Month)
-                        + " " + RightNow.Day.ToString() + ", "
-                        + RightNow.Year.ToString() + " ";
-            string h = RightNow.Hour.ToString();
-            string m = RightNow.Minute.ToString();
+            DateTime rightNow = DateTime.Now;
+            string timeStamp = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(rightNow.Month)
+                        + " " + rightNow.Day.ToString() + ", "
+                        + rightNow.Year.ToString() + " ";
+            string h = rightNow.Hour.ToString();
+            string m = rightNow.Minute.ToString();
 
             string am = " am";
             if (Convert.ToInt16(h) > 12)
@@ -206,13 +199,13 @@ namespace Walter.Models
             return timeStamp;
         }
 
-        private string ScrapeHTML(string FromThisURL)
+        private string ScrapeHTML(string fromThisUrl)
         {
             StringBuilder sb = new StringBuilder();
             string strLine = string.Empty;
 
             // Open the requested URL and Get the stream from the returned web response
-            WebRequest req = WebRequest.Create(FromThisURL);
+            WebRequest req = WebRequest.Create(fromThisUrl);
             StreamReader stream = new StreamReader(req.GetResponse().GetResponseStream());
 
             // Read the stream a line at a time 
@@ -230,15 +223,15 @@ namespace Walter.Models
         {
             string startTag = "";
             string endTag = "";
-            string[] URLs = csv.Split(Convert.ToChar(","));
-            string Created = string.Empty;
-            string Edited = string.Empty;
-            string Hits = string.Empty;
-            string Score = string.Empty;
-            string Votes = string.Empty;
+            string[] urLs = csv.Split(Convert.ToChar(","));
+            string created = string.Empty;
+            string edited = string.Empty;
+            string hits = string.Empty;
+            string score = string.Empty;
+            string votes = string.Empty;
             StringBuilder bldr = new StringBuilder();
 
-            for (int i = 0; i < URLs.Length - 1; i++)
+            for (int i = 0; i < urLs.Length - 1; i++)
             // for (int i = 0; i < 1; i++)
             {
                 if (i == 0)
@@ -259,72 +252,72 @@ namespace Walter.Models
 
                 try
                 {
-                    html = ScrapeHTML(URLs[i]);
+                    html = ScrapeHTML(urLs[i]);
 
 
                     //Get "Created/Edited" dates
                     startTag = "<strong>Created/Edited: </strong> ";
                     endTag = "<p><strong>Object ID: </strong>";
-                    Created = fnSubstring(startTag, endTag, html, false, false).Trim();
-                    string[] CE = Created.Split(Convert.ToChar("/"));
-                    Created = CE[0].Trim();
-                    Edited = CE[1].Trim();
+                    created = Substring(startTag, endTag, html, false, false).Trim();
+                    string[] CE = created.Split(Convert.ToChar("/"));
+                    created = CE[0].Trim();
+                    edited = CE[1].Trim();
 
-                    string[] Flip = Created.Split(Convert.ToChar(","));    //Created = Flip[1] + "-" + Flip[0]; //2006-Jun 18
+                    string[] Flip = created.Split(Convert.ToChar(","));    //Created = Flip[1] + "-" + Flip[0]; //2006-Jun 18
                     string[] MonthAndDay = Flip[0].Split(Convert.ToChar(" "));
-                    Created = Flip[1] + "-" + fnConvertNamedMonthToInt(MonthAndDay[0]) + "-" + fnPadDay(MonthAndDay[1]);
+                    created = Flip[1] + "-" + ConvertNamedMonthToInt(MonthAndDay[0]) + "-" + PadDay(MonthAndDay[1]);
 
 
-                    Flip = Edited.Split(Convert.ToChar(","));
+                    Flip = edited.Split(Convert.ToChar(","));
                     MonthAndDay = Flip[0].Split(Convert.ToChar(" "));
-                    Edited = Flip[1] + "-" + fnConvertNamedMonthToInt(MonthAndDay[0]) + "-" + fnPadDay(MonthAndDay[1]);
+                    edited = Flip[1] + "-" + ConvertNamedMonthToInt(MonthAndDay[0]) + "-" + PadDay(MonthAndDay[1]);
 
 
 
                     //Narrow down html
                     startTag = "<strong>Hits:";
                     endTag = "</span> Votes";
-                    html = fnSubstring(startTag, endTag, html, true, true);
+                    html = Substring(startTag, endTag, html, true, true);
 
                     //Get "hits" 
                     startTag = "<strong>Hits: ";
                     endTag = "<span style=";
-                    Hits = fnSubstring(startTag, endTag, html, false, false); //returns something like this: 
-                    Hits = Hits.Replace("&nbsp;", "").Trim();
-                    Hits = Hits.Replace("</strong>", "").Trim();
+                    hits = Substring(startTag, endTag, html, false, false); //returns something like this: 
+                    hits = hits.Replace("&nbsp;", "").Trim();
+                    hits = hits.Replace("</strong>", "").Trim();
 
                     //Get "Votes"  
                     startTag = "<span id=num_votes>";
                     endTag = "</span> Votes";
-                    Votes = fnSubstring(startTag, endTag, html, false, false); //returns something like this: 16
+                    votes = Substring(startTag, endTag, html, false, false); //returns something like this: 16
 
                     //Get "Page Score" 
                     startTag = "<strong>Page Score: <span id=score >";
                     endTag = "</span>%</strong>";
-                    Score = fnSubstring(startTag, endTag, html, false, false); //returns something like this: 88.43
+                    score = Substring(startTag, endTag, html, false, false); //returns something like this: 88.43
 
                     //Get Mt Name
-                    string mt = URLs[i].Replace("http://www.summitpost.org/", startReplace);
-                    mt = fnSubstring(startReplace, "/", mt, false, false);
+                    string mt = urLs[i].Replace("http://www.summitpost.org/", startReplace);
+                    mt = Substring(startReplace, "/", mt, false, false);
                     mt = mt.Replace("-", "&nbsp;");
 
                     bldr.Append("<tr>\r\n");
                     bldr.Append("<td style='padding: 5px;'>");
                     bldr.Append("<a target='_blank' href='");
-                    bldr.Append(URLs[i]);
+                    bldr.Append(urLs[i]);
                     bldr.Append("'><span style='text-transform:capitalize;'>");
                     bldr.Append(mt);
                     bldr.Append("</span></a></td><td style='padding: 5px;'>");
-                    bldr.Append(Hits);
+                    bldr.Append(hits);
                     bldr.Append("</td><td style='padding: 5px;'>");
-                    bldr.Append(Votes);
+                    bldr.Append(votes);
                     bldr.Append("</td><td style='padding: 5px;'>");
-                    bldr.Append(Score);
+                    bldr.Append(score);
                     bldr.Append("</td>");
                     bldr.Append("<td style='padding: 5px;'>");
-                    bldr.Append(Created);
+                    bldr.Append(created);
                     bldr.Append("</td><td style='padding: 5px;'>");
-                    bldr.Append(Edited);
+                    bldr.Append(edited);
                     bldr.Append("</td>");
                     bldr.Append("</tr>\r\n");
                 }
@@ -333,81 +326,79 @@ namespace Walter.Models
 
                 }
 
-                if (i == URLs.Length - 2)
+                if (i == urLs.Length - 2)
                     bldr.Append("</tbody></table>\r\n");
             }
 
             return bldr.ToString();
         }
 
-        private string fnConvertNamedMonthToInt(string NamedMonth)
+        private string ConvertNamedMonthToInt(string namedMonth)
         {
-            string RetVal = NamedMonth;
+            string retVal = namedMonth;
             string months = "jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec,";
-            NamedMonth = NamedMonth.ToLower().Trim() + ",";
+            namedMonth = namedMonth.ToLower().Trim() + ",";
 
-            if (months.IndexOf(NamedMonth) >= 0)
+            if (months.IndexOf(namedMonth) < 0) return retVal;
+            switch (namedMonth.Replace(",", ""))
             {
-                switch (NamedMonth.Replace(",", ""))
-                {
-                    case "jan":
-                        RetVal = "01";
-                        break;
-                    case "feb":
-                        RetVal = "02";
-                        break;
-                    case "mar":
-                        RetVal = "03";
-                        break;
-                    case "apr":
-                        RetVal = "04";
-                        break;
-                    case "may":
-                        RetVal = "05";
-                        break;
-                    case "jun":
-                        RetVal = "06";
-                        break;
-                    case "jul":
-                        RetVal = "07";
-                        break;
-                    case "aug":
-                        RetVal = "08";
-                        break;
-                    case "sep":
-                        RetVal = "08";
-                        break;
-                    case "oct":
-                        RetVal = "10";
-                        break;
-                    case "nov":
-                        RetVal = "11";
-                        break;
-                    case "dec":
-                        RetVal = "12";
-                        break;
-                    default:
-                        break;
-                }
+                case "jan":
+                    retVal = "01";
+                    break;
+                case "feb":
+                    retVal = "02";
+                    break;
+                case "mar":
+                    retVal = "03";
+                    break;
+                case "apr":
+                    retVal = "04";
+                    break;
+                case "may":
+                    retVal = "05";
+                    break;
+                case "jun":
+                    retVal = "06";
+                    break;
+                case "jul":
+                    retVal = "07";
+                    break;
+                case "aug":
+                    retVal = "08";
+                    break;
+                case "sep":
+                    retVal = "08";
+                    break;
+                case "oct":
+                    retVal = "10";
+                    break;
+                case "nov":
+                    retVal = "11";
+                    break;
+                case "dec":
+                    retVal = "12";
+                    break;
+                default:
+                    break;
             }
 
-            return RetVal;
+            return retVal;
         }
 
-        private string GetURLandShortenSubstring(string xx, out string yy)
+        private string GetURLandShortenSubstring(string inHtml, out string outHtml)
         {
             string retVal = "";
             string s = "href='";
             string e = "</a>";
 
             //figure out where we want to begin the parsing at, as well as the length of the parse.
-            int startIndex = xx.IndexOf(s) + s.Length;
-            int endIndex = xx.IndexOf(e); //save this as later, when we shorten the substring, it will become the startIndex.
+            int startIndex = inHtml.IndexOf(s) + s.Length;
+            int endIndex = inHtml.IndexOf(e); //save this as later, when we shorten the substring, it will become the startIndex.
             int length = endIndex - startIndex;
 
             //extract the URL and some trailing data
             if (length > 0)
-                retVal = xx.Substring(startIndex, length); // returns something like this "http://www.summitpost.org/mount-alderson/774289'>Mount Alderson"
+                retVal = inHtml.Substring(startIndex, length); // returns something like this "http://www.summitpost.org/mount-alderson/774289'>Mount Alderson"
 
             //Get ride of the trailing info
             try
@@ -422,39 +413,39 @@ namespace Walter.Models
 
             //Shorten up the substring by removing the section we just parsed data from
             startIndex = endIndex + e.Length;
-            yy = xx.Substring(startIndex);
+            outHtml = inHtml.Substring(startIndex);
 
             return retVal;
         }
 
-        private string fnSubstring(string startTag, string endTag, string stringToSubstring, bool IncludeStartTag, bool IncludeEndTag)
+        private string Substring(string startTag, string endTag, string subStringThis, bool includeStartTag, bool includeEndTag)
         {
-            int startIndex = stringToSubstring.IndexOf(startTag);
+            int startIndex = subStringThis.IndexOf(startTag);
 
-            if (!IncludeStartTag)
+            if (!includeStartTag)
                 startIndex = startIndex + startTag.Length;
 
-            int endIndex = stringToSubstring.IndexOf(endTag);
+            int endIndex = subStringThis.IndexOf(endTag);
 
-            if (IncludeEndTag)
+            if (includeEndTag)
                 endIndex = endIndex + endTag.Length;
 
             int length = endIndex - startIndex;
 
             if (length > 0)
-                stringToSubstring = stringToSubstring.ToString().Substring(startIndex, length);
+                subStringThis = subStringThis.ToString().Substring(startIndex, length);
 
-            return stringToSubstring.Trim();
+            return subStringThis.Trim();
         }
 
-        private string fnPadDay(string day)
+        private string PadDay(string day)
         {
-            string RetVal = day.Trim();
+            var retVal = day.Trim();
 
-            if (RetVal.Length == 1)
-                RetVal = "0" + RetVal;
+            if (retVal.Length == 1)
+                retVal = "0" + retVal;
 
-            return RetVal;
+            return retVal;
         }
         #endregion
     }
