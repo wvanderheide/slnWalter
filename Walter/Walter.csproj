@@ -192,6 +192,7 @@
     <Content Include="Images\loading.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery.tablesorter.js" />
     <Content Include="WebForm1.html" />
     <Content Include="WebForm1.aspx" />
     <EntityDeploy Include="Models\WalterEntities.edmx">

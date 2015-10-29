@@ -1,69 +1,70 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>@ViewBag.Title - Walter VanderHeide</title>
-	<!-- CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-	@Styles.Render("~/css/site")
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Walter VanderHeide</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    @Styles.Render("~/css/site")
 
-	<!-- Scripts-->
-	@*@Scripts.Render("~/js/modernizr")*@
-	@Scripts.Render("~/js/jquery")
-	@Scripts.Render("~/js/bootstrap")
-	@Scripts.Render("~/js/site")
+    <!-- Scripts-->
+    @*@Scripts.Render("~/js/modernizr")*@
+    @Scripts.Render("~/js/jquery")
+    @Scripts.Render("~/js/bootstrap")
+    @Scripts.Render("~/js/tableSort")
+    @Scripts.Render("~/js/site")
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/" title="Intro"><i class="fa fa-home fa-lg"></i> Walter</a>
-			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="/Mountain" title="Mountains"><span class="glyphicon glyphicon-picture fa-lg"></span> Mountains</a></li>
-					<li><a href="/Adventure" title="Adventures"><i class="fa fa-camera-retro fa-lg"></i> Adventures</a></li>
-					<li><a href="/Resume" title="Resume"><i class="fa fa-book"></i> Resume</a></li>
-					<li><a href="/Contact" title="Contacts"><i class="fa fa-envelope fa-lg"></i> Contacts</a></li>
-				</ul>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/" title="Intro"><i class="fa fa-home fa-lg"></i> Walter</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/Mountain" title="Mountains"><span class="glyphicon glyphicon-picture fa-lg"></span> Mountains</a></li>
+                    <li><a href="/Adventure" title="Adventures"><i class="fa fa-camera-retro fa-lg"></i> Adventures</a></li>
+                    <li><a href="/Resume" title="Resume"><i class="fa fa-book"></i> Resume</a></li>
+                    <li><a href="/Contact" title="Contacts"><i class="fa fa-envelope fa-lg"></i> Contacts</a></li>
+                </ul>
 
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-				</ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
 
 
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		@RenderBody()
-		<hr />
-		<footer>
-			<div style="width:100%; text-align:center;" class="small">
-				<a href="/Quote" title="Quotes" style="color:#333">"@ViewBag.RandomQuote"</a> <i>@ViewBag.Author</i>
-				<br />
-				<br />
-				&copy; Graphic design and programming by Walter VanderHeide, see <a href="/resume">
-					resume
-				</a> for contact details.
-			</div>
-		</footer>
-	</div>
-	<!-- The div below is the Scroll to Top -->
-	<!-- See http://www.webtipblog.com/adding-scroll-top-button-website/ -->
-	<div class="scroll-top-wrapper" title="Jump to top">
-		<span class="scroll-top-inner">
-			<i class="fa fa-2x fa-arrow-circle-up"></i>
-		</span>
-	</div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div style="width:100%; text-align:center;" class="small">
+                <a href="/Quote" title="Quotes" style="color:#333">"@ViewBag.RandomQuote"</a> <i>@ViewBag.Author</i>
+                <br />
+                <br />
+                &copy; Graphic design and programming by Walter VanderHeide, see <a href="/resume">
+                    resume
+                </a> for contact details.
+            </div>
+        </footer>
+    </div>
+    <!-- The div below is the Scroll to Top -->
+    <!-- See http://www.webtipblog.com/adding-scroll-top-button-website/ -->
+    <div class="scroll-top-wrapper" title="Jump to top">
+        <span class="scroll-top-inner">
+            <i class="fa fa-2x fa-arrow-circle-up"></i>
+        </span>
+    </div>
 </body>
 </html>

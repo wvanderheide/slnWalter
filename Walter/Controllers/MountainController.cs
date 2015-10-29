@@ -34,6 +34,11 @@ namespace Walter.Controllers
 
         public ActionResult ScreenScrapper()
         {
+            var q = new QuoteBusinessLayer();
+            var temp = q.RandomQuote();
+            ViewBag.RandomQuote = temp.Quote;
+            ViewBag.Author = temp.Author;
+
             return View();
         }
 

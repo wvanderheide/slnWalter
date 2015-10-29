@@ -10,6 +10,8 @@ namespace Walter
             bundles.Add(new ScriptBundle("~/js/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/js/tableSort").Include("~/Scripts/jquery.tablesorter.js"));
+
             bundles.Add(new ScriptBundle("~/js/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
