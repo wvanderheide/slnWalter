@@ -24,15 +24,11 @@ namespace Walter.Controllers
             //Most Recent Summit Date on top
             return View("Index", mtns.OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList());
         }
-        
-        [HttpPost]
-        public ActionResult UpdateHtml(string SummitPostUrl)
-        {
-            var b = new MountainBusinessLayer();
-            TempData["html"] = b.GetSpHtml(SummitPostUrl);
 
-            return RedirectToAction("ScreenScrapper");
-        }
+        //public ActionResult Years()
+        //{
+            
+        //}
 
         public ActionResult ScreenScrapper()
         {
@@ -49,6 +45,15 @@ namespace Walter.Controllers
             ViewBag.html = TempData["html"];
 
             return View();
+        }
+        
+        [HttpPost]
+        public ActionResult UpdateHtml(string SummitPostUrl)
+        {
+            var b = new MountainBusinessLayer();
+            TempData["html"] = b.GetSpHtml(SummitPostUrl);
+
+            return RedirectToAction("ScreenScrapper");
         }
 
         [HttpGet]
