@@ -11,13 +11,8 @@
 	<br />
 	<div class="well well-sm">
 		<h2 id="MountainTitle" title="Mountain Count: @Model.Count, Climb Count:"><span class="glyphicon glyphicon-picture fa-lg"></span> Mountains</h2>
-		Below is a list of mountains I have climbed.  See all @Model.Count mountains plotted on a <a href="../mountain/Map" target="_blank">map</a>.
+		Below is a list of mountains I have climbed with summit dates.  See all @Model.Count mountains plotted on a <a href="../mountain/Map" target="_blank">map</a>.
 	</div>
-	<span style="color:red; font-weight: bold">TO DO: </span>
-	<ul>
-		<li>Add ability to see Mountains climbed by Year (like photos page).</li>
-		<li>Add ability to see Mountain climbed with in a certain time frame (ie 40 at 40)</li>
-	</ul>
 	@{
 		Html.RenderPartial("~/Views/Shared/_AddMtn.cshtml", Model);
 		Html.RenderPartial("~/Views/Shared/_AddClimb.cshtml", Model);
