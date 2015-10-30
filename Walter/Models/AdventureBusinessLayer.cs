@@ -7,10 +7,11 @@ namespace Walter.Models
 {
     public class AdventureBusinessLayer
     {
+        private static readonly WalterEntities Entities = new WalterEntities();
+
         public List<VmPhotoYear> GetPhotoYears()
         {
-            var db = new WalterEntities();
-            List<VmPhoto> photos = db.Photos.ToList().Select(x => new VmPhoto
+            List<VmPhoto> photos = Entities.Photos.ToList().Select(x => new VmPhoto
             {
                 Title = x.Title,
                 Url = x.URL,

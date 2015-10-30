@@ -8,12 +8,11 @@ namespace Walter.Models
     public class ImageBusinessLayer
     {
         private string _listOfRandoms = string.Empty;
+        private static readonly WalterEntities Entities = new WalterEntities();
 
         public List<VmImage> GetImages()
         {
-            var db = new WalterEntities();
-            
-            return db.Images.ToList().Select(q => new VmImage
+            return Entities.Images.ToList().Select(q => new VmImage
             {
                 Id = q.Id,
                 Url = q.Url
@@ -43,11 +42,9 @@ namespace Walter.Models
         
         public int DeleteImage(int Id)
         {
-            var db = new WalterEntities();
-
             string sql = "DELETE FROM [dbo].[Images] WHERE Id =" + Id.ToString();
 
-            var x = db.Database;
+            var x = Entities.Database;
 
             return x.ExecuteSqlCommand(sql);
         }

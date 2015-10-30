@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -10,10 +11,11 @@ namespace Walter.Models
 {
     public class MountainBusinessLayer
     {
+        private static readonly WalterEntities Entities = new  WalterEntities();
+
         public List<VmMountain> GetMountains()
         {
-            var db = new WalterEntities();
-            var mtns = db.Mountains.ToList();
+            var mtns = Entities.Mountains.ToList();
 
             var mountainList = mtns.Select(mtn => new VmMountain
             {
@@ -37,6 +39,11 @@ namespace Walter.Models
             return mountainList;
         }
 
+        //public List<VmMountain> GetAllClimbs()
+        //{
+            
+        //}
+
         public bool SaveMountain(VmMountain m, string summitDate, string summitNote)
         {
             bool rtnVal = true;
@@ -54,9 +61,8 @@ namespace Walter.Models
                     MountainNote = m.MountainNote
                 };
 
-                var db = new WalterEntities();
-                db.Mountains.Add(mtn);
-                db.SaveChanges();
+                Entities.Mountains.Add(mtn);
+                Entities.SaveChanges();
 
                 rtnVal = SaveLog(mtn.Id, summitDate, summitNote);
 
@@ -80,7 +86,6 @@ namespace Walter.Models
 
             try
             {
-                var db = new WalterEntities();
                 var log = new MountainSummitLog
                 {
                     MountainID = mountainId,
@@ -88,8 +93,8 @@ namespace Walter.Models
                     SummitDate = Convert.ToDateTime(summitDate)
                 };
 
-                db.MountainSummitLogs.Add(log);
-                db.SaveChanges();
+                Entities.MountainSummitLogs.Add(log);
+                Entities.SaveChanges();
             }
             catch
             {
@@ -103,7 +108,7 @@ namespace Walter.Models
         {
             const string startReplace = "||s||";
 
-            var html = ScrapeHTML(summitPostUserUrl);
+            var html = ScrapeHtml(summitPostUserUrl);
             var img = html; //save all the html to later get the user image from it.
 
             var startTag = "<span class=power>";
@@ -158,7 +163,7 @@ namespace Walter.Models
             while (html.IndexOf("</a>") >= 0)
             {
                 //Make a CVS list of the URLs, each these pages in turn will need to be screen scraped
-                csv = csv + GetURLandShortenSubstring(html, out newHtml) + ",";
+                csv = csv + GetUrLandShortenSubstring(html, out newHtml) + ",";
                 html = newHtml;
             }
 
@@ -172,7 +177,7 @@ namespace Walter.Models
         }
        
         #region Helper Method
-        private string GetTmeStamp()
+        private static string GetTmeStamp()
         {
             DateTime rightNow = DateTime.Now;
             string timeStamp = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(rightNow.Month)
@@ -199,7 +204,7 @@ namespace Walter.Models
             return timeStamp;
         }
 
-        private string ScrapeHTML(string fromThisUrl)
+        private static string ScrapeHtml(string fromThisUrl)
         {
             StringBuilder sb = new StringBuilder();
             string strLine = string.Empty;
@@ -219,7 +224,7 @@ namespace Walter.Models
             return sb.ToString();
         }
 
-        private string GetHitsVotesScoreAndReturnAsTable(string html, string csv, string startReplace)
+        private static string GetHitsVotesScoreAndReturnAsTable(string html, string csv, string startReplace)
         {
             string startTag = "";
             string endTag = "";
@@ -252,7 +257,7 @@ namespace Walter.Models
 
                 try
                 {
-                    html = ScrapeHTML(urLs[i]);
+                    html = ScrapeHtml(urLs[i]);
 
 
                     //Get "Created/Edited" dates
@@ -333,7 +338,7 @@ namespace Walter.Models
             return bldr.ToString();
         }
 
-        private string ConvertNamedMonthToInt(string namedMonth)
+        private static string ConvertNamedMonthToInt(string namedMonth)
         {
             string retVal = namedMonth;
             string months = "jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec,";
@@ -385,7 +390,7 @@ namespace Walter.Models
             return retVal;
         }
 
-        private string GetURLandShortenSubstring(string inHtml, out string outHtml)
+        private static string GetUrLandShortenSubstring(string inHtml, out string outHtml)
         {
             string retVal = "";
             string s = "href='";
@@ -418,7 +423,7 @@ namespace Walter.Models
             return retVal;
         }
 
-        private string Substring(string startTag, string endTag, string subStringThis, bool includeStartTag, bool includeEndTag)
+        private static string Substring(string startTag, string endTag, string subStringThis, bool includeStartTag, bool includeEndTag)
         {
             int startIndex = subStringThis.IndexOf(startTag);
 
@@ -438,7 +443,7 @@ namespace Walter.Models
             return subStringThis.Trim();
         }
 
-        private string PadDay(string day)
+        private static string PadDay(string day)
         {
             var retVal = day.Trim();
 

@@ -8,6 +8,8 @@ namespace Walter.Models
 {
     public class QuoteBusinessLayer
     {
+        private static readonly WalterEntities Entities = new WalterEntities();
+
         public VmQuote RandomQuote()
         {
             var temp = GetQuotes();
@@ -19,9 +21,7 @@ namespace Walter.Models
 
         public List<VmQuote> GetQuotes()
         {
-            var db = new WalterEntities();
-
-            return db.Quotes.ToList().Select(q => new VmQuote
+            return Entities.Quotes.ToList().Select(q => new VmQuote
             {
                 Id = q.Id,
                 Quote = q.Quote1,

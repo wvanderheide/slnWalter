@@ -8,11 +8,11 @@ namespace Walter.Models
 {
     public class ContactBusinessLayer
     {
+        private static readonly WalterEntities Entities = new WalterEntities();
+
         public List<VmContact> GetContacts()
         {
-            var db = new WalterEntities();
-
-            return db.Contacts.ToList().Select(q => new VmContact
+            return Entities.Contacts.ToList().Select(q => new VmContact
             {
                 Id = q.Id,
                 FirstName = q.First_Name,
