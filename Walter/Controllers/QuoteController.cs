@@ -4,22 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Walter.Models;
+using Walter.ViewModels;
 
 namespace Walter.Controllers
 {
     public class QuoteController : Controller
     {
-        // GET: Quote
+        private static QuoteBusinessLayer quoteBusinessLayer = new QuoteBusinessLayer();
+        private VmQuote QandA = quoteBusinessLayer.RandomQuote();
+
         public ActionResult Index()
         {
-            var b = new QuoteBusinessLayer();
-            var q = b.GetQuotes();
+            ViewBag.RandomQuote = QandA.Quote;
+            ViewBag.Author = QandA.Author;
 
-            var temp = b.RandomQuote();
-            ViewBag.RandomQuote = temp.Quote;
-            ViewBag.Author = temp.Author;
-
-            return View("Index", q.OrderByDescending(x => x.Id).ToList());
+            return View("Index",  quoteBusinessLayer.GetQuotes().OrderByDescending(x => x.Id).ToList());
         }
     }
 }

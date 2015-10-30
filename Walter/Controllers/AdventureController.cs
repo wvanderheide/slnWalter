@@ -6,15 +6,16 @@ namespace Walter.Controllers
 {
     public class AdventureController : Controller
     {
+        private static readonly AdventureBusinessLayer AdventureBusinessLayer = new AdventureBusinessLayer();
+        private static readonly QuoteBusinessLayer QuoteBusinessLayer = new QuoteBusinessLayer();
+        private readonly VmQuote _qandA = QuoteBusinessLayer.RandomQuote();
+
         public ActionResult Index()
         {
-            var q = new QuoteBusinessLayer();
-            var temp = q.RandomQuote();
-            ViewBag.RandomQuote = temp.Quote;
-            ViewBag.Author = temp.Author;
+            ViewBag.RandomQuote = _qandA.Quote;
+            ViewBag.Author = _qandA.Author;
 
-            var b = new AdventureBusinessLayer();
-            return View("Index",  b.GetPhotoYears());
+            return View("Index", AdventureBusinessLayer.GetPhotoYears());
         }
     }
 }

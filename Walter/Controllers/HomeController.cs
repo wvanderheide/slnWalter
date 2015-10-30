@@ -1,21 +1,21 @@
 ﻿using System.Web.Mvc;
 using Walter.Models;
+using Walter.ViewModels;
 
 namespace Walter.Controllers
 {
     public class HomeController : Controller
     {
+        private static readonly ImageBusinessLayer ImageBusinessLayer = new ImageBusinessLayer();
+        private static readonly QuoteBusinessLayer QuoteBusinessLayer = new QuoteBusinessLayer();
+        private readonly VmQuote _qandA = QuoteBusinessLayer.RandomQuote();
+
         public ActionResult Index()
         {
-            var q = new QuoteBusinessLayer();
-            var temp = q.RandomQuote();
-            ViewBag.RandomQuote = temp.Quote;
-            ViewBag.Author = temp.Author;
+            ViewBag.RandomQuote = _qandA.Quote;
+            ViewBag.Author = _qandA.Author;
 
-            var i = new ImageBusinessLayer();
-            var vm = i.Get10RandomImages();
-
-            return View("Index", vm);
+            return View("Index", ImageBusinessLayer.Get10RandomImages());
         }
     }
 }

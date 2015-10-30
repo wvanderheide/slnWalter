@@ -8,34 +8,34 @@ namespace Walter.Controllers
 {
     public class MountainController : Controller
     {
+        private static readonly MountainBusinessLayer MountainBusinessLayer = new MountainBusinessLayer();
+        private static readonly QuoteBusinessLayer QuoteBusinessLayer = new QuoteBusinessLayer();
+        private readonly VmQuote _qandA = QuoteBusinessLayer.RandomQuote();
+        
         public ActionResult Index()
         {
             //TODO:  Once I add authentication this Session Var will be come "real";
             Session["IsAdmin"] = true;
-
-            var b = new MountainBusinessLayer();
-            var mtns = b.GetMountains();
-
-            var q = new QuoteBusinessLayer();
-            var temp = q.RandomQuote();
-            ViewBag.RandomQuote = temp.Quote;
-            ViewBag.Author = temp.Author;
+            
+            ViewBag.RandomQuote = _qandA.Quote;
+            ViewBag.Author = _qandA.Author;
 
             //Most Recent Summit Date on top
-            return View("Index", mtns.OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList());
+            return View("Index", MountainBusinessLayer.GetMountains().OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList());
         }
 
-        //public ActionResult Years()
-        //{
-            
-        //}
+        public ActionResult Years()
+        {
+            ViewBag.RandomQuote = _qandA.Quote;
+            ViewBag.Author = _qandA.Author;
+
+            return View();
+        }
 
         public ActionResult ScreenScrapper()
         {
-            var q = new QuoteBusinessLayer();
-            var temp = q.RandomQuote();
-            ViewBag.RandomQuote = temp.Quote;
-            ViewBag.Author = temp.Author;
+            ViewBag.RandomQuote = _qandA.Quote;
+            ViewBag.Author = _qandA.Author;
 
             if (TempData["html"] == null)
             {
@@ -50,8 +50,7 @@ namespace Walter.Controllers
         [HttpPost]
         public ActionResult UpdateHtml(string SummitPostUrl)
         {
-            var b = new MountainBusinessLayer();
-            TempData["html"] = b.GetSpHtml(SummitPostUrl);
+            TempData["html"] = MountainBusinessLayer.GetSpHtml(SummitPostUrl);
 
             return RedirectToAction("ScreenScrapper");
         }
@@ -59,8 +58,8 @@ namespace Walter.Controllers
         [HttpGet]
         public ActionResult Map()
         {
-            var b = new MountainBusinessLayer();
-            var mtns = b.GetMountains();
+            var mtns = MountainBusinessLayer.GetMountains();
+
             if (Request["Id"] != null)
             {
                 ViewBag.Zoom = 14;
@@ -87,8 +86,7 @@ namespace Walter.Controllers
             DateTime tempDate;
             if (ModelState.IsValid && DateTime.TryParse(mtnSummitDate, out tempDate))
             {
-                var biz = new MountainBusinessLayer();
-                biz.SaveMountain(m, mtnSummitDate, mtnSummitNote);
+                MountainBusinessLayer.SaveMountain(m, mtnSummitDate, mtnSummitNote);
             }
 
             return RedirectToAction("Index");
@@ -100,8 +98,7 @@ namespace Walter.Controllers
             DateTime tempDate;
             if (DateTime.TryParse(summitDate, out tempDate))
             {
-                var biz = new MountainBusinessLayer();
-                biz.SaveLog(mountainId, summitDate, summitNote);
+                MountainBusinessLayer.SaveLog(mountainId, summitDate, summitNote);
             }
 
             return RedirectToAction("Index");

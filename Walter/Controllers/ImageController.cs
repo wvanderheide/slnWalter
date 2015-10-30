@@ -4,37 +4,32 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Walter.Models;
+using Walter.ViewModels;
 
 namespace Walter.Controllers
 {
     public class ImageController : Controller
     {
-        // GET: Image
+        private static readonly ImageBusinessLayer ImageBusinessLayer = new ImageBusinessLayer();
+        private static readonly QuoteBusinessLayer QuoteBusinessLayer = new QuoteBusinessLayer();
+        private readonly VmQuote _qandA = QuoteBusinessLayer.RandomQuote();
+
         public ActionResult Index()
         {
-            var b = new QuoteBusinessLayer();
-            var q = b.GetQuotes();
-
-            var temp = b.RandomQuote();
-            ViewBag.RandomQuote = temp.Quote;
-            ViewBag.Author = temp.Author;
-
-            var i = new ImageBusinessLayer();
-
-            return View("Index", i.GetImages());
+            ViewBag.RandomQuote = _qandA.Quote;
+            ViewBag.Author = _qandA.Author;
+            
+            return View("Index", ImageBusinessLayer.GetImages());
         }
 
         [HttpPost]
         public bool DeleteImage(int Id)
         {
             bool retVal = true;
-            var i = new ImageBusinessLayer();
-
-            var x = i.DeleteImage(Id);
-
+            
             try
             {
-                i.DeleteImage(Id);
+                ImageBusinessLayer.DeleteImage(Id);
             }
             catch
             {

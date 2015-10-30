@@ -243,6 +243,7 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Image\Index.cshtml" />
     <Content Include="Views\Mountain\ScreenScrapper.cshtml" />
+    <Content Include="Views\Mountain\Years.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

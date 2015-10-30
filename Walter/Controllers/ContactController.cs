@@ -4,21 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Walter.Models;
+using Walter.ViewModels;
 
 namespace Walter.Controllers
 {
     public class ContactController : Controller
     {
-        // GET: Contacts
+        private static readonly ContactBusinessLayer ContactBusinessLayer = new ContactBusinessLayer();
+        private static readonly QuoteBusinessLayer QuoteBusinessLayer = new QuoteBusinessLayer();
+        private readonly VmQuote _qandA = QuoteBusinessLayer.RandomQuote();
+
         public ActionResult Index()
         {
-            var q = new QuoteBusinessLayer();
-            var temp = q.RandomQuote();
-            ViewBag.RandomQuote = temp.Quote;
-            ViewBag.Author = temp.Author;
+            ViewBag.RandomQuote = _qandA.Quote;
+            ViewBag.Author = _qandA.Author;
 
-            var b = new ContactBusinessLayer();
-            var contacts = b.GetContacts();
+            var contacts = ContactBusinessLayer.GetContacts();
 
             contacts = contacts.OrderBy(f => f.FirstName).ToList();
             ViewBag.SortByLastName = false;
@@ -32,9 +33,9 @@ namespace Walter.Controllers
             return View("Index", contacts);
         }
 
-        public ActionResult Sort(bool? SortByLastName)
+        public ActionResult Sort(bool? sortByLastName)
         {
-            TempData["SortByLastName"] = SortByLastName;
+            TempData["SortByLastName"] = sortByLastName;
 
             return RedirectToAction("Index");
         }
