@@ -39,10 +39,34 @@ namespace Walter.Models
             return mountainList;
         }
 
-        //public List<VmMountain> GetAllClimbs()
-        //{
-            
-        //}
+        public List<VmClimb> Climbs()
+        {
+            var mtns = Entities.AllClimbs();
+
+            var mountainList = mtns.Select(mtn => new VmClimb
+            {
+                Id = mtn.Id,
+                Name = mtn.Name,
+                Elevation = mtn.Elevation,
+                Country = mtn.Country,
+                State = mtn.State,
+                Latitude = mtn.Latitude,
+                Longitude = mtn.Longitude,
+                MountainNote = mtn.MountainNote,
+                SummitDate = mtn.SummitDate,
+                Year = Convert.ToDateTime(mtn.SummitDate).Year,
+                SummitNote = mtn.SummitNote
+            }).ToList();
+
+            return mountainList;
+        }
+        
+        public List<VmClimbYear> ClimbYears()
+        {
+            List<VmClimb> climbs = Climbs().OrderByDescending(y => y.Year).ThenByDescending(m => m.SummitDate).ToList();
+
+            return PutClimbsInColumns(climbs);
+        }
 
         public bool SaveMountain(VmMountain m, string summitDate, string summitNote)
         {
@@ -451,6 +475,80 @@ namespace Walter.Models
                 retVal = "0" + retVal;
 
             return retVal;
+        }
+
+
+        private List<VmClimbYear> PutClimbsInColumns(List<VmClimb> climbs)
+        {
+            var climbYears = new List<VmClimbYear>();
+            var itemsPerCol = new int[4];
+            var grouped = climbs.GroupBy(y => y.Year).Select(group => new { Year = group.Key, Count = group.Count() });
+
+            foreach (var year in grouped)
+            {
+                var thisYear = climbs.Where(y => y.Year == year.Year).ToList();
+                int loopCounter = 0;
+                var climbYear = new VmClimbYear
+                {
+                    Year = year.Year,
+                    Col1 = new List<VmClimb>(),
+                    Col2 = new List<VmClimb>(),
+                    Col3 = new List<VmClimb>(),
+                    Col4 = new List<VmClimb>()
+                };
+
+                CalculateColumnCounts(thisYear.Count, out itemsPerCol);
+
+                foreach (var item in thisYear)
+                {
+                    loopCounter++;
+
+                    if (loopCounter <= itemsPerCol[0])
+                    {
+                        climbYear.Col1.Add(item);
+                    }
+                    else if (loopCounter <= (itemsPerCol[0] + itemsPerCol[1]))
+                    {
+                        climbYear.Col2.Add(item);
+                    }
+                    else if (loopCounter <= (itemsPerCol[0] + itemsPerCol[1] + itemsPerCol[2]))
+                    {
+                        climbYear.Col3.Add(item);
+                    }
+                    else
+                    {
+                        climbYear.Col4.Add(item);
+                    }
+                }
+                climbYears.Add(climbYear);
+            }
+            return climbYears;
+        }
+
+
+        private void CalculateColumnCounts(int totalItems, out int[] colCounts)
+        {
+            var itemsPerCol = new int[4];
+            int remain = Convert.ToInt32(decimal.Remainder(totalItems, 4m));
+            itemsPerCol[0] = itemsPerCol[1] = itemsPerCol[2] = itemsPerCol[3] = totalItems / 4;
+
+            switch (remain)
+            {
+                case 1:
+                    itemsPerCol[0]++;
+                    break;
+                case 2:
+                    itemsPerCol[0]++;
+                    itemsPerCol[1]++;
+                    break;
+                case 3:
+                    itemsPerCol[0]++;
+                    itemsPerCol[1]++;
+                    itemsPerCol[2]++;
+                    break;
+            }
+
+            colCounts = itemsPerCol;
         }
         #endregion
     }

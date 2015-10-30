@@ -8,74 +8,87 @@
         int totalAlbums = 0;
     }
 
-    <div class="container">
-        <br />
-        <div class="well well-sm">
-            <h2><i class="fa fa-camera-retro fa-lg" id="totalAlbums"></i> Adventures</h2>
-            Below are links to pictures of my most memorial adventures
-        </div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        <br /><br />
-        <span style="color: red; font-weight: bold">To do:</span> Add links to trip reports???
-        <br /><br />
-        <div id="jumpTo"></div>
-        @foreach (var y in Model)
-        {
-            if (lagYear != y.Year)
-            {
-                lagYear = y.Year;
-                jumpTo += y.Year + ",";
-                albumsPerYear = y.Col1.Count + y.Col2.Count + y.Col3.Count + y.Col4.Count;
-                @YearHeader(y.Year, albumsPerYear)
-                totalAlbums = totalAlbums + albumsPerYear;
-            }
-            <div class="row">
-                <div class="col-sm-3">
-                    <ul>
-                        @ListItems(y.Col1)
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <ul>
-                        @ListItems(y.Col2)
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <ul>
-                        @ListItems(y.Col3)
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <ul>
-                        @ListItems(y.Col4)
-                    </ul>
-                </div>
-            </div>
-        }
-        @{
-            int length = jumpTo.Length - 1;
-            jumpTo = jumpTo.Substring(0, length);
-            jumpTo = "[" + jumpTo + "];";
-        }
-        <script>
-            $(document).ready(function () {
-                var jumpTo = @jumpTo;
-                var jumpToMenu = "";
-                var lastIndex = jumpTo.length -1;
-                $.each( jumpTo, function( index, value ){
-                    jumpToMenu +=  "<a href='#Year" + value + "'>" + value + "</a>";
-                    if(index < lastIndex)
-                    {
-                        jumpToMenu += " | ";
-                    }
-                });
+<div class="container">
+	<br/>
+	<div class="well well-sm">
+		<h2><i class="fa fa-camera-retro fa-lg" id="totalAlbums"></i> Adventures
+		</h2>
+		Below are links to pictures of my most memorial adventures
+	</div>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	<br/><br/>
+	<span style="color: red; font-weight: bold">To do:</span> Add links to trip reports???
+	<br/><br/>
+	<div id="jumpTo"></div>
+	@foreach (var y in Model)
+	{
+		if (lagYear != y.Year)
+		{
+			lagYear = y.Year;
+			jumpTo += y.Year + ",";
+			albumsPerYear = y.Col1.Count + y.Col2.Count + y.Col3.Count + y.Col4.Count;
+			@YearHeader(y.Year, albumsPerYear)
+			totalAlbums = totalAlbums + albumsPerYear;
+		}
+		<div class="row">
+			<div class="col-sm-3">
+				<ul>
+					@ListItems(y.Col1)
+				</ul>
+			</div>
+			<div class="col-sm-3">
+				<ul>
+					@ListItems(y.Col2)
+				</ul>
+			</div>
+			<div class="col-sm-3">
+				<ul>
+					@ListItems(y.Col3)
+				</ul>
+			</div>
+			<div class="col-sm-3">
+				<ul>
+					@ListItems(y.Col4)
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12" style="text-align: right"><span class="badge">@albumsPerYear</span></div>
+		</div>
+	}
+	@{
+		int length = jumpTo.Length - 1;
+		jumpTo = jumpTo.Substring(0, length);
+		jumpTo = "[" + jumpTo + "];";
+	}
+	<br/>
+	<br/>
+	Total Albums: <span class="badge">@totalAlbums</span>
+</div>
 
-                $('#jumpTo').html("Jump to: " + jumpToMenu);
-                $('#totalAlbums').attr('title', 'Total Albums: @totalAlbums');
-            });
-        </script>
-    </div>
-    @* -----------------------------------------------------------------------------
+
+<script>
+	$(document).ready(function () {
+		var jumpTo = @jumpTo;
+		var jumpToMenu = "";
+		var lastIndex = jumpTo.length -1;
+		var lagYear = "";
+		$.each( jumpTo, function( index, value ){
+			jumpToMenu += "<a href='#Year" + lagYear + "'>" + value + "</a>";
+			lagYear = value;
+
+			if(index < lastIndex)
+			{
+				jumpToMenu += " | ";
+			}
+		});
+
+		$('#jumpTo').html("Jump to: " + jumpToMenu);
+		$('#totalAlbums').attr('title', 'Total Albums: @totalAlbums');
+	});
+</script>
+
+@* -----------------------------------------------------------------------------
            Helper Methods
         ------------------------------------------------------------------------------- *@
     @helper YearHeader(int year, int count)

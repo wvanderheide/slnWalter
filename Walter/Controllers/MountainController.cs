@@ -24,12 +24,12 @@ namespace Walter.Controllers
             return View("Index", MountainBusinessLayer.GetMountains().OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList());
         }
 
-        public ActionResult Years()
+        public ActionResult Climbs()
         {
             ViewBag.RandomQuote = _qandA.Quote;
             ViewBag.Author = _qandA.Author;
 
-            return View();
+            return View("Climbs", MountainBusinessLayer.ClimbYears());
         }
 
         public ActionResult ScreenScrapper()

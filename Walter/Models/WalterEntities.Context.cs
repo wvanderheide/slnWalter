@@ -12,6 +12,8 @@ namespace Walter.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class WalterEntities : DbContext
     {
@@ -31,5 +33,10 @@ namespace Walter.Models
         public virtual DbSet<MountainSummitLog> MountainSummitLogs { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Image> Images { get; set; }
+    
+        public virtual ObjectResult<AllClimbs_Result> AllClimbs()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AllClimbs_Result>("AllClimbs");
+        }
     }
 }

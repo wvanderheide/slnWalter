@@ -82,6 +82,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AllClimbs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="WalterModelStoreContainer">
           <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
@@ -108,6 +109,7 @@
             <End Role="MountainSummitLog" EntitySet="MountainSummitLogs" />
           </AssociationSet>
           <EntitySet Name="Contacts" EntityType="WalterModel.Contact" />
+          <FunctionImport Name="AllClimbs" ReturnType="Collection(WalterModel.AllClimbs_Result)" />
           <EntitySet Name="Images" EntityType="WalterModel.Image" />
         </EntityContainer>
         <EntityType Name="Quote">
@@ -182,6 +184,19 @@
           <Property Name="Nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="AllClimbs_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Elevation" Nullable="false" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Latitude" Nullable="true" Precision="30" Scale="10" />
+          <Property Type="Decimal" Name="Longitude" Nullable="true" Precision="30" Scale="10" />
+          <Property Type="String" Name="MountainNote" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="MountainID" Nullable="true" />
+          <Property Type="DateTime" Name="SummitDate" Nullable="true" />
+          <Property Type="String" Name="SummitNote" Nullable="true" MaxLength="255" />
+        </ComplexType>
         <EntityType Name="Image">
           <Key>
             <PropertyRef Name="Id" />
@@ -258,6 +273,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AllClimbs" FunctionName="WalterModel.Store.AllClimbs">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WalterModel.AllClimbs_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Elevation" ColumnName="Elevation" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="MountainNote" ColumnName="MountainNote" />
+                <ScalarProperty Name="MountainID" ColumnName="MountainID" />
+                <ScalarProperty Name="SummitDate" ColumnName="SummitDate" />
+                <ScalarProperty Name="SummitNote" ColumnName="SummitNote" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="Images">
             <EntityTypeMapping TypeName="WalterModel.Image">
               <MappingFragment StoreEntitySet="Images">
