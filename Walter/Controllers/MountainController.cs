@@ -19,9 +19,8 @@ namespace Walter.Controllers
 
             ViewBag.RandomQuote = _qandA.Quote;
             ViewBag.Author = _qandA.Author;
-
-
             ViewBag.Elevation = 0;
+
             if (TempData["elevation"] != null)
             {
                 if (TempData["elevation"].ToString() == "1")
@@ -34,7 +33,7 @@ namespace Walter.Controllers
                 //Tallest on bottom
                 return View("Index", MountainBusinessLayer.GetMountains().OrderBy(x => x.Elevation).ThenByDescending(x => x.SummitLog.Last().SummitDate).ToList());
             }
-
+            
             //Most Recent Summit Date on top
             return View("Index", MountainBusinessLayer.GetMountains().OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList());
         }
@@ -43,6 +42,15 @@ namespace Walter.Controllers
         {
             ViewBag.RandomQuote = _qandA.Quote;
             ViewBag.Author = _qandA.Author;
+            
+            if (TempData["startDate"] != null && TempData["endDate"] != null)
+            {
+                ViewBag.startDate = TempData["startDate"];
+                ViewBag.endDate = TempData["endDate"];
+                var climbs = MountainBusinessLayer.ClimbYearsFiltered(Convert.ToDateTime(TempData["startDate"]), Convert.ToDateTime(TempData["endDate"]));
+                return View("Climbs", climbs);
+            }
+
 
             return View("Climbs", MountainBusinessLayer.ClimbYears());
         }
@@ -101,6 +109,16 @@ namespace Walter.Controllers
             TempData["elevation"] = elevation;
 
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Filter(DateTime startDate, DateTime endDate)
+        {
+            TempData["startDate"] = startDate;
+
+            TempData["endDate"] = endDate;
+
+            return RedirectToAction("Climbs");
         }
 
         [HttpPost]

@@ -68,6 +68,14 @@ namespace Walter.Models
             return PutClimbsInColumns(climbs);
         }
 
+        public List<VmClimbYear> ClimbYearsFiltered(DateTime startDate, DateTime endDate)
+        {
+            List<VmClimb> climbs = Climbs().OrderByDescending(y => y.Year).ThenByDescending(m => m.SummitDate).ToList();
+            climbs = climbs.Where(m => m.SummitDate >= startDate && m.SummitDate <= endDate).ToList();
+
+            return PutClimbsInColumns(climbs);
+        }
+
         public bool SaveMountain(VmMountain m, string summitDate, string summitNote)
         {
             bool rtnVal = true;

@@ -249,6 +249,7 @@
     <Content Include="Views\Image\Index.cshtml" />
     <Content Include="Views\Mountain\ScreenScrapper.cshtml" />
     <Content Include="Views\Mountain\Climbs.cshtml" />
+    <Content Include="Views\Shared\_MonthDayYear.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
