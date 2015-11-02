@@ -21,10 +21,10 @@ namespace Walter.Controllers
             ViewBag.Author = _qandA.Author;
 
 
-            ViewBag.Elevation = 0; 
-            if (!string.IsNullOrEmpty(Request.QueryString["Elevation"]))
+            ViewBag.Elevation = 0;
+            if (TempData["elevation"] != null)
             {
-                if (Request.QueryString["Elevation"].ToString() == "1")
+                if (TempData["elevation"].ToString() == "1")
                 {
                     //Tallest on top
                     return View("Index", MountainBusinessLayer.GetMountains().OrderByDescending(x => x.Elevation).ThenByDescending(x => x.SummitLog.Last().SummitDate).ToList());
@@ -93,6 +93,14 @@ namespace Walter.Controllers
             //All
             ViewBag.Zoom = 3;
             return View("Map", mtns.OrderBy(a => a.Name).ToList());
+        }
+
+        [HttpPost]
+        public ActionResult SortOnElevation(string elevation)
+        {
+            TempData["elevation"] = elevation;
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
