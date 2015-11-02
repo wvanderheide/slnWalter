@@ -11,14 +11,29 @@ namespace Walter.Controllers
         private static readonly MountainBusinessLayer MountainBusinessLayer = new MountainBusinessLayer();
         private static readonly QuoteBusinessLayer QuoteBusinessLayer = new QuoteBusinessLayer();
         private readonly VmQuote _qandA = QuoteBusinessLayer.RandomQuote();
-        
+
         public ActionResult Index()
         {
             //TODO:  Once I add authentication this Session Var will be come "real";
             Session["IsAdmin"] = true;
-            
+
             ViewBag.RandomQuote = _qandA.Quote;
             ViewBag.Author = _qandA.Author;
+
+
+            ViewBag.Elevation = 0; 
+            if (!string.IsNullOrEmpty(Request.QueryString["Elevation"]))
+            {
+                if (Request.QueryString["Elevation"].ToString() == "1")
+                {
+                    //Tallest on top
+                    return View("Index", MountainBusinessLayer.GetMountains().OrderByDescending(x => x.Elevation).ThenByDescending(x => x.SummitLog.Last().SummitDate).ToList());
+                }
+
+                ViewBag.Elevation = 1;
+                //Tallest on bottom
+                return View("Index", MountainBusinessLayer.GetMountains().OrderBy(x => x.Elevation).ThenByDescending(x => x.SummitLog.Last().SummitDate).ToList());
+            }
 
             //Most Recent Summit Date on top
             return View("Index", MountainBusinessLayer.GetMountains().OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList());
@@ -46,7 +61,7 @@ namespace Walter.Controllers
 
             return View();
         }
-        
+
         [HttpPost]
         public ActionResult UpdateHtml(string SummitPostUrl)
         {
