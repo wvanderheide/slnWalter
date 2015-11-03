@@ -1,7 +1,7 @@
 ﻿@using Walter.ViewModels;
 @model List<VmClimbYear>
 @{
-	ViewBag.Title = "Years";
+	ViewBag.Title = "Climbs";
 	int lagYear = 0;
 	string jumpTo = string.Empty;
 	int climbsPerYear = 0;
@@ -14,18 +14,20 @@
 		<h2>
 			<span class="glyphicon glyphicon-picture fa-lg" id="totalClimbs"></span> Climbs
 		</h2>
-		Below is a list of mountain climbs I have done arranged by date.
+		@ViewBag.subTitle
 	</div>
 	<form method="POST" action="@Url.Action("Filter", "Mountain")" id="form1" name="form1">
 		<table>
 			<tr>
 				<td>Start Date:</td>
-				<td><input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date" value ="@ViewBag.startDate" /></td>
+				<td><input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date"/></td>
+				@*<td>&nbsp;@ViewBag.startDate</td>*@
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>End Date:</td>
-				<td><input type="date" class="form-control" id="endDate" name="endDate" placeholder="End Date" value="@ViewBag.endDate" /></td>
+				<td><input type="date" class="form-control" id="endDate" name="endDate" placeholder="End Date"  /></td>
+				@*<td>&nbsp;@ViewBag.endDate</td>*@
 				<td>&nbsp;<button type="submit" class="btn btn-primary" id="btnGo" name="btnGo">Go!</button></td>
 			</tr>
 		</table>
