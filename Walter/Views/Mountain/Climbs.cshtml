@@ -1,131 +1,157 @@
 ﻿@using Walter.ViewModels;
 @model List<VmClimbYear>
 @{
-	ViewBag.Title = "Climbs";
-	int lagYear = 0;
-	string jumpTo = string.Empty;
-	int climbsPerYear = 0;
-	int totalClimbs = 0;
+    ViewBag.Title = "Climbs";
+    int lagYear = 0;
+    string jumpTo = string.Empty;
+    int climbsPerYear = 0;
+    int totalClimbs = 0;
 }
 
 <div class="container">
-	<br />
-	<div class="well well-sm">
-		<h2>
-			<span class="glyphicon glyphicon-picture fa-lg" id="totalClimbs"></span> Climbs
-		</h2>
-		@ViewBag.subTitle
-	</div>
-	<form method="POST" action="@Url.Action("Filter", "Mountain")" id="form1" name="form1">
-		<table>
-			<tr>
-				<td>Start Date:</td>
-				<td><input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date"/></td>
-				@*<td>&nbsp;@ViewBag.startDate</td>*@
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>End Date:</td>
-				<td><input type="date" class="form-control" id="endDate" name="endDate" placeholder="End Date"  /></td>
-				@*<td>&nbsp;@ViewBag.endDate</td>*@
-				<td>&nbsp;<button type="submit" class="btn btn-primary" id="btnGo" name="btnGo">Go!</button></td>
-			</tr>
-		</table>
-	</form>
+    <br />
+    <div class="well well-sm">
+        <h2>
+            <span class="glyphicon glyphicon-picture fa-lg" id="totalClimbs"></span> Climbs
+        </h2>
+        @ViewBag.subTitle
+    </div>
+    <form method="POST" action="@Url.Action("Filter", "Mountain")" id="form1" name="form1">
+        <table>
+            <tr>
+                <td>Start Date:</td>
+                <td><input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date" /></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>End Date:</td>
+                <td><input type="date" class="form-control" id="endDate" name="endDate" placeholder="End Date" /></td>
+                <td>&nbsp;<button type="button" onclick="validate();" class="btn btn-primary" id="btnGo" name="btnGo">Go!</button></td>
+            </tr>
+        </table>
+    </form>
 
-	<br />
-	<div id="jumpTo"></div>
-	@foreach (var y in Model)
-	{
-		if (lagYear != y.Year)
-		{
-			lagYear = y.Year;
-			jumpTo += y.Year + ",";
-			climbsPerYear = y.Col1.Count + y.Col2.Count + y.Col3.Count + y.Col4.Count;
-			@YearHeader(y.Year, climbsPerYear)
-			totalClimbs = totalClimbs + climbsPerYear;
-		}
-		<div class="row">
-			<div class="col-sm-3">
-				<ul>
-					@ListItems(y.Col1)
-				</ul>
-			</div>
-			<div class="col-sm-3">
-				<ul>
-					@ListItems(y.Col2)
-				</ul>
-			</div>
-			<div class="col-sm-3">
-				<ul>
-					@ListItems(y.Col3)
-				</ul>
-			</div>
-			<div class="col-sm-3">
-				<ul>
-					@ListItems(y.Col4)
-				</ul>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12" style="text-align: right"><span class="badge">@climbsPerYear</span></div>
-		</div>
-	}
-	@{
-		int length = jumpTo.Length - 1;
-		jumpTo = jumpTo.Substring(0, length);
-		jumpTo = "[" + jumpTo + "];";
-	}
-	<br />
-	<br />
-	Total climbs: <span class="badge">@totalClimbs</span>
+    <br />
+    <div id="jumpTo"></div>
+    @foreach (var y in Model)
+    {
+        if (lagYear != y.Year)
+        {
+            lagYear = y.Year;
+            jumpTo += y.Year + ",";
+            climbsPerYear = y.Col1.Count + y.Col2.Count + y.Col3.Count + y.Col4.Count;
+            @YearHeader(y.Year, climbsPerYear)
+            totalClimbs = totalClimbs + climbsPerYear;
+        }
+        <div class="row">
+            <div class="col-sm-3">
+                <ul>
+                    @ListItems(y.Col1)
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <ul>
+                    @ListItems(y.Col2)
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <ul>
+                    @ListItems(y.Col3)
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <ul>
+                    @ListItems(y.Col4)
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" style="text-align: right"><span class="badge">@climbsPerYear</span></div>
+        </div>
+    }
+    @{
+        int length = jumpTo.Length - 1;
+        if (length > 0)
+        {
+            jumpTo = jumpTo.Substring(0, length);
+            jumpTo = "[" + jumpTo + "];";
+        }
+        else
+        {
+            jumpTo = "X";
+        }
+    }
+    <br />
+    <br />
+    Total climbs: <span class="badge">@totalClimbs</span>
 </div>
 
 <script>
-	$(document).ready(function() {
-		var jumpTo = @jumpTo;
-		var jumpToMenu = "";
-		var lastIndex = jumpTo.length - 1;
-		var lagYear = "";
-		$.each(jumpTo, function(index, value) {
-			jumpToMenu += "<a href='#Year" + lagYear + "'>" + value + "</a>";
-			lagYear = value;
-			if (index < lastIndex) {
-				jumpToMenu += " | ";
-			}
-		});
+    $(document).ready(function() {
+        var jumpTo = @jumpTo;
+        if(jumpTo != 'X')
+        {
+            var jumpToMenu = "";
+            var lastIndex = jumpTo.length - 1;
+            var lagYear = "";
+            $.each(jumpTo, function(index, value) {
+                jumpToMenu += "<a href='#Year" + lagYear + "'>" + value + "</a>";
+                lagYear = value;
+                if (index < lastIndex) {
+                    jumpToMenu += " | ";
+                }
+            });
 
-		$('#jumpTo').html("Jump to: " + jumpToMenu);
-		$('#totalClimbs').attr('title', 'Climbs Total: @totalClimbs');
-	});
+            $('#jumpTo').html("Jump to: " + jumpToMenu);
+            $('#totalClimbs').attr('title', 'Climbs Total: @totalClimbs');
+        }
+    });
+
+    function validate()
+    {
+        if($.trim($('#startDate').val()) === '')
+        {
+            //return false;
+            alert('Pick a start date.')
+        }
+        else if($.trim($('#endDate').val()) === '')
+        {
+            //return false;
+            alert('Pick an end date.')
+        }
+        else
+        {
+            document.getElementById('form1').submit();
+        }
+    }
 </script>
 
 @* -----------------------------------------------------------------------------
-	   Helper Methods
-	------------------------------------------------------------------------------- *@
+       Helper Methods
+    ------------------------------------------------------------------------------- *@
 @helper YearHeader(int year, int count)
 {
-	<br />
-	<div class="row">
-		<a id="Year@(year)"></a>
-		<div class="col-sm-12" style="background-color:#eee; color:black; font-weight:bold;" title="Total climbs for @year = @count">@year</div>
-	</div>
+    <br />
+    <div class="row">
+        <a id="Year@(year)"></a>
+        <div class="col-sm-12" style="background-color:#eee; color:black; font-weight:bold;" title="Total climbs for @year = @count">@year</div>
+    </div>
 }
 
 @helper ListItems(List<VmClimb> col)
 {
-	foreach (var item in col)
-	{
+    foreach (var item in col)
+    {
 
-		<li>
-			@if (!string.IsNullOrEmpty(item.SummitNote))
-			{
-				@item.Name@:, @item.State <span class="small" title="@(item.SummitNote)" style="cursor:pointer">(@string.Format("{0:M/d}", item.SummitDate))</span><sup style="cursor:pointer" title="@(item.SummitNote)">*</sup>
+        <li>
+            @if (!string.IsNullOrEmpty(item.SummitNote))
+            {
+                @item.Name@:, @item.State <span class="small" title="@(item.SummitNote)" style="cursor:pointer">(@string.Format("{0:M/d}", item.SummitDate))</span><sup style="cursor:pointer" title="@(item.SummitNote)">*</sup>
             }
-			else
-			{
-				@item.Name@:, @item.State <span class="small">(@string.Format("{0:M/d}", item.SummitDate))</span>
+            else
+            {
+                @item.Name@:, @item.State <span class="small">(@string.Format("{0:M/d}", item.SummitDate))</span>
             }
-		</li>
-	}
+        </li>
+    }
 }
