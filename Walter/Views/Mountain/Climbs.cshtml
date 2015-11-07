@@ -7,101 +7,101 @@
     int totalClimbs = 0;
 }
 <b>To do:</b> Move the Javascript into the site.js file.
-    <form method="POST" action="@Url.Action("Filter", "Mountain")" id="form1" name="form1">
-        <table>
-            <tr>
-                <td>Start Date:</td>
-                <td><input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date" /></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>End Date:</td>
-                <td><input type="date" class="form-control" id="endDate" name="endDate" placeholder="End Date" /></td>
-                <td>&nbsp;<button type="button" onclick="climbsValidate();" class="btn btn-primary" id="btnGo" name="btnGo">Go!</button></td>
-            </tr>
-        </table>
-    </form>
+<form method="POST" action="@Url.Action("Filter", "Mountain")" id="form1" name="form1">
+    <table>
+        <tr>
+            <td>Start Date:</td>
+            <td><input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date" /></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>End Date:</td>
+            <td><input type="date" class="form-control" id="endDate" name="endDate" placeholder="End Date" /></td>
+            <td>&nbsp;<button type="button" onclick="climbsValidate();" class="btn btn-primary" id="btnGo" name="btnGo">Go!</button></td>
+        </tr>
+    </table>
+</form>
 
-    <br />
-    <div id="jumpTo"></div>
-    @foreach (var y in Model)
+<br />
+<div id="jumpTo"></div>
+@foreach (var y in Model)
+{
+    if (lagYear != y.Year)
     {
-        if (lagYear != y.Year)
-        {
-            lagYear = y.Year;
-            jumpTo += y.Year + ",";
-            climbsPerYear = y.Col1.Count + y.Col2.Count + y.Col3.Count + y.Col4.Count;
-            @YearHeader(y.Year, climbsPerYear)
-            totalClimbs = totalClimbs + climbsPerYear;
-        }
-        <div class="row">
-            <div class="col-sm-3">
-                <ul>
-                    @ListItems(y.Col1)
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <ul>
-                    @ListItems(y.Col2)
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <ul>
-                    @ListItems(y.Col3)
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <ul>
-                    @ListItems(y.Col4)
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12" style="text-align: right"><span class="badge">@climbsPerYear</span></div>
-        </div>
+        lagYear = y.Year;
+        jumpTo += y.Year + ",";
+        climbsPerYear = y.Col1.Count + y.Col2.Count + y.Col3.Count + y.Col4.Count;
+        @YearHeader(y.Year, climbsPerYear)
+        totalClimbs = totalClimbs + climbsPerYear;
     }
-    @{
-        int length = jumpTo.Length - 1;
-        if (length > 0)
-        {
-            jumpTo = jumpTo.Substring(0, length);
-            jumpTo = "[" + jumpTo + "];";
-        }
-        else
-        {
-            jumpTo = "X";
-        }
+    <div class="row">
+        <div class="col-sm-3">
+            <ul>
+                @ListItems(y.Col1)
+            </ul>
+        </div>
+        <div class="col-sm-3">
+            <ul>
+                @ListItems(y.Col2)
+            </ul>
+        </div>
+        <div class="col-sm-3">
+            <ul>
+                @ListItems(y.Col3)
+            </ul>
+        </div>
+        <div class="col-sm-3">
+            <ul>
+                @ListItems(y.Col4)
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" style="text-align: right"><span class="badge">@climbsPerYear</span></div>
+    </div>
+}
+@{
+    int length = jumpTo.Length - 1;
+    if (length > 0)
+    {
+        jumpTo = jumpTo.Substring(0, length);
+        jumpTo = "[" + jumpTo + "];";
     }
-    <br />
-    <br />
+    else
+    {
+        jumpTo = "X";
+    }
+}
+<br />
+<br />
     Total climbs: <span class="badge">@totalClimbs</span>
 
-<script>
-    $(document).ready(function() {
-        var jumpTo = @jumpTo;
-        if(jumpTo != 'X')
-        {
-            var jumpToMenu = "";
-            var lastIndex = jumpTo.length - 1;
-            var lagYear = "";
-            $.each(jumpTo, function(index, value) {
-                jumpToMenu += "<a href='#Year" + lagYear + "'>" + value + "</a>";
-                lagYear = value;
-                if (index < lastIndex) {
-                    jumpToMenu += " | ";
-                }
-            });
+    <script>
+        $(document).ready(function() {
+            var jumpTo = @jumpTo;
+            if(jumpTo != 'X')
+            {
+                var jumpToMenu = "";
+                var lastIndex = jumpTo.length - 1;
+                var lagYear = "";
+                $.each(jumpTo, function(index, value) {
+                    jumpToMenu += "<a href='#Year" + lagYear + "'>" + value + "</a>";
+                    lagYear = value;
+                    if (index < lastIndex) {
+                        jumpToMenu += " | ";
+                    }
+                });
 
-            $('#jumpTo').html("Jump to: " + jumpToMenu);
-            $('#totalClimbs').attr('title', 'Climbs Total: @totalClimbs');
-        }
-    });
-</script>
+                $('#jumpTo').html("Jump to: " + jumpToMenu);
+                $('#totalClimbs').attr('title', 'Climbs Total: @totalClimbs');
+            }
+        });
+    </script>
 
-@* -----------------------------------------------------------------------------
-       Helper Methods
-    ------------------------------------------------------------------------------- *@
-@helper YearHeader(int year, int count)
+    @* -----------------------------------------------------------------------------
+           Helper Methods
+        ------------------------------------------------------------------------------- *@
+    @helper YearHeader(int year, int count)
 {
     <br />
     <div class="row">
@@ -110,7 +110,7 @@
     </div>
 }
 
-@helper ListItems(List<VmClimb> col)
+    @helper ListItems(List<VmClimb> col)
 {
     foreach (var item in col)
     {

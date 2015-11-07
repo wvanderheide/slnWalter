@@ -1,43 +1,43 @@
-﻿    <form method="post" id="form1" name="form1" action="@Url.Action("UpdateHtml", "Mountain")">
-        This tool looks up the hits, votes, and page score for all the mountains & rocks
-        belonging to a particular <a href="http://www.summitpost.org/users" target="_blank">summitpost user</a>.
-        <br />
-        <br />
-        First you will need to obtain the User Page URL of the summitpost user you seeking
-        Mountain & Rock statistics for. Every mountain page on summitpost has a "Page By"
-        credit, click that link and you will be taken to that users user page. Copy the
-        URL from the browsers address bar, and paste it in the textbox below. Next hit "Go!",
-        and wait for the data to come back. It can take a long time for the data to come
-        back because this page has to open all the Mountain & Rock pages of the that particular
-        user to get the statistics. So please be patient.
-        <br />
-        <br />
-        <b>Please enter in the URL of the <a href="http://www.summitpost.org/users" target="_blank">summitpost User's Page</a>.</b>
-        <br />
-        For example <i>http://www.summitpost.org/users/dean/1160</i>, or <i>http://www.summitpost.org/users/mrwasatch/405</i>
-        <br />
+﻿<form method="post" id="form1" name="form1" action="@Url.Action("UpdateHtml", "Mountain")">
+    This tool looks up the hits, votes, and page score for all the mountains & rocks
+    belonging to a particular <a href="http://www.summitpost.org/users" target="_blank">summitpost user</a>.
+    <br />
+    <br />
+    First you will need to obtain the User Page URL of the summitpost user you seeking
+    Mountain & Rock statistics for. Every mountain page on summitpost has a "Page By"
+    credit, click that link and you will be taken to that users user page. Copy the
+    URL from the browsers address bar, and paste it in the textbox below. Next hit "Go!",
+    and wait for the data to come back. It can take a long time for the data to come
+    back because this page has to open all the Mountain & Rock pages of the that particular
+    user to get the statistics. So please be patient.
+    <br />
+    <br />
+    <b>Please enter in the URL of the <a href="http://www.summitpost.org/users" target="_blank">summitpost User's Page</a>.</b>
+    <br />
+    For example <i>http://www.summitpost.org/users/dean/1160</i>, or <i>http://www.summitpost.org/users/mrwasatch/405</i>
+    <br />
 
-        <div style="float: left;">
-			<input name="SummitPostUrl" type="text" value="http://www.summitpost.org/users/vanman798/23249" id="SummitPostUrl" style="width: 400px;" class="form-control" />
-        </div>
-        <div style="float: left; padding-left: 5px">&nbsp;</div>
-        <div style="float: left;">
-            <input type="submit" name="btnGo" value="Go!" onclick="ShowWaiting(); return false;" id="btnGo" class="btn btn-primary" />
-        </div>
-        <div style="clear:both"></div>
-        <div id="DivWait" style="display: none">
-            <img src="/images/loading.gif" />
-            Loading data, please wait. <span id="sp1" style='background-color: Red; color: White; font-weight: bold;'>&nbsp;This may take several minutes...&nbsp;</span>
-        </div>
-        <br />
-        <br />
-	    <div id="DivData">
-		   @Html.Raw(ViewBag.html)
-	    </div>
-    </form>
+    <div style="float: left;">
+        <input name="SummitPostUrl" type="text" value="http://www.summitpost.org/users/vanman798/23249" id="SummitPostUrl" style="width: 400px;" class="form-control" />
+    </div>
+    <div style="float: left; padding-left: 5px">&nbsp;</div>
+    <div style="float: left;">
+        <input type="submit" name="btnGo" value="Go!" onclick="ShowWaiting(); return false;" id="btnGo" class="btn btn-primary" />
+    </div>
+    <div style="clear:both"></div>
+    <div id="DivWait" style="display: none">
+        <img src="/images/loading.gif" />
+        Loading data, please wait. <span id="sp1" style='background-color: Red; color: White; font-weight: bold;'>&nbsp;This may take several minutes...&nbsp;</span>
+    </div>
+    <br />
+    <br />
+    <div id="DivData">
+        @Html.Raw(ViewBag.html)
+    </div>
+</form>
 <div style="clear:both">&nbsp;</div>
 <script>
     $(document).ready(function () {
-       $("#myTable").tablesorter();
-    });	
+        $("#myTable").tablesorter();
+    });
 </script>
