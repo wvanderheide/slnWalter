@@ -6,25 +6,9 @@
     int climbsPerYear = 0;
     int totalClimbs = 0;
 }
-<div style="float:left; width:49%">
-    <b>Filter by specific date range</b>
-    <form method="POST" action="@Url.Action("Filter", "Mountain")" id="form1" name="form1">
-        <table>
-            <tr>
-                <td>Start Date:</td>
-                <td><input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date" /></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>End Date:</td>
-                <td><input type="date" class="form-control" id="endDate" name="endDate" placeholder="End Date" /></td>
-                <td>&nbsp;<button type="button" onclick="climbsValidate();" class="btn btn-primary" id="btnGo" name="btnGo">Go!</button></td>
-            </tr>
-        </table>
-    </form>
-</div>
-<div style="float:left; width:49%">
-    <b>Filter by month and year</b>
+<div class="row">
+    <div class="col-sm-6">
+        <b>Filter by month and year</b>
         <table>
             <tr>
                 <td>Start Date:</td>
@@ -39,12 +23,29 @@
                 <td>&nbsp;<button type="button" onclick="monthYearFilter();" class="btn btn-primary" id="btnGo" name="btnGo">Go!</button></td>
             </tr>
         </table>
-    <form method="POST" action="@Url.Action("Filter", "Mountain")" id="form2" name="form2">
-        <input type="hidden" id="startDate" name="startDate" />
-        <input type="hidden" id="endDate" name="endDate" />
-    </form>
+        <form method="POST" action="@Url.Action("Filter", "Mountain")" id="form2" name="form2">
+            <input type="hidden" id="startDate" name="startDate" />
+            <input type="hidden" id="endDate" name="endDate" />
+        </form>
+    </div>
+    <div class="col-sm-6">
+        <b>Filter by specific date range</b>
+        <form method="POST" action="@Url.Action("Filter", "Mountain")" id="form1" name="form1">
+            <table>
+                <tr>
+                    <td>Start Date:</td>
+                    <td><input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date" /></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>End Date:</td>
+                    <td><input type="date" class="form-control" id="endDate" name="endDate" placeholder="End Date" /></td>
+                    <td>&nbsp;<button type="button" onclick="climbsValidate();" class="btn btn-primary" id="btnGo" name="btnGo">Go!</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
 </div>
-<div style="clear:both"></div>
 <br />
 <div id="jumpTo"></div>
 @foreach (var y in Model)
@@ -99,11 +100,11 @@
 <br />
     Total climbs: <span class="badge">@totalClimbs</span>
 
-<script>
-    $(document).ready(function () {
-        createJumpAnchors(@yearList, 'Year','jumpTo');
-    });
-</script>
+    <script>
+        $(document).ready(function () {
+            createJumpAnchors(@yearList, 'Year','jumpTo');
+        });
+    </script>
 
     @* -----------------------------------------------------------------------------
            Helper Methods
@@ -135,7 +136,7 @@
     }
 }
 
-@helper MonthSelect(string name)
+    @helper MonthSelect(string name)
 {
     <select name="@name" id="@name" class="form-control">
         @for (int i = 1; i <= 12; i++)
@@ -146,7 +147,7 @@
     </select>
 }
 
-@helper Years(string name)
+    @helper Years(string name)
 {
     <select name="@name" id="@name" class="form-control">
         @for (int i = DateTime.Now.Year; i >= 1967; i--)

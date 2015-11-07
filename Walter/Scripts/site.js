@@ -81,10 +81,10 @@ function ShowSection(num) {
 }
 
 function climbsValidate() {
-    if ($.trim($('#startDate').val()) === '') {
+    if ($.trim($("#form1").find('#startDate').val()) === '') {
         alert('Pick a start date.')
     }
-    else if ($.trim($('#endDate').val()) === '') {
+    else if ($.trim($("#form1").find('#endDate').val()) === '') {
         alert('Pick an end date.')
     }
     else {

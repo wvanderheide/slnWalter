@@ -61,10 +61,17 @@ namespace Walter.Controllers
 
                 var startDate = String.Format("{0:MMM d, yyyy}", Convert.ToDateTime(TempData["startDate"]));
                  var endDate = String.Format("{0:MMM d, yyyy}", Convert.ToDateTime(TempData["endDate"]));
-
-                 PageInfo.SubTitle = "Below is a list of mountains I climbed between " + startDate + " and " + endDate + " inclusive.";
-
+                
                  climbs = MountainBusinessLayer.ClimbYearsFiltered(Convert.ToDateTime(TempData["startDate"]), Convert.ToDateTime(TempData["endDate"]));
+
+                if(climbs.Count == 0)
+                {
+                    PageInfo.SubTitle = "I did not climb any mountains between " + startDate + " and " + endDate + " inclusive.";
+                }
+                else
+                {
+                    PageInfo.SubTitle = "Below is a list of the mountains I climbed between " + startDate + " and " + endDate + " inclusive.";
+                }
             }
             else
             {
