@@ -1,6 +1,9 @@
 ﻿@using Walter.ViewModels;
 @model List<VmImage>
+Image Count:  <span id="ImageCount" class="badge">@Model.Count</span><br />
 <b>Hint:</b> Use the keyboard spacebar to scroll down a page full at a time; and shift-spacebar to scroll up.
+<br />
+<br />
 <form method="post" id="form1" name="form1">
     @foreach (var image in Model)
     {

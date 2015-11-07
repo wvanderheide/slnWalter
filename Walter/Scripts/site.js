@@ -106,6 +106,8 @@ function deleteImage(Id) {
 function (data, status) {
     //alert("Data: " + data + "\nStatus: " + status);
     $('#div' + Id).hide();
+    var c = parseInt($('#ImageCount').text()) * 1 ;
+    $('#ImageCount').text(c - 1);
 });
 }
 
