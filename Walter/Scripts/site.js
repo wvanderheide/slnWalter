@@ -129,3 +129,17 @@ function createJumpAnchors(years,anchorPrefix, menuId)
         $('#' + menuId).html("Jump to: " + jumpToMenu);
     }
 }
+
+function monthYearFilter()
+{
+    var x = $('#StartMonth').val() + "/1/" + $('#StartYear').val();
+    $("#form2").find('#startDate').val(x);
+
+    //   new Date(year, month, day, hours, minutes, seconds, milliseconds)
+    var lastDay = new Date($('#EndYear').val(), $('#EndMonth').val(), 0); //Jan = 0, Feb = 1, etc.  Day set to 0 gives us the last day of the previous month
+    var lastDayWithSlashes = ((lastDay.getMonth() + 1) + '/' + lastDay.getDate()) + '/' + lastDay.getFullYear();
+
+    $("#form2").find('#endDate').val(lastDayWithSlashes);
+
+    document.getElementById('form2').submit();
+}
