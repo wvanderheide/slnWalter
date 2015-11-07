@@ -2,7 +2,7 @@
 @model List<VmPhotoYear>
 @{
     int lagYear = 0;
-    string jumpTo = string.Empty;
+    string yearList = string.Empty;
     int albumsPerYear = 0;
     int totalAlbums = 0;
 }
@@ -14,7 +14,7 @@
     if (lagYear != y.Year)
     {
         lagYear = y.Year;
-        jumpTo += y.Year + ",";
+        yearList += y.Year + ",";
         albumsPerYear = y.Col1.Count + y.Col2.Count + y.Col3.Count + y.Col4.Count;
         @YearHeader(y.Year, albumsPerYear)
         totalAlbums = totalAlbums + albumsPerYear;
@@ -46,15 +46,15 @@
     </div>
 }
 @{
-    int length = jumpTo.Length - 1;
-    jumpTo = jumpTo.Substring(0, length);
-    jumpTo = "[" + jumpTo + "];";
+    int length = yearList.Length - 1;
+    yearList = yearList.Substring(0, length);
+    yearList = "[" + yearList + "]";
 }
 <br />
 <br />
 	Total Albums: <span class="badge">@totalAlbums</span>
 
-    <script>
+    @*<script>
         $(document).ready(function () {
             var jumpTo = @jumpTo;
             var jumpToMenu = "";
@@ -73,7 +73,13 @@
             $('#jumpTo').html("Jump to: " + jumpToMenu);
             $('#totalAlbums').attr('title', 'Total Albums: @totalAlbums');
         });
-    </script>
+    </script>*@
+
+<script>
+    $(document).ready(function () {
+        createJumpAnchors(@yearList, 'Year','jumpTo');
+    });
+</script>
 
     @* -----------------------------------------------------------------------------
            Helper Methods

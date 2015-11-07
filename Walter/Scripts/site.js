@@ -108,3 +108,22 @@ function (data, status) {
     $('#div' + Id).hide();
 });
 }
+
+function createJumpAnchors(years,anchorPrefix, menuId)
+{
+    if (years != 'NONE')
+    {
+        var jumpToMenu = "";
+        var lastIndex = years.length - 1;
+        var lagYear = "";
+        $.each(years, function(index, value) {
+            jumpToMenu += "<a href='#" + anchorPrefix + lagYear + "'>" + value + "</a>";
+            lagYear = value;
+            if (index < lastIndex) {
+                jumpToMenu += " | ";
+            }
+        });
+
+        $('#' + menuId).html("Jump to: " + jumpToMenu);
+    }
+}
