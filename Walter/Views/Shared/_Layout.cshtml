@@ -1,9 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using Walter.ViewModels;
+<!DOCTYPE html>
+@{
+    PageInfo pi = (PageInfo)ViewBag.PageInfo;
+}
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Walter VanderHeide</title>
+    <title>@pi.Title - Walter VanderHeide</title>
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
@@ -35,10 +39,10 @@
 					        <li><a href="@Url.Action("Index", "Mountain")">Mountains</a></li>
 							<li><a href="@Url.Action("Climbs", "Mountain")">Climbs</a></li>
 					        <li><a href="@Url.Action("Map", "Mountain")" target="_blank">Map</a></li>
-					        <li><a href="@Url.Action("ScreenScrapper", "Mountain")">SummitPost</a></li>
+					        <li><a href="@Url.Action("SummitPost", "Mountain")">SummitPost</a></li>
 				        </ul>
 			        </li>
-			        <li><a href="/Adventure" title="Adventures"><i class="fa fa-camera-retro fa-lg"></i> Adventures</a></li>
+			        <li><a href="@Url.Action("Index","Photo")" title="Photos"><i class="fa fa-camera-retro fa-lg"></i> Photos</a></li>
 			        <li><a href="/Resume" title="Resume"><i class="fa fa-book"></i> Resume</a></li>
 			        <li><a href="/Contact" title="Contacts"><i class="fa fa-envelope fa-lg"></i> Contacts</a></li>
 		        </ul>
@@ -53,13 +57,20 @@
         </div>
     </div>
     <div class="container">
+        <br />
+        <div class="well well-sm">
+            <h2>
+                @Html.Raw(pi.Icon) @pi.Title
+            </h2>
+            @Html.Raw(pi.SubTitle)
+        </div>
         @RenderBody()
         <br />
         <br />
         <br />
         <footer>
             <div style="width:100%; text-align:center;" class="small">
-                <a href="/Quote" title="Quotes" style="color:#333">"@ViewBag.RandomQuote"</a> <i>@ViewBag.Author</i>
+                <a href="/Quote" title="Quotes" style="color:#333">"@pi.RandomQuote"</a> <i>@pi.QuoteAuthor</i>
                 <br />
                 <br />
                 &copy; Graphic design and programming by Walter VanderHeide, see <a href="/resume">

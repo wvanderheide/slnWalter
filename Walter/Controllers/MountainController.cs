@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Walter.Models;
@@ -11,15 +12,22 @@ namespace Walter.Controllers
         private static readonly MountainBusinessLayer MountainBusinessLayer = new MountainBusinessLayer();
         private static readonly QuoteBusinessLayer QuoteBusinessLayer = new QuoteBusinessLayer();
         private readonly VmQuote _qandA = QuoteBusinessLayer.RandomQuote();
+        private static PageInfo PageInfo = new PageInfo();
 
         public ActionResult Index()
         {
             //TODO:  Once I add authentication this Session Var will be come "real";
             Session["IsAdmin"] = true;
 
-            ViewBag.RandomQuote = _qandA.Quote;
-            ViewBag.Author = _qandA.Author;
+            PageInfo.Title = "Mountains";
+            PageInfo.Icon = "<span class=\"glyphicon glyphicon-picture fa-lg\"></span>";
+            PageInfo.SubTitle = "Below is a list of mountains I have climbed with summit dates.";
+
+            PageInfo.RandomQuote = _qandA.Quote;
+            PageInfo.QuoteAuthor = _qandA.Author;
+
             ViewBag.Elevation = 0;
+            ViewBag.PageInfo = PageInfo;
 
             if (TempData["elevation"] != null)
             {
@@ -33,36 +41,49 @@ namespace Walter.Controllers
                 //Tallest on bottom
                 return View("Index", MountainBusinessLayer.GetMountains().OrderBy(x => x.Elevation).ThenByDescending(x => x.SummitLog.Last().SummitDate).ToList());
             }
-            
+
             //Most Recent Summit Date on top
             return View("Index", MountainBusinessLayer.GetMountains().OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList());
         }
 
         public ActionResult Climbs()
         {
-            ViewBag.RandomQuote = _qandA.Quote;
-            ViewBag.Author = _qandA.Author;
-            ViewBag.subTitle = "Below is a list of mountain climbs I have done arranged by date.";
+            PageInfo.Title = "Climbs";
+            PageInfo.Icon = "<span class=\"glyphicon glyphicon-picture fa-lg\" id=\"totalClimbs\"></span>";
+            PageInfo.SubTitle = "Below is a list of mountain climbs I have done arranged by date.";
+            PageInfo.RandomQuote = _qandA.Quote;
+            PageInfo.QuoteAuthor = _qandA.Author;
+
+            List<VmClimbYear> climbs = new List<VmClimbYear>();
+
             if (TempData["startDate"] != null && TempData["endDate"] != null)
             {
 
                 var startDate = String.Format("{0:MMM d, yyyy}", Convert.ToDateTime(TempData["startDate"]));
                  var endDate = String.Format("{0:MMM d, yyyy}", Convert.ToDateTime(TempData["endDate"]));
 
-                 ViewBag.subTitle = "Below is a list of mountains I climbed between " + startDate + " and " + endDate;
+                 PageInfo.SubTitle = "Below is a list of mountains I climbed between " + startDate + " and " + endDate + " inclusive.";
 
-                var climbs = MountainBusinessLayer.ClimbYearsFiltered(Convert.ToDateTime(TempData["startDate"]), Convert.ToDateTime(TempData["endDate"]));
-                return View("Climbs", climbs);
+                 climbs = MountainBusinessLayer.ClimbYearsFiltered(Convert.ToDateTime(TempData["startDate"]), Convert.ToDateTime(TempData["endDate"]));
+            }
+            else
+            {
+                climbs = MountainBusinessLayer.ClimbYears();
             }
 
+            ViewBag.PageInfo = PageInfo;
 
-            return View("Climbs", MountainBusinessLayer.ClimbYears());
+            return View("Climbs", climbs);
         }
 
-        public ActionResult ScreenScrapper()
+        public ActionResult SummitPost()
         {
-            ViewBag.RandomQuote = _qandA.Quote;
-            ViewBag.Author = _qandA.Author;
+            PageInfo.Title = "Mountains & Rocks";
+            PageInfo.Icon = "<span class=\"glyphicon glyphicon-picture fa-lg\" id=\"totalClimbs\"></span>";
+            PageInfo.SubTitle = "from <a href=\"http://www.summitpost.org/users/vanman798/23249\" target=\"_blank\">summitpost.org</a>";
+            PageInfo.RandomQuote = _qandA.Quote;
+            PageInfo.QuoteAuthor = _qandA.Author;
+            ViewBag.PageInfo = PageInfo;
 
             if (TempData["html"] == null)
             {
@@ -79,7 +100,7 @@ namespace Walter.Controllers
         {
             TempData["html"] = MountainBusinessLayer.GetSpHtml(SummitPostUrl);
 
-            return RedirectToAction("ScreenScrapper");
+            return RedirectToAction("SummitPost");
         }
 
         [HttpGet]

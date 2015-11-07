@@ -1,21 +1,12 @@
 ﻿@using Walter.ViewModels;
 @model List<VmClimbYear>
 @{
-    ViewBag.Title = "Climbs";
     int lagYear = 0;
     string jumpTo = string.Empty;
     int climbsPerYear = 0;
     int totalClimbs = 0;
 }
-
-<div class="container">
-    <br />
-    <div class="well well-sm">
-        <h2>
-            <span class="glyphicon glyphicon-picture fa-lg" id="totalClimbs"></span> Climbs
-        </h2>
-        @ViewBag.subTitle
-    </div>
+<b>To do:</b> Move the Javascript into the site.js file.
     <form method="POST" action="@Url.Action("Filter", "Mountain")" id="form1" name="form1">
         <table>
             <tr>
@@ -26,7 +17,7 @@
             <tr>
                 <td>End Date:</td>
                 <td><input type="date" class="form-control" id="endDate" name="endDate" placeholder="End Date" /></td>
-                <td>&nbsp;<button type="button" onclick="validate();" class="btn btn-primary" id="btnGo" name="btnGo">Go!</button></td>
+                <td>&nbsp;<button type="button" onclick="climbsValidate();" class="btn btn-primary" id="btnGo" name="btnGo">Go!</button></td>
             </tr>
         </table>
     </form>
@@ -84,7 +75,6 @@
     <br />
     <br />
     Total climbs: <span class="badge">@totalClimbs</span>
-</div>
 
 <script>
     $(document).ready(function() {
@@ -106,24 +96,6 @@
             $('#totalClimbs').attr('title', 'Climbs Total: @totalClimbs');
         }
     });
-
-    function validate()
-    {
-        if($.trim($('#startDate').val()) === '')
-        {
-            //return false;
-            alert('Pick a start date.')
-        }
-        else if($.trim($('#endDate').val()) === '')
-        {
-            //return false;
-            alert('Pick an end date.')
-        }
-        else
-        {
-            document.getElementById('form1').submit();
-        }
-    }
 </script>
 
 @* -----------------------------------------------------------------------------

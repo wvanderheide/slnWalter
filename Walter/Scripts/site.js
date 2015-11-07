@@ -1,7 +1,6 @@
 ﻿//This function is part of the the Scroll to Top
 //this function is To show and hide the button
 $(function () {
-
     $(document).on('scroll', function () {
 
         if ($(window).scrollTop() > 100) {
@@ -11,7 +10,6 @@ $(function () {
         }
     });
 });
-
 
 //This function is part of the the Scroll to Top
 // Handle a button click and scroll to the top of the page.
@@ -80,5 +78,24 @@ function ShowSection(num) {
             $("#Section2").fadeIn('slow');
         }
     }
+}
 
+function climbsValidate() {
+    if ($.trim($('#startDate').val()) === '') {
+        //return false;
+        alert('Pick a start date.')
+    }
+    else if ($.trim($('#endDate').val()) === '') {
+        //return false;
+        alert('Pick an end date.')
+    }
+    else {
+        document.getElementById('form1').submit();
+    }
+}
+
+function ShowWaiting() {
+    $('#DivData').fadeOut('slow');
+    $('#DivWait').slideDown('slow');
+    document.getElementById("form1").submit();
 }

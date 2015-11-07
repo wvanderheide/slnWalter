@@ -13,11 +13,17 @@ namespace Walter.Controllers
         private static readonly ImageBusinessLayer ImageBusinessLayer = new ImageBusinessLayer();
         private static readonly QuoteBusinessLayer QuoteBusinessLayer = new QuoteBusinessLayer();
         private readonly VmQuote _qandA = QuoteBusinessLayer.RandomQuote();
+        private static PageInfo PageInfo = new PageInfo();
+
 
         public ActionResult Index()
         {
-            ViewBag.RandomQuote = _qandA.Quote;
-            ViewBag.Author = _qandA.Author;
+            PageInfo.Title = "Images Admin";
+            PageInfo.Icon = "<i class=\"fa fa-cog fa-lg\"></i>";
+            PageInfo.SubTitle = "Delete images used on the home page.";
+            PageInfo.RandomQuote = _qandA.Quote;
+            PageInfo.QuoteAuthor = _qandA.Author;
+            ViewBag.PageInfo = PageInfo;
             
             return View("Index", ImageBusinessLayer.GetImages());
         }
