@@ -2,11 +2,10 @@
 @model List<VmClimbYear>
 @{
     int lagYear = 0;
-    string jumpTo = string.Empty;
+    string yearList = string.Empty;
     int climbsPerYear = 0;
     int totalClimbs = 0;
 }
-<b>To do:</b> Move the Javascript into the site.js file.
 <form method="POST" action="@Url.Action("Filter", "Mountain")" id="form1" name="form1">
     <table>
         <tr>
@@ -29,7 +28,7 @@
     if (lagYear != y.Year)
     {
         lagYear = y.Year;
-        jumpTo += y.Year + ",";
+        yearList += y.Year + ",";
         climbsPerYear = y.Col1.Count + y.Col2.Count + y.Col3.Count + y.Col4.Count;
         @YearHeader(y.Year, climbsPerYear)
         totalClimbs = totalClimbs + climbsPerYear;
@@ -61,42 +60,26 @@
     </div>
 }
 @{
-    int length = jumpTo.Length - 1;
+    int length = yearList.Length - 1;
     if (length > 0)
     {
-        jumpTo = jumpTo.Substring(0, length);
-        jumpTo = "[" + jumpTo + "];";
+        yearList = yearList.Substring(0, length);
+        yearList = "[" + yearList + "]";
     }
     else
     {
-        jumpTo = "X";
+        yearList = "NONE";
     }
 }
 <br />
 <br />
     Total climbs: <span class="badge">@totalClimbs</span>
 
-    <script>
-        $(document).ready(function() {
-            var jumpTo = @jumpTo;
-            if(jumpTo != 'X')
-            {
-                var jumpToMenu = "";
-                var lastIndex = jumpTo.length - 1;
-                var lagYear = "";
-                $.each(jumpTo, function(index, value) {
-                    jumpToMenu += "<a href='#Year" + lagYear + "'>" + value + "</a>";
-                    lagYear = value;
-                    if (index < lastIndex) {
-                        jumpToMenu += " | ";
-                    }
-                });
-
-                $('#jumpTo').html("Jump to: " + jumpToMenu);
-                $('#totalClimbs').attr('title', 'Climbs Total: @totalClimbs');
-            }
-        });
-    </script>
+<script>
+    $(document).ready(function () {
+        createJumpAnchors(@yearList, 'Year','jumpTo');
+    });
+</script>
 
     @* -----------------------------------------------------------------------------
            Helper Methods

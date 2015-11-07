@@ -5,7 +5,7 @@ using Walter.ViewModels;
 
 namespace Walter.Models
 {
-    public class ImageBusinessLayer
+    public class HomeBusinessLayer
     {
         private string _listOfRandoms = string.Empty;
         private static readonly WalterEntities Entities = new WalterEntities();
@@ -18,7 +18,7 @@ namespace Walter.Models
                 Url = q.Url
             }).ToList();
         }
-        
+
         public List<VmImage> Get10RandomImages()
         {
             List<VmImage> retVal = new List<VmImage>();
@@ -39,7 +39,7 @@ namespace Walter.Models
 
             return retVal;
         }
-        
+
         public int DeleteImage(int Id)
         {
             string sql = "DELETE FROM [dbo].[Images] WHERE Id =" + Id.ToString();

@@ -82,11 +82,9 @@ function ShowSection(num) {
 
 function climbsValidate() {
     if ($.trim($('#startDate').val()) === '') {
-        //return false;
         alert('Pick a start date.')
     }
     else if ($.trim($('#endDate').val()) === '') {
-        //return false;
         alert('Pick an end date.')
     }
     else {
@@ -98,4 +96,34 @@ function ShowWaiting() {
     $('#DivData').fadeOut('slow');
     $('#DivWait').slideDown('slow');
     document.getElementById("form1").submit();
+}
+
+function deleteImage(Id) {
+    $.post("/Home/DeleteImage",
+{
+    Id: Id
+},
+function (data, status) {
+    //alert("Data: " + data + "\nStatus: " + status);
+    $('#div' + Id).hide();
+});
+}
+
+function createJumpAnchors(years,anchorPrefix, menuId)
+{
+    if (years != 'NONE')
+    {
+        var jumpToMenu = "";
+        var lastIndex = years.length - 1;
+        var lagYear = "";
+        $.each(years, function(index, value) {
+            jumpToMenu += "<a href='#" + anchorPrefix + lagYear + "'>" + value + "</a>";
+            lagYear = value;
+            if (index < lastIndex) {
+                jumpToMenu += " | ";
+            }
+        });
+
+        $('#' + menuId).html("Jump to: " + jumpToMenu);
+    }
 }

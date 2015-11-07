@@ -6,22 +6,9 @@
     {
         <div id="div@(image.Id)" style="border: 1px solid black;">
             <img width="450" src="@image.Url" />
-            <input type="radio" name="Id" id="Id" value="@image.Id" onchange="if (confirm('Really?')) { deleteImage(@image.Id); }" /> Delete
+            <input type="radio" name="Id" id="Id" value="@image.Id" onchange="if (confirm('Really?')) { deleteImage(@image.Id)}" /> Delete
         </div>
         <br />
         <br />
     }
-
 </form>
-<script>
-    function deleteImage(Id) {
-        $.post("@Url.Action("DeleteImage", "Image")",
-			{
-			    Id: Id
-			},
-			function (data, status) {
-			    //alert("Data: " + data + "\nStatus: " + status);
-			    $('#div' + Id).hide();
-			});
-    }
-</script>
