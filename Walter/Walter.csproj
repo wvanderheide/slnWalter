@@ -121,8 +121,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
-    <Compile Include="Controllers\ImageController.cs" />
-    <Compile Include="Controllers\List.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MountainController.cs" />
@@ -141,7 +139,7 @@
     <Compile Include="Models\Image.cs">
       <DependentUpon>WalterEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ImageBusinessLayer.cs" />
+    <Compile Include="Models\HomeBusinessLayer.cs" />
     <Compile Include="Models\Mountain.cs">
       <DependentUpon>WalterEntities.tt</DependentUpon>
     </Compile>
@@ -248,7 +246,7 @@
     <Content Include="Views\Shared\_AddMtn.cshtml" />
     <Content Include="Views\Shared\_AddClimb.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
-    <Content Include="Views\Image\Index.cshtml" />
+    <Content Include="Views\Home\ImageAdmin.cshtml" />
     <Content Include="Views\Mountain\SummitPost.cshtml" />
     <Content Include="Views\Mountain\Climbs.cshtml" />
     <Content Include="Views\Shared\_MonthDayYear.cshtml" />
