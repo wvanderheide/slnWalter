@@ -1,37 +1,27 @@
 ﻿@using Walter.ViewModels;
 @model List<VmImage>
+<b>Hint:</b> Use the keyboard spacebar to scroll down a page full at a time; and shift-spacebar to scroll up.
+<form method="post" id="form1" name="form1">
+    @foreach (var image in Model)
+    {
+        <div id="div@(image.Id)" style="border: 1px solid black;">
+            <img width="450" src="@image.Url" />
+            <input type="radio" name="Id" id="Id" value="@image.Id" onchange="if (confirm('Really?')) { deleteImage(@image.Id); }" /> Delete
+        </div>
+        <br />
+        <br />
+    }
 
-@{
-	ViewBag.Title = "Images";
-}
-
-<div class="container">
-	<br />
-	<div class="well well-sm">
-		<h2 title="@Model.Count"><i class="fa fa-cog"></i> Images Admin</h2>
-	</div>
-	<form method="post" id="form1" name="form1">
-		@foreach (var image in Model)
-		{
-			<div id="div@(image.Id)" style="border: 1px solid black;">
-				<img width="450" src="@image.Url"/>
-				<input type="radio" name="Id" id="Id" value="@image.Id" onchange="if (confirm('Really?')) { deleteImage(@image.Id); }"/> Delete
-			</div>
-			<br/>
-			<br/>
-		}
-
-	</form>
-</div>
+</form>
 <script>
-	function deleteImage(Id) {
-		$.post("@Url.Action("DeleteImage", "Image")",
+    function deleteImage(Id) {
+        $.post("@Url.Action("DeleteImage", "Image")",
 			{
-				Id: Id
+			    Id: Id
 			},
 			function (data, status) {
-				//alert("Data: " + data + "\nStatus: " + status);
-				$('#div' + Id).hide();
+			    //alert("Data: " + data + "\nStatus: " + status);
+			    $('#div' + Id).hide();
 			});
-		}
+    }
 </script>

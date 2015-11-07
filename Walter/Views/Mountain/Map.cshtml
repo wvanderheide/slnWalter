@@ -30,27 +30,27 @@
 
     <script>
 
-    function ShowMap()
-    {
-        //center of usa = 38.8333, -98.5833
-        var options = {center: new google.maps.LatLng(@Model[0].Latitude , @Model[0].Longitude),
-            zoom: @ViewBag.Zoom,
+        function ShowMap()
+        {
+            //center of usa = 38.8333, -98.5833
+            var options = {center: new google.maps.LatLng(@Model[0].Latitude , @Model[0].Longitude),
+                zoom: @ViewBag.Zoom,
                 mapTypeId: google.maps.MapTypeId.TERRAIN
             };
             var map = new google.maps.Map(document.getElementById("map_canvas"),options);
 
             @{int counter = 0;}
 
-        @foreach(var mtn in Model)
+            @foreach(var mtn in Model)
             {
                 counter++;
                 @:var lat = @mtn.Latitude;
-                        @:var long = @mtn.Longitude;
-                        @:var mtnName = "@mtn.Name, @mtn.State (@counter of @Model.Count): " + lat + "/" + long;
-                        @:var myLatlng = new google.maps.LatLng(lat , long);
-                        @:var marker = new google.maps.Marker({position: myLatlng,map: map,title:mtnName});
-                    }
-    }
+                                    @:var long = @mtn.Longitude;
+                                    @:var mtnName = "@mtn.Name, @mtn.State (@counter of @Model.Count): " + lat + "/" + long;
+                                    @:var myLatlng = new google.maps.LatLng(lat , long);
+                                    @:var marker = new google.maps.Marker({position: myLatlng,map: map,title:mtnName});
+                                }
+        }
     </script>
 </head>
 

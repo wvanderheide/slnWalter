@@ -119,9 +119,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdventureController.cs" />
+    <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\List.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MountainController.cs" />
@@ -129,7 +130,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AdventureBusinessLayer.cs" />
+    <Compile Include="Models\PhotoBusinessLayer.cs" />
     <Compile Include="Models\AllClimbs_Result.cs">
       <DependentUpon>WalterEntities.tt</DependentUpon>
     </Compile>
@@ -171,6 +172,7 @@
       <DependentUpon>WalterEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\PageInfo.cs" />
     <Compile Include="ViewModels\VMClimb.cs" />
     <Compile Include="ViewModels\VMContact.cs" />
     <Compile Include="ViewModels\VMForecast.cs" />
@@ -240,14 +242,14 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Mountain\Index.cshtml" />
     <Content Include="Views\Resume\Index.cshtml" />
-    <Content Include="Views\Adventure\Index.cshtml" />
+    <Content Include="Views\Photo\Index.cshtml" />
     <Content Include="Views\Mountain\Map.cshtml" />
     <Content Include="Views\Quote\Index.cshtml" />
     <Content Include="Views\Shared\_AddMtn.cshtml" />
     <Content Include="Views\Shared\_AddClimb.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Image\Index.cshtml" />
-    <Content Include="Views\Mountain\ScreenScrapper.cshtml" />
+    <Content Include="Views\Mountain\SummitPost.cshtml" />
     <Content Include="Views\Mountain\Climbs.cshtml" />
     <Content Include="Views\Shared\_MonthDayYear.cshtml" />
   </ItemGroup>

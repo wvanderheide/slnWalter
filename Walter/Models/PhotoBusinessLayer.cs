@@ -5,7 +5,7 @@ using Walter.ViewModels;
 
 namespace Walter.Models
 {
-    public class AdventureBusinessLayer
+    public class PhotoBusinessLayer
     {
         private static readonly WalterEntities Entities = new WalterEntities();
 

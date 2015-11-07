@@ -4,22 +4,26 @@ using Walter.ViewModels;
 
 namespace Walter.Controllers
 {
-    public class ResumeController : Controller
+    public class PhotoController : Controller
     {
+        private static readonly PhotoBusinessLayer PhotoBusinessLayer = new PhotoBusinessLayer();
         private static readonly QuoteBusinessLayer QuoteBusinessLayer = new QuoteBusinessLayer();
         private readonly VmQuote _qandA = QuoteBusinessLayer.RandomQuote();
         private static PageInfo PageInfo = new PageInfo();
 
         public ActionResult Index()
         {
-            PageInfo.Title = "Resume";
-            PageInfo.Icon = "<i class=\"fa fa-book\"></i>";
-            PageInfo.SubTitle = "Trust Walter for all your website and web application needs.";
+            PageInfo.Title = "Photos";
+            PageInfo.Icon = "<i class=\"fa fa-camera-retro fa-lg\" id=\"totalAlbums\"></i>";
+            PageInfo.SubTitle = "Below are links to my photo albums.";
             PageInfo.RandomQuote = _qandA.Quote;
             PageInfo.QuoteAuthor = _qandA.Author;
             ViewBag.PageInfo = PageInfo;
 
-            return View();
+            ViewBag.RandomQuote = _qandA.Quote;
+            ViewBag.Author = _qandA.Author;
+
+            return View("Index", PhotoBusinessLayer.GetPhotoYears());
         }
     }
 }

@@ -1,152 +1,131 @@
 ﻿@using Walter.ViewModels;
 @model List<VmMountain>
 @{
-    ViewBag.Title = "Mountains";
-
     var totalClimbCount = 0;
     var totalMtns = 0;
 }
-<a id="MtnTableTop"></a>
-<div class="container">
-	<br/>
-	<div class="well well-sm">
-		<h2 id="MountainTitle" title="Mountain Count: @Model.Count, Climb Count:"><span class="glyphicon glyphicon-picture fa-lg"></span> Mountains
-		</h2>
-		Below is a list of mountains I have climbed with summit dates. See all @Model.Count mountains plotted on a <a href="../mountain/Map" target="_blank">map</a>.
-	</div>
-	@{
-		Html.RenderPartial("~/Views/Shared/_AddMtn.cshtml", Model);
-		Html.RenderPartial("~/Views/Shared/_AddClimb.cshtml", Model);
-	}
-	<i>Initially the list is sorted by order climbed, with most recent on top. Click headers to sort asc, and click again for desc.</i>
-	<table class="table" id="TableMtn">
-		<thead>
-		<tr>
-			<th style="cursor: pointer">
-				Name
-				@if (Convert.ToBoolean(Session["IsAdmin"]))
-				{
-					<a><i class="fa fa-plus-square" title="Add Mountain" style="cursor: pointer" onclick="OpenModalAddMtn()"></i></a>
-				}
-			</th>
-			<td style="cursor: pointer; font-weight: bold" onclick="document.getElementById('form1').submit();">Elevation</td>
-			<th style="cursor: pointer">Location</th>
-			<td style="font-weight: bold">
-				<div style="width: 48%; float: left;">Summit Date</div>
-				<div style="width: 48%; float: right; text-align: right;">
-					<a href="#MtnCount" title="Jump to button"><i class="fa fa-hand-o-down"></i></a>
-				</div>
-			</td>
-		</tr>
-		</thead>
-		<tbody>
-		@foreach (var item in Model)
-		{
-			<tr>
-				<td>
-					@{
-						totalMtns++;
+@{
+    Html.RenderPartial("~/Views/Shared/_AddMtn.cshtml", Model);
+    Html.RenderPartial("~/Views/Shared/_AddClimb.cshtml", Model);
+}
+<i>Initially the list is sorted by order climbed, with most recent on top. Click headers to sort asc, and click again for desc.  See all @Model.Count mountains plotted on a <a href="@Url.Action("Map","Mountain")" target="_blank">map</a>.</i>
+<table class="table" id="TableMtn">
+    <thead>
+        <tr>
+            <th style="cursor: pointer">
+                Name
+                @if (Convert.ToBoolean(Session["IsAdmin"]))
+                {
+                    <a><i class="fa fa-plus-square" title="Add Mountain" style="cursor: pointer" onclick="OpenModalAddMtn()"></i></a>
+                }
+            </th>
+            <td style="cursor: pointer; font-weight: bold" onclick="document.getElementById('form1').submit();">Elevation</td>
+            <th style="cursor: pointer">Location</th>
+            <td style="font-weight: bold">
+                <div style="width: 48%; float: left;">Summit Date</div>
+                <div style="width: 48%; float: right; text-align: right;">
+                    <a href="#MtnCount" title="Jump to button"><i class="fa fa-hand-o-down"></i></a>
+                </div>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @{
+            totalMtns++;
+                    }
+                    <span title="@(totalMtns) of @(Model.Count)">@item.Name</span>
+                    @if (!string.IsNullOrWhiteSpace(item.MountainNote))
+                    {
+                        @: <br /><span class="small">@item.MountainNote</span>
 					}
-					<span title="@(totalMtns) of @(Model.Count)">@item.Name</span>
-					@if (!string.IsNullOrWhiteSpace(item.MountainNote))
-					{
-						@: <br/><span class="small">@item.MountainNote</span>
-					}
-				</td>
-				<td>
-					@Convert.ToInt32(item.Elevation).ToString("###,###") ft<br/><span class="small">(@Math.Round(Convert.ToDouble(item.Elevation)*0.3048).ToString("###,###") m)</span>
-				</td>
-				<td>
-					@{
-						if (!string.IsNullOrWhiteSpace(item.State))
-						{
-							<a href="../mountain/Map?Country=@item.Country" target="_blank">@item.Country</a>
-							@:/ <a href="../mountain/Map?State=@item.State" target="_blank">@item.State</a>
+                </td>
+                <td>
+                    @Convert.ToInt32(item.Elevation).ToString("###,###") ft<br /><span class="small">(@Math.Round(Convert.ToDouble(item.Elevation) * 0.3048).ToString("###,###") m)</span>
+                </td>
+                <td>
+                    @{
+            if (!string.IsNullOrWhiteSpace(item.State))
+            {
+                <a href="../mountain/Map?Country=@item.Country" target="_blank">@item.Country</a>
+                        @:/ <a href="../mountain/Map?State=@item.State" target="_blank">@item.State</a>
 						}
-						else
-						{
-							@item.Country
-						}
+            else
+            {
+                @item.Country
+            }
 
-						if (item.Latitude != null && item.Longitude != null)
-						{
-							<p class="small">
-								<a href="../mountain/Map?Id=@item.Id" target="_blank">
-									@string.Format("{0:#,#.#####}", item.Latitude) / @string.Format("{0:#,#.#####}", item.Longitude)
-								</a>
-							</p>
-						}
-					}
-				</td>
-				<td>
-					@if (item.SummitLog.Any())
-					{
-						<ol class="small">
-							@{
-								int loopCount = 0;
-								foreach (var sl in item.SummitLog)
-								{
-									totalClimbCount++;
-									loopCount++;
-									<li style="margin-left: -20px; padding-left: 0px;">
-										@String.Format("{0:MMM d, yyyy}", sl.SummitDate)
-										@if (!String.IsNullOrEmpty(sl.SummitNote))
-										{
-											@:(@sl.SummitNote)
+            if (item.Latitude != null && item.Longitude != null)
+            {
+                <p class="small">
+                    <a href="../mountain/Map?Id=@item.Id" target="_blank">
+                        @string.Format("{0:#,#.#####}", item.Latitude) / @string.Format("{0:#,#.#####}", item.Longitude)
+                    </a>
+                </p>
+            }
+                    }
+                </td>
+                <td>
+                    @if (item.SummitLog.Any())
+                    {
+                        <ol class="small">
+                            @{
+                        int loopCount = 0;
+                        foreach (var sl in item.SummitLog)
+                        {
+                            totalClimbCount++;
+                            loopCount++;
+                            <li style="margin-left: -20px; padding-left: 0px;">
+                                @String.Format("{0:MMM d, yyyy}", sl.SummitDate)
+                                @if (!String.IsNullOrEmpty(sl.SummitNote))
+                                {
+                                    @:(@sl.SummitNote)
 										}
-										@if (loopCount == item.SummitLog.Count && (Convert.ToBoolean(Session["IsAdmin"])))
-										{
-											<a onclick="OpenAddClimbModal(@(item.Id), '@(item.Name)')" style="cursor: pointer">
-												<i class="fa fa-plus-square" title="Add Climb"></i>
-											</a>
-										}
-									</li>
-								}
-							}
-						</ol>
-					}
-					else
-					{
-						if (Convert.ToBoolean(Session["IsAdmin"]))
-						{
-							<a href="/mountain/addLog?MountainName=@item.Name&MountainID=@item.Id">
-								<i class="fa fa-plus-square" title="Add Climb"></i>
-							</a>
-						}
-					}
-				</td>
-			</tr>
-		}
-		</tbody>
-	</table>
-	<hr/>
-	<div style="width: 70%; float: left;">
-		@if (Convert.ToBoolean(Session["IsAdmin"]))
-		{
-			<a id="MtnCount"><i class="fa fa-plus-square" title="Add Mountain" style="cursor: pointer" onclick="OpenModalAddMtn()"></i></a>
-		}<strong>Mountain Total:</strong> <span class="badge">@Model.Count</span>
-	</div>
+                                @if (loopCount == item.SummitLog.Count && (Convert.ToBoolean(Session["IsAdmin"])))
+                                {
+                                    <a onclick="OpenAddClimbModal(@(item.Id), '@(item.Name)')" style="cursor: pointer">
+                                        <i class="fa fa-plus-square" title="Add Climb"></i>
+                                    </a>
+                                }
+                            </li>
+                        }
+                            }
+                        </ol>
+                    }
+                    else
+                    {
+                        if (Convert.ToBoolean(Session["IsAdmin"]))
+                        {
+                            <a href="/mountain/addLog?MountainName=@item.Name&MountainID=@item.Id">
+                                <i class="fa fa-plus-square" title="Add Climb"></i>
+                            </a>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr />
+<div style="width: 70%; float: left;">
+    @if (Convert.ToBoolean(Session["IsAdmin"]))
+    {
+        <a id="MtnCount"><i class="fa fa-plus-square" title="Add Mountain" style="cursor: pointer" onclick="OpenModalAddMtn()"></i></a>
+    }<strong>Mountain Total:</strong> <span class="badge">@Model.Count</span>
+</div>
 
-	<div style="width: 29%; float: right;">
-		<strong>Total Climbs:</strong> <span class="badge" id="TotalClimbCount">@totalClimbCount</span></div>
+<div style="width: 29%; float: right;">
+    <strong>Total Climbs:</strong> <span class="badge" id="TotalClimbCount">@totalClimbCount</span>
 </div>
 
 <form method="POST" id="form1" name="form1" action="@Url.Action("SortOnElevation", "Mountain")">
-	<input type="hidden" id="elevation" name="elevation" value="@ViewBag.Elevation" />
+    <input type="hidden" id="elevation" name="elevation" value="@ViewBag.Elevation" />
 </form>
 <script>
     $(document).ready(function () {
-        var titleText = $("#MountainTitle").prop("title") + " " + $("#TotalClimbCount").html();
-        $("#MountainTitle").prop("title", titleText);
-    });
-
-    $(document).ready(function () {
         $("#TableMtn").tablesorter();
     });
-
-    function ShowWaiting() {
-        $('#DivData').fadeOut('slow');
-        $('#DivWait').slideDown('slow');
-        document.getElementById("form1").submit();
-    }
 </script>

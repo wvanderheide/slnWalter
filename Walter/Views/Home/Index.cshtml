@@ -1,68 +1,60 @@
 ﻿@using Walter.ViewModels;
 @model List<VmImage>
 @{
-	ViewBag.Title = "Introduction";
-	int loopCounter = 0;
+    int loopCounter = 0;
 }
-<div class="container">
-	<br />
-	<div class="well well-sm">
-		<h2><i class="fa fa-home fa-lg"></i> Walter VanderHeide</h2>
-		Web Developer, Outdoor Enthusiast
-	</div>
-	<br />
-	<br />
-	<div id="picCarousel" class="carousel slide" data-ride="carousel">
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<li data-target="#picCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#picCarousel" data-slide-to="1"></li>
-			<li data-target="#picCarousel" data-slide-to="2"></li>
-			<li data-target="#picCarousel" data-slide-to="3"></li>
-			<li data-target="#picCarousel" data-slide-to="4"></li>
-			<li data-target="#picCarousel" data-slide-to="5"></li>
-			<li data-target="#picCarousel" data-slide-to="6"></li>
-			<li data-target="#picCarousel" data-slide-to="7"></li>
-			<li data-target="#picCarousel" data-slide-to="8"></li>
-			<li data-target="#picCarousel" data-slide-to="9"></li>
-		</ol>
+<br />
+<br />
+<div id="picCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#picCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#picCarousel" data-slide-to="1"></li>
+        <li data-target="#picCarousel" data-slide-to="2"></li>
+        <li data-target="#picCarousel" data-slide-to="3"></li>
+        <li data-target="#picCarousel" data-slide-to="4"></li>
+        <li data-target="#picCarousel" data-slide-to="5"></li>
+        <li data-target="#picCarousel" data-slide-to="6"></li>
+        <li data-target="#picCarousel" data-slide-to="7"></li>
+        <li data-target="#picCarousel" data-slide-to="8"></li>
+        <li data-target="#picCarousel" data-slide-to="9"></li>
+    </ol>
 
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner" role="listbox" style="border: 4px double #337ab7;">
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox" style="border: 4px double #337ab7;">
 
-			@foreach (var image in Model)
-			{
-				if (loopCounter == 0)
-				{
-					<div class="item active">
-						<img src="@image.Url" width="700">
-						@*<div class="carousel-caption">
-								<h3>Scruffy Band</h3>
-								<p>Rappelling off March 2, 2013.</p>
-							</div>*@
-					</div>
-				}
-				else
-				{
-					<div class="item">
-						<img src="@image.Url" width="700">
-					</div>
-				}
+        @foreach (var image in Model)
+        {
+            if (loopCounter == 0)
+            {
+                <div class="item active">
+                    <img src="@image.Url" width="700">
+                    @*<div class="carousel-caption">
+                            <h3>Scruffy Band</h3>
+                            <p>Rappelling off March 2, 2013.</p>
+                        </div>*@
+                </div>
+            }
+            else
+            {
+                <div class="item">
+                    <img src="@image.Url" width="700">
+                </div>
+            }
 
-				loopCounter++;
-			}
-		</div>
+            loopCounter++;
+        }
+    </div>
 
 
-		<!-- Left and right controls -->
-		<a class="left carousel-control" href="#picCarousel" style="color: #337ab7" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="right carousel-control" href="#picCarousel" role="button" data-slide="next" style="color: #337ab7">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-	</div>
-	<div width="100%" style="text-align: center"><a href="../Image/" title="Image Admin"><i class="fa fa-cog"></i></a></div>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#picCarousel" style="color: #337ab7" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#picCarousel" role="button" data-slide="next" style="color: #337ab7">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
+<div width="100%" style="text-align: center"><a href="../Image/" title="Image Admin"><i class="fa fa-cog"></i></a></div>

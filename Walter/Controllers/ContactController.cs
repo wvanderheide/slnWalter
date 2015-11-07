@@ -13,11 +13,16 @@ namespace Walter.Controllers
         private static readonly ContactBusinessLayer ContactBusinessLayer = new ContactBusinessLayer();
         private static readonly QuoteBusinessLayer QuoteBusinessLayer = new QuoteBusinessLayer();
         private readonly VmQuote _qandA = QuoteBusinessLayer.RandomQuote();
+        private static PageInfo PageInfo = new PageInfo();
 
         public ActionResult Index()
         {
-            ViewBag.RandomQuote = _qandA.Quote;
-            ViewBag.Author = _qandA.Author;
+            PageInfo.Title = "Contacts";
+            PageInfo.Icon = "<i class=\"fa fa-envelope fa-lg\"></i>";
+            PageInfo.SubTitle = "Below are my contacts.";
+            PageInfo.RandomQuote = _qandA.Quote;
+            PageInfo.QuoteAuthor = _qandA.Author;
+            ViewBag.PageInfo = PageInfo;
 
             var contacts = ContactBusinessLayer.GetContacts();
 
