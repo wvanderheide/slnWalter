@@ -10,15 +10,20 @@ namespace Walter.Controllers
 {
     public class QuoteController : Controller
     {
-        private static QuoteBusinessLayer quoteBusinessLayer = new QuoteBusinessLayer();
-        private VmQuote QandA = quoteBusinessLayer.RandomQuote();
+        private static readonly QuoteBusinessLayer QuoteBusinessLayer = new QuoteBusinessLayer();
+        private readonly VmQuote _qandA = QuoteBusinessLayer.RandomQuote();
+        private static PageInfo PageInfo = new PageInfo();
 
         public ActionResult Index()
         {
-            ViewBag.RandomQuote = QandA.Quote;
-            ViewBag.Author = QandA.Author;
+            PageInfo.Title = "Quotes";
+            PageInfo.Icon = "<i class=\"fa fa-quote-left\"></i>";
+            PageInfo.SubTitle = "These are quotes that at the time of reading struck a chord with me, and as such I thought they were worth remembering.";
+            PageInfo.RandomQuote = _qandA.Quote;
+            PageInfo.QuoteAuthor = _qandA.Author;
+            ViewBag.PageInfo = PageInfo;
 
-            return View("Index",  quoteBusinessLayer.GetQuotes().OrderByDescending(x => x.Id).ToList());
+            return View("Index", QuoteBusinessLayer.GetQuotes().OrderByDescending(x => x.Id).ToList());
         }
     }
 }

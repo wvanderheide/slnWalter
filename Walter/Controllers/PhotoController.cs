@@ -20,9 +20,6 @@ namespace Walter.Controllers
             PageInfo.QuoteAuthor = _qandA.Author;
             ViewBag.PageInfo = PageInfo;
 
-            ViewBag.RandomQuote = _qandA.Quote;
-            ViewBag.Author = _qandA.Author;
-
             return View("Index", PhotoBusinessLayer.GetPhotoYears());
         }
     }

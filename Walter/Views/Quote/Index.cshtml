@@ -1,16 +1,9 @@
 ﻿@using Walter.ViewModels;
 @model List<VmQuote>
-<div class="container">
-    <br />
-    <div class="well well-sm">
-        <h2><i class="fa fa-quote-left"></i> Quotes</h2>
-        These are quotes that at the time of reading struck a chord with me, and as such I thought they were worth remembering.
-    </div>
-    <br />
-    <ol>
-        @foreach (var q in Model)
-        {
-            <li><span title="id = @q.Id">@q.Quote</span> <i>@q.Author</i><br /><br /></li>
-        }
-    </ol>
-</div>
+<br />
+<ol style="margin-bottom: 0px">
+    @foreach (var q in Model)
+    {
+        <li><span title="id = @q.Id">@q.Quote</span> <i>@q.Author</i><br /><br /></li>
+    }
+</ol>
