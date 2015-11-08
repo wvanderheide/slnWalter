@@ -1,13 +1,14 @@
 ﻿using System.Web.Mvc;
 using Walter.Models;
 using Walter.ViewModels;
+using System.Linq;
 
 namespace Walter.Controllers
 {
     public class ResumeController : Controller
     {
-        private static readonly QuoteBusinessLayer QuoteBusinessLayer = new QuoteBusinessLayer();
-        private readonly VmQuote _qandA = QuoteBusinessLayer.RandomQuote();
+        private static readonly HomeBusinessLayer HomeBusinessLayer = new HomeBusinessLayer();
+        private readonly VmQuote _qandA = HomeBusinessLayer.RandomQuote();
         private static PageInfo PageInfo = new PageInfo();
 
         public ActionResult Index()

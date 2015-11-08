@@ -124,7 +124,6 @@
     <Compile Include="Controllers\ResumeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MountainController.cs" />
-    <Compile Include="Controllers\QuoteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -153,7 +152,6 @@
     <Compile Include="Models\Quote.cs">
       <DependentUpon>WalterEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QuoteBusinessLayer.cs" />
     <Compile Include="Models\WalterEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -242,7 +240,7 @@
     <Content Include="Views\Resume\Index.cshtml" />
     <Content Include="Views\Photo\Index.cshtml" />
     <Content Include="Views\Mountain\Map.cshtml" />
-    <Content Include="Views\Quote\Index.cshtml" />
+    <Content Include="Views\Home\Quote.cshtml" />
     <Content Include="Views\Shared\_AddMtn.cshtml" />
     <Content Include="Views\Shared\_AddClimb.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />

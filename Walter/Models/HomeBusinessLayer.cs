@@ -30,9 +30,10 @@ namespace Walter.Models
 
             //randomize images
             int rnd = getRandomNumber(min, max - 1);
-            images = images.OrderBy(x => rnd).ToList();
+            images = images.OrderBy(x => x.Id).ToList();
             if(rnd % 2 == 0)
             {
+                images = images.OrderBy(x => x.Url).ToList();
                 images.Reverse();
             }
 
@@ -47,9 +48,10 @@ namespace Walter.Models
             }
 
             //sort retVal randomly
-            retVal = retVal.OrderBy(x => rnd).ToList();
+            retVal = retVal.OrderBy(x => x.Id).ToList();
             if (rnd % 2 == 0)
             {
+                retVal = retVal.OrderBy(x => x.Url).ToList();
                 retVal.Reverse();
             }
             return retVal;
@@ -62,6 +64,25 @@ namespace Walter.Models
             var x = Entities.Database;
 
             return x.ExecuteSqlCommand(sql);
+        }
+        
+        public VmQuote RandomQuote()
+        {
+            var temp = GetQuotes();
+
+            var rnd = new Random(DateTime.Now.Millisecond);
+
+            return temp[rnd.Next(0, temp.Count - 1)];
+        }
+
+        public List<VmQuote> GetQuotes()
+        {
+            return Entities.Quotes.ToList().Select(q => new VmQuote
+            {
+                Id = q.Id,
+                Quote = q.Quote1,
+                Author = q.Author
+            }).ToList();
         }
 
         private int getRandomNumber(int min, int max)

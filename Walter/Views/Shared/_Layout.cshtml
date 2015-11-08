@@ -43,8 +43,8 @@
 				        </ul>
 			        </li>
 			        <li><a href="@Url.Action("Index","Photo")" title="Photos"><i class="fa fa-camera-retro fa-lg"></i> Photos</a></li>
-			        <li><a href="/Resume" title="Resume"><i class="fa fa-book"></i> Resume</a></li>
-			        <li><a href="/Contact" title="Contacts"><i class="fa fa-envelope fa-lg"></i> Contacts</a></li>
+			        <li><a href="@Url.Action("Index","Resume")" title="Resume"><i class="fa fa-book"></i> Resume</a></li>
+			        <li><a href="@Url.Action("Index", "Contact")" title="Contacts"><i class="fa fa-envelope fa-lg"></i> Contacts</a></li>
 		        </ul>
 		        <ul class="nav navbar-nav navbar-right">
 			        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -66,7 +66,7 @@
         <br />
         <footer>
             <div style="width:100%; text-align:center;" class="small">
-                <a href="/Quote" title="Quotes" style="color:#333">"@pi.RandomQuote"</a> <i>@pi.QuoteAuthor</i>
+                <a href="@Url.Action("Quote","Home")" title="Quotes" style="color:#333">"@pi.RandomQuote"</a> <i>@pi.QuoteAuthor</i>
                 <br />
                 <br />
                 &copy; Graphic design and programming by Walter VanderHeide, see <a href="/resume">

@@ -11,8 +11,8 @@ namespace Walter.Controllers
     public class ContactController : Controller
     {
         private static readonly ContactBusinessLayer ContactBusinessLayer = new ContactBusinessLayer();
-        private static readonly QuoteBusinessLayer QuoteBusinessLayer = new QuoteBusinessLayer();
-        private readonly VmQuote _qandA = QuoteBusinessLayer.RandomQuote();
+        private static readonly HomeBusinessLayer HomeBusinessLayer = new HomeBusinessLayer();
+        private readonly VmQuote _qandA = HomeBusinessLayer.RandomQuote();
         private static PageInfo PageInfo = new PageInfo();
 
         public ActionResult Index()
