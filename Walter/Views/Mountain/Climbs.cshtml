@@ -99,12 +99,14 @@
 <br />
 <br />
     Total climbs: <span class="badge">@totalClimbs</span>
-
-    <script>
-        $(document).ready(function () {
-            createJumpAnchors(@yearList, 'Year','jumpTo');
-        });
-    </script>
+    @section DocumentReady
+{
+        <script>
+            $(document).ready(function () {
+                createJumpAnchors(@yearList, 'Year','jumpTo');
+            });
+        </script>
+    }
 
     @* -----------------------------------------------------------------------------
            Helper Methods

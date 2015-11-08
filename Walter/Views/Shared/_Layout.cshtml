@@ -1,12 +1,12 @@
 ﻿@using Walter.ViewModels;
 <!DOCTYPE html>
-@{
-    PageInfo pi = (PageInfo)ViewBag.PageInfo;
-}
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @{
+        PageInfo pi = (PageInfo)ViewBag.PageInfo;
+    }
     <title>@pi.Title - Walter VanderHeide</title>
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
@@ -86,5 +86,9 @@
             <i class="fa fa-2x fa-arrow-circle-up"></i>
         </span>
     </div>
+    @if (IsSectionDefined("DocumentReady"))
+    { 
+        @RenderSection("DocumentReady", required: false)
+    }
 </body>
 </html>

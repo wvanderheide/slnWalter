@@ -6,7 +6,6 @@
     int albumsPerYear = 0;
     int totalAlbums = 0;
 }
-
 <br />
 <div id="jumpTo"></div>
 @foreach (var y in Model)
@@ -53,37 +52,18 @@
 <br />
 <br />
 	Total Albums: <span class="badge">@totalAlbums</span>
-
-    @*<script>
-        $(document).ready(function () {
-            var jumpTo = @jumpTo;
-            var jumpToMenu = "";
-            var lastIndex = jumpTo.length -1;
-            var lagYear = "";
-            $.each( jumpTo, function( index, value ){
-                jumpToMenu += "<a href='#Year" + lagYear + "'>" + value + "</a>";
-                lagYear = value;
-
-                if(index < lastIndex)
-                {
-                    jumpToMenu += " | ";
-                }
+    @section DocumentReady
+{
+        <script>
+            $(document).ready(function () {
+                createJumpAnchors(@yearList, 'Year','jumpTo');
             });
+        </script>
+    }
 
-            $('#jumpTo').html("Jump to: " + jumpToMenu);
-            $('#totalAlbums').attr('title', 'Total Albums: @totalAlbums');
-        });
-    </script>*@
-
-<script>
-    $(document).ready(function () {
-        createJumpAnchors(@yearList, 'Year','jumpTo');
-    });
-</script>
-
-    @* -----------------------------------------------------------------------------
-           Helper Methods
-        ------------------------------------------------------------------------------- *@
+@* -----------------------------------------------------------------------------
+    Helper Methods
+------------------------------------------------------------------------------- *@
     @helper YearHeader(int year, int count)
 {
     <br />
