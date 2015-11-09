@@ -1,12 +1,15 @@
-﻿@using Walter.ViewModels;
+﻿@using Walter.Models
+@using Walter.ViewModels;
+@{
+	HomeBusinessLayer HomeBusinessLayer = new HomeBusinessLayer();
+	VmQuote QandA = HomeBusinessLayer.RandomQuote();
+	PageInfo pi = (PageInfo)ViewBag.PageInfo;
+}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @{
-        PageInfo pi = (PageInfo)ViewBag.PageInfo;
-    }
     <title>@pi.Title - Walter VanderHeide</title>
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
@@ -64,16 +67,16 @@
         @RenderBody()
         <br />
         <br />
-        <footer>
-            <div style="width:100%; text-align:center;" class="small">
-                <a href="@Url.Action("Quote","Home")" title="Quotes" style="color:#333">"@pi.RandomQuote"</a> <i>@pi.QuoteAuthor</i>
-                <br />
-                <br />
-                &copy; Graphic design and programming by Walter VanderHeide, see <a href="/resume">
-                    resume
-                </a> for contact details.
-            </div>
-        </footer>
+	    <footer>
+		    <div style="width: 100%; text-align: center;" class="small">
+				<a href="@Url.Action("Quote", "Home")" title="Quotes" style="color: #333">"@QandA.Quote;"</a> <i>@QandA.Author</i>
+			    <br/>
+			    <br/>
+			    &copy; Graphic design and programming by Walter VanderHeide, see <a href="/resume">
+				    resume
+			    </a> for contact details.
+		    </div>
+	    </footer>
     </div>
     @*The div below is the Scroll to Top*@
     @*See http://www.webtipblog.com/adding-scroll-top-button-website/*@ 

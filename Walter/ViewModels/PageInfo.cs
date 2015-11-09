@@ -10,7 +10,5 @@ namespace Walter.ViewModels
         public string Title { get; set; }
         public string Icon { get; set; }
         public string SubTitle { get; set; }
-        public string RandomQuote { get; set; }
-        public string QuoteAuthor { get; set; }
     }
 }

@@ -10,9 +10,7 @@ namespace Walter.Controllers
     public class MountainController : Controller
     {
         private static readonly MountainBusinessLayer MountainBusinessLayer = new MountainBusinessLayer();
-        private static readonly HomeBusinessLayer HomeBusinessLayer = new HomeBusinessLayer();
-        private readonly VmQuote _qandA = HomeBusinessLayer.RandomQuote();
-        private static PageInfo PageInfo = new PageInfo();
+        private static readonly PageInfo PageInfo = new PageInfo();
 
         public ActionResult Index()
         {
@@ -22,9 +20,6 @@ namespace Walter.Controllers
             PageInfo.Title = "Mountains";
             PageInfo.Icon = "<span class=\"glyphicon glyphicon-picture fa-lg\"></span>";
             PageInfo.SubTitle = "Below is a list of mountains I have climbed with summit dates.";
-
-            PageInfo.RandomQuote = _qandA.Quote;
-            PageInfo.QuoteAuthor = _qandA.Author;
 
             ViewBag.Elevation = 0;
             ViewBag.PageInfo = PageInfo;
@@ -51,8 +46,6 @@ namespace Walter.Controllers
             PageInfo.Title = "Climbs";
             PageInfo.Icon = "<span class=\"glyphicon glyphicon-picture fa-lg\" id=\"totalClimbs\"></span>";
             PageInfo.SubTitle = "Below is a list of mountain climbs I have done arranged by date.";
-            PageInfo.RandomQuote = _qandA.Quote;
-            PageInfo.QuoteAuthor = _qandA.Author;
 
             List<VmClimbYear> climbs = new List<VmClimbYear>();
 
@@ -88,8 +81,6 @@ namespace Walter.Controllers
             PageInfo.Title = "Mountains & Rocks";
             PageInfo.Icon = "<span class=\"glyphicon glyphicon-picture fa-lg\" id=\"totalClimbs\"></span>";
             PageInfo.SubTitle = "from <a href=\"http://www.summitpost.org/users/vanman798/23249\" target=\"_blank\">summitpost.org</a>";
-            PageInfo.RandomQuote = _qandA.Quote;
-            PageInfo.QuoteAuthor = _qandA.Author;
             ViewBag.PageInfo = PageInfo;
 
             if (TempData["html"] == null)

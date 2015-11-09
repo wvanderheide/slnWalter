@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -41,6 +42,24 @@ namespace Walter.Models
 
         public List<VmClimb> Climbs()
         {
+           //var data = Entities.Quotes.SqlQuery("SELECT id, quote as quote1, author FROM [Walter].[dbo].[Quotes]");
+
+            //string connectionString ="data source=WVANDERH-DT\\SQLEXPRESS;initial catalog=Walter;integrated security=True;MultipleActiveResultSets=True";
+            //string sql = "SELECT id, quote, author FROM [Walter].[dbo].[Quotes]";
+
+            //SqlConnection conn = new SqlConnection(connectionString);
+            //conn.Open();
+
+            //SqlCommand cmd = new SqlCommand(sql, conn);
+
+            //SqlDataReader dr = cmd.ExecuteReader();
+            //while (dr.Read())
+            //{
+            //    var x = dr[0].ToString();
+            //    var y = dr[1].ToString();
+            //    var z = dr[2].ToString();
+            //}
+            
             var mtns = Entities.AllClimbs();
 
             var mountainList = mtns.Select(mtn => new VmClimb
