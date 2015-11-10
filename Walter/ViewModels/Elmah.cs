@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Walter.ViewModels
 {
-    public class VmElmah
+    public class Elmah
     {
-        public string Sql { get; set; }
+        public int MaxSequence { get; set; }
         public string Message { get; set; }
         public int Count { get; set; }
         public DateTime Newest { get; set; }

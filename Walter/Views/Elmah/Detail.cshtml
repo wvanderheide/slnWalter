@@ -1,32 +1,82 @@
-﻿@model List<Walter.ViewModels.VmElmahDetail>
+﻿@model Walter.ViewModels.VmElmahDetails
 @{
 	ViewBag.Title = "ElmahDetails";
 	string http = string.Empty;
 }
 
+<div class="row" id="divFilters">
+	<div class="col-sm-6">
+		<a href="@Url.Action("index", "Elmah")"><i class="fa fa-step-backward"></i> Elmah Unique Errors</a>
+	</div>
+	<div class="col-sm-6" style="text-align: right">
+		<form action="@Url.Action("Detail","Elmah")" id="form1" name="form1" method="GET">
+			Displaying details for <select id="showErrors" name="showErrors" onchange="document.getElementById('form1').submit()">
+				<option value="@Request.QueryString["showErrors"].ToString()" selected>@Request.QueryString["showErrors"].ToString()</option>
+				<option value="1">1</option>
+				<option value="10">10</option>
+				<option value="100">100</option>
+				<option value='@Request.QueryString["count"].ToString()'>All @Request.QueryString["count"].ToString()</option>
+			</select> of @Request.QueryString["count"].ToString() errors.
+			<input type="hidden" name="count" id="count" value="@Request.QueryString["count"]" />
+			<input type="hidden" name="msg" id="msg" value="@Request.QueryString["msg"]" />
+			<input type="hidden" name="maxSequence" id="maxSequence" value="@Request.QueryString["MaxSequence"]" />
+		</form>
+	</div>
+</div>
 <table class="table table-striped">
 	<thead>
 		<tr>
 			<th>Sequence</th>
 			<th>Mtn Time</th>
-			<th>Referer</th>
-			<th>Url</th>
+			<th colspan="2">Referer</th>
+			<th colspan="2">Url</th>
 			<th>UserAgent</th>
+			<th>XML</th>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (var detail in Model)
+		@foreach (var detail in Model.Details)
 		{
 			http = "http://" + detail.ServerName + detail.Url;
+			if (!string.IsNullOrEmpty(detail.QueryString))
+			{
+				http += "?" + detail.QueryString;
+			}
+
 			<tr>
 				<td>@detail.Sequence</td>
 				<td>@detail.MtnTime</td>
-				<td><a href="@detail.Referer" target="_blank">@detail.Referer</a></td>
-				<td><a href="@http" target="_blank">@http</a></td>
+				<td><input type="text" value="@detail.Referer" /></td>
+				<td><a href="@detail.Referer" target="_blank"><i class="fa fa-external-link-square"></i></a></td>
+				<td><input type="text" value="@http" /></td>
+				<td><a href="@http" target="_blank"><i class="fa fa-external-link-square"></i></a></td>
 				<td>@detail.UserAgent</td>
+				<td>
+					<a onclick="OpenElmahXML(@detail.Sequence)" style="cursor: pointer"><i class="fa fa-external-link-square" title="See XML"></i></a>
+					<div id="div@(detail.Sequence)" style="display: none;">@detail.AllXml</div>
+				</td>
 			</tr>
 		}
 	</tbody>
 </table>
+<br />
+		The Table above was generated from the SQL below:
+<br />
+<textarea rows="4" cols="100">@Model.Sql</textarea>
 
-<b>@Model[0].Sql</b>
+
+@*-------------- Modal ------------------*@
+
+<div class="modal fade" id="ModalElmahXML" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content" style="padding:10px">
+			<button type="button" class="close" data-dismiss="modal" style="padding: 10px">&times;</button>
+			<div class="well well-sm">
+				<h4>XML</h4>
+			</div>
+			<div class="modal-body">
+				<textarea id="textAreaModalBody" rows="20" cols="70"></textarea>
+			</div>
+		</div>
+	</div>
+</div>

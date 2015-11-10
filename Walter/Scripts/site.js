@@ -46,6 +46,12 @@ function OpenAddClimbModal(mtnId, mtnName) {
     $("#ModalAddClimb").modal();
 }
 
+function OpenElmahXML(divId) {
+    var x = $('#div' + divId).text();
+    $('#textAreaModalBody').text(x);
+    $("#ModalElmahXML").modal();
+}
+
 function ShowSection(num) {
     if (num == 1) {
         $("#Section2").hide();

@@ -1,9 +1,10 @@
-﻿@model List<Walter.ViewModels.VmElmah>
+﻿@model Walter.ViewModels.VmElmahErrors
 @{
 	ViewBag.Title = "Elmah";
+	int totalErrors = 0;
 }
 
-Unique Errors: <span class="badge">@Model.Count</span>
+Unique Errors: <span class="badge">@Model.Errors.Count</span>
 <table class="table table-striped">
 	<thead>
 	<tr>
@@ -14,10 +15,11 @@ Unique Errors: <span class="badge">@Model.Count</span>
 	</tr>
 	</thead>
 	<tbody>
-	@foreach (var err in Model)
+	@foreach (var err in Model.Errors)
 	{
+		totalErrors += @err.Count;
 		<tr>
-			<td style="max-width: 300px"><a href="@Url.Action("Detail", "Elmah")?msg=@err.Message">@err.Message</a></td>
+			<td style="max-width: 300px"><a href="@Url.Action("Detail", "Elmah")?showErrors=10&MaxSequence=@err.MaxSequence&count=@err.Count&msg=@err.Message">@err.Message</a></td>
 			<td>@err.Count</td>
 			<td>@err.Newest</td>
 			<td>@err.Oldest</td>
@@ -25,4 +27,9 @@ Unique Errors: <span class="badge">@Model.Count</span>
 	}
 	</tbody>
 </table>
-<b>@Model[0].Sql</b>
+Total Errors: <span class="badge">@totalErrors</span>
+<br/>
+<br/>
+The Table above was generated from the SQL below:
+<br/>
+<textarea rows="4" cols="100">@Model.Sql</textarea>

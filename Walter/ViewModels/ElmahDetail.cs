@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Walter.ViewModels
 {
-    public class VmElmahDetail
+    public class ElmahDetail
     {
         public string Message { get; set; }
         public int Sequence { get; set; }
@@ -14,6 +11,7 @@ namespace Walter.ViewModels
         public string UserAgent { get; set; }
         public string ServerName { get; set; }
         public string Url { get; set; }
-        public string Sql { get; set; }
+        public string AllXml { get; set; }
+        public string QueryString { get; set; }
     }
 }

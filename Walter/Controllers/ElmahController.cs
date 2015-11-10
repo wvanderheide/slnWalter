@@ -14,15 +14,15 @@ namespace Walter.Controllers
         public ActionResult Index()
         {
             string connectionString = "data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
-            PageInfo.Title = "Elmah";
+            PageInfo.Title = "Elmah Unique Errors";
             PageInfo.Icon = "<i class=\"fa fa-exclamation-triangle fa-lg\"></i>";
-            PageInfo.SubTitle = "FROM Elmah_Error table on " + connectionString;
+            PageInfo.SubTitle = "Data Source: [healthcomputingdb].[dbo].[ELMAH_Error] table on SQL1\\Production";
             ViewBag.PageInfo = PageInfo;
 
             string sql = "SELECT TOP 100 *  FROM [healthcomputingdb].[dbo].[ELMAH_Error] order by [Sequence] desc";
 
             sql =
-                "SELECT [Message] ,COUNT(Message) AS RCount, max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Newest_MtnTime, min(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Oldest_MtnTime FROM[healthcomputingdb].[dbo].[ELMAH_Error] GROUP BY Message ORDER BY RCount DESC";
+                "SELECT Max(Sequence) as MaxSequence, [Message] ,COUNT(Message) AS RCount, max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Newest_MtnTime, min(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Oldest_MtnTime FROM [healthcomputingdb].[dbo].[ELMAH_Error] GROUP BY Message ORDER BY RCount DESC";
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
@@ -30,29 +30,48 @@ namespace Walter.Controllers
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             SqlDataReader dr = cmd.ExecuteReader();
-            var vmErrors = new List<VmElmah>();
+            var vmErrors = new List<Elmah>();
+
             while (dr.Read())
             {
-                var error = new VmElmah
+                var error = new Elmah
                 {
-                    Sql = sql,
-                    Message = dr[0].ToString(),
+                    MaxSequence = Convert.ToInt32(dr["MaxSequence"].ToString()),
+                    Message = dr["Message"].ToString(),
                     Count = Convert.ToInt32(dr["RCount"].ToString()),
-                    Newest = Convert.ToDateTime(dr[2].ToString()),
-                    Oldest = Convert.ToDateTime(dr[3].ToString())
+                    Newest = Convert.ToDateTime(dr["Newest_MtnTime"].ToString()),
+                    Oldest = Convert.ToDateTime(dr["Oldest_MtnTime"].ToString())
                 };
 
                 vmErrors.Add(error);
             }
 
+            var vmElmahErrors = new VmElmahErrors
+            {
+                Errors = vmErrors,
+                Sql = sql
+            };
 
-            return View("Index", vmErrors);
+            return View("Index", vmElmahErrors);
         }
-
+        
         public ActionResult Detail()
         {
-            if (Request["msg"] == null)
+            int showErrors = 10;
+            if (!int.TryParse(Request["showErrors"], out showErrors))
+            {
+                showErrors = 10;
+            }
+
+            int count = 0;
+            if (!int.TryParse(Request["MaxSequence"], out count))
                 return RedirectToAction("Index");
+
+            var maxSequence = Request["MaxSequence"].ToString();
+
+            if (!int.TryParse(Request["count"], out count))
+                return RedirectToAction("Index");
+
 
 
             PageInfo.Title = "Elmah Details";
@@ -61,16 +80,18 @@ namespace Walter.Controllers
             ViewBag.PageInfo = PageInfo;
 
             string connectionString = "data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
-            string sql = "SELECT top 10 ";
-            sql += "Message";
+            string sql = "SELECT top " + showErrors.ToString();
+            sql += " Message";
             sql += ",Sequence";
+            sql += ",[AllXml]";
             sql += ", DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) as MtnTime";
             sql += ",CAST(AllXml AS XML ).value('(/error/serverVariables/item[@name=''HTTP_REFERER'']/value/@string)[1]', 'nvarchar(max)') AS Referer";
             sql += ",CAST(AllXml AS XML ).value('(/error/serverVariables/item[@name=''HTTP_USER_AGENT'']/value/@string)[1]', 'nvarchar(max)') AS UserAgent";
             sql += ",CAST(AllXml AS XML ).value('(/error/serverVariables/item[@name=''SERVER_NAME'']/value/@string)[1]', 'nvarchar(max)') AS ServerName";
             sql += ",CAST(AllXml AS XML ).value('(/error/serverVariables/item[@name=''URL'']/value/@string)[1]', 'nvarchar(max)') AS Url";
+            sql += ",CAST(AllXml AS XML ).value('(/error/serverVariables/item[@name=''QUERY_STRING'']/value/@string)[1]', 'nvarchar(max)') AS QueryString";
 
-            sql += " FROM Elmah_Error WHERE(Message = '" + Request["msg"] + "') ORDER BY Sequence DESC";
+            sql += " FROM Elmah_Error WHERE(Message = (Select Message from Elmah_Error where Sequence = " + maxSequence + ")) ORDER BY Sequence DESC";
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
@@ -78,10 +99,10 @@ namespace Walter.Controllers
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             SqlDataReader dr = cmd.ExecuteReader();
-            var vmElmahDetails = new List<VmElmahDetail>();
+            var ElmahDetails = new List<ElmahDetail>();
             while (dr.Read())
             {
-                var detail = new VmElmahDetail
+                var detail = new ElmahDetail
                 {
                     Message = dr["Message"].ToString(),
                     Sequence = Convert.ToInt32(dr["Sequence"].ToString()),
@@ -90,12 +111,17 @@ namespace Walter.Controllers
                     UserAgent = dr["UserAgent"].ToString(),
                     ServerName = dr["ServerName"].ToString(),
                     Url = dr["URL"].ToString(),
-                    Sql = sql
+                    AllXml = dr["AllXml"].ToString(),
+                    QueryString = dr["QueryString"].ToString()
                 };
 
-                vmElmahDetails.Add(detail);
+                ElmahDetails.Add(detail);
             }
-
+            var vmElmahDetails = new VmElmahDetails
+            {
+                Details = ElmahDetails,
+                Sql = sql
+            };
 
             return View("Detail", vmElmahDetails);
         }
