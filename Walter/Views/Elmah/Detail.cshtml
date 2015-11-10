@@ -1,0 +1,32 @@
+﻿@model List<Walter.ViewModels.VmElmahDetail>
+@{
+	ViewBag.Title = "ElmahDetails";
+	string http = string.Empty;
+}
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Sequence</th>
+			<th>Mtn Time</th>
+			<th>Referer</th>
+			<th>Url</th>
+			<th>UserAgent</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var detail in Model)
+		{
+			http = "http://" + detail.ServerName + detail.Url;
+			<tr>
+				<td>@detail.Sequence</td>
+				<td>@detail.MtnTime</td>
+				<td><a href="@detail.Referer" target="_blank">@detail.Referer</a></td>
+				<td><a href="@http" target="_blank">@http</a></td>
+				<td>@detail.UserAgent</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+<b>@Model[0].Sql</b>

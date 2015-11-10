@@ -1,0 +1,28 @@
+﻿@model List<Walter.ViewModels.VmElmah>
+@{
+	ViewBag.Title = "Elmah";
+}
+
+Unique Errors: <span class="badge">@Model.Count</span>
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>Message</th>
+		<th>Count</th>
+		<th>Newest</th>
+		<th>Oldest</th>
+	</tr>
+	</thead>
+	<tbody>
+	@foreach (var err in Model)
+	{
+		<tr>
+			<td style="max-width: 300px"><a href="@Url.Action("Detail", "Elmah")?msg=@err.Message">@err.Message</a></td>
+			<td>@err.Count</td>
+			<td>@err.Newest</td>
+			<td>@err.Oldest</td>
+		</tr>
+	}
+	</tbody>
+</table>
+<b>@Model[0].Sql</b>

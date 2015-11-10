@@ -119,6 +119,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ElmahController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
@@ -171,6 +172,8 @@
     <Compile Include="ViewModels\PageInfo.cs" />
     <Compile Include="ViewModels\VMClimb.cs" />
     <Compile Include="ViewModels\VMContact.cs" />
+    <Compile Include="ViewModels\VmElmah.cs" />
+    <Compile Include="ViewModels\VmElmahDetail.cs" />
     <Compile Include="ViewModels\VMForecast.cs" />
     <Compile Include="ViewModels\VMImage.cs" />
     <Compile Include="ViewModels\VMmountain.cs" />
@@ -248,6 +251,8 @@
     <Content Include="Views\Mountain\SummitPost.cshtml" />
     <Content Include="Views\Mountain\Climbs.cshtml" />
     <Content Include="Views\Shared\_MonthDayYear.cshtml" />
+    <Content Include="Views\Elmah\Index.cshtml" />
+    <Content Include="Views\Elmah\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
