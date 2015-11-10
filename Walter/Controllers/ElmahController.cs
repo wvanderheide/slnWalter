@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Walter.ViewModels;
@@ -31,19 +33,28 @@ namespace Walter.Controllers
 
             SqlDataReader dr = cmd.ExecuteReader();
             var vmErrors = new List<Elmah>();
-
-            while (dr.Read())
+            try
             {
-                var error = new Elmah
+                while (dr.Read())
                 {
-                    MaxSequence = Convert.ToInt32(dr["MaxSequence"].ToString()),
-                    Message = dr["Message"].ToString(),
-                    Count = Convert.ToInt32(dr["RCount"].ToString()),
-                    Newest = Convert.ToDateTime(dr["Newest_MtnTime"].ToString()),
-                    Oldest = Convert.ToDateTime(dr["Oldest_MtnTime"].ToString())
-                };
+                    var error = new Elmah
+                    {
+                        MaxSequence = Convert.ToInt32(dr["MaxSequence"].ToString()),
+                        Message = dr["Message"].ToString(),
+                        Count = Convert.ToInt32(dr["RCount"].ToString()),
+                        Newest = Convert.ToDateTime(dr["Newest_MtnTime"].ToString()),
+                        Oldest = Convert.ToDateTime(dr["Oldest_MtnTime"].ToString())
+                    };
 
-                vmErrors.Add(error);
+                    vmErrors.Add(error);
+                }
+            }
+            finally
+            {
+                dr.Close();
+                dr.Dispose();
+                cmd.Dispose();
+                conn.Close();
             }
 
             var vmElmahErrors = new VmElmahErrors
@@ -51,10 +62,9 @@ namespace Walter.Controllers
                 Errors = vmErrors,
                 Sql = sql
             };
-
             return View("Index", vmElmahErrors);
         }
-        
+
         public ActionResult Detail()
         {
             int showErrors = 10;
@@ -72,7 +82,8 @@ namespace Walter.Controllers
             if (!int.TryParse(Request["count"], out count))
                 return RedirectToAction("Index");
 
-
+            if (count < showErrors)
+                showErrors = count;
 
             PageInfo.Title = "Elmah Details";
             PageInfo.Icon = "<i class=\"fa fa-exclamation-triangle fa-lg\"></i>";
@@ -100,23 +111,34 @@ namespace Walter.Controllers
 
             SqlDataReader dr = cmd.ExecuteReader();
             var ElmahDetails = new List<ElmahDetail>();
-            while (dr.Read())
+            try
             {
-                var detail = new ElmahDetail
+                while (dr.Read())
                 {
-                    Message = dr["Message"].ToString(),
-                    Sequence = Convert.ToInt32(dr["Sequence"].ToString()),
-                    MtnTime = Convert.ToDateTime(dr["MtnTime"].ToString()),
-                    Referer = dr["Referer"].ToString(),
-                    UserAgent = dr["UserAgent"].ToString(),
-                    ServerName = dr["ServerName"].ToString(),
-                    Url = dr["URL"].ToString(),
-                    AllXml = dr["AllXml"].ToString(),
-                    QueryString = dr["QueryString"].ToString()
-                };
+                    var detail = new ElmahDetail
+                    {
+                        Message = dr["Message"].ToString(),
+                        Sequence = Convert.ToInt32(dr["Sequence"].ToString()),
+                        MtnTime = Convert.ToDateTime(dr["MtnTime"].ToString()),
+                        Referer = dr["Referer"].ToString(),
+                        UserAgent = dr["UserAgent"].ToString(),
+                        ServerName = dr["ServerName"].ToString(),
+                        Url = dr["URL"].ToString(),
+                        AllXml = dr["AllXml"].ToString(),
+                        QueryString = dr["QueryString"].ToString()
+                    };
 
-                ElmahDetails.Add(detail);
+                    ElmahDetails.Add(detail);
+                }
             }
+            finally
+            {
+                dr.Close();
+                dr.Dispose();
+                cmd.Dispose();
+                conn.Close();
+            }
+
             var vmElmahDetails = new VmElmahDetails
             {
                 Details = ElmahDetails,
@@ -124,6 +146,20 @@ namespace Walter.Controllers
             };
 
             return View("Detail", vmElmahDetails);
+        }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public FileStreamResult CreateFile(string xml)
+        {
+            //todo: add some data from your database into that string:
+            var string_with_your_data = xml;
+
+            var byteArray = Encoding.ASCII.GetBytes(string_with_your_data);
+            var stream = new MemoryStream(byteArray);
+
+            return File(stream, "text/plain", "your_file_name.xml");
         }
     }
 }

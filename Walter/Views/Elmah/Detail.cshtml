@@ -2,6 +2,11 @@
 @{
 	ViewBag.Title = "ElmahDetails";
 	string http = string.Empty;
+	string fullUrl = string.Empty;
+	string browser = string.Empty;
+	string referer = string.Empty;
+	int count = 0;
+	int showErrors = 0;
 }
 
 <div class="row" id="divFilters">
@@ -10,13 +15,25 @@
 	</div>
 	<div class="col-sm-6" style="text-align: right">
 		<form action="@Url.Action("Detail","Elmah")" id="form1" name="form1" method="GET">
-			Displaying details for <select id="showErrors" name="showErrors" onchange="document.getElementById('form1').submit()">
+			Displaying details for
+			@{
+				count = Convert.ToInt32(Request.QueryString["count"].ToString());
+				showErrors = Convert.ToInt32(Request.QueryString["showErrors"].ToString());
+
+				if (count < showErrors)
+				{
+					showErrors = count;
+				}
+			
+			}
+			@Options(count, showErrors)
+	@*<select id="showErrors" name="showErrors" onchange="document.getElementById('form1').submit()">
 				<option value="@Request.QueryString["showErrors"].ToString()" selected>@Request.QueryString["showErrors"].ToString()</option>
 				<option value="1">1</option>
 				<option value="10">10</option>
 				<option value="100">100</option>
 				<option value='@Request.QueryString["count"].ToString()'>All @Request.QueryString["count"].ToString()</option>
-			</select> of @Request.QueryString["count"].ToString() errors.
+			</select>*@ of @Request.QueryString["count"].ToString() errors.
 			<input type="hidden" name="count" id="count" value="@Request.QueryString["count"]" />
 			<input type="hidden" name="msg" id="msg" value="@Request.QueryString["msg"]" />
 			<input type="hidden" name="maxSequence" id="maxSequence" value="@Request.QueryString["MaxSequence"]" />
@@ -28,8 +45,7 @@
 		<tr>
 			<th>Sequence</th>
 			<th>Mtn Time</th>
-			<th colspan="2">Referer</th>
-			<th colspan="2">Url</th>
+			<th><i class="fa fa-circle"></i> Referer<br /><i class="fa fa-circle-o"></i> URL</th>
 			<th>UserAgent</th>
 			<th>XML</th>
 		</tr>
@@ -38,22 +54,49 @@
 		@foreach (var detail in Model.Details)
 		{
 			http = "http://" + detail.ServerName + detail.Url;
+			fullUrl = http;
 			if (!string.IsNullOrEmpty(detail.QueryString))
 			{
-				http += "?" + detail.QueryString;
+				fullUrl += "?" + detail.QueryString;
+			}
+
+			if (@detail.UserAgent.ToLower().IndexOf("trident") > 0)
+			{
+				browser = "IE";
+			}
+			else if (@detail.UserAgent.ToLower().IndexOf("chrome") > 0)
+			{
+				browser = "Chrome";
+			}
+
+			referer = detail.Referer;
+
+			if (detail.Referer.Length > 100)
+			{
+				referer = detail.Referer.Substring(0, 100) + "...";
 			}
 
 			<tr>
 				<td>@detail.Sequence</td>
 				<td>@detail.MtnTime</td>
-				<td><input type="text" value="@detail.Referer" /></td>
-				<td><a href="@detail.Referer" target="_blank"><i class="fa fa-external-link-square"></i></a></td>
-				<td><input type="text" value="@http" /></td>
-				<td><a href="@http" target="_blank"><i class="fa fa-external-link-square"></i></a></td>
-				<td>@detail.UserAgent</td>
 				<td>
-					<a onclick="OpenElmahXML(@detail.Sequence)" style="cursor: pointer"><i class="fa fa-external-link-square" title="See XML"></i></a>
-					<div id="div@(detail.Sequence)" style="display: none;">@detail.AllXml</div>
+					<i class="fa fa-circle"></i> <a href="@detail.Referer" target="_blank">@referer</a>
+					<br />
+					<i class="fa fa-circle-o"></i> <a href="@fullUrl" target="_blank">@http</a>
+				</td>
+				<td>
+					<b>@browser</b>
+					<br />
+					@detail.UserAgent
+				</td>
+				<td>
+					<form id="form@(detail.Sequence)" action="@Url.Action("CreateFile", "Elmah")" method="POST">
+						<a onclick="document.getElementById('form@(detail.Sequence)').submit();" title="Download XML" style="cursor: pointer"><i class="fa fa-download"></i> XML</a>
+						<br />
+						<a onclick="OpenElmahXML(@detail.Sequence)" style="cursor: pointer"><i class="fa fa-external-link-square" title="View XML"></i> View</a>
+						<div id="div@(detail.Sequence)" style="display: none;">@detail.AllXml</div>
+						<input type="hidden" value="@(detail.AllXml)" id="xml" name="xml"/>
+					</form>
 				</td>
 			</tr>
 		}
@@ -69,7 +112,7 @@
 
 <div class="modal fade" id="ModalElmahXML" role="dialog">
 	<div class="modal-dialog">
-		<div class="modal-content" style="padding:10px">
+		<div class="modal-content" style="padding: 10px">
 			<button type="button" class="close" data-dismiss="modal" style="padding: 10px">&times;</button>
 			<div class="well well-sm">
 				<h4>XML</h4>
@@ -80,3 +123,31 @@
 		</div>
 	</div>
 </div>
+
+@* -----------------------------------------------------------------------------
+	   Helper Methods
+	------------------------------------------------------------------------------- *@
+@helper Options(int max, int showErrors)
+{
+	var arr = new int[] { 1, 10, 100, 1000, max};
+	Array.Sort(arr);
+
+	var unique = arr.Distinct().ToArray();
+	
+	<select id="showErrors" name="showErrors" onchange="document.getElementById('form1').submit()">
+		@foreach (var i in unique)
+		{
+			if (i <= max)
+			{
+				if (i == showErrors)
+				{
+					<option selected value="@i">@i</option>
+				}
+				else
+				{
+					<option value="@i">@i</option>
+				}
+			}
+		}
+	</select>
+}
