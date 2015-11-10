@@ -153,12 +153,9 @@ namespace Walter.Controllers
         [ValidateInput(false)]
         public FileStreamResult CreateFile(string xml, int sequence)
         {
-            //todo: add some data from your database into that string:
-            var string_with_your_data = xml;
-
-            var byteArray = Encoding.ASCII.GetBytes(string_with_your_data);
+            var byteArray = Encoding.ASCII.GetBytes(xml);
             var stream = new MemoryStream(byteArray);
-            string fileName = sequence + "XML.xml";
+            string fileName = sequence + ".xml";
             return File(stream, "text/plain", fileName);
         }
     }
