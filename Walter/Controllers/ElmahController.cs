@@ -151,15 +151,15 @@ namespace Walter.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public FileStreamResult CreateFile(string xml)
+        public FileStreamResult CreateFile(string xml, int sequence)
         {
             //todo: add some data from your database into that string:
             var string_with_your_data = xml;
 
             var byteArray = Encoding.ASCII.GetBytes(string_with_your_data);
             var stream = new MemoryStream(byteArray);
-
-            return File(stream, "text/plain", "your_file_name.xml");
+            string fileName = sequence + "XML.xml";
+            return File(stream, "text/plain", fileName);
         }
     }
 }
