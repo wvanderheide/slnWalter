@@ -93,6 +93,7 @@ namespace Walter.Controllers
             string connectionString = "data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
             string sql = "SELECT top " + showErrors.ToString();
             sql += " Message";
+            sql += ",Type";
             sql += ",Sequence";
             sql += ",[AllXml]";
             sql += ", DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) as MtnTime";
@@ -125,7 +126,8 @@ namespace Walter.Controllers
                         ServerName = dr["ServerName"].ToString(),
                         Url = dr["URL"].ToString(),
                         AllXml = dr["AllXml"].ToString(),
-                        QueryString = dr["QueryString"].ToString()
+                        QueryString = dr["QueryString"].ToString(),
+                        Type = dr["Type"].ToString()
                     };
 
                     ElmahDetails.Add(detail);

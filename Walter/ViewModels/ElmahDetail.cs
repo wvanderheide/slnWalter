@@ -13,5 +13,6 @@ namespace Walter.ViewModels
         public string Url { get; set; }
         public string AllXml { get; set; }
         public string QueryString { get; set; }
+        public string Type { get; set; }
     }
 }

@@ -43,8 +43,8 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>Sequence</th>
-			<th>Mtn Time</th>
+			<th>Type</th>
+			<th>Mtn Time<br/><em>(Sequence)</em></th>
 			<th><i class="fa fa-circle"></i> Referer<br /><i class="fa fa-circle-o"></i> URL</th>
 			<th>UserAgent</th>
 			<th>XML</th>
@@ -77,8 +77,8 @@
 			}
 
 			<tr>
-				<td>@detail.Sequence</td>
-				<td>@detail.MtnTime</td>
+				<td>@detail.Type.Replace("System.", "").Replace("Exception", "")</td>
+				<td>@detail.MtnTime<br/><em>(@detail.Sequence)</em></td>
 				<td style="white-space: nowrap">
 					<i class="fa fa-circle"></i> <a href="@detail.Referer" target="_blank">@referer</a>
 					<br />
