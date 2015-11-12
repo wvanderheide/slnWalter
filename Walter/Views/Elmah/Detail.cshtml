@@ -26,14 +26,7 @@
 				}
 			
 			}
-			@Options(count, showErrors)
-	@*<select id="showErrors" name="showErrors" onchange="document.getElementById('form1').submit()">
-				<option value="@Request.QueryString["showErrors"].ToString()" selected>@Request.QueryString["showErrors"].ToString()</option>
-				<option value="1">1</option>
-				<option value="10">10</option>
-				<option value="100">100</option>
-				<option value='@Request.QueryString["count"].ToString()'>All @Request.QueryString["count"].ToString()</option>
-			</select>*@ of @Request.QueryString["count"].ToString() errors.
+			@Options(count, showErrors) of @Request.QueryString["count"].ToString() errors.
 			<input type="hidden" name="count" id="count" value="@Request.QueryString["count"]" />
 			<input type="hidden" name="msg" id="msg" value="@Request.QueryString["msg"]" />
 			<input type="hidden" name="maxSequence" id="maxSequence" value="@Request.QueryString["MaxSequence"]" />
@@ -43,9 +36,8 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>Type</th>
 			<th>Mtn Time<br/><em>(Sequence)</em></th>
-			<th><i class="fa fa-circle"></i> Referer<br /><i class="fa fa-circle-o"></i> URL</th>
+			<th>URL<br/><em>(Referer)</em></th>
 			<th>UserAgent</th>
 			<th>XML</th>
 		</tr>
@@ -77,12 +69,11 @@
 			}
 
 			<tr>
-				<td>@detail.Type.Replace("System.", "").Replace("Exception", "")</td>
 				<td>@detail.MtnTime<br/><em>(@detail.Sequence)</em></td>
 				<td style="white-space: nowrap">
-					<i class="fa fa-circle"></i> <a href="@detail.Referer" target="_blank">@referer</a>
+					<a href="@fullUrl" target="_blank">@http</a>
 					<br />
-					<i class="fa fa-circle-o"></i> <a href="@fullUrl" target="_blank">@http</a>
+					<em>(<a href="@detail.Referer" target="_blank">@referer</a>)</em>
 				</td>
 				<td>
 					<b>@browser</b>

@@ -24,7 +24,7 @@ namespace Walter.Controllers
             string sql = "SELECT TOP 100 *  FROM [healthcomputingdb].[dbo].[ELMAH_Error] order by [Sequence] desc";
 
             sql =
-                "SELECT Max(Sequence) as MaxSequence, [Message] ,COUNT(Message) AS RCount, max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Newest_MtnTime, min(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Oldest_MtnTime FROM [healthcomputingdb].[dbo].[ELMAH_Error] GROUP BY Message ORDER BY RCount DESC";
+                "SELECT Min(Type)as Type, Max(Sequence) as MaxSequence, [Message] ,COUNT(Message) AS RCount, max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Newest_MtnTime, min(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Oldest_MtnTime FROM [healthcomputingdb].[dbo].[ELMAH_Error] GROUP BY Message ORDER BY RCount DESC";
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
@@ -43,7 +43,8 @@ namespace Walter.Controllers
                         Message = dr["Message"].ToString(),
                         Count = Convert.ToInt32(dr["RCount"].ToString()),
                         Newest = Convert.ToDateTime(dr["Newest_MtnTime"].ToString()),
-                        Oldest = Convert.ToDateTime(dr["Oldest_MtnTime"].ToString())
+                        Oldest = Convert.ToDateTime(dr["Oldest_MtnTime"].ToString()),
+                        Type = dr["Type"].ToString()
                     };
 
                     vmErrors.Add(error);
@@ -93,7 +94,6 @@ namespace Walter.Controllers
             string connectionString = "data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
             string sql = "SELECT top " + showErrors.ToString();
             sql += " Message";
-            sql += ",Type";
             sql += ",Sequence";
             sql += ",[AllXml]";
             sql += ", DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) as MtnTime";
@@ -126,8 +126,7 @@ namespace Walter.Controllers
                         ServerName = dr["ServerName"].ToString(),
                         Url = dr["URL"].ToString(),
                         AllXml = dr["AllXml"].ToString(),
-                        QueryString = dr["QueryString"].ToString(),
-                        Type = dr["Type"].ToString()
+                        QueryString = dr["QueryString"].ToString()
                     };
 
                     ElmahDetails.Add(detail);

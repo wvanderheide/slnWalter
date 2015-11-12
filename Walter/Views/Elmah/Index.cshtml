@@ -8,6 +8,7 @@ Unique Errors: <span class="badge">@Model.Errors.Count</span>
 <table class="table table-striped">
 	<thead>
 	<tr>
+		<th>Type</th>
 		<th>Message</th>
 		<th>Count</th>
 		<th>Newest</th>
@@ -19,6 +20,7 @@ Unique Errors: <span class="badge">@Model.Errors.Count</span>
 	{
 		totalErrors += @err.Count;
 		<tr>
+			<td><span title="@err.Type">@TypeShortened(err.Type)</span></td>
 			<td style="max-width: 300px"><a href="@Url.Action("Detail", "Elmah")?showErrors=10&MaxSequence=@err.MaxSequence&count=@err.Count&msg=@err.Message">@err.Message</a></td>
 			<td>@err.Count</td>
 			<td>@err.Newest</td>
@@ -39,5 +41,20 @@ The Table above was generated from the SQL below:
 <b>Hints</b>
 <ul>
 	<li>Generate a test exception: http://toolbox.klasresearch.com/elmah.axd/test</li>
-	<li>Error log:  http://wvander-toolbox/elmah.axd </li>
+	<li>Error log: http://wvander-toolbox/elmah.axd </li>
 </ul>
+@* -----------------------------------------------------------------------------
+	   Helper Methods
+	------------------------------------------------------------------------------- *@
+@helper TypeShortened(string fullType)
+{
+	string[] parts = fullType.Split('.');
+	fullType = parts[parts.Length - 1];
+	fullType = fullType.Replace("Exception", "");
+	if (fullType.Length == 0)
+	{
+		fullType = parts[parts.Length - 1];
+	}
+	
+	@fullType;
+}
