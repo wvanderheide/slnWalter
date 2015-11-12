@@ -23,6 +23,16 @@
     @Scripts.Render("~/js/bootstrap")
     @Scripts.Render("~/js/tableSort")
     @Scripts.Render("~/js/site")
+
+	<script type="text/javascript">
+		//Script added to indicate if there is a JS error on the page
+        window.onerror = function (msg) {
+        	alert("JavaScript Error Detected \n\n" + msg);
+        };
+
+		//Broken Image
+		//window.addEventListener('error', function (e) {alert("Error Detected ");}, true);
+	</script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
