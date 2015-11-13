@@ -19,10 +19,10 @@ namespace Walter.Controllers
                 //"data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
             PageInfo.Title = "Elmah Unique Errors";
             PageInfo.Icon = "<i class=\"fa fa-exclamation-triangle fa-lg\"></i>";
-            PageInfo.SubTitle = "Data Source: [healthcomputingdb].[dbo].[ELMAH_Error] table on SQL1\\Production";
+            PageInfo.SubTitle = "Data Source: [ELMAH_Error] table.";
             ViewBag.PageInfo = PageInfo;
 
-            string sql = "SELECT Max(Sequence) as MaxSequence, [Message] ,COUNT(Message) AS RCount, max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Newest_MtnTime, min(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Oldest_MtnTime FROM [ELMAH_Error] GROUP BY Message ORDER BY RCount DESC";
+            string sql = "SELECT Min(Type)as Type, Max(Sequence) as MaxSequence, [Message] ,COUNT(Message) AS RCount, max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Newest_MtnTime, min(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Oldest_MtnTime FROM [ELMAH_Error] GROUP BY Message ORDER BY RCount DESC";
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
@@ -41,7 +41,8 @@ namespace Walter.Controllers
                         Message = dr["Message"].ToString(),
                         Count = Convert.ToInt32(dr["RCount"].ToString()),
                         Newest = Convert.ToDateTime(dr["Newest_MtnTime"].ToString()),
-                        Oldest = Convert.ToDateTime(dr["Oldest_MtnTime"].ToString())
+                        Oldest = Convert.ToDateTime(dr["Oldest_MtnTime"].ToString()),
+                        Type = dr["Type"].ToString()
                     };
 
                     vmErrors.Add(error);
