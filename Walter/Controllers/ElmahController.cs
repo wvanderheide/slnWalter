@@ -32,12 +32,12 @@ namespace Walter.Controllers
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             SqlDataReader dr = cmd.ExecuteReader();
-            var vmErrors = new List<Elmah>();
+            var vmErrors = new List<ViewModels.Elmah>();
             try
             {
                 while (dr.Read())
                 {
-                    var error = new Elmah
+                    var error = new ViewModels.Elmah
                     {
                         MaxSequence = Convert.ToInt32(dr["MaxSequence"].ToString()),
                         Message = dr["Message"].ToString(),
