@@ -3,50 +3,65 @@
 	ViewBag.Title = "Elmah";
 	int totalErrors = 0;
 }
-<b>TO DO:</b>Add jquery table sort,  make the Hints links up here at top<br/>
+<b>TO DO:</b>Add jquery table sort, make the Hints links up here at top<br />
+<br />
+<select id="drpDB" name="drpDB" onchange="var x='@Url.Action("index", "ErrorLog")'; location.href = x + '?ProdDB=' + $('#drpDB').val();">
+	@{
+		if (Session["ProdDB"] != null)
+		{
+			<option value="0">Test DB</option>
+			<option value="1" selected="selected">Prod DB</option>
+		}
+		else
+		{
+			<option value="0">Test DB</option>
+			<option value="1">Prod DB</option>
+		}
+	}
+</select>
 <a href="/elmah" target="_blank">Elmah</a><br />
 Unique Errors: <span class="badge">@Model.Errors.Count</span>
 <table class="table table-striped">
 	<thead>
-	<tr>
-		<th>Type</th>
-        <th>Code</th>
-		<th>Message</th>
-		<th>Count</th>
-		<th>Newest</th>
-		<th>Oldest</th>
-	</tr>
+		<tr>
+			<th>Type</th>
+			<th>Code</th>
+			<th>Message</th>
+			<th>Count</th>
+			<th>Newest</th>
+			<th>Oldest</th>
+		</tr>
 	</thead>
 	<tbody>
-	@foreach (var err in Model.Errors)
-	{
-		totalErrors += @err.Count;
-		<tr>
-            <td><span title="@err.Type">@TypeShortened(err.Type)</span></td>
-            <td>@err.Code</td>
-			<td style="max-width: 300px">@err.Message</td>
-			<td><a href="@Url.Action("Detail", "ErrorLog")?showErrors=10&MaxSequence=@err.MaxSequence&count=@err.Count&msg=@err.Message">@err.Count <i class="fa fa-external-link-square" title="Details"></i></a></td>
-			<td>@err.Newest</td>
-			<td>@err.Oldest</td>
-		</tr>
-	}
+		@foreach (var err in Model.Errors)
+		{
+			totalErrors += @err.Count;
+			<tr>
+				<td><span title="@err.Type">@TypeShortened(err.Type)</span></td>
+				<td>@err.Code</td>
+				<td style="max-width: 300px">@err.Message</td>
+				<td><a href="@Url.Action("Detail", "ErrorLog")?showErrors=10&MaxSequence=@err.MaxSequence&count=@err.Count&msg=@err.Message">@err.Count <i class="fa fa-external-link-square" title="Details"></i></a></td>
+				<td>@err.Newest</td>
+				<td>@err.Oldest</td>
+			</tr>
+		}
 	</tbody>
 </table>
 Total Errors: <span class="badge">@totalErrors</span>
-<br/>
-<br/>
+<br />
+<br />
 The Table above was generated from the SQL below:
-<br/>
+<br />
 <textarea rows="4" cols="100">@Model.Sql</textarea>
 
-<br/>
-<br/>
+<br />
+<br />
 <b>Hints</b>
 <ul>
 	<li>Generate a test exception: http://toolbox.klasresearch.com/elmah.axd/test</li>
-    <li>MVC Generate a test exception: http://walter/elmah/test</li>
+	<li>MVC Generate a test exception: http://walter/elmah/test</li>
 	<li>Error log: http://wvander-toolbox/elmah.axd </li>
-    <li>MVC Error log: http://walter/elmah </li>
+	<li>MVC Error log: http://walter/elmah </li>
 </ul>
 @* -----------------------------------------------------------------------------
 	   Helper Methods
@@ -60,6 +75,6 @@ The Table above was generated from the SQL below:
 	{
 		fullType = parts[parts.Length - 1];
 	}
-	
+
 	@fullType;
 }

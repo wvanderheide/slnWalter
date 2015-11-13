@@ -16,7 +16,20 @@ namespace Walter.Controllers
         public ActionResult Index()
         {
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Elmah"].ConnectionString;
-                //"data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
+
+            if (Request["ProdDB"] == "0")
+            {
+                Session["ProdDB"] = null;
+            }
+            else if (Request["ProdDB"] == "1" || Session["ProdDB"] != null)
+            {
+                connectionString =
+                    "data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
+
+                Session["ProdDB"] = connectionString;
+            }
+
+
             PageInfo.Title = "Elmah Unique Errors";
             PageInfo.Icon = "<i class=\"fa fa-exclamation-triangle fa-lg\"></i>";
             PageInfo.SubTitle = "Data Source: [ELMAH_Error] table.";
@@ -91,6 +104,12 @@ namespace Walter.Controllers
             ViewBag.PageInfo = PageInfo;
 
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Elmah"].ConnectionString;
+
+            if (Session["ProdDB"] != null)
+            {
+                connectionString = Session["ProdDB"].ToString();
+            }
+
             string sql = "SELECT top " + showErrors.ToString();
             sql += " Message";
             sql += ",Sequence";
