@@ -90,7 +90,7 @@
 					@detail.UserAgent
 				</td>
 				<td style="white-space: nowrap">
-					<form id="form@(detail.Sequence)" action="@Url.Action("CreateFile", "Elmah")" method="POST">
+					<form id="form@(detail.Sequence)" action="@Url.Action("CreateFile", "ErrorLog")" method="POST">
 						<a onclick="document.getElementById('form@(detail.Sequence)').submit();" title="Download XML" style="cursor: pointer"><i class="fa fa-download"></i></a>
 						<a onclick="OpenElmahXML(@detail.Sequence)" style="cursor: pointer"><i class="fa fa-external-link-square" title="View XML"></i></a>
 						<div id="div@(detail.Sequence)" style="display: none;">@detail.AllXml</div>

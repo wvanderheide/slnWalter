@@ -10,21 +10,19 @@ using Walter.ViewModels;
 
 namespace Walter.Controllers
 {
-    public class ElmahController : Controller
+    public class ErrorLogController : Controller
     {
         private static readonly PageInfo PageInfo = new PageInfo();
         public ActionResult Index()
         {
-            string connectionString = "data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Elmah"].ConnectionString;
+                //"data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
             PageInfo.Title = "Elmah Unique Errors";
             PageInfo.Icon = "<i class=\"fa fa-exclamation-triangle fa-lg\"></i>";
             PageInfo.SubTitle = "Data Source: [healthcomputingdb].[dbo].[ELMAH_Error] table on SQL1\\Production";
             ViewBag.PageInfo = PageInfo;
 
-            string sql = "SELECT TOP 100 *  FROM [healthcomputingdb].[dbo].[ELMAH_Error] order by [Sequence] desc";
-
-            sql =
-                "SELECT Max(Sequence) as MaxSequence, [Message] ,COUNT(Message) AS RCount, max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Newest_MtnTime, min(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Oldest_MtnTime FROM [healthcomputingdb].[dbo].[ELMAH_Error] GROUP BY Message ORDER BY RCount DESC";
+            string sql = "SELECT Max(Sequence) as MaxSequence, [Message] ,COUNT(Message) AS RCount, max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Newest_MtnTime, min(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Oldest_MtnTime FROM [ELMAH_Error] GROUP BY Message ORDER BY RCount DESC";
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
@@ -90,7 +88,7 @@ namespace Walter.Controllers
             PageInfo.SubTitle = Request["msg"];
             ViewBag.PageInfo = PageInfo;
 
-            string connectionString = "data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Elmah"].ConnectionString;
             string sql = "SELECT top " + showErrors.ToString();
             sql += " Message";
             sql += ",Sequence";
