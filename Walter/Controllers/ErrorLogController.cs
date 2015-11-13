@@ -10,21 +10,19 @@ using Walter.ViewModels;
 
 namespace Walter.Controllers
 {
-    public class ElmahController : Controller
+    public class ErrorLogController : Controller
     {
         private static readonly PageInfo PageInfo = new PageInfo();
         public ActionResult Index()
         {
-            string connectionString = "data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Elmah"].ConnectionString;
+                //"data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
             PageInfo.Title = "Elmah Unique Errors";
             PageInfo.Icon = "<i class=\"fa fa-exclamation-triangle fa-lg\"></i>";
-            PageInfo.SubTitle = "Data Source: [healthcomputingdb].[dbo].[ELMAH_Error] table on SQL1\\Production";
+            PageInfo.SubTitle = "Data Source: [ELMAH_Error] table.";
             ViewBag.PageInfo = PageInfo;
 
-            string sql = "SELECT TOP 100 *  FROM [healthcomputingdb].[dbo].[ELMAH_Error] order by [Sequence] desc";
-
-            sql =
-                "SELECT Min(Type)as Type, Max(Sequence) as MaxSequence, [Message] ,COUNT(Message) AS RCount, max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Newest_MtnTime, min(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Oldest_MtnTime FROM [healthcomputingdb].[dbo].[ELMAH_Error] GROUP BY Message ORDER BY RCount DESC";
+            string sql = "SELECT Min(Type)as Type, Max(Sequence) as MaxSequence, [Message] ,COUNT(Message) AS RCount, max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Newest_MtnTime, min(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Oldest_MtnTime FROM [ELMAH_Error] GROUP BY Message ORDER BY RCount DESC";
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
@@ -32,12 +30,12 @@ namespace Walter.Controllers
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             SqlDataReader dr = cmd.ExecuteReader();
-            var vmErrors = new List<Elmah>();
+            var vmErrors = new List<ViewModels.Error>();
             try
             {
                 while (dr.Read())
                 {
-                    var error = new Elmah
+                    var error = new ViewModels.Error
                     {
                         MaxSequence = Convert.ToInt32(dr["MaxSequence"].ToString()),
                         Message = dr["Message"].ToString(),
@@ -58,12 +56,12 @@ namespace Walter.Controllers
                 conn.Close();
             }
 
-            var vmElmahErrors = new VmElmahErrors
+            var vmError = new VmError
             {
                 Errors = vmErrors,
                 Sql = sql
             };
-            return View("Index", vmElmahErrors);
+            return View("Index", vmError);
         }
 
         public ActionResult Detail()
@@ -91,7 +89,7 @@ namespace Walter.Controllers
             PageInfo.SubTitle = Request["msg"];
             ViewBag.PageInfo = PageInfo;
 
-            string connectionString = "data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Elmah"].ConnectionString;
             string sql = "SELECT top " + showErrors.ToString();
             sql += " Message";
             sql += ",Sequence";
@@ -111,12 +109,12 @@ namespace Walter.Controllers
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             SqlDataReader dr = cmd.ExecuteReader();
-            var ElmahDetails = new List<ElmahDetail>();
+            var ErrorDetails = new List<ErrorDetail>();
             try
             {
                 while (dr.Read())
                 {
-                    var detail = new ElmahDetail
+                    var detail = new ErrorDetail
                     {
                         Message = dr["Message"].ToString(),
                         Sequence = Convert.ToInt32(dr["Sequence"].ToString()),
@@ -129,7 +127,7 @@ namespace Walter.Controllers
                         QueryString = dr["QueryString"].ToString()
                     };
 
-                    ElmahDetails.Add(detail);
+                    ErrorDetails.Add(detail);
                 }
             }
             finally
@@ -140,13 +138,13 @@ namespace Walter.Controllers
                 conn.Close();
             }
 
-            var vmElmahDetails = new VmElmahDetails
+            var vmErrorDetails = new VmErrorDetails
             {
-                Details = ElmahDetails,
+                Details = ErrorDetails,
                 Sql = sql
             };
 
-            return View("Detail", vmElmahDetails);
+            return View("Detail", vmErrorDetails);
         }
 
 

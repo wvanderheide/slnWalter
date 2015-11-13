@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Walter.ViewModels
 {
-    public class VmElmahErrors
+    public class VmError
     {
         public string Sql { get; set; }
-        public List<Elmah> Errors { get; set; }
+        public List<Error> Errors { get; set; }
     }
 }

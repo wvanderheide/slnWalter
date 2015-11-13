@@ -1,6 +1,6 @@
-﻿@model Walter.ViewModels.VmElmahDetails
+﻿@model Walter.ViewModels.VmErrorDetails
 @{
-	ViewBag.Title = "ElmahDetails";
+	ViewBag.Title = "ErrorDetails";
 	string http = string.Empty;
 	string fullUrl = string.Empty;
 	string browser = string.Empty;
@@ -11,10 +11,10 @@
 
 <div class="row" id="divFilters">
 	<div class="col-sm-6">
-		<a href="@Url.Action("index", "Elmah")"><i class="fa fa-step-backward"></i> Elmah Unique Errors</a>
+		<a href="@Url.Action("index", "ErrorLog")"><i class="fa fa-step-backward"></i> Elmah Unique Errors</a>
 	</div>
 	<div class="col-sm-6" style="text-align: right">
-		<form action="@Url.Action("Detail","Elmah")" id="form1" name="form1" method="GET">
+		<form action="@Url.Action("Detail","ErrorLog")" id="form1" name="form1" method="GET">
 			Displaying details for
 			@{
 				count = Convert.ToInt32(Request.QueryString["count"].ToString());
@@ -81,7 +81,7 @@
 					@detail.UserAgent
 				</td>
 				<td style="white-space: nowrap">
-					<form id="form@(detail.Sequence)" action="@Url.Action("CreateFile", "Elmah")" method="POST">
+					<form id="form@(detail.Sequence)" action="@Url.Action("CreateFile", "ErrorLog")" method="POST">
 						<a onclick="document.getElementById('form@(detail.Sequence)').submit();" title="Download XML" style="cursor: pointer"><i class="fa fa-download"></i></a>
 						<a onclick="OpenElmahXML(@detail.Sequence)" style="cursor: pointer"><i class="fa fa-external-link-square" title="View XML"></i></a>
 						<div id="div@(detail.Sequence)" style="display: none;">@detail.AllXml</div>

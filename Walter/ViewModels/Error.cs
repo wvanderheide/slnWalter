@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Walter.ViewModels
 {
-    public class Elmah
+    public class Error
     {
         public int MaxSequence { get; set; }
         public string Type { get; set; }

@@ -1,9 +1,9 @@
-﻿@model Walter.ViewModels.VmElmahErrors
+﻿@model Walter.ViewModels.VmError
 @{
 	ViewBag.Title = "Elmah";
 	int totalErrors = 0;
 }
-
+<a href="/elmah" target="_blank">Elmah</a><br />
 Unique Errors: <span class="badge">@Model.Errors.Count</span>
 <table class="table table-striped">
 	<thead>
@@ -20,8 +20,8 @@ Unique Errors: <span class="badge">@Model.Errors.Count</span>
 	{
 		totalErrors += @err.Count;
 		<tr>
-			<td><span title="@err.Type">@TypeShortened(err.Type)</span></td>
-			<td style="max-width: 300px"><a href="@Url.Action("Detail", "Elmah")?showErrors=10&MaxSequence=@err.MaxSequence&count=@err.Count&msg=@err.Message">@err.Message</a></td>
+            <td><span title="@err.Type">@TypeShortened(err.Type)</span></td>
+			<td style="max-width: 300px"><a href="@Url.Action("Detail", "ErrorLog")?showErrors=10&MaxSequence=@err.MaxSequence&count=@err.Count&msg=@err.Message">@err.Message</a></td>
 			<td>@err.Count</td>
 			<td>@err.Newest</td>
 			<td>@err.Oldest</td>
@@ -41,7 +41,9 @@ The Table above was generated from the SQL below:
 <b>Hints</b>
 <ul>
 	<li>Generate a test exception: http://toolbox.klasresearch.com/elmah.axd/test</li>
+    <li>MVC Generate a test exception: http://walter/elmah/test</li>
 	<li>Error log: http://wvander-toolbox/elmah.axd </li>
+    <li>MVC Error log: http://walter/elmah </li>
 </ul>
 @* -----------------------------------------------------------------------------
 	   Helper Methods

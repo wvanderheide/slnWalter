@@ -39,6 +39,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.Mvc">
+      <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -119,7 +125,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ElmahController.cs" />
+    <Compile Include="Controllers\ErrorLogController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
@@ -172,10 +178,10 @@
     <Compile Include="ViewModels\PageInfo.cs" />
     <Compile Include="ViewModels\VMClimb.cs" />
     <Compile Include="ViewModels\VMContact.cs" />
-    <Compile Include="ViewModels\Elmah.cs" />
-    <Compile Include="ViewModels\ElmahDetail.cs" />
-    <Compile Include="ViewModels\VmElmahDetails.cs" />
-    <Compile Include="ViewModels\VmElmahErrors.cs" />
+    <Compile Include="ViewModels\Error.cs" />
+    <Compile Include="ViewModels\ErrorDetail.cs" />
+    <Compile Include="ViewModels\VmErrorDetails.cs" />
+    <Compile Include="ViewModels\VmError.cs" />
     <Compile Include="ViewModels\VMForecast.cs" />
     <Compile Include="ViewModels\VMImage.cs" />
     <Compile Include="ViewModels\VMmountain.cs" />
@@ -253,8 +259,8 @@
     <Content Include="Views\Mountain\SummitPost.cshtml" />
     <Content Include="Views\Mountain\Climbs.cshtml" />
     <Content Include="Views\Shared\_MonthDayYear.cshtml" />
-    <Content Include="Views\Elmah\Index.cshtml" />
-    <Content Include="Views\Elmah\Detail.cshtml" />
+    <Content Include="Views\ErrorLog\Index.cshtml" />
+    <Content Include="Views\ErrorLog\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
