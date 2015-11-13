@@ -9,6 +9,7 @@ namespace Walter.ViewModels
     {
         public int MaxSequence { get; set; }
         public string Type { get; set; }
+        public string Code { get; set; }
         public string Message { get; set; }
         public int Count { get; set; }
         public DateTime Newest { get; set; }

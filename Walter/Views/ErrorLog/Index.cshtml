@@ -3,12 +3,14 @@
 	ViewBag.Title = "Elmah";
 	int totalErrors = 0;
 }
+<b>TO DO:</b>Add jquery table sort,  make the Hints links up here at top<br/>
 <a href="/elmah" target="_blank">Elmah</a><br />
 Unique Errors: <span class="badge">@Model.Errors.Count</span>
 <table class="table table-striped">
 	<thead>
 	<tr>
 		<th>Type</th>
+        <th>Code</th>
 		<th>Message</th>
 		<th>Count</th>
 		<th>Newest</th>
@@ -21,8 +23,9 @@ Unique Errors: <span class="badge">@Model.Errors.Count</span>
 		totalErrors += @err.Count;
 		<tr>
             <td><span title="@err.Type">@TypeShortened(err.Type)</span></td>
-			<td style="max-width: 300px"><a href="@Url.Action("Detail", "ErrorLog")?showErrors=10&MaxSequence=@err.MaxSequence&count=@err.Count&msg=@err.Message">@err.Message</a></td>
-			<td>@err.Count</td>
+            <td>@err.Code</td>
+			<td style="max-width: 300px">@err.Message</td>
+			<td><a href="@Url.Action("Detail", "ErrorLog")?showErrors=10&MaxSequence=@err.MaxSequence&count=@err.Count&msg=@err.Message">@err.Count <i class="fa fa-external-link-square" title="Details"></i></a></td>
 			<td>@err.Newest</td>
 			<td>@err.Oldest</td>
 		</tr>
