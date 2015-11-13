@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Walter.ViewModels
 {
-    public class VmElmahDetails
+    public class VmErrorDetails
     {
         public string Sql { get; set; }
-        public List<ElmahDetail> Details { get; set; }
+        public List<ErrorDetail> Details { get; set; }
     }
 }

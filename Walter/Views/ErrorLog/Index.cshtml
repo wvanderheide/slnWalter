@@ -1,9 +1,9 @@
-﻿@model Walter.ViewModels.VmElmahErrors
+﻿@model Walter.ViewModels.VmError
 @{
 	ViewBag.Title = "Elmah";
 	int totalErrors = 0;
 }
-
+<a href="/elmah" target="_blank">Elmah</a><br />
 Unique Errors: <span class="badge">@Model.Errors.Count</span>
 <table class="table table-striped">
 	<thead>

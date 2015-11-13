@@ -178,10 +178,10 @@
     <Compile Include="ViewModels\PageInfo.cs" />
     <Compile Include="ViewModels\VMClimb.cs" />
     <Compile Include="ViewModels\VMContact.cs" />
-    <Compile Include="ViewModels\Elmah.cs" />
-    <Compile Include="ViewModels\ElmahDetail.cs" />
-    <Compile Include="ViewModels\VmElmahDetails.cs" />
-    <Compile Include="ViewModels\VmElmahErrors.cs" />
+    <Compile Include="ViewModels\Error.cs" />
+    <Compile Include="ViewModels\ErrorDetail.cs" />
+    <Compile Include="ViewModels\VmErrorDetails.cs" />
+    <Compile Include="ViewModels\VmError.cs" />
     <Compile Include="ViewModels\VMForecast.cs" />
     <Compile Include="ViewModels\VMImage.cs" />
     <Compile Include="ViewModels\VMmountain.cs" />

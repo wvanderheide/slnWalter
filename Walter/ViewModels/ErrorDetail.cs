@@ -2,7 +2,7 @@
 
 namespace Walter.ViewModels
 {
-    public class ElmahDetail
+    public class ErrorDetail
     {
         public string Message { get; set; }
         public int Sequence { get; set; }

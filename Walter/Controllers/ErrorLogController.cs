@@ -30,12 +30,12 @@ namespace Walter.Controllers
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             SqlDataReader dr = cmd.ExecuteReader();
-            var vmErrors = new List<ViewModels.Elmah>();
+            var vmErrors = new List<ViewModels.Error>();
             try
             {
                 while (dr.Read())
                 {
-                    var error = new ViewModels.Elmah
+                    var error = new ViewModels.Error
                     {
                         MaxSequence = Convert.ToInt32(dr["MaxSequence"].ToString()),
                         Message = dr["Message"].ToString(),
@@ -56,12 +56,12 @@ namespace Walter.Controllers
                 conn.Close();
             }
 
-            var vmElmahErrors = new VmElmahErrors
+            var vmError = new VmError
             {
                 Errors = vmErrors,
                 Sql = sql
             };
-            return View("Index", vmElmahErrors);
+            return View("Index", vmError);
         }
 
         public ActionResult Detail()
@@ -109,12 +109,12 @@ namespace Walter.Controllers
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             SqlDataReader dr = cmd.ExecuteReader();
-            var ElmahDetails = new List<ElmahDetail>();
+            var ErrorDetails = new List<ErrorDetail>();
             try
             {
                 while (dr.Read())
                 {
-                    var detail = new ElmahDetail
+                    var detail = new ErrorDetail
                     {
                         Message = dr["Message"].ToString(),
                         Sequence = Convert.ToInt32(dr["Sequence"].ToString()),
@@ -127,7 +127,7 @@ namespace Walter.Controllers
                         QueryString = dr["QueryString"].ToString()
                     };
 
-                    ElmahDetails.Add(detail);
+                    ErrorDetails.Add(detail);
                 }
             }
             finally
@@ -138,13 +138,13 @@ namespace Walter.Controllers
                 conn.Close();
             }
 
-            var vmElmahDetails = new VmElmahDetails
+            var vmErrorDetails = new VmErrorDetails
             {
-                Details = ElmahDetails,
+                Details = ErrorDetails,
                 Sql = sql
             };
 
-            return View("Detail", vmElmahDetails);
+            return View("Detail", vmErrorDetails);
         }
 
 
