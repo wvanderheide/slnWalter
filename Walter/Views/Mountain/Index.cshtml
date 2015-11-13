@@ -122,10 +122,13 @@
 </div>
 
 <form method="POST" id="form1" name="form1" action="@Url.Action("SortOnElevation", "Mountain")">
-    <input type="hidden" id="elevation" name="elevation" value="@ViewBag.Elevation" />
+	<input type="hidden" id="elevation" name="elevation" value="@ViewBag.Elevation"/>
 </form>
-<script>
-    $(document).ready(function () {
-        $("#TableMtn").tablesorter();
-    });
-</script>
+@section DocumentReady
+{
+	<script>
+		$(document).ready(function() {
+			$("#TableMtn").tablesorter();
+		});
+	</script>
+}

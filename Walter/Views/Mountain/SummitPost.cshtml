@@ -35,9 +35,12 @@
         @Html.Raw(ViewBag.html)
     </div>
 </form>
-<div style="clear:both">&nbsp;</div>
-<script>
-    $(document).ready(function () {
-        $("#myTable").tablesorter();
-    });
-</script>
+<div style="clear: both">&nbsp;</div>
+@section DocumentReady
+{
+	<script>
+		$(document).ready(function() {
+			$("#myTable").tablesorter();
+		});
+	</script>
+}
