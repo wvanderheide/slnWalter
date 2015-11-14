@@ -190,13 +190,6 @@
     <Compile Include="ViewModels\VMphoto.cs" />
     <Compile Include="ViewModels\VMPhotoYear.cs" />
     <Compile Include="ViewModels\VMQuote.cs" />
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -207,8 +200,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery.tablesorter.js" />
-    <Content Include="WebForm1.html" />
-    <Content Include="WebForm1.aspx" />
     <EntityDeploy Include="Models\WalterEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>WalterEntities.Designer.cs</LastGenOutput>
