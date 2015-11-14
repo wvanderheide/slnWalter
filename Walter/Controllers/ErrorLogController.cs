@@ -38,11 +38,27 @@ namespace Walter.Controllers
             string sql = "SELECT Min(StatusCode) as Code, Min(Type)as Type, Max(Sequence) as MaxSequence, [Message] ,COUNT(Message) AS RCount, max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Newest_MtnTime, min(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Oldest_MtnTime FROM [ELMAH_Error] GROUP BY Message ORDER BY RCount DESC";
 
             SqlConnection conn = new SqlConnection(connectionString);
+            SqlCommand cmd = new SqlCommand();
+
+            if (TempData["ClearElmah"] != null)
+            {
+                try
+                {
+                    conn.Open();
+                    cmd = new SqlCommand("Delete FROM [ELMAH_Error]", conn);
+                    cmd.ExecuteReader();
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    conn.Close();
+                }
+            }
+
             conn.Open();
-
-            SqlCommand cmd = new SqlCommand(sql, conn);
-
+            cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
+
             var vmErrors = new List<ViewModels.Error>();
             try
             {
@@ -75,6 +91,7 @@ namespace Walter.Controllers
                 Errors = vmErrors,
                 Sql = sql
             };
+
             return View("Index", vmError);
         }
 
@@ -167,7 +184,6 @@ namespace Walter.Controllers
             return View("Detail", vmErrorDetails);
         }
 
-
         [HttpPost]
         [ValidateInput(false)]
         public FileStreamResult CreateFile(string xml, int sequence)
@@ -176,6 +192,12 @@ namespace Walter.Controllers
             var stream = new MemoryStream(byteArray);
             string fileName = sequence + ".xml";
             return File(stream, "text/plain", fileName);
+        }
+
+        public ActionResult ClearElmah()
+        {
+            TempData["ClearElmah"] = "Yes";
+            return RedirectToAction("Index");
         }
     }
 }

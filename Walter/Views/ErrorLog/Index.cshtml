@@ -1,90 +1,97 @@
 ﻿@model Walter.ViewModels.VmError
 @{
-	ViewBag.Title = "Elmah";
-	int totalErrors = 0;
+    ViewBag.Title = "Elmah";
+    int totalErrors = 0;
 }
-<b>TO DO:</b>Make the Hints links up here at top<br />
+Choose Database: <select id="drpDB" name="drpDB" onchange="var x='@Url.Action("index", "ErrorLog")'; location.href = x + '?ProdDB=' + $('#drpDB').val();">
+    @{
+        if (Session["ProdDB"] != null)
+        {
+            <option value="0">Test DB</option>
+            <option value="1" selected="selected">Prod DB</option>
+        }
+        else
+        {
+            <option value="0">Test DB</option>
+            <option value="1">Prod DB</option>
+        }
+    }
+</select> |
+<a href="/elmah" target="_blank">Elmah</a> |
+<a href="/elmah/test" target="_blank">Test Error</a> |
+<a href="#" onclick="var x='@Url.Action("ClearElmah","ErrorLog")'; if(confirm('Really? Once elmah table is cleared, it can not be undone.')){ location.href=x;}">Clear ErrorLog</a>
 <br />
-<select id="drpDB" name="drpDB" onchange="var x='@Url.Action("index", "ErrorLog")'; location.href = x + '?ProdDB=' + $('#drpDB').val();">
-	@{
-		if (Session["ProdDB"] != null)
-		{
-			<option value="0">Test DB</option>
-			<option value="1" selected="selected">Prod DB</option>
-		}
-		else
-		{
-			<option value="0">Test DB</option>
-			<option value="1">Prod DB</option>
-		}
-	}
-</select>
-<a href="/elmah" target="_blank">Elmah</a><br />
-Unique Errors: <span class="badge">@Model.Errors.Count</span>
+<b>Hint:</b> <em>Press the space bar to scroll a page-full at a time.</em>
+<div style="width: 99%; text-align:right">
+    Unique Errors: <span class="badge">@Model.Errors.Count</span>
+</div>
 <table class="table table-striped" id="TableErrors">
-	<thead>
-		<tr>
-			 <th style="cursor: pointer">Type</th>
-			 <th style="cursor: pointer">Code</th>
-			 <th style="cursor: pointer">Message</th>
-			 <th style="cursor: pointer">Count</th>
-			 <th style="cursor: pointer">Newest</th>
-			 <th style="cursor: pointer">Oldest</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var err in Model.Errors)
-		{
-			totalErrors += @err.Count;
-			<tr>
-				<td><span title="@err.Type">@TypeShortened(err.Type)</span></td>
-				<td>@err.Code</td>
-				<td style="max-width: 300px">@err.Message</td>
-				<td><a href="@Url.Action("Detail", "ErrorLog")?showErrors=10&MaxSequence=@err.MaxSequence&count=@err.Count&msg=@err.Message">@err.Count <i class="fa fa-external-link-square" title="Details"></i></a></td>
-				<td>@err.Newest</td>
-				<td>@err.Oldest</td>
-			</tr>
-		}
-	</tbody>
+    <thead>
+        <tr>
+            <th style="cursor: pointer">Type</th>
+            <th style="cursor: pointer">Code</th>
+            <th style="cursor: pointer">Message</th>
+            <th style="cursor: pointer">Count</th>
+            <th style="cursor: pointer">Newest</th>
+            <th style="cursor: pointer">Oldest</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var err in Model.Errors)
+        {
+            totalErrors += @err.Count;
+            <tr>
+                <td><span title="@err.Type">@TypeShortened(err.Type)</span></td>
+                <td>@err.Code</td>
+                <td style="max-width: 300px">@err.Message</td>
+                <td><a href="@Url.Action("Detail", "ErrorLog")?showErrors=10&MaxSequence=@err.MaxSequence&count=@err.Count&msg=@err.Message">@err.Count <i class="fa fa-external-link-square" title="Details"></i></a></td>
+                <td>@err.Newest</td>
+                <td>@err.Oldest</td>
+            </tr>
+        }
+    </tbody>
 </table>
-Total Errors: <span class="badge">@totalErrors</span>
+<div style="width: 99%; text-align:right">
+    Total Errors: <span class="badge">@totalErrors</span>
+</div>
 <br />
 <br />
-The Table above was generated from the SQL below:
+    The Table above was generated from the SQL below:
 <br />
 <textarea rows="4" cols="100">@Model.Sql</textarea>
 
 <br />
 <br />
-<b>Hints</b>
+<b>Notes</b>
 <ul>
-	<li>Generate a test exception: http://toolbox.klasresearch.com/elmah.axd/test</li>
-	<li>MVC Generate a test exception: http://walter/elmah/test</li>
-	<li>Error log: http://wvander-toolbox/elmah.axd </li>
-	<li>MVC Error log: http://walter/elmah </li>
+    <li>Web Forms: Generate a test exception: http://toolbox.klasresearch.com/elmah.axd/test</li>
+    <li>Web Forms: Error log: http://wvander-toolbox/elmah.axd </li>
+    <li>Elmah is install via nuget, but the web.config had to be updated manually (see web.config)</li>
+    <li>One table and three procs had to be created to accomadate sql server logging (see ELMAH-1.2-db-SQLServer.sql script)</li>
+    <li>See the Global.asax.cs page for how to "dismiss" (aka not log) execeptions</li>
 </ul>
 
 @section DocumentReady
 {
-	<script>
-		$(document).ready(function () {
-			$("#TableErrors").tablesorter();
-		});
-	</script>
+    <script>
+        $(document).ready(function () {
+            $("#TableErrors").tablesorter();
+        });
+    </script>
 }
 
 @* -----------------------------------------------------------------------------
-	   Helper Methods
-	------------------------------------------------------------------------------- *@
+       Helper Methods
+    ------------------------------------------------------------------------------- *@
 @helper TypeShortened(string fullType)
 {
-	string[] parts = fullType.Split('.');
-	fullType = parts[parts.Length - 1];
-	fullType = fullType.Replace("Exception", "");
-	if (fullType.Length == 0)
-	{
-		fullType = parts[parts.Length - 1];
-	}
+    string[] parts = fullType.Split('.');
+    fullType = parts[parts.Length - 1];
+    fullType = fullType.Replace("Exception", "");
+    if (fullType.Length == 0)
+    {
+        fullType = parts[parts.Length - 1];
+    }
 
-	@fullType;
+    @fullType;
 }
