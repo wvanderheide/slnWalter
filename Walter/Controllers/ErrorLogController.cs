@@ -23,19 +23,20 @@ namespace Walter.Controllers
             }
             else if (Request["ProdDB"] == "1" || Session["ProdDB"] != null)
             {
-                connectionString =
-                    "data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
+                connectionString = "Server=SQL1\\Production; Database=healthcomputingdb; Trusted_Connection=True; Max Pool Size=60000";
+                   // "data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
 
                 Session["ProdDB"] = connectionString;
             }
 
+            ViewBag.connectionString = connectionString;
 
             PageInfo.Title = "Elmah Unique Errors";
             PageInfo.Icon = "<i class=\"fa fa-exclamation-triangle fa-lg\"></i>";
             PageInfo.SubTitle = "Data Source: [ELMAH_Error] table.";
             ViewBag.PageInfo = PageInfo;
 
-            string sql = "SELECT Min(StatusCode) as Code, Min(Type)as Type, Max(Sequence) as MaxSequence, [Message] ,COUNT(Message) AS RCount, max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Newest_MtnTime, min(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Oldest_MtnTime FROM [ELMAH_Error] GROUP BY Message ORDER BY RCount DESC";
+            string sql = "SELECT Min(StatusCode) as Code, Min(Type)as Type, Max(Sequence) as MaxSequence, [Message] ,COUNT(Message) AS RCount, max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Newest_MtnTime, min(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Oldest_MtnTime FROM [ELMAH_Error] GROUP BY Message ORDER BY MaxSequence DESC";
 
             SqlConnection conn = new SqlConnection(connectionString);
             SqlCommand cmd = new SqlCommand();
