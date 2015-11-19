@@ -15,26 +15,16 @@ namespace Walter.Controllers
         private static readonly PageInfo PageInfo = new PageInfo();
         public ActionResult Index()
         {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Elmah"].ConnectionString;
-
-            if (Request["ProdDB"] == "0")
-            {
-                Session["ProdDB"] = null;
-            }
-            else if (Request["ProdDB"] == "1" || Session["ProdDB"] != null)
-            {
-                connectionString = "Server=SQL1\\Production; Database=healthcomputingdb; Trusted_Connection=True; Max Pool Size=60000";
-                   // "data source=SQL1\\Production; initial catalog=healthcomputingdb; integrated security=True;MultipleActiveResultSets=True";
-
-                Session["ProdDB"] = connectionString;
-            }
-
-            ViewBag.connectionString = connectionString;
-
             PageInfo.Title = "Elmah Unique Errors";
             PageInfo.Icon = "<i class=\"fa fa-exclamation-triangle fa-lg\"></i>";
             PageInfo.SubTitle = "Data Source: [ELMAH_Error] table.";
             ViewBag.PageInfo = PageInfo;
+
+            var uri = Request.Url;
+            
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Elmah"].ConnectionString;
+
+            Session["connectionString"] = connectionString;
 
             string sql = "SELECT Min(StatusCode) as Code, Min(Type)as Type, Max(Sequence) as MaxSequence, [Message] ,COUNT(Message) AS RCount, max(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Newest_MtnTime, min(DATEADD(mi, DATEDIFF(mi, GETUTCDATE(), GETDATE()), [TimeUtc]) ) as Oldest_MtnTime FROM [ELMAH_Error] GROUP BY Message ORDER BY MaxSequence DESC";
 
@@ -105,7 +95,7 @@ namespace Walter.Controllers
             }
 
             int count = 0;
-            if (!int.TryParse(Request["MaxSequence"], out count))
+            if (!int.TryParse(Request["MaxSequence"], out count) || Session["connectionString"] == null)
                 return RedirectToAction("Index");
 
             var maxSequence = Request["MaxSequence"].ToString();
@@ -121,13 +111,8 @@ namespace Walter.Controllers
             PageInfo.SubTitle = Request["msg"];
             ViewBag.PageInfo = PageInfo;
 
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Elmah"].ConnectionString;
-
-            if (Session["ProdDB"] != null)
-            {
-                connectionString = Session["ProdDB"].ToString();
-            }
-
+            string connectionString = Session["connectionString"].ToString();
+            
             string sql = "SELECT top " + showErrors.ToString();
             sql += " Message";
             sql += ",Sequence";
