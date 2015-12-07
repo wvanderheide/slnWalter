@@ -252,6 +252,7 @@
     <Content Include="Views\Shared\_MonthDayYear.cshtml" />
     <Content Include="Views\ErrorLog\Index.cshtml" />
     <Content Include="Views\ErrorLog\Detail.cshtml" />
+    <Content Include="Views\Home\IpsumGenerator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

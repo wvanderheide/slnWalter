@@ -1,0 +1,58 @@
+﻿@{
+	ViewBag.Title = "Ipsum Generator";
+}
+
+<div style="padding: 10px; max-width: 800px;" id="IspsumResult">
+	@Html.Raw(@ViewBag.Ipsum)
+</div>
+<br />
+<h4>Does your lorem ipsum text long for something a little funner? Give our fun Ipsum generator a try… </h4>
+<br />
+<form>
+	<div style="width: 200px; text-align: center; padding-left: 20px">
+		Paragraphs
+		<br />
+		<input type="range" id="paragraphCount" name="paragraphCount" value="2" min="1" max="10" step="1" oninput="amount1.value = paragraphCount.value" />
+		<output name="amount1" for="paragraphCount">2</output>
+		<br />
+		<br />
+		Give me
+		<br />
+		<button type="button" onclick="$(this).hide();$('#DivLoadSpinner1').show(); var p=$('#paragraphCount').val(); location.href='@Url.Action("IpsumGenerator", "Home")?m&=1&p=' + p">Mountain Ipsum</button>
+		<div id="DivLoadSpinner1" style="display: none">
+			<img src="/images/loading.gif" /> Loading...
+		</div>
+		<br />
+		-- or --
+		<br />
+		<button type="button" onclick="$(this).hide();$('#DivLoadSpinner1').show(); var p=$('#paragraphCount').val(); location.href='@Url.Action("IpsumGenerator", "Home")?q=1&p=' + p">Quote Ipsum</button>
+		<br />
+		-- or --
+		<br />
+		<button type="button" onclick="var p = $('#paragraphCount').val(); Bacon(p);">Bacon Ipsum</button>
+	</div>
+	<br />
+	<br />
+
+	<table>
+		<tr>
+			<td>Also try:</td>
+			<td>&nbsp;</td>
+			<td> </td>
+			<td>&nbsp;</td>
+			<td><button type="button" onclick="window.open('http://www.cheeseipsum.co.uk/')">Cheese Ipsum</button></td>
+		</tr>
+	</table>
+</form>
+
+@section DocumentReady
+	{
+	<script>
+		function Bacon(p) {
+			$.get("https://baconipsum.com/api/?type=all-meat&paras=" + p + "&start-with-lorem=1&format=html", function (data) {
+				$("#IspsumResult").html(data);
+				//alert("Load was performed.");
+			});
+		}
+	</script>
+}
