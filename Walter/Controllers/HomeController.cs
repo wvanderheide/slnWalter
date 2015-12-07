@@ -76,7 +76,11 @@ namespace Walter.Controllers
             {
                 if (int.TryParse(Request["p"].ToString(), out p))
                 {
-                    Ipsum = "KLAS ipsum dolor sit amet ";
+                    Ipsum = "Mountain ipsum dolor sit amet ";
+                    if (Request["q"] != null)
+                    {
+                        Ipsum = "Quote ipsum dolor sit amet ";
+                    }
                     if (p > 10) p = 10;
                     var quotes = HomeBusinessLayer.GetQuotes();
                     var mtns = MountainBusinessLayer.GetMountains();
@@ -88,7 +92,6 @@ namespace Walter.Controllers
                         {
                             foreach (var q in quotes)
                             {
-
                                 temp += quotes[getRandomNumber(0, quotes.Count - 1)].Quote.Replace(".","") + ". ";
                             }
                         }
