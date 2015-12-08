@@ -85,6 +85,15 @@ namespace Walter.Models
             }).ToList();
         }
 
+        public List<VmBand> GetBands()
+        {
+            return Entities.Bands.ToList().Select(q => new VmBand
+            {
+                Id = q.Id,
+                Name = q.Name
+            }).ToList();
+        }
+
         private int getRandomNumber(int min, int max)
         {
             var rnd = new Random(DateTime.Now.Millisecond);

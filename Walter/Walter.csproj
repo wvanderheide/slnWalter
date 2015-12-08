@@ -134,6 +134,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Band.cs">
+      <DependentUpon>WalterEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PhotoBusinessLayer.cs" />
     <Compile Include="Models\AllClimbs_Result.cs">
       <DependentUpon>WalterEntities.tt</DependentUpon>
@@ -176,6 +179,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\PageInfo.cs" />
+    <Compile Include="ViewModels\VMBand.cs" />
     <Compile Include="ViewModels\VMClimb.cs" />
     <Compile Include="ViewModels\VMContact.cs" />
     <Compile Include="ViewModels\Error.cs" />

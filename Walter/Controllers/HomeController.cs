@@ -79,25 +79,52 @@ namespace Walter.Controllers
                     Ipsum = "Mountain ipsum dolor sit amet ";
                     if (Request["q"] != null)
                     {
-                        Ipsum = "Quote ipsum dolor sit amet ";
+                        Ipsum = "Quote ipsum dolor sit amet. ";
                     }
+                    else if (Request["b"] != null)
+                    {
+                        Ipsum = "Rock Band ipsum dolor sit amet ";
+                    }
+
                     if (p > 10) p = 10;
                     var quotes = HomeBusinessLayer.GetQuotes();
                     var mtns = MountainBusinessLayer.GetMountains();
+                    var bands = HomeBusinessLayer.GetBands();
 
-                    for (int i = 1; i <= p; i++)
+                    for (var i = 1; i <= p; i++)
                     {
                         temp = string.Empty;
+
                         if (Request["q"] != null)
                         {
-                            foreach (var q in quotes)
+                            foreach (var q in quotes.Where(q => temp.Length < 500))
                             {
-                                temp += quotes[getRandomNumber(0, quotes.Count - 1)].Quote.Replace(".","") + ". ";
+                                temp += quotes[getRandomNumber(0, quotes.Count - 1)].Quote.Replace(".", "") + ". ";
+                            }
+                        }
+                        else if (Request["b"] != null)
+                        {
+                            foreach (var b in quotes.Where(b => temp.Length < 500))
+                            {
+                                temp += bands[getRandomNumber(0, bands.Count - 1)].Name + " ";
+                                temp += bands[getRandomNumber(0, bands.Count - 1)].Name + " ";
+                                temp += bands[getRandomNumber(0, bands.Count - 1)].Name + " ";
+                                temp += bands[getRandomNumber(0, bands.Count - 1)].Name + " ";
+                                temp += bands[getRandomNumber(0, bands.Count - 1)].Name + " ";
+
+                                if (b.Id % 2 > 0)
+                                {
+                                    temp = temp.Trim() + ". ";
+                                }
+                                else
+                                {
+                                    temp += " ";
+                                }
                             }
                         }
                         else
                         {
-                            foreach (var m in mtns)
+                            foreach (var m in mtns.Where(m => temp.Length < 500))
                             {
                                 temp += mtns[getRandomNumber(0, mtns.Count - 1)].Name + " ";
                                 temp += mtns[getRandomNumber(0, mtns.Count - 1)].Name + " ";
@@ -113,16 +140,16 @@ namespace Walter.Controllers
                                 {
                                     temp += " ";
                                 }
-                            }  
+                            }
                         }
 
-                        temp = temp.Substring(0, 500).Trim() + ".  ";
+                        //temp = temp.Substring(0, 500).Trim() + ".  ";
                         Ipsum = Ipsum + temp + "<br /><br/>";
                     }
                 }
             }
 
-            ViewBag.Ipsum = Ipsum.Replace("USER", "").Replace("WEB", "").Replace("test", "").Replace("tester", "");
+            ViewBag.Ipsum = Ipsum + "<hr />";
 
             return View();
         }
