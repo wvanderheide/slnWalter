@@ -85,26 +85,48 @@ namespace Walter.Controllers
                     {
                         Ipsum = "Rock Band ipsum dolor sit amet ";
                     }
+                    else if (Request["a"] != null)
+                    {
+                        Ipsum = "ACDC song ipsum dolor sit amet ";
+                    }
 
                     if (p > 10) p = 10;
                     var quotes = HomeBusinessLayer.GetQuotes();
                     var mtns = MountainBusinessLayer.GetMountains();
                     var bands = HomeBusinessLayer.GetBands();
+                    var acdcSongs = HomeBusinessLayer.GetAcdc();
 
                     for (var i = 1; i <= p; i++)
                     {
                         temp = string.Empty;
-
-                        if (Request["q"] != null)
+                        if (Request["a"] != null)
                         {
-                            foreach (var q in quotes.Where(q => temp.Length < 500))
+                            while (temp.Length < 500)
                             {
-                                temp += quotes[getRandomNumber(0, quotes.Count - 1)].Quote.Replace(".", "") + ". ";
+                                temp += acdcSongs[getRandomNumber(0, acdcSongs.Count - 1)].Song;
+                                
+                                temp = temp.Trim();
+
+                                if (getRandomNumber(0, 1000) % 3 > 0)
+                                {
+                                    temp = temp.Trim() + ". ";
+                                }
+                                else
+                                {
+                                    temp += " ";
+                                }
+                            }
+                        }
+                        else if (Request["q"] != null)
+                        {
+                            while (temp.Length < 500)
+                            {
+                                temp += quotes[getRandomNumber(0, quotes.Count - 1)].Quote + " ";
                             }
                         }
                         else if (Request["b"] != null)
                         {
-                            foreach (var b in quotes.Where(b => temp.Length < 500))
+                            while (temp.Length < 500)
                             {
                                 temp += bands[getRandomNumber(0, bands.Count - 1)].Name + " ";
                                 temp += bands[getRandomNumber(0, bands.Count - 1)].Name + " ";
@@ -112,7 +134,7 @@ namespace Walter.Controllers
                                 temp += bands[getRandomNumber(0, bands.Count - 1)].Name + " ";
                                 temp += bands[getRandomNumber(0, bands.Count - 1)].Name + " ";
 
-                                if (b.Id % 2 > 0)
+                                if (getRandomNumber(0,100) % 2 > 0)
                                 {
                                     temp = temp.Trim() + ". ";
                                 }
@@ -124,7 +146,7 @@ namespace Walter.Controllers
                         }
                         else
                         {
-                            foreach (var m in mtns.Where(m => temp.Length < 500))
+                            while (temp.Length < 500)
                             {
                                 temp += mtns[getRandomNumber(0, mtns.Count - 1)].Name + " ";
                                 temp += mtns[getRandomNumber(0, mtns.Count - 1)].Name + " ";
@@ -132,7 +154,9 @@ namespace Walter.Controllers
                                 temp += mtns[getRandomNumber(0, mtns.Count - 1)].Name + " ";
                                 temp += mtns[getRandomNumber(0, mtns.Count - 1)].Name + " ";
 
-                                if (m.Id % 3 > 0)
+                                temp = temp.Trim();
+
+                                if (getRandomNumber(0, 1000) % 3 > 0)
                                 {
                                     temp = temp.Trim() + ". ";
                                 }
@@ -140,16 +164,24 @@ namespace Walter.Controllers
                                 {
                                     temp += " ";
                                 }
+
                             }
                         }
 
-                        //temp = temp.Substring(0, 500).Trim() + ".  ";
+
+                        if (temp.LastIndexOf(".", StringComparison.Ordinal) < temp.Length -1)
+                        {
+                            temp = temp.Trim() + ".";
+                        }
+
                         Ipsum = Ipsum + temp + "<br /><br/>";
                     }
                 }
             }
 
-            ViewBag.Ipsum = Ipsum + "<hr />";
+            
+
+            ViewBag.Ipsum = Ipsum.Replace(".." , ".") + "<hr />";
 
             return View();
         }

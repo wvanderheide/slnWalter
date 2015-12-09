@@ -34,6 +34,7 @@ namespace Walter.Models
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<Band> Bands { get; set; }
+        public virtual DbSet<ACDC> ACDCs { get; set; }
     
         public virtual ObjectResult<AllClimbs_Result> AllClimbs()
         {

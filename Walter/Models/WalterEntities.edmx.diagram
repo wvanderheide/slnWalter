@@ -13,6 +13,7 @@
         <EntityTypeShape EntityType="WalterModel.Contact" Width="1.5" PointX="4.75" PointY="1.375" />
         <EntityTypeShape EntityType="WalterModel.Image" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="WalterModel.Band" Width="1.5" PointX="3.375" PointY="6.75" />
+        <EntityTypeShape EntityType="WalterModel.ACDC" Width="1.5" PointX="5.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

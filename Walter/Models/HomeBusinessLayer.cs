@@ -18,41 +18,57 @@ namespace Walter.Models
             }).ToList();
         }
 
+        public List<VmAcDc> GetAcdc()
+        {
+            return Entities.ACDCs.ToList().Select(q => new VmAcDc
+            {
+                Id = q.Id,
+                Song = q.Song
+            }).ToList();
+        }
+
         public List<VmImage> Get10RandomImages()
         {
             List<VmImage> retVal = new List<VmImage>();
-            var images = GetImages();
-            
-            int min = 0;
-            int max = images.Count;
-            double d = Convert.ToDouble(max) / 10 + 0.5;
-            int numberInSets = (int)d;
-
-            //randomize images
-            int rnd = getRandomNumber(min, max - 1);
-            images = images.OrderBy(x => x.Id).ToList();
-            if(rnd % 2 == 0)
+            try
             {
-                images = images.OrderBy(x => x.Url).ToList();
-                images.Reverse();
+                var images = GetImages();
+
+                int min = 0;
+                int max = images.Count;
+                double d = Convert.ToDouble(max) / 10 + 0.5;
+                int numberInSets = (int)d;
+
+                //randomize images
+                int rnd = getRandomNumber(min, max - 1);
+                images = images.OrderBy(x => x.Id).ToList();
+                if (rnd % 2 == 0)
+                {
+                    images = images.OrderBy(x => x.Url).ToList();
+                    images.Reverse();
+                }
+
+                for (int j = 0; j < 10; j++)
+                {
+                    min = j * numberInSets;
+                    max = j * numberInSets + numberInSets - 1;
+                    max = (max > images.Count) ? images.Count : max;
+                    rnd = getRandomNumber(min, max);
+                    rnd = (rnd == 0) ? 1 : rnd;
+                    retVal.Add(images[rnd - 1]);
+                }
+
+                //sort retVal randomly
+                retVal = retVal.OrderBy(x => x.Id).ToList();
+                if (rnd % 2 == 0)
+                {
+                    retVal = retVal.OrderBy(x => x.Url).ToList();
+                    retVal.Reverse();
+                }
             }
-
-            for (int j = 0; j < 10; j++)
+            catch
             {
-                min = j * numberInSets;
-                max = j * numberInSets + numberInSets - 1;
-                max = (max > images.Count) ? images.Count : max;
-                rnd = getRandomNumber(min, max);
-                rnd = (rnd == 0) ? 1 : rnd;
-                retVal.Add(images[rnd-1]);
-            }
 
-            //sort retVal randomly
-            retVal = retVal.OrderBy(x => x.Id).ToList();
-            if (rnd % 2 == 0)
-            {
-                retVal = retVal.OrderBy(x => x.Url).ToList();
-                retVal.Reverse();
             }
             return retVal;
         }
@@ -65,7 +81,7 @@ namespace Walter.Models
 
             return x.ExecuteSqlCommand(sql);
         }
-        
+
         public VmQuote RandomQuote()
         {
             var temp = GetQuotes();
