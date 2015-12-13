@@ -21,7 +21,7 @@ namespace Walter.Controllers
             ViewBag.PageInfo = PageInfo;
 
             var uri = Request.Url;
-            
+
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Elmah"].ConnectionString;
 
             Session["connectionString"] = connectionString;
