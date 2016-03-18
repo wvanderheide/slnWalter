@@ -1,0 +1,112 @@
+﻿@{
+	ViewBag.Title = "Test";
+}
+
+
+
+<div class="container-fluid">
+	<h1>Hide Cols</h1>
+
+	<div class="row">
+		<div class="col-sm-4"  style="background-color:white;">
+			<select id="Filter1" onchange="Filter(1)">
+				<option value="All">All</option>
+				<option value="Col 1a">Col 1a</option>
+				<option value="Col 1b">Col 1b</option>
+				<option value="Col 1c">Col 1c</option>
+				<option value="Col 1d">Col 1d</option>
+			</select>
+		</div>
+		<div class="col-sm-4" style="background-color:white;">
+			Col 2
+			@*<select id="Filter1" onchange="Filter(1)">
+				<option value="All">All</option>
+				<option value="Col 1a">Col 1a</option>
+				<option value="Col 1b">Col 1b</option>
+				<option value="Col 1c">Col 1c</option>
+				<option value="Col 1d">Col 1d</option>
+			</select>*@
+		</div>
+		<div class="col-sm-4"  style="background-color:white;">
+			Col 3
+			@*<select id="Filter1" onchange="Filter(1)">
+				<option value="All">All</option>
+				<option value="Col 1a">Col 1a</option>
+				<option value="Col 1b">Col 1b</option>
+				<option value="Col 1c">Col 1c</option>
+				<option value="Col 1d">Col 1d</option>
+			</select>*@
+		</div>
+	</div>
+	<div class="row">
+		<div id="Col1a" class="col-sm-4" style="background-color:lavender;">Col 1a</div>
+		<div id="Col2a" class="col-sm-4" style="background-color:#7E7EF3;">Col 2</div>
+		<div id="Col3a" class="col-sm-4" style="background-color:#3B3BBF;">Col 3</div>
+	</div>
+	<div class="row">
+		<div id="Col1b" class="col-sm-4" style="background-color:lavender;">Col 1b</div>
+		<div id="Col2b" class="col-sm-4" style="background-color:#7E7EF3;">Col 2</div>
+		<div id="Col3b" class="col-sm-4" style="background-color:#3B3BBF;">Col 3</div>
+	</div>
+	<div class="row">
+		<div id="Col1c" class="col-sm-4" style="background-color:lavender;">Col 1c</div>
+		<div id="Col2c" class="col-sm-4" style="background-color:#7E7EF3;">Col 2</div>
+		<div id="Col3c" class="col-sm-4" style="background-color:#3B3BBF;">Col 3</div>
+	</div>
+	<div class="row">
+		<div id="Col1d" class="col-sm-4" style="background-color:lavender;">Col 1d</div>
+		<div id="Col2d" class="col-sm-4" style="background-color:#7E7EF3;">Col 2</div>
+		<div id="Col3d" class="col-sm-4" style="background-color:#3B3BBF;">Col 3</div>
+	</div>
+	<div class="row">
+		<div id="Col1e" class="col-sm-4" style="background-color:lavender;">Col 1d</div>
+		<div id="Col2e" class="col-sm-4" style="background-color:#7E7EF3;">Col 2</div>
+		<div id="Col3e" class="col-sm-4" style="background-color:#3B3BBF;">Col 3</div>
+	</div>
+</div>
+<br />
+
+
+<form>
+	<input type="checkbox" onclick="HideCol(1)" checked>Show Col 1<br />
+	<input type="checkbox" onclick="HideCol(2)" checked>Show Col 2<br />
+	<input type="checkbox" onclick="HideCol(3)" checked>Show Col 3<br />
+</form>
+
+
+<script>
+	function HideCol(colNum) {
+		var colNamePrefix = "Col" + colNum;
+
+		$("div[id^='" + colNamePrefix + "']").toggle();
+	}
+
+	function Filter(colNum)
+	{
+		var Filter1 = $('#Filter1').val();
+
+		if (Filter1 === "All") {
+			var colNamePrefix = "Col" + colNum;
+			$("div[id^='" + colNamePrefix + "']").show();
+			$("div[id^='" + colNamePrefix + "']").parent().show();
+		}
+		else {
+			var colNamePrefix = "Col" + colNum;
+
+			var cols = $("div[id^='" + colNamePrefix + "']");
+
+			var text = "";
+			$.each(cols, function (key, value) {
+				text = $('#' + value.id).text();
+				//alert(text);
+				if (text != Filter1) {
+					$('#' + value.id).parent().hide();
+				}
+				else {
+					$('#' + value.id).parent().show();
+				}
+				//alert(key + ": " + item);
+			});
+		}
+	}
+</script>

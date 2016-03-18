@@ -13,6 +13,17 @@ namespace Walter.Controllers
         private static readonly ContactBusinessLayer ContactBusinessLayer = new ContactBusinessLayer();
         private static readonly PageInfo PageInfo = new PageInfo();
 
+
+        public ActionResult Test()
+        {
+            PageInfo.Title = "Test";
+            PageInfo.Icon = "<i class=\"fa fa-envelope fa-lg\"></i>";
+            PageInfo.SubTitle = "Test Page.";
+            ViewBag.PageInfo = PageInfo;
+
+            return View("Test");
+        }
+
         public ActionResult Index()
         {
             PageInfo.Title = "Contacts";
