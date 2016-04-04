@@ -1,0 +1,237 @@
+﻿@{
+	ViewBag.Title = "Test";
+}
+
+<style>
+	.triangle1 {
+		width: 0;
+		height: 0;
+		border-left: 50px solid yellow;
+		border-right: 50px solid blue;
+		border-bottom: 50px solid grey;
+		border-top: 50px solid green;
+	}
+
+	.triangle2 {
+		width: 0;
+		height: 0;
+		border-left: 20px solid transparent;
+		border-right: 20px solid transparent;
+		border-top: 20px solid #f00;
+	}
+
+	.triangle3 {
+		width: 0;
+		height: 0;
+		border-top: 100px solid red;
+		border-left: 100px solid transparent;
+	}
+
+	.triangle4 {
+		width: 0;
+		height: 0;
+		border-top: 10px solid transparent;
+		border-bottom: 10px solid transparent;
+		border-right: 10px solid blue;
+	}
+
+	.arr {
+		display: inline-block;
+		padding: 1.2em;
+		box-shadow: 8px 8px 0 2px #777 inset;
+	}
+
+		.arr.left {
+			transform: rotate(-45deg);
+		}
+
+		.arr.right {
+			transform: rotate(135deg);
+		}
+
+		.arr:hover {
+			box-shadow: 8px 8px 0 2px #000 inset;
+		}
+
+	#talkbubble {
+		width: 120px;
+		height: 80px;
+		background: red;
+		position: relative;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+	}
+
+		#talkbubble:before {
+			content: "";
+			position: absolute;
+			right: 100%;
+			top: 26px;
+			width: 0;
+			height: 0;
+			border-top: 13px solid transparent;
+			border-right: 26px solid red;
+			border-bottom: 13px solid transparent;
+		}
+
+	.triangle-border {
+		position: relative;
+		padding: 15px;
+		margin: 1em 0 3em;
+		border: 5px solid #5a8f00;
+		color: #333;
+		background: #fff;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+	}
+
+		.triangle-border:before {
+			content: "";
+			position: absolute;
+			bottom: -20px;
+			left: 40px;
+			border-width: 20px 20px 0;
+			border-style: solid;
+			border-color: #5a8f00 transparent;
+			display: block;
+			width: 0;
+		}
+
+
+
+		.triangle-border:after {
+			content: "";
+			position: absolute;
+			bottom: -13px;
+			left: 47px;
+			border-width: 13px 13px 0;
+			border-style: solid;
+			border-color: #fff transparent;
+			display: block;
+			width: 0;
+		}
+</style>
+
+
+<div class="container-fluid">
+	<h1>Hide Cols</h1>
+
+	<div class="row">
+		<div class="col-sm-4" style="background-color:white;">
+			<select id="Filter1" onchange="Filter(1)" multiple>
+				<option value="All">All</option>
+				<option value="Col 1a">Col 1a</option>
+				<option value="Col 1b">Col 1b</option>
+				<option value="Col 1c">Col 1c</option>
+				<option value="Col 1d">Col 1d</option>
+			</select>
+		</div>
+		<div class="col-sm-4" style="background-color:white;">
+			Col 2
+			@*<select id="Filter1" onchange="Filter(1)">
+					<option value="All">All</option>
+					<option value="Col 1a">Col 1a</option>
+					<option value="Col 1b">Col 1b</option>
+					<option value="Col 1c">Col 1c</option>
+					<option value="Col 1d">Col 1d</option>
+				</select>*@
+		</div>
+		<div class="col-sm-4" style="background-color:white;">
+			Col 3
+			@*<select id="Filter1" onchange="Filter(1)">
+					<option value="All">All</option>
+					<option value="Col 1a">Col 1a</option>
+					<option value="Col 1b">Col 1b</option>
+					<option value="Col 1c">Col 1c</option>
+					<option value="Col 1d">Col 1d</option>
+				</select>*@
+		</div>
+	</div>
+	<div class="row">
+		<div id="Col1a" class="col-sm-4" style="background-color:lavender;">Col 1a</div>
+		<div id="Col2a" class="col-sm-4" style="background-color:#7E7EF3;">Col 2</div>
+		<div id="Col3a" class="col-sm-4" style="background-color:#3B3BBF;">Col 3</div>
+	</div>
+	<div class="row">
+		<div id="Col1b" class="col-sm-4" style="background-color:lavender;">Col 1b</div>
+		<div id="Col2b" class="col-sm-4" style="background-color:#7E7EF3;">Col 2</div>
+		<div id="Col3b" class="col-sm-4" style="background-color:#3B3BBF;">Col 3</div>
+	</div>
+	<div class="row">
+		<div id="Col1c" class="col-sm-4" style="background-color:lavender;">Col 1c</div>
+		<div id="Col2c" class="col-sm-4" style="background-color:#7E7EF3;">Col 2</div>
+		<div id="Col3c" class="col-sm-4" style="background-color:#3B3BBF;">Col 3</div>
+	</div>
+	<div class="row">
+		<div id="Col1d" class="col-sm-4" style="background-color:lavender;">Col 1d</div>
+		<div id="Col2d" class="col-sm-4" style="background-color:#7E7EF3;">Col 2</div>
+		<div id="Col3d" class="col-sm-4" style="background-color:#3B3BBF;">Col 3</div>
+	</div>
+	<div class="row">
+		<div id="Col1e" class="col-sm-4" style="background-color:lavender;">Col 1d</div>
+		<div id="Col2e" class="col-sm-4" style="background-color:#7E7EF3;">Col 2</div>
+		<div id="Col3e" class="col-sm-4" style="background-color:#3B3BBF;">Col 3</div>
+	</div>
+</div>
+<br />
+
+
+<form>
+	<input type="checkbox" onclick="HideCol(1)" checked>Show Col 1<br />
+	<input type="checkbox" onclick="HideCol(2)" checked>Show Col 2<br />
+	<input type="checkbox" onclick="HideCol(3)" checked>Show Col 3<br />
+</form>
+<p class="triangle-border"> Text Goes HERE</p>
+
+<div class="triangle1"></div>
+<br />
+<div class="triangle2"></div>
+<br />
+<div class="triangle3"></div>
+<br />
+<div class="triangle4"></div>
+<br />
+<br />
+<div id="talkbubble"></div>
+<br />
+<br />
+<div class="arr left" style="cursor:pointer" onclick="alert()"></div>
+<div class="arr right"></div>
+
+<script>
+	function HideCol(colNum) {
+		var colNamePrefix = "Col" + colNum;
+
+		$("div[id^='" + colNamePrefix + "']").toggle();
+	}
+
+	function Filter(colNum) {
+		var Filter1 = $('#Filter1').val();
+
+		if (Filter1 === "All") {
+			var colNamePrefix = "Col" + colNum;
+			$("div[id^='" + colNamePrefix + "']").show();
+			$("div[id^='" + colNamePrefix + "']").parent().show();
+		}
+		else {
+			var colNamePrefix = "Col" + colNum;
+
+			var cols = $("div[id^='" + colNamePrefix + "']");
+
+			var text = "";
+			$.each(cols, function (key, value) {
+				text = $('#' + value.id).text();
+				//alert(text);
+				if (text != Filter1) {
+					$('#' + value.id).parent().hide();
+				}
+				else {
+					$('#' + value.id).parent().show();
+				}
+				//alert(key + ": " + item);
+			});
+		}
+	}
+</script>
