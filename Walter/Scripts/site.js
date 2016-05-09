@@ -98,6 +98,15 @@ function climbsValidate() {
     }
 }
 
+function imgError(image) {
+    image.onerror = "";
+    image.src = "/Images/MissingImg.png";
+
+    $('#jsDiv').hide(); //hide the global error message div
+
+    return true;
+}
+
 function ShowWaiting() {
     $('#DivData').fadeOut('slow');
     $('#DivWait').slideDown('slow');
