@@ -201,6 +201,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\carousel\001.jpg" />
+    <Content Include="Images\carousel\002.jpg" />
+    <Content Include="Images\carousel\003.jpg" />
+    <Content Include="Images\carousel\004.jpg" />
+    <Content Include="Images\carousel\005.jpg" />
+    <Content Include="Images\carousel\006.jpg" />
+    <Content Include="Images\carousel\007.jpg" />
+    <Content Include="Images\carousel\008.jpg" />
+    <Content Include="Images\carousel\009.jpg" />
+    <Content Include="Images\carousel\010.jpg" />
+    <Content Include="Images\carousel\011.jpg" />
     <Content Include="Images\loading.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -262,7 +273,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DBScripts\" />
-    <Folder Include="Images\carousel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
