@@ -8,15 +8,7 @@ namespace Walter.Models
     public class HomeBusinessLayer
     {
         private static readonly WalterEntities Entities = new WalterEntities();
-
-        public List<VmImage> GetImages()
-        {
-            return Entities.Images.ToList().Select(q => new VmImage
-            {
-                Id = q.Id,
-                Url = q.Url
-            }).ToList();
-        }
+        private const int TotalNumberOfImagesInCarouselFolder = 11;
 
         public List<VmAcDc> GetAcdc()
         {
@@ -29,58 +21,71 @@ namespace Walter.Models
 
         public List<VmImage> Get10RandomImages()
         {
-            List<VmImage> retVal = new List<VmImage>();
+            List<VmImage> images = new List<VmImage>();
+
             try
             {
-                var images = GetImages();
-
                 int min = 0;
-                int max = images.Count;
-                double d = Convert.ToDouble(max) / 10 + 0.5;
-                int numberInSets = (int)d;
+                int max = TotalNumberOfImagesInCarouselFolder;
+                
+                string imageName = string.Empty;
 
-                //randomize images
+                for (int i = min; i < max; i++)
+                {
+                    if ((i + 1) < 10)
+                        imageName = "00" + (i + 1).ToString() + ".jpg";
+                    else if ((i + 1) < 100)
+                        imageName = "0" + (i + 1).ToString() + ".jpg";
+                    else
+                        imageName = (i + 1).ToString() + ".jpg";
+
+                    images.Add(new VmImage { Id = i + 1, Name = imageName });
+                }
+
                 int rnd = getRandomNumber(min, max - 1);
-                images = images.OrderBy(x => x.Id).ToList();
+
                 if (rnd % 2 == 0)
                 {
-                    images = images.OrderBy(x => x.Url).ToList();
                     images.Reverse();
                 }
 
-                for (int j = 0; j < 10; j++)
-                {
-                    min = j * numberInSets;
-                    max = j * numberInSets + numberInSets - 1;
-                    max = (max > images.Count) ? images.Count : max;
-                    rnd = getRandomNumber(min, max);
-                    rnd = (rnd == 0) ? 1 : rnd;
-                    retVal.Add(images[rnd - 1]);
-                }
+                //int j = 1;
+                //bool isNewRandom = true;
+                //int loopCounter = 0;
+                //while (j <= 10)
+                //{
+                //    loopCounter++;
+                //    rnd = getRandomNumber(min, max);
+                //    isNewRandom = true;
 
-                //sort retVal randomly
-                retVal = retVal.OrderBy(x => x.Id).ToList();
-                if (rnd % 2 == 0)
-                {
-                    retVal = retVal.OrderBy(x => x.Url).ToList();
-                    retVal.Reverse();
-                }
+                //    if (j > 1)
+                //    {
+                //        foreach (var item in retVal)
+                //        {
+                //            if (item.Id == rnd)
+                //            {
+                //                isNewRandom = false;
+                //                break;
+                //            }
+                //        }
+                //    }
+
+                //    if (isNewRandom)
+                //    {
+                //        var tem = images.Where(img => img.Id == rnd).ToList();
+                //        retVal.Add(tem.First());
+                //        j++;
+                //    }
+                //}
             }
             catch
             {
 
             }
-            return retVal;
+
+            return images.Take(10).ToList();
         }
 
-        public int DeleteImage(int Id)
-        {
-            string sql = "DELETE FROM [dbo].[Images] WHERE Id =" + Id.ToString();
-
-            var x = Entities.Database;
-
-            return x.ExecuteSqlCommand(sql);
-        }
 
         public VmQuote RandomQuote()
         {

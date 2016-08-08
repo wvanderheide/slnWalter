@@ -148,9 +148,6 @@
       <DependentUpon>WalterEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ContactBusinessLayer.cs" />
-    <Compile Include="Models\Image.cs">
-      <DependentUpon>WalterEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\HomeBusinessLayer.cs" />
     <Compile Include="Models\Mountain.cs">
       <DependentUpon>WalterEntities.tt</DependentUpon>
@@ -254,7 +251,6 @@
     <Content Include="Views\Shared\_AddMtn.cshtml" />
     <Content Include="Views\Shared\_AddClimb.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
-    <Content Include="Views\Home\ImageAdmin.cshtml" />
     <Content Include="Views\Mountain\SummitPost.cshtml" />
     <Content Include="Views\Mountain\Climbs.cshtml" />
     <Content Include="Views\Shared\_MonthDayYear.cshtml" />
@@ -266,6 +262,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DBScripts\" />
+    <Folder Include="Images\carousel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

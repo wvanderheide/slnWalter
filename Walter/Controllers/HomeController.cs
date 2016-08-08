@@ -33,33 +33,7 @@ namespace Walter.Controllers
             return View("Quote", HomeBusinessLayer.GetQuotes().OrderByDescending(x => x.Id).ToList());
         }
 
-        public ActionResult ImageAdmin()
-        {
-            PageInfo.Title = "Site Administration";
-            PageInfo.Icon = "<i class=\"fa fa-cog fa-lg\"></i>";
-            PageInfo.SubTitle = "Images: delete images used on the home page.";
-            ViewBag.PageInfo = PageInfo;
-
-            return View("ImageAdmin", HomeBusinessLayer.GetImages());
-        }
-
-        [HttpPost]
-        public bool DeleteImage(int Id)
-        {
-            bool retVal = true;
-
-            try
-            {
-                HomeBusinessLayer.DeleteImage(Id);
-            }
-            catch
-            {
-                retVal = false;
-            }
-
-            return retVal;
-        }
-
+       
 
         public ActionResult IpsumGenerator()
         {
