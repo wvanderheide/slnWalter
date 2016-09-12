@@ -660,7 +660,7 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (84, N'Obelisk', 10516, N'USA', N'UT', CAST(40.5451100000 AS Decimal(30, 10)), CAST(-111.7079500000 AS Decimal(30, 10)), NULL)
 GO
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (85, N'Mount Nebo', 11928, N'USA', N'UT', CAST(39.8108000000 AS Decimal(30, 10)), CAST(-111.7644000000 AS Decimal(30, 10)), NULL)
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (85, N'Mount Nebo', 11928, N'USA', N'UT', CAST(39.82189 AS Decimal(30, 10)), CAST(-111.76014 AS Decimal(30, 10)), NULL)
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (86, N'Elephant Butte', 5653, N'USA', N'UT', CAST(38.6958000000 AS Decimal(30, 10)), CAST(-109.5401000000 AS Decimal(30, 10)), NULL)
 GO
