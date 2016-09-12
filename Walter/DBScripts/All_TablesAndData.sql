@@ -1,4 +1,4 @@
-﻿USE [Walter]
+[USE [Walter]
 
 
 DROP TABLE [dbo].[MountainSummitLog]
