@@ -812,26 +812,26 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 GO
 
 
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (160, N'Trail Rider Peak', 13247, N'USA', N'Utah', CAST(40.74220 AS Decimal(30, 10)), CAST(-110.35276 AS Decimal(30, 10)), NULL)
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (160, N'Trail Rider Peak', 13247, N'USA', N'UT', CAST(40.74220 AS Decimal(30, 10)), CAST(-110.35276 AS Decimal(30, 10)), NULL)
 GO
 
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (161, N'Roberts Peak', 13287, N'USA', N'Utah', CAST(40.7356 AS Decimal(30, 10)), CAST(-110.3392 AS Decimal(30, 10)), NULL)
-GO
-
-
-
-
-
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (162, N'Pinnacle Peak', 13068  , N'USA', N'Utah', CAST(40.72260 AS Decimal(30, 10)), CAST(-110.3181 AS Decimal(30, 10)), NULL)
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (161, N'Roberts Peak', 13287, N'USA', N'UT', CAST(40.7356 AS Decimal(30, 10)), CAST(-110.3392 AS Decimal(30, 10)), NULL)
 GO
 
 
 
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (163, N'S. Emmons Peak', 13170 , N'USA', N'Utah', CAST(40.704 AS Decimal(30, 10)), CAST(-110.311 AS Decimal(30, 10)), NULL)
+
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (162, N'Pinnacle Peak', 13068  , N'USA', N'UT', CAST(40.72260 AS Decimal(30, 10)), CAST(-110.3181 AS Decimal(30, 10)), NULL)
 GO
 
 
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (164, N'Emmons Peak', 13440, N'USA', N'Utah', CAST(40.7117 AS Decimal(30, 10)), CAST(-110.3037 AS Decimal(30, 10)), NULL)
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (163, N'S. Emmons Peak', 13170 , N'USA', N'UT', CAST(40.704 AS Decimal(30, 10)), CAST(-110.311 AS Decimal(30, 10)), NULL)
+GO
+
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (164, N'Emmons Peak', 13440, N'USA', N'UT', CAST(40.7117 AS Decimal(30, 10)), CAST(-110.3037 AS Decimal(30, 10)), NULL)
 GO
 
 
