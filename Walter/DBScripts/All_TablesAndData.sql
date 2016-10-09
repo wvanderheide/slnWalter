@@ -1046,6 +1046,7 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (100, 41, CAST(N'2013-02-03' AS Date), N'')
 GO
+
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (101, 42, CAST(N'2008-05-31' AS Date), N'Cold Fusion Couloir')
 GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (102, 42, CAST(N'2009-05-09' AS Date), N'Cold Fusion Couloir')
@@ -1215,11 +1216,17 @@ GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (184, 86, CAST(N'2010-04-11' AS Date), NULL)
 GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (185, 87, CAST(N'2010-03-16' AS Date), NULL)
-GO
+GO   
+
+
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (186, 88, CAST(N'2010-03-06' AS Date), N'Crowd Ridge')
 GO
+
+
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (187, 88, CAST(N'2009-11-07' AS Date), NULL)
 GO
+
+
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (188, 88, CAST(N'2006-08-26' AS Date), NULL)
 GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (189, 89, CAST(N'2010-01-23' AS Date), NULL)
@@ -1246,6 +1253,7 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (200, 98, CAST(N'2009-06-06' AS Date), NULL)
 GO
+
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (201, 99, CAST(N'2009-06-06' AS Date), NULL)
 GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (202, 100, CAST(N'2009-06-01' AS Date), N'R2R2R')
@@ -1479,6 +1487,10 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (311, 85, CAST(N'2016-09-09' AS Date), N'')
 
+go
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (312, 88, CAST(N'2016-10-08' AS Date), N'Maple Canyon')
+GO
 
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] OFF
 GO
@@ -2190,9 +2202,6 @@ GO
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (343, N'Moonlight Buttress', N'https://goo.gl/photos/ujb7p7MBWKtrGzvW9', CAST(N'2016-09-25' AS Date))
 GO
-
-
-
 
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
@@ -3725,3 +3734,4 @@ SELECT max(id) as MaxId, count(song) as ACDC_Count
   
     SELECT max(id) as MaxId, count(Id) as Quotes_Count
   FROM [Walter].[dbo].Quotes
+
