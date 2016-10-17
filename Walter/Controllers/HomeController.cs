@@ -33,6 +33,15 @@ namespace Walter.Controllers
             return View("Quote", HomeBusinessLayer.GetQuotes().OrderByDescending(x => x.Id).ToList());
         }
 
+        public ActionResult ImageAdmin()
+        {
+            PageInfo.Title = "Under Construction";
+            PageInfo.Icon = "<i class=\"fa fa-home fa-lg\"></i>";
+            PageInfo.SubTitle = "Coming Soon..";
+            ViewBag.PageInfo = PageInfo;
+
+            return View("ImageAdmin");
+        }
        
 
         public ActionResult IpsumGenerator()

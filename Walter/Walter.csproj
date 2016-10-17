@@ -273,6 +273,7 @@
     <Content Include="Views\Home\IpsumGenerator.cshtml" />
     <Content Include="Views\Contact\Test.cshtml" />
     <Content Include="Views\Poco\Index.cshtml" />
+    <Content Include="Views\Home\ImageAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
