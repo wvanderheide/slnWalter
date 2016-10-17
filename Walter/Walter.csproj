@@ -128,6 +128,7 @@
     <Compile Include="Controllers\ErrorLogController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\PocoController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MountainController.cs" />
@@ -178,6 +179,8 @@
       <DependentUpon>WalterEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLHelper\SQLHelper.cs" />
+    <Compile Include="SQLHelper\WalterSqlHelper.cs" />
     <Compile Include="ViewModels\PageInfo.cs" />
     <Compile Include="ViewModels\VmAcDc.cs" />
     <Compile Include="ViewModels\VMBand.cs" />
@@ -269,6 +272,7 @@
     <Content Include="Views\ErrorLog\Detail.cshtml" />
     <Content Include="Views\Home\IpsumGenerator.cshtml" />
     <Content Include="Views\Contact\Test.cshtml" />
+    <Content Include="Views\Poco\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

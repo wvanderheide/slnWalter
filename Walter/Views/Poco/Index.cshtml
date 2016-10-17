@@ -1,0 +1,32 @@
+﻿
+
+<div class="ibox-title"><i class="fa fa-universal-access fa-lg"></i> Class Generator &nbsp;&nbsp;<span class="ibox-sub-title">Auto generate a C# Class that matches the results of a SQL Statement</span></div>
+<div class="ibox-content">
+	<form action="@Url.Action("Generate","Poco")" enctype="multipart/form-data" method="post">
+		<b>Pick your database: </b>
+		<select id="dbName" name="dbName">
+			<option value="Walter">Walter</option>
+		</select>
+
+		<br />
+		<br />
+		<b>Enter the Class Name: </b>
+		<br />
+		Class name should be the name of the Stored Proc (or table) plus "_Result".
+		<br />
+		<input type="text" name="className" id="className" />
+		<br />
+		<br />
+		<b>Enter a SQL Statement below: </b>
+		<br />
+		Note, the statement must return a result set.  Such as  <i>USE [KlasCore] EXEC [Contact].[Org_Select]	&#64;OrgID = 100</i> or <i>SELECT *  FROM [KlasCore].[Contact].[Orgs]</i> or <i>SELECT *  FROM [healthcomputingdb].[BHAG].[Goals]</i>
+		<br />
+		<textarea rows="12" cols="50" id="txtSql" name="txtSql"></textarea>
+		<br />
+		<br />
+		<button type="submit" class="btn btn-w-m btn-success">Generate Class</button>
+	</form>
+	<br />
+	<br />
+	<div>@Html.Raw(ViewBag.GeneratedClass)</div>
+</div>

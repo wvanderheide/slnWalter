@@ -8,7 +8,9 @@ GO
 
 
 
-/****** Object:  Table [dbo].[Mountains]    Script Date: 10/17/2016 1:07:19 PM ******/
+
+
+/****** Object:  Table [dbo].[Mountains]    Script Date: 10/17/2016 3:12:35 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -33,7 +35,7 @@ CREATE TABLE [dbo].[Mountains](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[MountainSummitLog]    Script Date: 10/17/2016 1:07:19 PM ******/
+/****** Object:  Table [dbo].[MountainSummitLog]    Script Date: 10/17/2016 3:12:35 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -384,6 +386,8 @@ GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (163, N'S. Emmons Peak', 13170, N'USA', N'UT', CAST(40.7040000000 AS Decimal(30, 10)), CAST(-110.3110000000 AS Decimal(30, 10)), NULL)
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (164, N'Emmons Peak', 13440, N'USA', N'UT', CAST(40.7117000000 AS Decimal(30, 10)), CAST(-110.3037000000 AS Decimal(30, 10)), NULL)
+GO
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (165, N'Ensign Peak', 5414, N'USA', N'UT', CAST(40.7964000000 AS Decimal(30, 10)), CAST(-111.8884600000 AS Decimal(30, 10)), N'')
 GO
 SET IDENTITY_INSERT [dbo].[Mountains] OFF
 GO
@@ -1014,6 +1018,8 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (312, 88, CAST(N'2016-10-08' AS Date), N'Maple Canyon')
 GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (313, 165, CAST(N'2016-10-16' AS Date), NULL)
+GO
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] OFF
 GO
 ALTER TABLE [dbo].[MountainSummitLog]  WITH CHECK ADD  CONSTRAINT [FK_MountainSummitLog_Mountains] FOREIGN KEY([MountainID])
@@ -1021,6 +1027,16 @@ REFERENCES [dbo].[Mountains] ([Id])
 GO
 ALTER TABLE [dbo].[MountainSummitLog] CHECK CONSTRAINT [FK_MountainSummitLog_Mountains]
 GO
+
+
+
+
+
+
+
+
+
+
 
 --Id max should match count
 
