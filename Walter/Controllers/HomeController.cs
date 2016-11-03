@@ -30,7 +30,7 @@ namespace Walter.Controllers
             PageInfo.SubTitle = "These are quotes that at the time of reading struck a chord with me, and as such I thought they were worth remembering.";
             ViewBag.PageInfo = PageInfo;
 
-            return View("Quote", HomeBusinessLayer.GetQuotes().OrderByDescending(x => x.Id).ToList());
+            return View("Quote", HomeBusinessLayer.GetQuotes().OrderBy(x => x.Id).ToList());
         }
 
         public ActionResult ImageAdmin()
