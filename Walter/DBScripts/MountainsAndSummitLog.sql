@@ -1025,6 +1025,9 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (315, 13, CAST(N'2016-12-03' AS Date), N'')
 
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (316, 9, CAST(N'2015-12-27' AS Date), NULL)
+
 
 GO
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] OFF
