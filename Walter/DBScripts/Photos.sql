@@ -714,6 +714,10 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (342, N'Nebo: KLAS',
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (343, N'Moonlight Buttress', N'https://goo.gl/photos/ujb7p7MBWKtrGzvW9', CAST(N'2016-09-25' AS Date))
 GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (344, N'Joes Valley', N'https://photos.google.com/album/AF1QipMlbdkLbONZ8lB4hl6gjfqjiP1qlGvgQT1bhkTJ', CAST(N'2017-02-04' AS Date))
+GO
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
