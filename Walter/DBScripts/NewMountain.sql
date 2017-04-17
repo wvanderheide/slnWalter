@@ -4,7 +4,7 @@ INSERT INTO [dbo].[Mountains]
            ([Name]  ,[Elevation]  ,[Country]  ,[State]    ,[Latitude]
            ,[Longitude]   ,[MountainNote])
      VALUES
-           ('Ensign Peak',	5414 , 'USA','UT',40.79640 , -111.88846 
+           ('Little Tuk',	12048 , 'USA','UT',38.4394 , -109.2594 
 		      ,'')
   GO
   print SCOPE_IDENTITY()
@@ -14,7 +14,7 @@ INSERT INTO [dbo].[MountainSummitLog]
            ([MountainID]  ,[SummitDate] ,[SummitNote])
      VALUES
            ( SCOPE_IDENTITY()
-           ,'October 16 2016'
+           ,'April 14 2017'
            ,null)
 GO
 print scope_identity()

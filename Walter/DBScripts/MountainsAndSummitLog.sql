@@ -389,6 +389,11 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (165, N'Ensign Peak', 5414, N'USA', N'UT', CAST(40.7964000000 AS Decimal(30, 10)), CAST(-111.8884600000 AS Decimal(30, 10)), N'')
 GO
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (166, N'Little Tuk', 12048, N'USA', N'UT', CAST(38.4394 AS Decimal(30, 10)), CAST(-109.2594 AS Decimal(30, 10)), N'')
+GO
+
+
 SET IDENTITY_INSERT [dbo].[Mountains] OFF
 GO
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] ON 
@@ -1028,6 +1033,9 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (316, 9, CAST(N'2016-12-27' AS Date), NULL)
 
+
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (317, 166, CAST(N'2017-04-14' AS Date), NULL)
 
 GO
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] OFF
