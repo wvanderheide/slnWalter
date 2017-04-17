@@ -390,7 +390,7 @@ GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (165, N'Ensign Peak', 5414, N'USA', N'UT', CAST(40.7964000000 AS Decimal(30, 10)), CAST(-111.8884600000 AS Decimal(30, 10)), N'')
 GO
 
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (166, N'Little Tuk', 12048, N'USA', N'UT', CAST(38.4394 AS Decimal(30, 10)), CAST(-109.2594 AS Decimal(30, 10)), N'')
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (166, N'Little Tuk', 12048, N'USA', N'UT', CAST(38.44663 AS Decimal(30, 10)), CAST(-109.26478 AS Decimal(30, 10)), N'')
 GO
 
 
