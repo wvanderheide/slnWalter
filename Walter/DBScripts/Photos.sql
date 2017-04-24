@@ -720,10 +720,14 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (344, N'Joes Valley'
 GO
 
 
-
-
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (345, N'La Sal ski tour, etc', N'https://goo.gl/photos/CkGH2NfoLqhUWUXJA', CAST(N'2017-04-14' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (345, N'New Nissan Frontier', N'https://goo.gl/photos/as8w25StJrC4RZru7', CAST(N'2017-03-15' AS Date))
 GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (346, N'La Sal ski tour, etc', N'https://goo.gl/photos/CkGH2NfoLqhUWUXJA', CAST(N'2017-04-14' AS Date))
+GO
+
+
 
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
