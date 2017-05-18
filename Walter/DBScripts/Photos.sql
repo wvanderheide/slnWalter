@@ -728,6 +728,8 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (346, N'La Sal ski t
 GO
 
 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (347, N'Shafer Trail, etc', N'https://goo.gl/photos/EPfoZcyE26ZnmyRd7', CAST(N'2017-05-14' AS Date))
+GO
 
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
