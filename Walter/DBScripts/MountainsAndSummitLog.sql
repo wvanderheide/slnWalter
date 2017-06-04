@@ -1038,6 +1038,13 @@ GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (317, 166, CAST(N'2017-04-14' AS Date), NULL)
 
 GO
+
+
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (318, 37, CAST(N'2017-06-03' AS Date), N'')
+GO
+
+
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] OFF
 GO
 ALTER TABLE [dbo].[MountainSummitLog]  WITH CHECK ADD  CONSTRAINT [FK_MountainSummitLog_Mountains] FOREIGN KEY([MountainID])
