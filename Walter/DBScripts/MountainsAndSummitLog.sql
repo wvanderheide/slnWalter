@@ -393,6 +393,15 @@ GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (166, N'Little Tuk', 12048, N'USA', N'UT', CAST(38.44663 AS Decimal(30, 10)), CAST(-109.26478 AS Decimal(30, 10)), N'')
 GO
 
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (167, N'Mount Belknap', 12137, N'USA', N'UT', CAST(38.41940 AS Decimal(30, 10)), 
+CAST(-112.4119 AS Decimal(30, 10)), N'')
+GO
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (168, N'Delano Peak', 12173, N'USA', N'UT', CAST(38.36920 AS Decimal(30, 10)), 
+CAST(-112.3706 AS Decimal(30, 10)), N'')
+GO
 
 SET IDENTITY_INSERT [dbo].[Mountains] OFF
 GO
@@ -1044,7 +1053,16 @@ GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (318, 37, CAST(N'2017-06-03' AS Date), N'')
 GO
 
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (319, 167, CAST(N'2017-07-01' AS Date), NULL)
 
+GO
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (320, 168, CAST(N'2017-07-01' AS Date), NULL)
+
+GO
+
+
+/*
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] OFF
 GO
 ALTER TABLE [dbo].[MountainSummitLog]  WITH CHECK ADD  CONSTRAINT [FK_MountainSummitLog_Mountains] FOREIGN KEY([MountainID])
@@ -1052,6 +1070,7 @@ REFERENCES [dbo].[Mountains] ([Id])
 GO
 ALTER TABLE [dbo].[MountainSummitLog] CHECK CONSTRAINT [FK_MountainSummitLog_Mountains]
 GO
+*/
 
 
 
