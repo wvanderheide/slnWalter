@@ -410,8 +410,8 @@ CAST(49.17683  AS Decimal(30, 10)), CAST(-114.09897 AS Decimal(30, 10)), NULL)
 GO
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
-[MountainNote]) VALUES (170, N'Spionkop Peak', 8070, N'Canada', N'Alberta', 
-CAST(49.18082 AS Decimal(30, 10)), CAST(-114.10183 AS Decimal(30, 10)), NULL)
+[MountainNote]) VALUES (170, N'Spionkop Peak', 8335, N'Canada', N'Alberta', 
+CAST(49.19123  AS Decimal(30, 10)), CAST(-114.10763 AS Decimal(30, 10)), NULL)
 GO
 
 SET IDENTITY_INSERT [dbo].[Mountains] OFF
@@ -1069,6 +1069,16 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 GO
 
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (320, 168, CAST(N'2017-07-01' AS Date), NULL)
+
+GO
+
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (321, 169, CAST(N'2017-07-24' AS Date), NULL)
+
+GO
+
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (322, 170, CAST(N'2017-07-24' AS Date), NULL)
 
 GO
 
