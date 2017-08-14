@@ -403,6 +403,17 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 CAST(-112.3706 AS Decimal(30, 10)), N'')
 GO
 
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (169, N'Newman Peak', 8136, N'Canada', N'Alberta', 
+CAST(49.17683  AS Decimal(30, 10)), CAST(-114.09897 AS Decimal(30, 10)), NULL)
+GO
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (170, N'Spionkop Peak', 8070, N'Canada', N'Alberta', 
+CAST(49.18082 AS Decimal(30, 10)), CAST(-114.10183 AS Decimal(30, 10)), NULL)
+GO
+
 SET IDENTITY_INSERT [dbo].[Mountains] OFF
 GO
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] ON 
