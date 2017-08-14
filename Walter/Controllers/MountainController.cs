@@ -38,7 +38,7 @@ namespace Walter.Controllers
             }
 
             //Most Recent Summit Date on top
-            return View("Index", MountainBusinessLayer.GetMountains().OrderByDescending(x => x.SummitLog.Last().SummitDate).ToList());
+            return View("Index", MountainBusinessLayer.GetMountains().OrderByDescending(x => x.SummitLog.Last().SummitDate).ThenByDescending(i => i.Id).ToList());
         }
 
         public ActionResult Climbs()

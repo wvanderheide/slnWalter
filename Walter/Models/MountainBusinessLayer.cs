@@ -82,7 +82,7 @@ namespace Walter.Models
         
         public List<VmClimbYear> ClimbYears()
         {
-            List<VmClimb> climbs = Climbs().OrderByDescending(y => y.Year).ThenByDescending(m => m.SummitDate).ToList();
+            List<VmClimb> climbs = Climbs().OrderByDescending(y => y.Year).ThenByDescending(m => m.SummitDate).ThenByDescending(i => i.Id).ToList();
 
             return PutClimbsInColumns(climbs);
         }
