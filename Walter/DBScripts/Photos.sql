@@ -728,7 +728,7 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (346, N'La Sal ski t
 GO
 
 
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (347, N'Shafer Trail, etc', N'https://goo.gl/photos/EPfoZcyE26ZnmyRd7', CAST(N'2017-05-14' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (347, N'Moab and Nine Mile', N'https://goo.gl/photos/EPfoZcyE26ZnmyRd7', CAST(N'2017-05-14' AS Date))
 GO
 
 
@@ -767,6 +767,10 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (356, N'2015 Overvie
 GO
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (357, N'Halloween', N'https://www.facebook.com/media/set/?set=a.10154974387246441.1073741864.620076440&type=1&l=a98a32557d', CAST(N'2017-10-31' AS Date))
+GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (358, N'Capitol Reef, Swell, etc', N'https://www.facebook.com/media/set/?set=a.10154975035391441.1073741865.620076440&type=1&l=a53248c56b', CAST(N'2017-06-23' AS Date))
 GO
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
