@@ -783,9 +783,11 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (360, N'Squash Head'
 GO
 
 
---
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (361, N'Joes Valley', N'https://www.facebook.com/media/set/?set=a.10155088664906441.1073741871.620076440&type=1&l=de6048c8f9', CAST(N'2018-03-07' AS Date))
+GO
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (362, N'Joes Valley', N'https://photos.app.goo.gl/Nx2GyBwKrIEmWguJ3', CAST(N'2018-03-17' AS Date))
 GO
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
