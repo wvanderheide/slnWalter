@@ -87,3 +87,6 @@ _ReSharper*
 # Others
 [Bb]in
 [Oo]bj
+/.vs/slnx.sqlite
+/.vs/slnWalter/DesignTimeBuild
+/.vs
