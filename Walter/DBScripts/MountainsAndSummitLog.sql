@@ -414,6 +414,13 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 CAST(49.19123  AS Decimal(30, 10)), CAST(-114.10763 AS Decimal(30, 10)), NULL)
 GO
 
+
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (171, N'Lassen Peak', 10457, N'USA', N'CA', CAST(40.4878 AS Decimal(30, 10)), 
+CAST(-121.5039 AS Decimal(30, 10)), N'')
+GO
+
 SET IDENTITY_INSERT [dbo].[Mountains] OFF
 GO
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] ON 
@@ -1089,6 +1096,10 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (324, 9, CAST(N'2017-11-26' AS Date), NULL)
 
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (325, 110, CAST(N'2018-04-19' AS Date), N'traversed "both" peaks')
+GO
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (326, 171, CAST(N'2018-06-14' AS Date), NULL)
 
 GO
 
