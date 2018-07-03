@@ -1104,6 +1104,10 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 GO
 
 
+
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (327, 57, CAST(N'2018-06-30' AS Date), NULL)
+
 /*
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] OFF
 GO
