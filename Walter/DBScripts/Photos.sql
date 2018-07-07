@@ -735,7 +735,7 @@ GO
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (347, 
 N'Moab and Nine Mile', N'https://goo.gl/photos/EPfoZcyE26ZnmyRd7', CAST(N'2017-05-14' AS Date),
-'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2017_05_14_Moab.docx')
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2017_05_14_MoabAnd9Mile.txt')
 GO
 
 
