@@ -725,7 +725,11 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (345, N'New Nissan F
 GO
 
 
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (346, N'La Sal ski tour, etc', N'https://goo.gl/photos/CkGH2NfoLqhUWUXJA', CAST(N'2017-04-14' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES 
+
+(346, N'La Sal ski tour, etc', N'https://goo.gl/photos/CkGH2NfoLqhUWUXJA', CAST(N'2017-04-14' AS Date),
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2017_04_14_LaSal.docx'
+)
 GO
 
 
