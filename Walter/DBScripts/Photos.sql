@@ -802,7 +802,8 @@ GO
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (363, N'Redwoods',
  N'https://www.facebook.com/media/set/?set=a.10155319506356441.1073741874.620076440&type=1&l=82f776e852', 
- CAST(N'2018-06-12' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2018_06_09_RedwoodsTripReport.docx')
+ CAST(N'2018-06-12' AS Date),
+ 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2018_06_09_Redwoods.txt')
 GO
 
 
