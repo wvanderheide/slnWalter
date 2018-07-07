@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="60d7c4844fda4d37a173c58e389d84e0" Name="Diagram1">
         <EntityTypeShape EntityType="WalterModel.Quote" Width="1.5" PointX="0.625" PointY="4.25" />
-        <EntityTypeShape EntityType="WalterModel.Photo" Width="1.5" PointX="2.625" PointY="4.125" />
+        <EntityTypeShape EntityType="WalterModel.Photo" Width="1.5" PointX="2.625" PointY="4" />
         <EntityTypeShape EntityType="WalterModel.Mountain" Width="1.5" PointX="0.5" PointY="0.5" />
         <EntityTypeShape EntityType="WalterModel.MountainSummitLog" Width="1.5" PointX="2.75" PointY="0.875" />
         <AssociationConnector Association="WalterModel.FK_MountainSummitLog_Mountains" />

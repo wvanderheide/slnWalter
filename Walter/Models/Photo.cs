@@ -18,5 +18,6 @@ namespace Walter.Models
         public string Title { get; set; }
         public string URL { get; set; }
         public System.DateTime Date { get; set; }
+        public string TripReportURL { get; set; }
     }
 }
