@@ -16,6 +16,7 @@ CREATE TABLE [dbo].[Photos](
 	[Title] [varchar](50) NOT NULL,
 	[URL] [varchar](200) NOT NULL,
 	[Date] [date] NOT NULL,
+	[TripReportURL] [varchar] (500), 
  CONSTRAINT [PK_Photos] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -791,11 +792,16 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (362, N'Joes Valley'
 GO
 
 
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (363, N'Redwoods', N'https://www.facebook.com/media/set/?set=a.10155319506356441.1073741874.620076440&type=1&l=82f776e852', CAST(N'2018-06-12' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (363, N'Redwoods',
+ N'https://www.facebook.com/media/set/?set=a.10155319506356441.1073741874.620076440&type=1&l=82f776e852', 
+ CAST(N'2018-06-12' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2018_06_09_RedwoodsTripReport')
 GO
 
 
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (364, N'Ibapah and Goshute Cave', N'https://www.facebook.com/media/set/?set=a.10155355298001441.1073741875.620076440&type=1&l=1fc21de1fd', CAST(N'2018-06-30' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (364, N'Ibapah and Goshute Cave', 
+N'https://www.facebook.com/media/set/?set=a.10155355298001441.1073741875.620076440&type=1&l=1fc21de1fd'
+, CAST(N'2018-06-30' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2018_06_29_Ibapah_GoshuteCaveTripReport.docx')
 GO
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
