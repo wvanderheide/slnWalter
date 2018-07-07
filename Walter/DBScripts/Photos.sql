@@ -812,6 +812,14 @@ N'https://www.facebook.com/media/set/?set=a.10155355298001441.1073741875.6200764
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2018_06_29_Ibapah_GoshuteCaveTripReport.docx')
 GO
 
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (365, N'Spanish Fork Peak', 
+N'https://photos.app.goo.gl/wZzH2ZuCM4VVEbSv8'
+, CAST(N'2016-10-08' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2016_10_08_SpanishForkPeak.txt')
+GO
+
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
