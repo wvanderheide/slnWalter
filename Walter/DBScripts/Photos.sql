@@ -738,7 +738,9 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (348, N'Frontier', N
 GO
 
 
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (349, N'White Rim', N'https://www.facebook.com/media/set/?set=a.10154974157286441.1073741863.620076440&type=1&l=861ddf86ee', CAST(N'2017-11-19' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (349, N'White Rim', 
+N'https://www.facebook.com/media/set/?set=a.10154974157286441.1073741863.620076440&type=1&l=861ddf86ee', 
+CAST(N'2017-11-19' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2017_11_19_WhiteRim.docx')
 GO
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (350, N'Mexico', N'https://www.facebook.com/media/set/?set=a.10154923870611441.1073741862.620076440&type=1&l=de5f5ee907', CAST(N'2017-12-22' AS Date))
@@ -794,7 +796,7 @@ GO
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (363, N'Redwoods',
  N'https://www.facebook.com/media/set/?set=a.10155319506356441.1073741874.620076440&type=1&l=82f776e852', 
- CAST(N'2018-06-12' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2018_06_09_RedwoodsTripReport')
+ CAST(N'2018-06-12' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2018_06_09_RedwoodsTripReport.docx')
 GO
 
 
