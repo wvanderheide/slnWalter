@@ -809,7 +809,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (364, N'Ibapah and Goshute Cave', 
 N'https://www.facebook.com/media/set/?set=a.10155355298001441.1073741875.620076440&type=1&l=1fc21de1fd'
 , CAST(N'2018-06-30' AS Date), 
-'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2018_06_29_Ibapah_GoshuteCaveTripReport.docx')
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2018_06_29_Ibapah_GoshuteCave.txt')
 GO
 
 
