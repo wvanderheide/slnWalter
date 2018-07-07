@@ -713,7 +713,10 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (341, N'Uintas: Blac
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (342, N'Nebo: KLAS', N'https://goo.gl/photos/woGiRTZaZ799g2RS9', CAST(N'2016-09-09' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (343, N'Moonlight Buttress', N'https://goo.gl/photos/ujb7p7MBWKtrGzvW9', CAST(N'2016-09-25' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (343, 
+N'Moonlight Buttress', N'https://goo.gl/photos/ujb7p7MBWKtrGzvW9', CAST(N'2016-09-25' AS Date),
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2016_09_24_MoonlightButtress.txt'
+)
 GO
 
 
