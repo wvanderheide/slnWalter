@@ -711,7 +711,7 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (340, N'Lone Peak', 
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (341, N'Uintas: Blacks Fork River', 
 N'https://goo.gl/photos/as4DDPMm2W9B1hb57', CAST(N'2016-09-03' AS Date),
-'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2016_09_24_/2016_09_03_Tokewanna Peak.docx')
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2016_09_03_Tokewanna%20Peak.docx')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (342, N'Nebo: KLAS', N'https://goo.gl/photos/woGiRTZaZ799g2RS9', CAST(N'2016-09-09' AS Date))
 GO
