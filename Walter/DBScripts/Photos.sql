@@ -33,7 +33,9 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (1, N
 N'https://picasaweb.google.com/107082436175597733376/GreenRiver?authkey=Gv1sRgCPiPidiusezFNA&feat=directlink', 
 CAST(N'2015-08-27' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2015_08_27_GreenRiver.txt')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (2, N'Hawkins Horseshoe', N'https://picasaweb.google.com/107082436175597733376/HawkinsHorseshoe?authuser=0&authkey=Gv1sRgCKWak93H3Yqp9gE&feat=directlink', CAST(N'2015-08-10' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (2, N'Hawkins Horseshoe', 
+N'https://picasaweb.google.com/107082436175597733376/HawkinsHorseshoe?authuser=0&authkey=Gv1sRgCKWak93H3Yqp9gE&feat=directlink', 
+CAST(N'2015-08-10' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2015_08_10_HawkinsHorseshoe.txt')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (3, N'Bertha Peak', N'https://picasaweb.google.com/107082436175597733376/BerthaPeak?authuser=0&authkey=Gv1sRgCI-Bj9775JDSDw&feat=directlink', CAST(N'2015-08-09' AS Date))
 GO
