@@ -39,9 +39,13 @@ CAST(N'2015-08-10' AS Date),'https://github.com/wvanderheide/slnWalter/blob/mast
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (3, N'Bertha Peak', N'https://picasaweb.google.com/107082436175597733376/BerthaPeak?authuser=0&authkey=Gv1sRgCI-Bj9775JDSDw&feat=directlink', CAST(N'2015-08-09' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (4, N'Alberta', N'https://picasaweb.google.com/107082436175597733376/AlbertaSummer2015?authuser=0&authkey=Gv1sRgCNfBhPGm4NyqtAE&feat=directlink', CAST(N'2015-08-06' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date],TripReportURL) VALUES (4, N'Alberta', 
+N'https://picasaweb.google.com/107082436175597733376/AlbertaSummer2015?authuser=0&authkey=Gv1sRgCNfBhPGm4NyqtAE&feat=directlink', 
+CAST(N'2015-08-06' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2015_08_06-16_Alberta.txt')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (5, N'NE, SD, ND', N'https://picasaweb.google.com/107082436175597733376/NESDNDRoadTripMay2015?authuser=0&authkey=Gv1sRgCNnVwre_-ves2AE&feat=directlink', CAST(N'2015-05-29' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (5, N'NE, SD, ND', 
+N'https://picasaweb.google.com/107082436175597733376/NESDNDRoadTripMay2015?authuser=0&authkey=Gv1sRgCNnVwre_-ves2AE&feat=directlink',
+ CAST(N'2015-05-29' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2015_29_31_Nebraska_SD_ND.txt')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (6, N'Englestead', N'https://picasaweb.google.com/107082436175597733376/EnglesteadCanyon?authuser=0&authkey=Gv1sRgCMeyodCygbbRCA&feat=directlink', CAST(N'2014-08-09' AS Date))
 GO
