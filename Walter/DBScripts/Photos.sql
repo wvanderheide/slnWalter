@@ -834,7 +834,8 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (355, N'2016 Overview', N'https://www.facebook.com/media/set/?set=a.10153164789441441.1073741840.620076440&type=1&l=93673a1e1c', CAST(N'2016-12-31' AS Date), '/tripreports/journal.html')
 GO
 
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (356, N'2015 Overview', N'https://www.facebook.com/media/set/?set=a.10153148958961441.1073741839.620076440&type=1&l=123e1fcce6', CAST(N'2015-12-31' AS Date), '/tripreports/journal.html')
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (356, N'2015 Overview',
+ N'https://www.facebook.com/media/set/?set=a.10153148958961441.1073741839.620076440&type=1&l=123e1fcce6', CAST(N'2015-12-31' AS Date), '/tripreports/journal.html')
 GO
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (357, N'Halloween', N'https://www.facebook.com/media/set/?set=a.10154974387246441.1073741864.620076440&type=1&l=a98a32557d', CAST(N'2017-10-31' AS Date))
@@ -901,6 +902,44 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (368, N'2018 Overview', 
 N'https://www.facebook.com/media/set/?set=a.10155027004366441.1073741867.620076440&type=1&l=d36d8b6e09'
 , CAST(N'2018-12-31' AS Date), 
+'/tripReports/journal.html')
+GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (369, N'2012 Overview', 
+N'https://www.facebook.com/media/set/?set=a.37231226440.43627.620076440&type=1&l=a9859ac3b4'
+, CAST(N'2012-12-31' AS Date), 
+'/tripReports/journal.html')
+GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (370, N'2011 Overview', 
+N'https://www.facebook.com/media/set/?set=a.10155368163691441.1073741877.620076440&type=1&l=3161e4e09e'
+, CAST(N'2011-12-31' AS Date), 
+'/tripReports/journal.html')
+GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (371, N'2010 Overview', 
+N'https://www.facebook.com/media/set/?set=a.10155368147511441.1073741876.620076440&type=1&l=f9bfb4a591'
+, CAST(N'2010-12-31' AS Date), 
+'/tripReports/journal.html')
+GO
+
+--
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (372, N'2014 Overview', 
+N'https://www.facebook.com/media/set/?set=a.10155368199146441.1073741879.620076440&type=1&l=1e8aea0ff4'
+, CAST(N'2014-12-31' AS Date), 
+'/tripReports/journal.html')
+GO
+
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (373, N'2013 Overview', 
+N'https://www.facebook.com/media/set/?set=a.10155368198356441.1073741878.620076440&type=1&l=568908f3c5'
+, CAST(N'2013-12-31' AS Date), 
 '/tripReports/journal.html')
 GO
 
