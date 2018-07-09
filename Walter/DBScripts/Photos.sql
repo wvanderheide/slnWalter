@@ -883,7 +883,6 @@ N'https://photos.app.goo.gl/wZzH2ZuCM4VVEbSv8'
 GO
 
 
---https://photos.app.goo.gl/YL2MXRuFpYRwg9H36
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (366, N'Five Unita 13ers', 
 N'https://photos.app.goo.gl/rgAVpJXUDGReViPF7'
@@ -897,6 +896,13 @@ N'https://photos.app.goo.gl/YL2MXRuFpYRwg9H36'
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_11_11_YMtn_MapleMtn.txt')
 GO
 
+--
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (368, N'2018 Overview', 
+N'https://www.facebook.com/media/set/?set=a.10155027004366441.1073741867.620076440&type=1&l=d36d8b6e09'
+, CAST(N'2018-12-31' AS Date), 
+'/tripReports/journal.html')
+GO
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
