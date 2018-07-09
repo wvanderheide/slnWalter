@@ -823,7 +823,7 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (352, N'Cathedral Va
 GO
 
 
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (353, N'2017 Overview', N'https://www.facebook.com/media/set/?set=a.10154046507461441.1073741845.620076440&type=1&l=1d4b4b2d7c', CAST(N'2017-12-31' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (353, N'2017 Overview', N'https://www.facebook.com/media/set/?set=a.10154046507461441.1073741845.620076440&type=1&l=1d4b4b2d7c', CAST(N'2017-12-31' AS Date), '/tripreports/journal.html')
 GO
 
 
