@@ -99,7 +99,7 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (27, N'Cassidy Arch'
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (28, N'Maple Canyon', N'https://picasaweb.google.com/107082436175597733376/MapleCanyon03?authuser=0&authkey=Gv1sRgCLWctqX0g5X75gE&feat=directlink', CAST(N'2014-09-12' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (29, N'Fire', N'https://picasaweb.google.com/107082436175597733376/Fire?authuser=0&authkey=Gv1sRgCN-i8cet9fm9cQ&feat=directlink', CAST(N'2014-04-05' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (29, N'Fire', N'https://www.facebook.com/media/set/?set=a.10152008181526441.1073741829.620076440&type=1&l=63b7e6c2c5', CAST(N'2014-04-05' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (30, N'Boundardy/Montgomery', 
 N'https://picasaweb.google.com/107082436175597733376/BoundardyPeakAndMontgomeryPeak?authuser=0&authkey=Gv1sRgCISby87j56XqcA&feat=directlink', CAST(N'2014-10-06' AS Date),
@@ -113,7 +113,7 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (32, 
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (33, N'Timp', N'https://picasaweb.google.com/107082436175597733376/TimpWithKLAS?authuser=0&authkey=Gv1sRgCIGamdOdlOyBYw&feat=directlink', CAST(N'2015-09-25' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (34, N'Duplex Rebuild', N'https://picasaweb.google.com/107082436175597733376/DuplexRebuild?authuser=0&authkey=Gv1sRgCJrYlPXutujz4AE&feat=directlink', CAST(N'2014-12-31' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (34, N'Duplex Rebuild', N'https://www.facebook.com/media/set/?set=a.10152008181526441.1073741829.620076440&type=1&l=63b7e6c2c5', CAST(N'2014-12-30' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (35, N'Dirtcicle', N'https://picasaweb.google.com/107082436175597733376/DirtcicleNov192013?authuser=0&authkey=Gv1sRgCI7V75Xy2u-ArQE&feat=directlink', CAST(N'2013-11-19' AS Date),
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_11_19_Dirtcicle.txt')
@@ -942,6 +942,8 @@ N'https://www.facebook.com/media/set/?set=a.10155368198356441.1073741878.6200764
 , CAST(N'2013-12-31' AS Date), 
 '/tripReports/journal.html')
 GO
+
+--ID 29 or 34 should be updated for the next new album.
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
