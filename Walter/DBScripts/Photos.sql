@@ -643,7 +643,8 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (276, N'Provo Peak',
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (277, N'OH8 Campout', N'https://picasaweb.google.com/116738453430397687681/OH8Campout9222006?authuser=0&authkey=Gv1sRgCIDqk_GXjO3HKg&feat=directlink', CAST(N'2006-09-22' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (278, N'Kings Peak', N'https://picasaweb.google.com/116738453430397687681/KingsPeak912006?authuser=0&authkey=Gv1sRgCNbXzPyznvvN4QE&feat=directlink', CAST(N'2006-09-01' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (278, N'Kings Peak', N'https://picasaweb.google.com/116738453430397687681/KingsPeak912006?authuser=0&authkey=Gv1sRgCNbXzPyznvvN4QE&feat=directlink', 
+CAST(N'2006-09-01' AS Date), 'https://www.summitpost.org/kings-peak-via-henry-s-fork/338275')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (279, N'Micro Burst', N'https://picasaweb.google.com/116738453430397687681/ProvoStormMicroburst?authuser=0&authkey=Gv1sRgCJGnjMiOmYnXugE&feat=directlink', CAST(N'2006-08-01' AS Date))
 GO
