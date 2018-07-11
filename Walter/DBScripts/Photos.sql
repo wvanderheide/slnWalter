@@ -712,8 +712,8 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (314, N'Random', N'h
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (315, N'Random', N'https://picasaweb.google.com/116738453430397687681/2005Random?authuser=0&authkey=Gv1sRgCLDllMmQjPXJ0QE&feat=directlink', CAST(N'2005-12-31' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (316, N'Random', N'https://picasaweb.google.com/116738453430397687681/2009Random?authuser=0&authkey=Gv1sRgCOT77cKFuZqGxwE&feat=directlink', CAST(N'2009-12-31' AS Date))
-GO
+--INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (316, N'Random', N'https://picasaweb.google.com/116738453430397687681/2009Random?authuser=0&authkey=Gv1sRgCOT77cKFuZqGxwE&feat=directlink', CAST(N'2009-12-31' AS Date))
+--GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (317, N'2008 Self-Portraits', N'https://picasaweb.google.com/116738453430397687681/2008SelfPortraits?authuser=0&authkey=Gv1sRgCNCKjZiZ-oP3ygE&feat=directlink', CAST(N'2008-12-31' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (318, N'Over the Years', N'https://picasaweb.google.com/116738453430397687681/2008OverTheYears?authuser=0&authkey=Gv1sRgCOTiucf1o5zH4wE&feat=directlink', CAST(N'2008-12-31' AS Date))
@@ -906,24 +906,21 @@ N'https://www.facebook.com/media/set/?set=a.10155027004366441.1073741867.6200764
 GO
 
 
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (369, N'2012 Overview', 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (369, N'2012 Overview', 
 N'https://www.facebook.com/media/set/?set=a.37231226440.43627.620076440&type=1&l=a9859ac3b4'
-, CAST(N'2012-12-31' AS Date), 
-'/tripReports/journal.html')
+, CAST(N'2012-12-31' AS Date))
 GO
 
 
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (370, N'2011 Overview', 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (370, N'2011 Overview', 
 N'https://www.facebook.com/media/set/?set=a.10155368163691441.1073741877.620076440&type=1&l=3161e4e09e'
-, CAST(N'2011-12-31' AS Date), 
-'/tripReports/journal.html')
+, CAST(N'2011-12-31' AS Date))
 GO
 
 
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (371, N'2010 Overview', 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (371, N'2010 Overview', 
 N'https://www.facebook.com/media/set/?set=a.10155368147511441.1073741876.620076440&type=1&l=f9bfb4a591'
-, CAST(N'2010-12-31' AS Date), 
-'/tripReports/journal.html')
+, CAST(N'2010-12-31' AS Date))
 GO
 
 --
@@ -937,10 +934,9 @@ GO
 
 
 
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (373, N'2013 Overview', 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date] ) VALUES (373, N'2013 Overview', 
 N'https://www.facebook.com/media/set/?set=a.10155368198356441.1073741878.620076440&type=1&l=568908f3c5'
-, CAST(N'2013-12-31' AS Date), 
-'/tripReports/journal.html')
+, CAST(N'2013-12-31' AS Date))
 GO
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
