@@ -385,9 +385,11 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (151, N'BF Twin Peaks', N'http://vanman798.shutterfly.com/pictures/1177', 
 CAST(N'2008-09-06' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2008_09_06_BFTwins.txt')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (152, N'High Uintas', N'http://vanman798.shutterfly.com/pictures/1127', CAST(N'2008-07-24' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (152, N'High Uintas', N'http://vanman798.shutterfly.com/pictures/1127', 
+CAST(N'2008-07-24' AS Date) ,'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2008_07_24_GunssightETC.txt')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (153, N'AF Twin Peaks', N'http://vanman798.shutterfly.com/pictures/1112', CAST(N'2008-07-18' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (153, N'AF Twin Peaks', N'http://vanman798.shutterfly.com/pictures/1112', 
+CAST(N'2008-07-18' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2008_07_18_4othPeak.txt')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (154, N'Crowsnest Mountain', N'http://vanman798.shutterfly.com/pictures/1088', CAST(N'2008-07-12' AS Date))
 GO
@@ -401,7 +403,8 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (158, N'Box Elder', 
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (159, N'S. Thunder & Big Horn', N'http://vanman798.shutterfly.com/pictures/982', CAST(N'2008-06-14' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (160, N'North Timp', N'http://vanman798.shutterfly.com/pictures/959', CAST(N'2008-05-31' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (160, N'North Timp', N'http://vanman798.shutterfly.com/pictures/959', 
+CAST(N'2008-05-31' AS Date), 'https://www.summitpost.org/climbing-north-timpanogos-via-the-cold-fusion-couloir/410266')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (161, N'Mt. Superior', N'http://vanman798.shutterfly.com/pictures/941', CAST(N'2008-05-16' AS Date))
 GO
