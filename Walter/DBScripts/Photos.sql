@@ -443,7 +443,7 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (177, N'Summer 2006'
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (178, N'Zion Narrows', N'http://vanman798.shutterfly.com/pictures/507', CAST(N'2006-06-10' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (179, N'Adirondacks', N'http://vanman798.shutterfly.com/pictures/488', CAST(N'2005-07-01' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (179, N'Mt. Marcy', N'http://vanman798.shutterfly.com/pictures/488', CAST(N'2005-07-04' AS Date), 'https://www.summitpost.org/a-two-day-hike-up-mt-marcy-via-south-meadows/341784')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (180, N'West Virginia', N'http://vanman798.shutterfly.com/pictures/472', CAST(N'2005-05-28' AS Date))
 GO
@@ -658,7 +658,7 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (283, N'Peter''s Kid
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (284, N'Alta', N'https://picasaweb.google.com/116738453430397687681/Alta342006?authuser=0&authkey=Gv1sRgCLGo7feF6salQQ&feat=directlink', CAST(N'2006-03-04' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (285, N'Crane Mtn', N'https://vanman798.shutterfly.com/pictures/2417', CAST(N'2005-07-02' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (285, N'Crane Mtn', N'https://vanman798.shutterfly.com/pictures/2417', CAST(N'2005-07-02' AS Date), 'https://www.summitpost.org/crane-mountain-loop-hike/342079')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (286, N'White Oaks', N'https://picasaweb.google.com/116738453430397687681/WhiteOaks?authuser=0&authkey=Gv1sRgCMnloIG3quPjqQE&feat=directlink', CAST(N'2005-05-04' AS Date))
 GO
