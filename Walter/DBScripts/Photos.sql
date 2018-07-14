@@ -951,6 +951,9 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (375, N'2007 Overvie
 GO
 
 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (376, N'40 at 40', N'https://www.facebook.com/media/set/?set=a.10155374033051441.1073741889.620076440&type=1&l=f99e492d99', CAST(N'2008-08-11' AS Date))
+GO
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
