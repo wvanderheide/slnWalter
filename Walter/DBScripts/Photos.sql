@@ -522,7 +522,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (217, N'Gobblers Knob', N'https://picasaweb.google.com/116738453430397687681/GobblersKnob?authuser=0&authkey=Gv1sRgCOfXy9rmwe6ZrQE&feat=directlink', CAST(N'2010-01-16' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (218, N'GW Trail', N'https://picasaweb.google.com/116738453430397687681/GreatWestern?authuser=0&authkey=Gv1sRgCN7j2rLpjYrkaQ&feat=directlink', 
-CAST(N'2009-12-12' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2009_12_12_Avy.docx')
+CAST(N'2009-12-12' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2009_12_12_Avy.pdf')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (219, N'Dinner', N'https://picasaweb.google.com/116738453430397687681/Dinner?authuser=0&authkey=Gv1sRgCO6L7Nfv3bCGvgE&feat=directlink', CAST(N'2009-11-21' AS Date))
 GO
@@ -790,7 +790,7 @@ CAST(N'2016-07-02' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/mas
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (341, N'Uintas: Blacks Fork River', 
 N'https://goo.gl/photos/as4DDPMm2W9B1hb57', CAST(N'2016-09-03' AS Date),
-'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2016_09_03_Tokewanna%20Peak.docx')
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2016_09_03_TokewannaPeak.pdf')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (342, N'Nebo: KLAS', N'https://goo.gl/photos/woGiRTZaZ799g2RS9', CAST(N'2016-09-09' AS Date))
 GO
