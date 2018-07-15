@@ -650,7 +650,8 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (278, N'Kings Peak', N'https://picasaweb.google.com/116738453430397687681/KingsPeak912006?authuser=0&authkey=Gv1sRgCNbXzPyznvvN4QE&feat=directlink', 
 CAST(N'2006-09-01' AS Date), 'https://www.summitpost.org/kings-peak-via-henry-s-fork/338275')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (279, N'Micro Burst', N'https://picasaweb.google.com/116738453430397687681/ProvoStormMicroburst?authuser=0&authkey=Gv1sRgCJGnjMiOmYnXugE&feat=directlink', CAST(N'2006-08-01' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (279, N'Micro Burst', N'https://picasaweb.google.com/116738453430397687681/ProvoStormMicroburst?authuser=0&authkey=Gv1sRgCJGnjMiOmYnXugE&feat=directlink', 
+CAST(N'2006-08-01' AS Date) ,'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/August2006_Miracle.pdf')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (280, N'Deseret Peak', N'https://picasaweb.google.com/116738453430397687681/DeseretPeak7222006?authuser=0&authkey=Gv1sRgCPSk2_7EjJnCXQ&feat=directlink', CAST(N'2006-07-22' AS Date))
 GO
@@ -956,6 +957,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (375, N'40 at 40', 
 N'https://www.facebook.com/media/set/?set=a.10155374033051441.1073741889.620076440&type=1&l=f99e492d99', 
 CAST(N'2008-08-11' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/40At40.xls')
+							 
 GO
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (376, N'Provo Peak', N'https://picasaweb.google.com/116738453430397687681/ProvoPeak?authuser=0&authkey=Gv1sRgCIK9kMyy24eVmQE&feat=directlink', CAST(N'2008-08-11' AS Date))
