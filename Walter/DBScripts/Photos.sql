@@ -953,7 +953,9 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (374, N'2006 Overvie
 GO
 
 
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (375, N'40 at 40', N'https://www.facebook.com/media/set/?set=a.10155374033051441.1073741889.620076440&type=1&l=f99e492d99', CAST(N'2008-08-11' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (375, N'40 at 40', 
+N'https://www.facebook.com/media/set/?set=a.10155374033051441.1073741889.620076440&type=1&l=f99e492d99', 
+CAST(N'2008-08-11' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/40At40.xls')
 GO
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (376, N'Provo Peak', N'https://picasaweb.google.com/116738453430397687681/ProvoPeak?authuser=0&authkey=Gv1sRgCIK9kMyy24eVmQE&feat=directlink', CAST(N'2008-08-11' AS Date))
