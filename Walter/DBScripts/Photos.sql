@@ -965,6 +965,13 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (376, N'Provo Peak', N'https://picasaweb.google.com/116738453430397687681/ProvoPeak?authuser=0&authkey=Gv1sRgCIK9kMyy24eVmQE&feat=directlink', CAST(N'2008-08-11' AS Date))
 GO
 
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (377, N'Opas Pics 1967-1978', 
+N'https://www.facebook.com/media/set/?set=a.10155382402491441.1073741891.620076440&type=1&l=e710561b8e', 
+CAST(N'1968-08-12' AS Date))
+							 
+GO
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
