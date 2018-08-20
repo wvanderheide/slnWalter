@@ -167,5 +167,21 @@ namespace Walter.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+        public ActionResult Rock()
+        {
+            PageInfo.Title = "Rock Climbs";
+            PageInfo.Icon = "<span class=\"glyphicon glyphicon-picture fa-lg\" id=\"totalClimbs\"></span>";
+            PageInfo.SubTitle = "Below is a list of rock climbs I have done arranged by date.";
+
+           
+
+            ViewBag.PageInfo = PageInfo;
+
+
+
+            return View("Rock");
+        }
     }
 }
