@@ -277,7 +277,7 @@
     <Content Include="Views\Contact\Test.cshtml" />
     <Content Include="Views\Poco\Index.cshtml" />
     <Content Include="Views\Home\ImageAdmin.cshtml" />
-    <Content Include="Views\Mountain\Rock.cshtml" />
+    <Content Include="Views\Mountain\RockAndIce.cshtml" />
     <Content Include="Views\Mountain\_rockDesc.cshtml" />
     <Content Include="Views\Home\_homeDesc.cshtml" />
   </ItemGroup>
