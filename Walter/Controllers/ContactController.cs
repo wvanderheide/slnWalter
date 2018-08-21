@@ -19,6 +19,8 @@ namespace Walter.Controllers
             PageInfo.Title = "Test";
             PageInfo.Icon = "<i class=\"fa fa-envelope fa-lg\"></i>";
             PageInfo.SubTitle = "Test Page.";
+            PageInfo.Description = null;
+
             ViewBag.PageInfo = PageInfo;
 
             return View("Test");
@@ -29,6 +31,8 @@ namespace Walter.Controllers
             PageInfo.Title = "Contacts";
             PageInfo.Icon = "<i class=\"fa fa-envelope fa-lg\"></i>";
             PageInfo.SubTitle = "Below are my contacts.";
+            PageInfo.Description = null;
+
             ViewBag.PageInfo = PageInfo;
 
             var contacts = ContactBusinessLayer.GetContacts();

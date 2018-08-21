@@ -14,6 +14,8 @@ namespace Walter.Controllers
             PageInfo.Title = "Resume";
             PageInfo.Icon = "<i class=\"fa fa-book\"></i>";
             PageInfo.SubTitle = "Trust Walter for all your website and web application needs.";
+            PageInfo.Description = null;
+
             ViewBag.PageInfo = PageInfo;
 
             return View();

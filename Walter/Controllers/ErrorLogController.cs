@@ -18,6 +18,8 @@ namespace Walter.Controllers
             PageInfo.Title = "Elmah Unique Errors";
             PageInfo.Icon = "<i class=\"fa fa-exclamation-triangle fa-lg\"></i>";
             PageInfo.SubTitle = "Data Source: [ELMAH_Error] table.";
+            PageInfo.Description = null;
+
             ViewBag.PageInfo = PageInfo;
 
             var uri = Request.Url;
@@ -109,6 +111,8 @@ namespace Walter.Controllers
             PageInfo.Title = "Elmah Details";
             PageInfo.Icon = "<i class=\"fa fa-exclamation-triangle fa-lg\"></i>";
             PageInfo.SubTitle = Request["msg"];
+            PageInfo.Description = null;
+
             ViewBag.PageInfo = PageInfo;
 
             string connectionString = Session["connectionString"].ToString();

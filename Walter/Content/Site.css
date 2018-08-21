@@ -99,4 +99,8 @@ background-image: none;
     top: -65px;
     visibility: hidden;
 }
+
+.pointer{
+    cursor: pointer;
+}
 

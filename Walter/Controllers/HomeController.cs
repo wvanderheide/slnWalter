@@ -18,6 +18,8 @@ namespace Walter.Controllers
             PageInfo.Title = "Walter VanderHeide";
             PageInfo.Icon = "<i class=\"fa fa-home fa-lg\"></i>";
             PageInfo.SubTitle = "Web Developer, Outdoor Enthusiast";
+            PageInfo.Description = homeDesc();
+
             ViewBag.PageInfo = PageInfo;
 
             return View("Index", HomeBusinessLayer.Get10RandomImages());
@@ -28,6 +30,8 @@ namespace Walter.Controllers
             PageInfo.Title = "Quotes";
             PageInfo.Icon = "<i class=\"fa fa-quote-left\"></i>";
             PageInfo.SubTitle = "These are quotes that at the time of reading struck a chord with me, and as such I thought they were worth remembering.";
+            PageInfo.Description = null;
+
             ViewBag.PageInfo = PageInfo;
 
             return View("Quote", HomeBusinessLayer.GetQuotes().OrderBy(x => x.Id).ToList());
@@ -38,6 +42,8 @@ namespace Walter.Controllers
             PageInfo.Title = "Under Construction";
             PageInfo.Icon = "<i class=\"fa fa-home fa-lg\"></i>";
             PageInfo.SubTitle = "Coming Soon..";
+            PageInfo.Description = null;
+
             ViewBag.PageInfo = PageInfo;
 
             return View("ImageAdmin");
@@ -48,6 +54,8 @@ namespace Walter.Controllers
         {
             PageInfo.Title = "Ipsum Generator";
             PageInfo.Icon = "<i class=\"fa fa-file-text-o fa-lg\"></i>";
+            PageInfo.Description = null;
+
             PageInfo.SubTitle = "Funner than Loren Ipsum";
 
             ViewBag.PageInfo = PageInfo;
@@ -172,6 +180,25 @@ namespace Walter.Controllers
         {
             int r = rndNumber.Next(min, max);
             return r;
+        }
+
+        private string homeDesc()
+        {
+            return RenderRazorViewToString("_homeDesc");
+        }
+
+        private string RenderRazorViewToString(string viewName)//, object model
+        {
+            //   ViewData.Model = model;
+            using (var sw = new System.IO.StringWriter())
+            {
+                var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                var viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
+                viewResult.ViewEngine.ReleaseView(ControllerContext, viewResult.View);
+
+                return sw.GetStringBuilder().ToString();
+            }
         }
     }
 }

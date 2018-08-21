@@ -20,6 +20,7 @@ namespace Walter.Controllers
             PageInfo.Title = "Mountains";
             PageInfo.Icon = "<span class=\"glyphicon glyphicon-picture fa-lg\"></span>";
             PageInfo.SubTitle = "Below is a list of mountains I have climbed with summit dates.";
+            PageInfo.Description = "See pictures and learn more about my mountain adventures (including an incomplete list of canyons) at <a href=\"http://www.summitpost.org/user_page.php?user_id=23249\" target=\"_blank\">summitpost.org</a>.";
 
             ViewBag.Elevation = 0;
             ViewBag.PageInfo = PageInfo;
@@ -40,12 +41,14 @@ namespace Walter.Controllers
             //Most Recent Summit Date on top
             return View("Index", MountainBusinessLayer.GetMountains().OrderByDescending(x => x.SummitLog.Last().SummitDate).ThenByDescending(i => i.Id).ToList());
         }
-
+        
+       
         public ActionResult Climbs()
         {
             PageInfo.Title = "Climbs";
             PageInfo.Icon = "<span class=\"glyphicon glyphicon-picture fa-lg\" id=\"totalClimbs\"></span>";
             PageInfo.SubTitle = "Below is a list of mountain climbs I have done arranged by date.";
+            PageInfo.Description = null;
 
             List<VmClimbYear> climbs = new List<VmClimbYear>();
 
@@ -81,6 +84,8 @@ namespace Walter.Controllers
             PageInfo.Title = "Mountains & Rocks";
             PageInfo.Icon = "<span class=\"glyphicon glyphicon-picture fa-lg\" id=\"totalClimbs\"></span>";
             PageInfo.SubTitle = "from <a href=\"http://www.summitpost.org/users/vanman798/23249\" target=\"_blank\">summitpost.org</a>";
+            PageInfo.Description = null;
+
             ViewBag.PageInfo = PageInfo;
 
             if (TempData["html"] == null)
@@ -174,14 +179,30 @@ namespace Walter.Controllers
             PageInfo.Title = "Rock Climbs";
             PageInfo.Icon = "<span class=\"glyphicon glyphicon-picture fa-lg\" id=\"totalClimbs\"></span>";
             PageInfo.SubTitle = "Below is a list of rock climbs I have done arranged by date.";
-
-           
+            PageInfo.Description = RockDesc();
 
             ViewBag.PageInfo = PageInfo;
 
-
-
             return View("Rock");
+        }
+        
+        private string RockDesc()
+        {
+            return RenderRazorViewToString("_rockDesc");
+        }
+
+        private string RenderRazorViewToString(string viewName)//, object model
+        {
+            //   ViewData.Model = model;
+            using (var sw = new System.IO.StringWriter())
+            {
+                var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                var viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
+                viewResult.ViewEngine.ReleaseView(ControllerContext, viewResult.View);
+
+                return sw.GetStringBuilder().ToString();
+            }
         }
     }
 }

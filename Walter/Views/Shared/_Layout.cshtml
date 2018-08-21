@@ -1,9 +1,9 @@
 ﻿@using Walter.Models
 @using Walter.ViewModels;
 @{
-	HomeBusinessLayer HomeBusinessLayer = new HomeBusinessLayer();
-	VmQuote QandA = HomeBusinessLayer.RandomQuote();
-	PageInfo pi = (PageInfo)ViewBag.PageInfo;
+    HomeBusinessLayer HomeBusinessLayer = new HomeBusinessLayer();
+    VmQuote QandA = HomeBusinessLayer.RandomQuote();
+    PageInfo pi = (PageInfo)ViewBag.PageInfo;
 }
 <!DOCTYPE html>
 <html>
@@ -24,15 +24,15 @@
     @Scripts.Render("~/js/tableSort")
     @Scripts.Render("~/js/site")
 
-	<script type="text/javascript">
-		//Script added to indicate if there is a JS error on the page
+    <script type="text/javascript">
+        //Script added to indicate if there is a JS error on the page
         window.onerror = function (msg) {
-        	alert("JavaScript Error Detected \n\n" + msg);
+            alert("JavaScript Error Detected \n\n" + msg);
         };
 
-		//Broken Image
-		//window.addEventListener('error', function (e) {alert("Error Detected ");}, true);
-	</script>
+        //Broken Image
+        //window.addEventListener('error', function (e) {alert("Error Detected ");}, true);
+    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -45,36 +45,37 @@
                 </button>
                 <a class="navbar-brand" href="/" title="Intro"><i class="fa fa-home fa-lg"></i> Walter</a>
             </div>
-	        <div class="navbar-collapse collapse">
-		        <ul class="nav navbar-nav">
-			        <li class="dropdown"><a href="#" title="Mountains" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-picture fa-lg"></span> Mountains <span class="caret"></span></a>
-                                         <ul class="dropdown-menu">
-                                             <li><a href="@Url.Action("Index", "Mountain")">Mountains</a></li>
-                                             <li><a href="@Url.Action("Climbs", "Mountain")">Climbs</a></li>
-                                             <li><a href="@Url.Action("Map", "Mountain")" target="_blank">Map</a></li>
-                                             @*<li><a href="@Url.Action("SummitPost", "Mountain")">SummitPost</a></li>*@
-                                             <li><a href="@Url.Action("Rock", "Mountain")" target="_blank">Rock Climbs</a></li>
-                                         </ul>
-			        </li>
-			        <li><a href="@Url.Action("Index","Photo")" title="Photos"><i class="fa fa-camera-retro fa-lg"></i> Photos</a></li>
-			        <li><a href="@Url.Action("Index","Resume")" title="Resume"><i class="fa fa-book"></i> Resume</a></li>
-			        <li><a href="@Url.Action("Index", "Contact")" title="Contacts"><i class="fa fa-envelope fa-lg"></i> Contacts</a></li>
-		        </ul>
-		        <ul class="nav navbar-nav navbar-right">
-			        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-			        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" title="Mountains" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-picture fa-lg"></span> Mountains <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index", "Mountain")">Mountains</a></li>
+                            <li><a href="@Url.Action("Climbs", "Mountain")">Climbs</a></li>
+                            <li><a href="@Url.Action("Map", "Mountain")" target="_blank">Map</a></li>
+                            @*<li><a href="@Url.Action("SummitPost", "Mountain")">SummitPost</a></li>*@
+                            <li><a href="@Url.Action("Rock", "Mountain")" target="_blank">Rock Climbs</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="@Url.Action("Index","Photo")" title="Photos"><i class="fa fa-camera-retro fa-lg"></i> Photos</a></li>
+                    <li><a href="@Url.Action("Index","Resume")" title="Resume"><i class="fa fa-book"></i> Resume</a></li>
+                    <li><a href="@Url.Action("Index", "Contact")" title="Contacts"><i class="fa fa-envelope fa-lg"></i> Contacts</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
                     <li class="dropdown">
                         <a href="#" title="Admin" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-lg"></i> Admin <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="@Url.Action("ImageAdmin","Home")">Images Admin</a></li>
                             <li><a href="@Url.Action("Index", "ErrorLog")">Errors</a></li>
-							<li><a href="@Url.Action("IpsumGenerator", "Home")">Ipsum Generator</a></li>
-							<li><a href="@Url.Action("Index", "Poco")">POCO Generator</a></li>
+                            <li><a href="@Url.Action("IpsumGenerator", "Home")">Ipsum Generator</a></li>
+                            <li><a href="@Url.Action("Index", "Poco")">POCO Generator</a></li>
                         </ul>
                     </li>
-		        </ul>
-	        </div>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="container">
@@ -83,32 +84,65 @@
             <h2>
                 @Html.Raw(pi.Icon) @pi.Title
             </h2>
-            @Html.Raw(pi.SubTitle)
+
+            @if (pi.Description != null)
+            {
+                <span class="pointer" title="Click to open detailed description" data-toggle="modal" data-target="#myModal">@Html.Raw(pi.SubTitle)</span>
+            }
+            else
+            {
+                @Html.Raw(pi.SubTitle)
+            }
         </div>
         @RenderBody()
         <br />
         <br />
-	    <footer>
-		    <div style="width: 100%; text-align: center;" class="small">
-				<a href="@Url.Action("Quote", "Home")" title="Quotes" style="color: #333">"@QandA.Quote;"</a> <i>@QandA.Author</i>
-			    <br/>
-			    <br/>
-			    &copy; Graphic design and programming by Walter VanderHeide, see <a href="/resume">
-				    resume
-			    </a> for contact details.
-		    </div>
-	    </footer>
+        <footer>
+            <div style="width: 100%; text-align: center;" class="small">
+                <a href="@Url.Action("Quote", "Home")" title="Quotes" style="color: #333">"@QandA.Quote;"</a> <i>@QandA.Author</i>
+                <br />
+                <br />
+                &copy; Graphic design and programming by Walter VanderHeide, see <a href="/resume">
+                    resume
+                </a> for contact details.
+            </div>
+        </footer>
     </div>
     @*The div below is the Scroll to Top*@
-    @*See http://www.webtipblog.com/adding-scroll-top-button-website/*@ 
+    @*See http://www.webtipblog.com/adding-scroll-top-button-website/*@
     <div class="scroll-top-wrapper" title="Jump to top">
         <span class="scroll-top-inner">
             <i class="fa fa-2x fa-arrow-circle-up"></i>
         </span>
     </div>
     @if (IsSectionDefined("DocumentReady"))
-    { 
+    {
         @RenderSection("DocumentReady", required: false)
+    }
+
+    @if (pi.Description != null)
+    {
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">@Html.Raw(pi.Icon) @pi.Title Description</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div style="overflow:auto; height:300px">
+                            @Html.Raw(pi.Description)
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     }
 </body>
 </html>

@@ -20,6 +20,7 @@ namespace Walter.Controllers
             PageInfo.Title = "Class Generator";
             PageInfo.Icon = "<i class=\"fa fa-file-text-o fa-lg\"></i>";
             PageInfo.SubTitle = "Generate a C# class from a SQL Query result";
+            PageInfo.Description = null;
 
             ViewBag.PageInfo = PageInfo;
 
