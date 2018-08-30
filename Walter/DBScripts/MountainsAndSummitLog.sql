@@ -421,6 +421,13 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 CAST(-121.5039 AS Decimal(30, 10)), N'')
 GO
 
+
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (172, N'The Wickiup', 6982, N'USA', N'UT', CAST(38.90706 AS Decimal(30, 10)), 
+CAST(-110.6888 AS Decimal(30, 10)), N'')
+GO
+
 SET IDENTITY_INSERT [dbo].[Mountains] OFF
 GO
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] ON 
@@ -1111,6 +1118,10 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 
 GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (328, 1, CAST(N'2018-08-04' AS Date), NULL)
+
+GO
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (329, 172, CAST(N'2018-08-27' AS Date), NULL)
 
 /*
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] OFF
