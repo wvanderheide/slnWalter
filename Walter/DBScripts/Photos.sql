@@ -976,6 +976,13 @@ CAST(N'1968-08-12' AS Date))
 							 
 GO
 
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (378, N'The Swell', 
+N'https://www.facebook.com/media/set/?set=a.10155482345016441&type=1&l=bcb86ebf1d', 
+CAST(N'2018-08-26' AS Date))
+							 
+GO
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
