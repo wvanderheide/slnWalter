@@ -988,6 +988,12 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (379, N'AAM', N'http
 
 GO
 
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (380, N'AAM Reunion', N'https://www.facebook.com/media/set/?set=a.10155558554571441&type=1&l=936cfa9311', CAST(N'2018-10-05' AS Date))
+
+GO
+
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
