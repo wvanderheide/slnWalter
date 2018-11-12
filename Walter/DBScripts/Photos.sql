@@ -999,6 +999,12 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (381, N'BYU', N'http
 GO
 
 
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (382, N'Black Dragon', N'https://www.facebook.com/media/set/?set=a.10155632947516441&type=1&l=23a213f860', CAST(N'2018-11-09' AS Date))
+
+GO
+
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
