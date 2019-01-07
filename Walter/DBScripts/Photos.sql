@@ -1005,6 +1005,18 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (382, N'Black Dragon
 GO
 
 
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (383, N'Mexico Trip', N'https://www.facebook.com/media/set/?set=a.10155729429691441&type=1&l=346a4f1be1', CAST(N'2018-12-15' AS Date))
+
+GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (384, N'2019 Overview', 
+N'https://www.facebook.com/media/set/?set=a.10155740627406441&type=1&l=4772c6944a'
+, CAST(N'2019-12-31' AS Date), 
+'/tripReports/journal.html')
+GO
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
