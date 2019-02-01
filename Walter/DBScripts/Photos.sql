@@ -1024,16 +1024,9 @@ GO
 
 
 
+
+
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (385, 
- N'Fang and FMR', 
-N'https://www.facebook.com/media/set/?set=a.10155778082116441&type=1&l=af26dc3e99'
-, CAST(N'2019-01-26' AS Date))
-
-GO
-
-
-
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (386, 
  N'2018/2019 Ice Season', 
 N'https://www.facebook.com/media/set/?set=a.10155787854831441&type=1&l=6d93b60d30'
 , CAST(N'2019-01-01' AS Date))
