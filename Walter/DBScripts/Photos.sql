@@ -1033,6 +1033,14 @@ GO
 
 
 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (386, 
+ N'Fang and FMR', 
+N'https://www.facebook.com/media/set/?set=a.10155787854831441&type=1&l=6d93b60d30'
+, CAST(N'2019-01-01' AS Date))
+
+GO
+
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
