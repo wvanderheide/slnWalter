@@ -428,6 +428,18 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 CAST(-110.6888 AS Decimal(30, 10)), N'')
 GO
 
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (173, N'Mt. Logan', 7866, N'USA', N'AZ', CAST(36.36034 AS Decimal(30, 10)), 
+CAST(-113.21342 AS Decimal(30, 10)), N'')
+GO
+
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (174, N'Mt. Trumbull', 8029, N'USA', N'AZ', CAST(36.41013 AS Decimal(30, 10)), 
+CAST(-113.13832 AS Decimal(30, 10)), N'')
+GO
+
 SET IDENTITY_INSERT [dbo].[Mountains] OFF
 GO
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] ON 
@@ -1123,6 +1135,14 @@ GO
 
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (329, 172, CAST(N'2018-08-27' AS Date), NULL)
 
+
+GO
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (330, 173, CAST(N'2019-04-14' AS Date), NULL)
+
+go
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (331, 174, CAST(N'2019-04-14' AS Date), NULL)
 /*
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] OFF
 GO
