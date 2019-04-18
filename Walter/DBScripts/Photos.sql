@@ -1034,6 +1034,15 @@ N'https://www.facebook.com/media/set/?set=a.10155787854831441&type=1&l=6d93b60d3
 GO
 
 
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (386, 
+ N'2018/2019 Ice Season', 
+N'https://www.facebook.com/walter.van.theman/media_set?set=a.10155940644906441&type=3'
+, CAST(N'2019-01-01' AS Date))
+
+GO
+
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
