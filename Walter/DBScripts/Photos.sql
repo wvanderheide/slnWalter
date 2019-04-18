@@ -1036,7 +1036,7 @@ GO
 
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (386, 
- N'2018/2019 Ice Season', 
+ N'AZ Strip', 
 N'https://www.facebook.com/walter.van.theman/media_set?set=a.10155940644906441&type=3'
 , CAST(N'2019-01-01' AS Date))
 
