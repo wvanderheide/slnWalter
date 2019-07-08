@@ -440,6 +440,12 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 CAST(-113.13832 AS Decimal(30, 10)), N'')
 GO
 
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (175, N'Sofa Mountain', 8252, N'Canada', N'Albera', CAST(49.02137 AS Decimal(30, 10)), 
+CAST(-113.78718 AS Decimal(30, 10)), N'')
+GO
+
 SET IDENTITY_INSERT [dbo].[Mountains] OFF
 GO
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] ON 
@@ -1143,6 +1149,11 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 go
 
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (331, 174, CAST(N'2019-04-14' AS Date), NULL)
+
+go
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (332, 175, CAST(N'2019-07-04' AS Date), NULL)
+
 /*
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] OFF
 GO
