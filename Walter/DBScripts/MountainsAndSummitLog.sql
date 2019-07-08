@@ -442,7 +442,7 @@ GO
 
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
-[MountainNote]) VALUES (175, N'Sofa Mountain', 8252, N'Canada', N'Albera', CAST(49.02137 AS Decimal(30, 10)), 
+[MountainNote]) VALUES (175, N'Sofa Mountain', 8252, N'Canada', N'Alberta', CAST(49.02137 AS Decimal(30, 10)), 
 CAST(-113.78718 AS Decimal(30, 10)), N'')
 GO
 
