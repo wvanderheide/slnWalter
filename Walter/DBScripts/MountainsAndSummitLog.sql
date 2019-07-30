@@ -1152,7 +1152,10 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 
 go
 
-INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (332, 175, CAST(N'2019-07-04' AS Date), NULL)
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (332, 45, CAST(N'2019-07-29' AS Date), N'From Squaw Peak Road')
+GO
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (333, 175, CAST(N'2019-07-04' AS Date), NULL)
 
 /*
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] OFF
