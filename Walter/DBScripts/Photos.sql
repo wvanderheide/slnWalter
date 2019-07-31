@@ -497,7 +497,7 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (184, N'Langley Dinn
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (185, N'Skydiving', N'http://vanman798.shutterfly.com/pictures/352', CAST(N'2004-08-21' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (186, N'Hong Kong', N'https://picasaweb.google.com/116738453430397687681/HongKongMacauFeb2004?authuser=0&authkey=Gv1sRgCPbajaLosobFcQ&feat=directlink', 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (186, N'Hong Kong', N'https://photos.app.goo.gl/neRGAkCNg8NXGTAo8', 
 CAST(N'2004-02-15' AS Date),
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2004_02_15_HK.pdf')
 GO
@@ -731,47 +731,48 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (289, N'CHS 20 Year'
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (290, N'Chief Mtn', N'https://picasaweb.google.com/116738453430397687681/Chief?authuser=0&authkey=Gv1sRgCPid7Yv54IGa8wE&feat=directlink', CAST(N'2005-08-08' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (291, N'Halloween', N'https://picasaweb.google.com/116738453430397687681/Halloween2004?authuser=0&authkey=Gv1sRgCPOrsNW62K2iQQ&feat=directlink', CAST(N'2004-10-29' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (291, N'Halloween', N'https://photos.app.goo.gl/xavkZ1XHXpaRqgf78', CAST(N'2004-10-29' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (292, N'Kennedy Peak', N'https://picasaweb.google.com/116738453430397687681/KennedyPeak1092004?authuser=0&authkey=Gv1sRgCKm8u5qXpa7FMA&feat=directlink', CAST(N'2004-10-09' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (292, N'Kennedy Peak', N'https://photos.app.goo.gl/YmyeJitYnoqx1RAU9', CAST(N'2004-10-09' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (293, N'DC & VA', N'https://picasaweb.google.com/116738453430397687681/DCArea1032004?authuser=0&authkey=Gv1sRgCPi_ztKzzKjGmwE&feat=directlink', CAST(N'2004-10-03' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (294, N'Former DC Stake Center', N'https://picasaweb.google.com/116738453430397687681/UnificationChurch?authuser=0&authkey=Gv1sRgCLPpiITc68-sLw&feat=directlink', CAST(N'2004-07-01' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (294, N'Former DC Stake Center', N'https://photos.app.goo.gl/4mn2AgisAoehnYWN9', CAST(N'2004-07-01' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (295, N'Karokee', N'https://picasaweb.google.com/116738453430397687681/Karokee722004?authuser=0&authkey=Gv1sRgCN7uqc_iiKHMIg&feat=directlink', CAST(N'2004-07-02' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (295, N'Karokee', N'https://photos.app.goo.gl/9QdR4mRMdatREmtK8', CAST(N'2004-07-02' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (296, N'Yawk', N'https://picasaweb.google.com/116738453430397687681/Yawk6122004?authuser=0&authkey=Gv1sRgCL-0gsbH06-NcQ&feat=directlink', CAST(N'2004-06-12' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (296, N'Yawk', 
+N'https://photos.app.goo.gl/xHvZuum8eT25nKtQ9', CAST(N'2004-06-12' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (297, N'Palmyra', N'https://picasaweb.google.com/116738453430397687681/Palmyra742004?authuser=0&authkey=Gv1sRgCM_L4q793aS8Bg&feat=directlink', CAST(N'2004-07-04' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (297, N'Palmyra', N'https://photos.app.goo.gl/JV5oKnJPHh5LgJZk8', CAST(N'2004-07-04' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (298, N'Bears Den', N'https://picasaweb.google.com/116738453430397687681/BearDen10302004?authuser=0&authkey=Gv1sRgCIKF9aiI5siuTQ&feat=directlink', CAST(N'2004-10-30' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (298, N'Bears Den', N'https://photos.app.goo.gl/qZP7xXju9L5aG6VD6', CAST(N'2004-10-30' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (299, N'Big Schloss', N'https://picasaweb.google.com/116738453430397687681/BigSchloss?authuser=0&authkey=Gv1sRgCK_B7KayxevNwwE&feat=directlink', CAST(N'2004-11-06' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (300, N'Friends', N'https://picasaweb.google.com/116738453430397687681/Friends2003?authuser=0&authkey=Gv1sRgCL6tveaXrabJDQ&feat=directlink', CAST(N'2003-08-03' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (300, N'Friends', N'https://photos.app.goo.gl/gnwuc1QHD5CrwTT29', CAST(N'2003-08-03' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (301, N'Halloween', N'https://picasaweb.google.com/116738453430397687681/Halloween?authuser=0&authkey=Gv1sRgCLGd76mF1NaSdw&feat=directlink', CAST(N'2003-10-31' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (301, N'Halloween', N'https://photos.app.goo.gl/KCwx16x8BVEwWTJv7', CAST(N'2003-10-31' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (302, N'II Employees', N'https://vanman798.shutterfly.com/pictures/2453', CAST(N'2001-10-01' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (303, N'Random', N'https://vanman798.shutterfly.com/pictures/2427', CAST(N'2001-12-31' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (304, N'Halloween', N'https://picasaweb.google.com/116738453430397687681/Halloween02?authuser=0&authkey=Gv1sRgCJa8ueHasqaVPQ&feat=directlink', CAST(N'2001-10-31' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (304, N'Halloween', N'https://photos.app.goo.gl/qMGeW1YZ1MZBnMAX9', CAST(N'2001-10-31' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (305, N'2000', N'https://picasaweb.google.com/116738453430397687681/2000?authuser=0&authkey=Gv1sRgCPmy74fKyvK5ew&feat=directlink', CAST(N'2000-12-31' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (305, N'2000', N'https://photos.app.goo.gl/32THWmnvPGeyKgMH9', CAST(N'2000-12-31' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) 
 VALUES (306, N'1999', N'https://picasaweb.google.com/116738453430397687681/1999?authuser=0&authkey=Gv1sRgCKPa5MWOs8qOlAE&feat=directlink', 
 CAST(N'1999-12-31' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/1999AtIssue.pdf')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (307, N'1998', N'https://picasaweb.google.com/116738453430397687681/1998?authuser=0&authkey=Gv1sRgCNrnzeLB89nmDw&feat=directlink', CAST(N'1998-12-31' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (307, N'1998', N'https://photos.app.goo.gl/Tp5AKxMMUtGnwinK6', CAST(N'1998-12-31' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (308, N'1997', N'https://picasaweb.google.com/116738453430397687681/1997?authuser=0&authkey=Gv1sRgCL7s34HR5ou0kQE&feat=directlink', CAST(N'1997-12-31' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (309, N'1996', N'https://picasaweb.google.com/116738453430397687681/1996?authuser=0&authkey=Gv1sRgCKne_-qB_7WZpAE&feat=directlink', CAST(N'1996-12-31' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (310, N'1995', N'https://picasaweb.google.com/116738453430397687681/1995?authuser=0&authkey=Gv1sRgCNvL2abs7penHQ&feat=directlink', CAST(N'1995-12-31' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (310, N'1995', N'https://photos.app.goo.gl/aHUospNxUzGNYsoJA', CAST(N'1995-12-31' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (311, N'1990-1994', N'https://vanman798.shutterfly.com/pictures/159', CAST(N'1994-12-31' AS Date))
 GO
