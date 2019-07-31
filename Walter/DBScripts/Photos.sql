@@ -365,7 +365,8 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (122, N'Flood', N'ht
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (123, N'Box Elder', N'http://vanman798.shutterfly.com/pictures/2261', CAST(N'2010-03-20' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (124, N'Crowd Ridge', N'https://picasaweb.google.com/116738453430397687681/SpanishForkPeakViaCrowdRidge?authuser=0&authkey=Gv1sRgCM3v1MG-7bu0Pw&feat=directlink', CAST(N'2010-03-06' AS Date), 'https://www.summitpost.org/crowd-ridge/602476')
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (124, N'Crowd Ridge', 
+N'https://photos.app.goo.gl/ikgSvxrEDKx6cMJc8', CAST(N'2010-03-06' AS Date), 'https://www.summitpost.org/crowd-ridge/602476')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (125, N'Lone Peak', N'http://vanman798.shutterfly.com/pictures/2171', CAST(N'2010-03-02' AS Date))
 GO
@@ -543,12 +544,14 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (204, N'Ana 5K', N'h
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (205, N'Red Rock', N'https://picasaweb.google.com/116738453430397687681/RedRockCanyon?authuser=0&authkey=Gv1sRgCLnW3Lmmrtf1tgE&feat=directlink', CAST(N'2010-10-22' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (206, N'Elephant Butte', N'https://picasaweb.google.com/116738453430397687681/ElephantButte?authuser=0&authkey=Gv1sRgCOektaHxgKiFXw&feat=directlink', CAST(N'2010-04-11' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (206, N'Elephant Butte',
+N'https://photos.app.goo.gl/56FLPjacrepqQXV3A', CAST(N'2010-04-11' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (207, N'Yellowstone',
  N'https://photos.app.goo.gl/pC6EsqhYjrmnX5Q7A', CAST(N'2010-10-15' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (208, N'Crazy Man', N'https://picasaweb.google.com/116738453430397687681/CrazyManCoulior02?authuser=0&authkey=Gv1sRgCN-Xn5Lw_pNR&feat=directlink', CAST(N'2010-05-31' AS Date), 'https://www.summitpost.org/the-crazy-man-couloir/625727')
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (208, N'Crazy Man', 
+N'https://photos.app.goo.gl/6go52w3zCTobx94U8', CAST(N'2010-05-31' AS Date), 'https://www.summitpost.org/the-crazy-man-couloir/625727')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (209, N'Garden', 
 N'https://photos.app.goo.gl/Y6JLGjeiBUszo1Zt5', CAST(N'2010-05-19' AS Date))
@@ -557,7 +560,8 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (210, N'Kessler', N'
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (211, N'UFO Bowl', N'https://vanman798.shutterfly.com/pictures/2158', CAST(N'2010-02-15' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (212, N'Snowbird', N'https://picasaweb.google.com/116738453430397687681/Snowbird2182010?authuser=0&authkey=Gv1sRgCKilqf-X55mBVg&feat=directlink', CAST(N'2010-02-18' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (212, N'Snowbird', 
+N'https://photos.app.goo.gl/VjTQuEwZcDwRcxxu8', CAST(N'2010-02-18' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (213, N'Urban', 
 N'https://photos.app.goo.gl/uDbGkezsqURk19Bi9', CAST(N'2010-05-09' AS Date))
@@ -718,7 +722,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (286, N'White Oaks', N'https://picasaweb.google.com/116738453430397687681/WhiteOaks?authuser=0&authkey=Gv1sRgCMnloIG3quPjqQE&feat=directlink', CAST(N'2005-05-04' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (287, N'Mustache', 
-N'https://picasaweb.google.com/116738453430397687681/Mustache?authuser=0&authkey=Gv1sRgCO2VrPrk1Kq3oAE&feat=directlink', CAST(N'2005-04-10' AS Date))
+N'https://photos.app.goo.gl/JSCBcm4k7BWwWQkV8', CAST(N'2005-04-10' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (288, N'ALPA', N'https://picasaweb.google.com/116738453430397687681/ALPA?authuser=0&authkey=Gv1sRgCIf71Z7c74752QE&feat=directlink', CAST(N'2005-08-03' AS Date))
 GO
