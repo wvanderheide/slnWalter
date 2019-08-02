@@ -1108,6 +1108,15 @@ N'https://www.facebook.com/walter.van.theman/media_set?set=a.10155940644906441&t
 GO
 
 
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (387, 
+ N'US State High Points', 
+N'https://photos.app.goo.gl/FobQCm6vB5upy9Qc6'
+, CAST(N'2015-05-31' AS Date))
+
+GO
+
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
