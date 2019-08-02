@@ -661,7 +661,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (256, N'Friends', N'https://picasaweb.google.com/116738453430397687681/FriendsEtc?authuser=0&authkey=Gv1sRgCIjVk6rHiN7z3wE&feat=directlink', CAST(N'2008-05-25' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (257, N'Y Mtn', 
-N'https://picasaweb.google.com/116738453430397687681/YMtn?authuser=0&authkey=Gv1sRgCN3tqdShjKXFNw&feat=directlink', CAST(N'2008-05-24' AS Date))
+N'https://photos.app.goo.gl/muccakaknn5nLNQW9', CAST(N'2008-05-24' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (258, N'Self', N'https://picasaweb.google.com/116738453430397687681/SelfPortraits?authuser=0&authkey=Gv1sRgCKCe9peO07_37QE&feat=directlink', CAST(N'2008-05-24' AS Date))
 GO
@@ -671,15 +671,15 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (260, N'Ana/Walter',
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (261, N'Broads Fork', N'https://photos.app.goo.gl/3BibXrS43dxBfcDE7', CAST(N'2007-11-03' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (262, N'Maple Mtn',
- N'https://picasaweb.google.com/116738453430397687681/MapleMtn02?authuser=0&authkey=Gv1sRgCOXspuztg46mVA&feat=directlink', CAST(N'2007-10-27' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (262, N'Maple Mountain',
+ N'https://photos.app.goo.gl/2ECZSqtSKHcmAgNN9', CAST(N'2007-10-27' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (263, N'Cardiff Pass', N'https://photos.app.goo.gl/ezSjTHyh13N96SAt9', CAST(N'2007-10-20' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (264, N'Buckley', 
 N'https://picasaweb.google.com/116738453430397687681/Buckley10122007?authuser=0&authkey=Gv1sRgCIq0lvm-m6qOygE&feat=directlink', CAST(N'2007-10-12' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (265, N'Y Mtn', N'https://picasaweb.google.com/116738453430397687681/YMtn02?authuser=0&authkey=Gv1sRgCPeL3IPz7b3W6gE&feat=directlink', CAST(N'2007-10-06' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (265, N'Y Mtn', N'https://photos.app.goo.gl/NzURoPoqgcNuVMfu7', CAST(N'2007-10-06' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (266, N'84 Yard', N'https://picasaweb.google.com/116738453430397687681/Yard84E?authuser=0&authkey=Gv1sRgCJTS4tS0v5rE4wE&feat=directlink', CAST(N'2007-09-29' AS Date))
 GO
