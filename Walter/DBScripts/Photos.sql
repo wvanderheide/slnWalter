@@ -1116,6 +1116,13 @@ N'https://photos.app.goo.gl/FobQCm6vB5upy9Qc6'
 
 GO
 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (388, 
+ N'Mirror Lake Highway', 
+N'https://photos.app.goo.gl/fuZ9TcS3vWJBTbt98'
+, CAST(N'2019-08-04' AS Date))
+
+GO
+
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
