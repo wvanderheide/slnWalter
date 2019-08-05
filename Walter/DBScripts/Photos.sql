@@ -1108,6 +1108,16 @@ N'https://www.facebook.com/walter.van.theman/media_set?set=a.10155940644906441&t
 GO
 
 
+
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (387, 
+ N'Mirror Lake Highway', 
+N'https://photos.app.goo.gl/fuZ9TcS3vWJBTbt98'
+, CAST(N'2019-08-04' AS Date))
+
+GO
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
