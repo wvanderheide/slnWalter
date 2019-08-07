@@ -1123,6 +1123,12 @@ N'https://photos.app.goo.gl/fuZ9TcS3vWJBTbt98'
 
 GO
 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (389, 
+ N'Water Leak', 
+N'https://photos.app.goo.gl/N3uXJBCLqNk2WPq57'
+, CAST(N'2019-08-06' AS Date))
+
+GO
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
