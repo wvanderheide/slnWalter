@@ -446,6 +446,12 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 CAST(-113.78718 AS Decimal(30, 10)), N'')
 GO
 
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (176, N'Tokewanna Peak', 13165, N'USA', N'UT', CAST(40.81020 AS Decimal(30, 10)), 
+CAST(- 110.6231 AS Decimal(30, 10)), N'')
+GO
+
+
 SET IDENTITY_INSERT [dbo].[Mountains] OFF
 GO
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] ON 
@@ -1156,6 +1162,11 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 GO
 
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (333, 175, CAST(N'2019-07-04' AS Date), NULL)
+
+go
+
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (334, 176, CAST(N'2019-08-17' AS Date), NULL)
 
 /*
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] OFF
