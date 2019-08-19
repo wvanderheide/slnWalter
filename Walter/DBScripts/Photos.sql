@@ -964,6 +964,7 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (363,
 GO
 
 
+
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (364, N'Ibapah and Goshute Cave', 
 N'https://www.facebook.com/media/set/?set=a.10155355298001441.1073741875.620076440&type=1&l=1fc21de1fd'
 , CAST(N'2018-06-30' AS Date), 
@@ -1129,6 +1130,16 @@ N'https://photos.app.goo.gl/N3uXJBCLqNk2WPq57'
 , CAST(N'2019-08-06' AS Date))
 
 GO
+
+
+--https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_08_17_Tokewanna.txt
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (390, N'Tokewanna', 
+N'https://photos.app.goo.gl/2BR2e6z8EMXwHb9RA'
+, CAST(N'2019-09-17' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_08_17_Tokewanna.txt')
+GO
+
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
