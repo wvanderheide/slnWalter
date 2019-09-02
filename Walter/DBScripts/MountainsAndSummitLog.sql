@@ -329,7 +329,8 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (135, N'Chief Mountain', 9080, N'USA', N'MT', CAST(48.9326000000 AS Decimal(30, 10)), CAST(-113.6100000000 AS Decimal(30, 10)), NULL)
 GO
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (136, N'Mt. Marcy', 5344, N'USA', N'NY', CAST(44.1125000000 AS Decimal(30, 10)), CAST(-73.9239000000 AS Decimal(30, 10)), N'US State High Point')
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES 
+(136, N'Mt. Marcy', 5344, N'USA', N'NY', CAST(44.1125000000 AS Decimal(30, 10)), CAST(-73.9239000000 AS Decimal(30, 10)), N'US State High Point')
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (137, N'Crane Mountain', 3254, N'USA', N'NY', CAST(43.5502900000 AS Decimal(30, 10)), CAST(-73.9464000000 AS Decimal(30, 10)), NULL)
 GO
@@ -448,8 +449,29 @@ GO
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (176, N'Tokewanna Peak', 13165, N'USA', N'UT', CAST(40.81020 AS Decimal(30, 10)), 
-CAST(- 110.6231 AS Decimal(30, 10)), N'')
+CAST(-110.6231 AS Decimal(30, 10)), N'')
 GO
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (177, N'Katahdin', 5267, N'USA', N'ME', CAST(45.9044 AS Decimal(30, 10)), 
+CAST(-68.9228 AS Decimal(30, 10)), N'') 
+GO
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (178, N'Mt. Washington', 6288, N'USA', N'NH', CAST(44.27059 AS Decimal(30, 10)), 
+CAST(-71.30327 AS Decimal(30, 10)), N'')   
+GO
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (179, N'Mt. Mansfield', 4393, N'USA', N'VT', CAST(44.5440 AS Decimal(30, 10)), 
+CAST(-72.815 AS Decimal(30, 10)), N'')    --44.54400°N / 72.815°W
+GO
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (180, N'Mt. Greylock', 3491, N'USA', N'MA', CAST(42.6375 AS Decimal(30, 10)), 
+CAST(-73.1667 AS Decimal(30, 10)), N'')    -- 	42.63750°N / 73.1667°W
+GO
+
 
 
 SET IDENTITY_INSERT [dbo].[Mountains] OFF
@@ -1164,9 +1186,22 @@ GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (333, 175, CAST(N'2019-07-04' AS Date), NULL)
 
 go
-
-
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (334, 176, CAST(N'2019-08-17' AS Date), NULL)
+
+
+go
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (335, 177, CAST(N'2019-08-27' AS Date), NULL)
+
+go
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (336, 178, CAST(N'2019-08-28' AS Date), NULL)
+
+
+go
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (337, 179, CAST(N'2019-08-29' AS Date), NULL)
+
+
+go
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (338, 180, CAST(N'2019-08-30' AS Date), NULL)
 
 /*
 SET IDENTITY_INSERT [dbo].[MountainSummitLog] OFF

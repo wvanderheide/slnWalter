@@ -1113,7 +1113,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (387, 
  N'US State High Points', 
 N'https://photos.app.goo.gl/FobQCm6vB5upy9Qc6'
-, CAST(N'2015-05-31' AS Date))
+, CAST(N'2019-08-30' AS Date))
 
 GO
 
@@ -1132,14 +1132,46 @@ N'https://photos.app.goo.gl/N3uXJBCLqNk2WPq57'
 GO
 
 
---https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_08_17_Tokewanna.txt
-
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (390, N'Tokewanna', 
 N'https://photos.app.goo.gl/2BR2e6z8EMXwHb9RA'
-, CAST(N'2019-09-17' AS Date), 
+, CAST(N'2019-08-17' AS Date), 
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_08_17_Tokewanna.txt')
 GO
 
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (391, N'Katahdin', 
+N'https://photos.app.goo.gl/aSewQtkn5EPPhB1z5'
+, CAST(N'2019-08-27' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_08_26to31_Katahdin_Washington_Mansfield_Greylock_Portland.txt')
+GO
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (392, N'Mt. Washington', 
+N'https://photos.app.goo.gl/xUR3Z85UhtwVaXHD6'
+, CAST(N'2019-08-28' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_08_26to31_Katahdin_Washington_Mansfield_Greylock_Portland.txt')
+GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (393, N'Mt. Mansfield', 
+N'https://photos.app.goo.gl/jQCDhHAnAjHUokDh6'
+, CAST(N'2019-08-29' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_08_26to31_Katahdin_Washington_Mansfield_Greylock_Portland.txt')
+GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (394, N'Mt. Greylock', 
+N'https://photos.app.goo.gl/sAXi3R4CZNgVwfuN8'
+, CAST(N'2019-08-30' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_08_26to31_Katahdin_Washington_Mansfield_Greylock_Portland.txt')
+GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (395, N'Portland, ME', 
+N'https://photos.app.goo.gl/AevGVBbiT5GNGgme9'
+, CAST(N'2019-08-31' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_08_26to31_Katahdin_Washington_Mansfield_Greylock_Portland.txt')
+GO
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
