@@ -1173,6 +1173,14 @@ N'https://photos.app.goo.gl/AevGVBbiT5GNGgme9'
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_08_26to31_Katahdin_Washington_Mansfield_Greylock_Portland.txt')
 GO
 
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (396, N'SC, GA, TN, KY, VA, and NC High Points', 
+N'https://photos.app.goo.gl/qFNwv84nWpLxVZNa8'
+, CAST(N'2019-10-03' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_10_03_SC_GA_TN_KY_VA_NC__Highpoints.txt')
+GO
+
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 

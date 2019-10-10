@@ -63,9 +63,10 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (2, N'Mount Lineham', 8950, N'Canada', N'Alberta', CAST(49.0696500000 AS Decimal(30, 10)), CAST(-114.0491200000 AS Decimal(30, 10)), NULL)
 GO
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (3, N'White Butte', 3507, N'USA', N'ND', CAST(46.3868000000 AS Decimal(30, 10)), CAST(-103.3021000000 AS Decimal(30, 10)), N'US State High Point')
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) 
+VALUES (3, N'White Butte', 3507, N'USA', N'ND', CAST(46.3868000000 AS Decimal(30, 10)), CAST(-103.3021000000 AS Decimal(30, 10)), N'US State High Point')
 GO
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (4, N'Harney Peak', 7242, N'USA', N'SD', CAST(43.8661000000 AS Decimal(30, 10)), CAST(-103.5311000000 AS Decimal(30, 10)), N'US State High Point')
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (4, N'Black Elk Peak', 7242, N'USA', N'SD', CAST(43.8661000000 AS Decimal(30, 10)), CAST(-103.5311000000 AS Decimal(30, 10)), N'US State High Point<br />aka: Harney Peak')
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (5, N'Mount Hawkins', 8839, N'Canada', N'Alberta', CAST(49.0877000000 AS Decimal(30, 10)), CAST(-114.0770500000 AS Decimal(30, 10)), NULL)
 GO
@@ -129,11 +130,11 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (35, N'El Capitan Peak', 8085, N'USA', N'TX', CAST(31.8770000000 AS Decimal(30, 10)), CAST(-104.8580000000 AS Decimal(30, 10)), NULL)
 GO
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (36, N'Guadalupe Peak', 8749, N'USA', N'TX', CAST(31.8914000000 AS Decimal(30, 10)), CAST(-104.8600000000 AS Decimal(30, 10)), NULL)
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (36, N'Guadalupe Peak', 8749, N'USA', N'TX', CAST(31.8914000000 AS Decimal(30, 10)), CAST(-104.8600000000 AS Decimal(30, 10)), N'US State High Point')
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (37, N'Deseret Peak', 11031, N'USA', N'UT', CAST(40.4597000000 AS Decimal(30, 10)), CAST(-112.6263000000 AS Decimal(30, 10)), NULL)
 GO
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (38, N'Wheeler Peak', 13161, N'USA', N'NM', CAST(36.5625000000 AS Decimal(30, 10)), CAST(-105.4140000000 AS Decimal(30, 10)), NULL)
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (38, N'Wheeler Peak', 13161, N'USA', N'NM', CAST(36.5625000000 AS Decimal(30, 10)), CAST(-105.4140000000 AS Decimal(30, 10)), N'US State High Point')
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (39, N'Mount Walter', 13141, N'USA', N'NM', CAST(36.5567000000 AS Decimal(30, 10)), CAST(-105.4164000000 AS Decimal(30, 10)), NULL)
 GO
@@ -157,9 +158,9 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (49, N'Crystal  Peak', 7106, N'USA', N'UT', CAST(38.7908000000 AS Decimal(30, 10)), CAST(-113.6003000000 AS Decimal(30, 10)), NULL)
 GO
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (50, N'Notch  Peak', 9654, N'USA', N'UT', CAST(39.1430000000 AS Decimal(30, 10)), CAST(-113.4090000000 AS Decimal(30, 10)), NULL)
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (50, N'Notch  Peak', 9654, N'USA', N'UT', CAST(39.1430000000 AS Decimal(30, 10)), CAST(-113.4090000000 AS Decimal(30, 10)), N'US State High Point')
 GO
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (51, N'Granite Peak', 12799, N'USA', N'MT', CAST(45.1633000000 AS Decimal(30, 10)), CAST(-109.8072000000 AS Decimal(30, 10)), NULL)
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (51, N'Granite Peak', 12799, N'USA', N'MT', CAST(45.1633000000 AS Decimal(30, 10)), CAST(-109.8072000000 AS Decimal(30, 10)), N'US State High Point')
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (52, N'Devil''s Castle', 10920, N'USA', N'UT', CAST(40.5660300000 AS Decimal(30, 10)), CAST(-111.6110100000 AS Decimal(30, 10)), NULL)
 GO
@@ -189,7 +190,7 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (65, N'Reynolds Peak', 9422, N'USA', N'UT', CAST(40.6622000000 AS Decimal(30, 10)), CAST(-111.6458000000 AS Decimal(30, 10)), NULL)
 GO
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (66, N'Mt. Whitney', 14497, N'USA', N'CA', CAST(36.5786000000 AS Decimal(30, 10)), CAST(-118.2930000000 AS Decimal(30, 10)), NULL)
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (66, N'Mt. Whitney', 14497, N'USA', N'CA', CAST(36.5786000000 AS Decimal(30, 10)), CAST(-118.2930000000 AS Decimal(30, 10)), N'US State High Point')
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (67, N'First Gemini', 13387, N'USA', N'UT', CAST(40.7531900000 AS Decimal(30, 10)), CAST(-110.3592100000 AS Decimal(30, 10)), NULL)
 GO
@@ -241,11 +242,13 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (91, N'Mt. Massive', 14421, N'USA', N'CO', CAST(39.1872000000 AS Decimal(30, 10)), CAST(-106.4747000000 AS Decimal(30, 10)), NULL)
 GO
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (92, N'Mt. Elbert', 14433, N'USA', N'CO', CAST(39.1178000000 AS Decimal(30, 10)), CAST(-106.4447000000 AS Decimal(30, 10)), NULL)
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (92, N'Mt. Elbert', 14433, N'USA', N'CO', CAST(39.1178000000 AS Decimal(30, 10)), CAST(-106.4447000000 AS Decimal(30, 10)), N'US State High Point')
 GO
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (93, N'Borah Peak', 12662, N'USA', N'ID', CAST(44.1372000000 AS Decimal(30, 10)), CAST(-113.7794000000 AS Decimal(30, 10)), NULL)
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (93, N'Borah Peak', 12662, N'USA', N'ID', CAST(44.1372000000 AS Decimal(30, 10)), CAST(-113.7794000000 AS Decimal(30, 10)), N'US State High Point')
 GO
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (94, N'Gannett Peak', 13804, N'USA', N'WY', CAST(43.1844000000 AS Decimal(30, 10)), CAST(-109.6530000000 AS Decimal(30, 10)), NULL)
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) 
+VALUES (94, N'Gannett Peak', 13804, N'USA', N'WY', 
+CAST(43.1844000000 AS Decimal(30, 10)), CAST(-109.6530000000 AS Decimal(30, 10)), N'US State High Point')
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (95, N'Angels Landing', 5785, N'USA', N'UT', CAST(37.2694000000 AS Decimal(30, 10)), CAST(-112.9486000000 AS Decimal(30, 10)), NULL)
 GO
@@ -336,7 +339,9 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (138, N'Backbone Mountain', 3360, N'USA', N'MD', CAST(39.2450200000 AS Decimal(30, 10)), CAST(-79.4855700000 AS Decimal(30, 10)), N'US State High Point')
 GO
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (139, N'Spruce Knob', 4863, N'USA', N'WV', CAST(38.6997000000 AS Decimal(30, 10)), CAST(-79.5331000000 AS Decimal(30, 10)), N'US State High Point')
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) 
+VALUES (139, N'Spruce Knob', 4863, N'USA', N'WV', 
+CAST(38.6997000000 AS Decimal(30, 10)), CAST(-79.5331000000 AS Decimal(30, 10)), N'US State High Point')
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (140, N'Seneca Rocks', 2400, N'USA', N'WV', CAST(38.8350000000 AS Decimal(30, 10)), CAST(-79.3660000000 AS Decimal(30, 10)), NULL)
 GO
@@ -389,20 +394,20 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 GO
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (164, N'Emmons Peak', 13440, N'USA', N'UT', CAST(40.7117000000 AS Decimal(30, 10)), CAST(-110.3037000000 AS Decimal(30, 10)), NULL)
 GO
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (165, N'Ensign Peak', 5414, N'USA', N'UT', CAST(40.7964000000 AS Decimal(30, 10)), CAST(-111.8884600000 AS Decimal(30, 10)), N'')
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (165, N'Ensign Peak', 5414, N'USA', N'UT', CAST(40.7964000000 AS Decimal(30, 10)), CAST(-111.8884600000 AS Decimal(30, 10)), NULL)
 GO
 
-INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (166, N'Little Tuk', 12048, N'USA', N'UT', CAST(38.44663 AS Decimal(30, 10)), CAST(-109.26478 AS Decimal(30, 10)), N'')
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], [MountainNote]) VALUES (166, N'Little Tuk', 12048, N'USA', N'UT', CAST(38.44663 AS Decimal(30, 10)), CAST(-109.26478 AS Decimal(30, 10)), NULL)
 GO
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (167, N'Mount Belknap', 12137, N'USA', N'UT', CAST(38.41940 AS Decimal(30, 10)), 
-CAST(-112.4119 AS Decimal(30, 10)), N'')
+CAST(-112.4119 AS Decimal(30, 10)), NULL)
 GO
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (168, N'Delano Peak', 12173, N'USA', N'UT', CAST(38.36920 AS Decimal(30, 10)), 
-CAST(-112.3706 AS Decimal(30, 10)), N'')
+CAST(-112.3706 AS Decimal(30, 10)), NULL)
 GO
 
 
@@ -420,88 +425,88 @@ GO
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (171, N'Lassen Peak', 10457, N'USA', N'CA', CAST(40.4878 AS Decimal(30, 10)), 
-CAST(-121.5039 AS Decimal(30, 10)), N'')
+CAST(-121.5039 AS Decimal(30, 10)), NULL)
 GO
 
 
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (172, N'The Wickiup', 6982, N'USA', N'UT', CAST(38.90706 AS Decimal(30, 10)), 
-CAST(-110.6888 AS Decimal(30, 10)), N'')
+CAST(-110.6888 AS Decimal(30, 10)), NULL)
 GO
 
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (173, N'Mt. Logan', 7866, N'USA', N'AZ', CAST(36.36034 AS Decimal(30, 10)), 
-CAST(-113.21342 AS Decimal(30, 10)), N'')
+CAST(-113.21342 AS Decimal(30, 10)), NULL)
 GO
 
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (174, N'Mt. Trumbull', 8029, N'USA', N'AZ', CAST(36.41013 AS Decimal(30, 10)), 
-CAST(-113.13832 AS Decimal(30, 10)), N'')
+CAST(-113.13832 AS Decimal(30, 10)), NULL)
 GO
 
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (175, N'Sofa Mountain', 8252, N'Canada', N'Alberta', CAST(49.02137 AS Decimal(30, 10)), 
-CAST(-113.78718 AS Decimal(30, 10)), N'')
+CAST(-113.78718 AS Decimal(30, 10)), NULL)
 GO
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (176, N'Tokewanna Peak', 13165, N'USA', N'UT', CAST(40.81020 AS Decimal(30, 10)), 
-CAST(-110.6231 AS Decimal(30, 10)), N'')
+CAST(-110.6231 AS Decimal(30, 10)), NULL)
 GO
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (177, N'Katahdin', 5267, N'USA', N'ME', CAST(45.9044 AS Decimal(30, 10)), 
-CAST(-68.9228 AS Decimal(30, 10)), N'') 
+CAST(-68.9228 AS Decimal(30, 10)),  N'US State High Point') 
 GO
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (178, N'Mt. Washington', 6288, N'USA', N'NH', CAST(44.27059 AS Decimal(30, 10)), 
-CAST(-71.30327 AS Decimal(30, 10)), N'')   
+CAST(-71.30327 AS Decimal(30, 10)),  N'US State High Point')   
 GO
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (179, N'Mt. Mansfield', 4393, N'USA', N'VT', CAST(44.5440 AS Decimal(30, 10)), 
-CAST(-72.815 AS Decimal(30, 10)), N'')    
+CAST(-72.815 AS Decimal(30, 10)),  N'US State High Point')    
 GO
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (180, N'Mt. Greylock', 3491, N'USA', N'MA', CAST(42.6375 AS Decimal(30, 10)), 
-CAST(-73.1667 AS Decimal(30, 10)), N'')   
+CAST(-73.1667 AS Decimal(30, 10)),  N'US State High Point')   
 GO
 
 
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (181, N'Sassafras Mountain', 3533, N'USA', N'SC', CAST(35.06470 AS Decimal(30, 10)), 
-CAST(-82.7775 AS Decimal(30, 10)), N'')   
+CAST(-82.7775 AS Decimal(30, 10)),  N'US State High Point')   
 GO
 
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (182, N'Brasstown Bald', 4786, N'USA', N'GA', CAST(34.8741 AS Decimal(30, 10)), 
-CAST(-83.8108 AS Decimal(30, 10)), N'')    
+CAST(-83.8108 AS Decimal(30, 10)),  N'US State High Point')    
 GO
 
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (183, N'Clingmans Dome', 6643, N'USA', N'TN', CAST(35.562919 AS Decimal(30, 10)), 
-CAST(-83.498601 AS Decimal(30, 10)), N'')    
+CAST(-83.498601 AS Decimal(30, 10)),  N'US State High Point')    
 GO
 
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (184, N'Black Mountain', 4139, N'USA', N'KY', CAST(36.91420 AS Decimal(30, 10)), 
-CAST(-82.8939 AS Decimal(30, 10)), N'')    
+CAST(-82.8939 AS Decimal(30, 10)),  N'US State High Point')    
 GO
 
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (185, N'Mt. Rogers', 5729, N'USA', N'VA', CAST(36.66005 AS Decimal(30, 10)), 
-CAST(-81.5449 AS Decimal(30, 10)), N'')    
+CAST(-81.5449 AS Decimal(30, 10)),  N'US State High Point')    
 GO
 
 --Add New Mountains ABOVE HERE
