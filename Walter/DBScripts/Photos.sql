@@ -1113,7 +1113,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL]) VALUES (387, 
  N'US State High Points', 
 N'https://photos.app.goo.gl/FobQCm6vB5upy9Qc6'
-, CAST(N'2019-08-30' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/STATE%20HIGH%20POINTS.xlsx')
+, CAST(N'2019-10-07' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/STATE%20HIGH%20POINTS.xlsx')
 
 GO
 
