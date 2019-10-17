@@ -81,7 +81,11 @@
         <a target="_blank" href="@item.Url">@item.Title</a> <span class="small" title="@item.Id">(@item.Month/@item.Day)</span>
         @if (item.Url.ToLower().IndexOf("picasa") >= 0)
         {
-            <span style="color:red">Broken!</span>
+            <span style="color:red">Picasa!</span>
+        }
+        else if (item.Url.ToLower().IndexOf("shutter") >= 0)
+        {
+            <span style="color:blue">Shutter!</span>
         }
 
         @if (item.TripReportURL != null)
