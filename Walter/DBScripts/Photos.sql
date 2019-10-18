@@ -848,7 +848,8 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (336, N'Stratosphere
 N'https://photos.app.goo.gl/cfw64CXMBNPV9qbi6', 
 CAST(N'2016-03-01' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (337, N'Water Leak', N'https://picasaweb.google.com/107082436175597733376/WaterLeak?authuser=0&authkey=Gv1sRgCOv5nazs-ZnErAE&feat=directlink', CAST(N'2016-03-06' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (337, N'Water Leak', 
+N'https://photos.app.goo.gl/suj4nPDAq7hKW3uZA', CAST(N'2016-03-06' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (338, N'Easter Bunny', N'https://photos.app.goo.gl/FWzuiPZgb81Xu6Kg7', CAST(N'2016-03-27' AS Date))
 GO
