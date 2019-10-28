@@ -76,7 +76,7 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (14, N'Denali NP', N
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (15, N'Reception', N'https://picasaweb.google.com/107082436175597733376/Reception?authuser=0&authkey=Gv1sRgCP_yq62IlPCZhgE&feat=directlink', CAST(N'2014-01-25' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (16, N'Wedding', N'https://picasaweb.google.com/107082436175597733376/Wedding?authuser=0&authkey=Gv1sRgCNub-Mbr1MG82QE&feat=directlink', CAST(N'2013-12-12' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (16, N'Wedding', N'https://photos.app.goo.gl/kogq69Euj8UwDFG48', CAST(N'2013-12-12' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (17, N'Teotihuacan', 
 N'https://photos.app.goo.gl/xjiq9MWFBeeAbW7A6', CAST(N'2013-12-01' AS Date))
@@ -84,7 +84,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (18, N'Iztaccihuatl', N'https://photos.app.goo.gl/dRe5sa1ogBjpJtUo6', CAST(N'2013-11-30' AS Date),
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_11_29_Itza.txt')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (19, N'Orizaba', N'https://picasaweb.google.com/107082436175597733376/Orizaba?authuser=0&authkey=Gv1sRgCOCIwJuUjtWUkAE&feat=directlink', CAST(N'2013-11-27' AS Date),
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (19, N'Orizaba', N'https://photos.app.goo.gl/RQYMYbVbC4f4ifPt5', CAST(N'2013-11-27' AS Date),
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_11_24_Orizaba.txt')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (20, N'Levons Wedding', N'https://picasaweb.google.com/107082436175597733376/LevonsWedding?authuser=0&authkey=Gv1sRgCPyHlY_k3OOJ5AE&feat=directlink', CAST(N'2015-08-15' AS Date))
@@ -106,7 +106,8 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (26, N'Hockey', N'ht
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (27, N'Cassidy Arch', N'https://picasaweb.google.com/107082436175597733376/CassidyArch?authuser=0&authkey=Gv1sRgCLWdpfjers6DvgE&feat=directlink', CAST(N'2014-09-01' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (28, N'Maple Canyon', N'https://picasaweb.google.com/107082436175597733376/MapleCanyon03?authuser=0&authkey=Gv1sRgCLWctqX0g5X75gE&feat=directlink', CAST(N'2014-09-12' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (28, N'Maple Canyon', 
+N'https://picasaweb.google.com/107082436175597733376/MapleCanyon03?authuser=0&authkey=Gv1sRgCLWctqX0g5X75gE&feat=directlink', CAST(N'2014-09-12' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (29, N'2008 Overview', 
 N'https://www.facebook.com/media/set/?set=a.10155368451086441.1073741880.620076440&type=1&l=fd14678c3c', CAST(N'2008-12-31' AS Date))
@@ -130,14 +131,14 @@ N'https://www.facebook.com/media/set/?set=a.10152008181526441.1073741829.6200764
 CAST(N'2014-12-30' AS Date),'https://fox13now.com/2014/04/05/video-shows-fire-in-orem-that-displaced-16-people/')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (35, N'Dirtcicle', 
-N'https://picasaweb.google.com/107082436175597733376/DirtcicleNov192013?authuser=0&authkey=Gv1sRgCI7V75Xy2u-ArQE&feat=directlink', CAST(N'2013-11-19' AS Date),
+N'https://photos.app.goo.gl/9azicaCcH4FpEKHz9', CAST(N'2013-11-19' AS Date),
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_11_19_Dirtcicle.txt')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (36, N'Zion Canyon', N'https://picasaweb.google.com/107082436175597733376/ZionCanyon?authuser=0&authkey=Gv1sRgCKHl29P5npnnpAE&feat=directlink', CAST(N'2013-11-01' AS Date),
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (36, N'Zion Canyon', N'https://photos.app.goo.gl/MsvWsWQZPZF2bTv18', CAST(N'2013-11-01' AS Date),
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_11_01_Zion.txt')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (37, N'Red Rock and Prophecy', 
-N'https://picasaweb.google.com/107082436175597733376/RedRockAndProphecy?authuser=0&authkey=Gv1sRgCLPY7tWtzenw4QE&feat=directlink', 
+N'https://photos.app.goo.gl/HchWtuoWyUojSZ8T8', 
 CAST(N'2013-10-26' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_10_26_RedRock.txt')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (38, N'Kamps Ridge', N'https://photos.app.goo.gl/nf8QLjZpghYnBdfg8', CAST(N'2013-10-18' AS Date),
@@ -146,13 +147,13 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (39, N'Indian Creek', N'https://photos.app.goo.gl/GQm1m3jCajDiwWsV6', CAST(N'2013-10-05' AS Date),
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_10_05_IndianCreek.txt')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (40, N'Red Rock Canyon', N'https://picasaweb.google.com/107082436175597733376/RedRockCanyon?authuser=0&authkey=Gv1sRgCMn_p__p3K7gwQE&feat=directlink', 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (40, N'Red Rock Canyon', N'https://photos.app.goo.gl/3JuoftUBUSQm5x1Y6', 
 CAST(N'2013-09-25' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_09_25_RedRock.txt')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (41, N'City of Rocks', N'https://photos.app.goo.gl/S7fwmpYUM4z8aUW97', 
 CAST(N'2013-09-20' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_09_21_CityOfRocks.txt')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (42, N'Cirque of the Towers', N'https://picasaweb.google.com/107082436175597733376/CirqueOfTheTowers?authuser=0&authkey=Gv1sRgCK7XnZ7m8-aqtQE&feat=directlink', 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (42, N'Cirque of the Towers', N'https://photos.app.goo.gl/SawA11cFPWCMg6Mx9', 
 CAST(N'2013-09-09' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_09_08-14_CirqueOfTowers.txt')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (43, N'Kings Peak', N'https://photos.app.goo.gl/ggFyuqn41rvmRapc6', CAST(N'2013-08-31' AS Date))
@@ -160,7 +161,8 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (44, N'Subway', N'https://photos.app.goo.gl/zPPEp5qjPiVKDeTr5', 
 CAST(N'2013-07-20' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (45, N'Maple', N'https://picasaweb.google.com/107082436175597733376/MapleCanyon02?authuser=0&authkey=Gv1sRgCJCYoq3pk8nr3wE&feat=directlink', CAST(N'2013-07-05' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (45, N'Maple', 
+N'https://photos.app.goo.gl/mxcGk48XiZD6Hcrf6', CAST(N'2013-07-05' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (46, N'Great Basin', N'https://photos.app.goo.gl/kFqgkayWkLcGTz7A6', CAST(N'2013-06-29' AS Date))
 GO
@@ -171,32 +173,35 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (48, N'Guadalupe Peak', N'https://photos.app.goo.gl/mmxFea7wveB9FnB77', 
 CAST(N'2013-06-08' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_06_08_GuadalupePeak.txt')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (49, N'Deseret Peak', N'https://picasaweb.google.com/107082436175597733376/DeseretPeakSpringSkiing?authuser=0&authkey=Gv1sRgCMmjwqq35_H90AE&feat=directlink', CAST(N'2013-06-01' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (49, N'Deseret Peak', 
+N'https://photos.app.goo.gl/aNUA9dnfLuCoBeAW7', CAST(N'2013-06-01' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (50, N'Geurts Ridge', N'https://photos.app.goo.gl/RJXvA1kScoQkgrB87', 
 CAST(N'2013-05-27' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (51, N'Shed', N'https://photos.app.goo.gl/yb2aDAxpDTs7aqfG6', CAST(N'2013-05-26' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (52, N'Moab', N'https://picasaweb.google.com/107082436175597733376/MoabMtnBiking?authuser=0&authkey=Gv1sRgCL2O69vW6fW3hAE&feat=directlink', CAST(N'2013-05-04' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (52, N'Moab', 
+N'https://photos.app.goo.gl/mfZjVNTfZNmuSJG96', CAST(N'2013-05-04' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (53, N'Wheeler, NM', N'https://picasaweb.google.com/107082436175597733376/WheelerPeakNM?authuser=0&authkey=Gv1sRgCM781Y6ow7n0tQE&feat=directlink',
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (53, N'Wheeler, NM', N'https://photos.app.goo.gl/HXka642pLkJbXXV29',
  CAST(N'2013-04-27' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_04_26-28_NewMexico.txt')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (54, N'Ice', N'https://picasaweb.google.com/107082436175597733376/IceClimbing?authuser=0&authkey=Gv1sRgCIDb8tC3xOCEvAE&feat=directlink', CAST(N'2013-02-23' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (54, N'Ice', N'https://photos.app.goo.gl/TDb9A2ZgXeNvfmzW9', CAST(N'2013-02-23' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (55, N'GWI', N'https://picasaweb.google.com/107082436175597733376/GWI?authuser=0&authkey=Gv1sRgCLzbuerw-Z7fgQE&feat=directlink', CAST(N'2013-02-22' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (55, N'GWI', N'https://photos.app.goo.gl/gNTtmuWRiCRfhzVD8', CAST(N'2013-02-22' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (56, N'Henry''s Fork', N'https://picasaweb.google.com/107082436175597733376/HenrySForkSkiTourCamping?authuser=0&authkey=Gv1sRgCLn81YL8qpOrowE&feat=directlink', 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (56, N'Henry''s Fork', N'https://photos.app.goo.gl/5bgbMA694PiXNFtW6', 
 CAST(N'2013-02-16' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_02_16_HenrysFork.txt')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (57, N'Lake Mountain', N'https://picasaweb.google.com/107082436175597733376/LakeMountain?authkey=Gv1sRgCPjmhfDatOON4QE', CAST(N'2013-02-03' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (57, N'Lake Mountain', N'https://photos.app.goo.gl/q7QJ538YmrvcG7YSA', CAST(N'2013-02-03' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (58, N'Ouray', 
 N'https://photos.app.goo.gl/24NRn2P6Z5LxKqjz9', 
 CAST(N'2013-01-26' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_01_25_Ouray.txt')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (59, N'Maple Ice', N'https://picasaweb.google.com/107082436175597733376/MapleCanyon?authuser=0&authkey=Gv1sRgCInU5NrRhbfEogE&feat=directlink', CAST(N'2013-01-19' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (59, N'Maple Ice', 
+N'https://photos.app.goo.gl/QNfPRAsEjDBy4UPh7', CAST(N'2013-01-19' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (60, N'Henrys Fork', 
 N'https://photos.app.goo.gl/qb99sjLMaDsvrd2i7', CAST(N'2012-01-20' AS Date))
@@ -850,12 +855,12 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (322, N'Ana and Walter',
  N'https://photos.app.goo.gl/YCPUmtMtnkgp87DK8', CAST(N'2013-12-30' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (323, N'Hair', N'https://picasaweb.google.com/107082436175597733376/Hair?authuser=0&authkey=Gv1sRgCLbym7OnyMruuwE&feat=directlink', CAST(N'2013-12-06' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (323, N'Hair', N'https://photos.app.goo.gl/mpm7R6xQLwAFjzDd6', CAST(N'2013-12-06' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (324, N'Mustache',
  N'https://photos.app.goo.gl/JSCBcm4k7BWwWQkV8', CAST(N'2010-03-07' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (325, N'Mustache', N'https://picasaweb.google.com/107082436175597733376/Stache?authuser=0&authkey=Gv1sRgCKWT0I_bg8Sd6gE&feat=directlink', CAST(N'2013-04-17' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (325, N'Mustache', N'https://photos.app.goo.gl/gR1FkkjR3E2odFXF8', CAST(N'2013-04-17' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (326, N'Over the Years', N'https://vanman798.shutterfly.com/pictures/2218', CAST(N'1972-01-01' AS Date))
 GO
