@@ -1,5 +1,5 @@
 ﻿@using Walter.ViewModels;
-@model List<VmPhotoYear>
+@model VMAllPhotoAlbums
 @{
     int lagYear = 0;
     string yearList = string.Empty;
@@ -8,7 +8,19 @@
 }
 <br />
 <div id="jumpTo"></div>
-@foreach (var y in Model)
+
+<div class="row">
+    <div class="col-sm-12" style="text-align:right">
+        <span style="color:gray" title="@Model.facebookAlbumsCount Albums of @Model.TotalAlbumsCount (@Model.facebookAlbumsCountPercentage) are hosted on facebook.com"><i class="fa fa-facebook-official" aria-hidden="true"></i> Hosted on Facebook.com</span>
+        &nbsp;&nbsp;
+        <span style="color:gray" title="@Model.googleAlbumsCount Albums of @Model.TotalAlbumsCount (@Model.googleAlbumsCountPercentage) are hosted on photos.google.com"><i class="fa fa-google-plus-official" aria-hidden="true"></i> Hosted on Photos.Google.com</span>
+        &nbsp;&nbsp;
+        <span style="color:gray" title="@Model.shutterflyAlbumsAlbumsCount Albums of @Model.TotalAlbumsCount (@Model.shutterflyAlbumsAlbumsCountPercentage) are hosted on ShuffterFly.com"><i class="fa fa-file-image-o" aria-hidden="true"></i> Hosted on ShuffterFly.com</span>
+    </div>
+</div>
+
+
+@foreach (var y in Model.AlbumsByYear)
 {
     if (lagYear != y.Year)
     {
@@ -18,6 +30,7 @@
         @YearHeader(y.Year, albumsPerYear)
         totalAlbums = totalAlbums + albumsPerYear;
     }
+
     <div class="row">
         <div class="col-sm-3">
             <ul>
@@ -52,6 +65,7 @@
 <br />
 <br />
 	Total Albums: <span class="badge">@totalAlbums</span>
+
     @section DocumentReady
 {
         <script>
@@ -61,50 +75,29 @@
         </script>
     }
 
-@* -----------------------------------------------------------------------------
-    Helper Methods
-------------------------------------------------------------------------------- *@
+    @* -----------------------------------------------------------------------------
+            Helper Methods
+        ------------------------------------------------------------------------------- *@
     @helper YearHeader(int year, int count)
-{
-    <br />
-    <div class="row">
-        <a id="Year@(year)"></a>
-        <div class="col-sm-12" style="background-color:#eee; color:black; font-weight:bold;" title="Total albums for @year = @count">@year</div>
-    </div>
-}
+    {
+        <br />
+        <div class="row">
+            <a id="Year@(year)"></a>
+            <div class="col-sm-12" style="background-color:#eee; color:black; font-weight:bold;" title="Total albums for @year = @count">@year</div>
+        </div>
+    }
 
     @helper ListItems(List<VmPhoto> col)
-{
-    foreach (var item in col)
     {
-    <li>
-        @if (item.Url.ToLower().IndexOf("picasa") >= 0)
+        foreach (var item in col)
         {
-            <span style="color:red" title="Hosted on picasaweb.google.com"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
-        }
-        else if (item.Url.ToLower().IndexOf("shutter") >= 0)
-        {
-            <span style="color:blue" title="Hosted on ShuffterFly.com"><i class="fa fa-camera-retro" aria-hidden="true"></i></span>
-        }
-        else if (item.Url.ToLower().IndexOf("facebook") >= 0)
-        {
-            <span style="color:gray" title="Hosted on facebook.com"><i class="fa fa-facebook-official" aria-hidden="true"></i></span>
-        }
-        else if (item.Url.ToLower().IndexOf("goo.gl/") >= 0)
-        {
-            <span style="color:navy" title="Hosted on photos.google.com"><i class="fa fa-google-plus-official" aria-hidden="true"></i></span>
-        }
-        else
-        {
-            <text>HELP</text>
-        }
+            <li>   
+                <a target="_blank" href="@item.Url">@Html.Raw(item.TitleWithIcon)</a> <span class="small" title="@item.Id">(@item.Month/@item.Day)</span>
 
-        <a target="_blank" href="@item.Url">@item.Title</a> <span class="small" title="@item.Id">(@item.Month/@item.Day)</span>
-
-        @if (item.TripReportURL != null)
-        {
-            <a href="@item.TripReportURL" target="_blank" title="Download/Read Trip Report"><i class="fa fa-book" aria-hidden="true"></i></a>
+                @if (item.TripReportURL != null)
+                {
+                    <a href="@item.TripReportURL" target="_blank" title="Download/Read Trip Report"><i class="fa fa-book" aria-hidden="true"></i></a>
+                }
+            </li>
         }
-    </li>
     }
-}

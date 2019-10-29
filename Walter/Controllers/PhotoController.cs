@@ -19,7 +19,17 @@ namespace Walter.Controllers
 
             ViewBag.PageInfo = PageInfo;
 
-            return View("Index", PhotoBusinessLayer.GetPhotoYears());
+            var vm = new VMAllPhotoAlbums
+            {
+                AlbumsByYear = PhotoBusinessLayer.GetPhotoYears(),
+                picasaAlbumsCount = PhotoBusinessLayer.picasaAlbumsCount(),
+                shutterflyAlbumsAlbumsCount = PhotoBusinessLayer.shutterflyAlbumsAlbumsCount(),
+                facebookAlbumsCount = PhotoBusinessLayer.facebookAlbumsCount(),
+                googleAlbumsCount = PhotoBusinessLayer.googleAlbumsCount(),
+                otherAlbumsCount = PhotoBusinessLayer.otherAlbumsCount()
+            };
+
+            return View("Index", vm);
         }
     }
 }
