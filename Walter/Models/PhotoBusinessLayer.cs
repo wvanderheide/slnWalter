@@ -25,6 +25,84 @@ namespace Walter.Models
             return PutPhotosInColumns(photos);
         }
 
+
+        public List<int> GetAlbumHostedByCounts()
+        {
+            var numbers = new List<int>();
+
+            var picasaAlbums = 0;
+            var shutterflyAlbums = 0;
+            var facebookAlbums = 0;
+            var googleAlbums = 0;
+            var otherAlbums = 0;
+
+            foreach (var album in Entities.Photos.ToList())
+            {
+                if (album.URL.ToLower().IndexOf("picasa") >= 0)
+                {
+                    picasaAlbums++;
+                }
+                else if (album.URL.ToLower().IndexOf("shutter") >= 0)
+                {
+                    shutterflyAlbums++;
+                }
+                else if (album.URL.ToLower().IndexOf("facebook") >= 0)
+                {
+                    facebookAlbums++;
+                }
+                else if (album.URL.ToLower().IndexOf("goo.gl/") >= 0)
+                {
+                    googleAlbums++;
+                }
+                else
+                {
+                    otherAlbums++;
+                }
+            }
+
+
+
+            //Note that this order is very important, if change please update picasaAlbumsCount(), etc
+            numbers.Add(picasaAlbums);
+            numbers.Add(shutterflyAlbums);
+            numbers.Add(facebookAlbums);
+            numbers.Add(googleAlbums);
+            numbers.Add(otherAlbums);
+
+            return numbers;
+        }
+
+
+        public int picasaAlbumsCount()
+        {
+            var counts = GetAlbumHostedByCounts();
+            return counts[0];
+        }
+        
+        public int shutterflyAlbumsAlbumsCount()
+        {
+            var counts = GetAlbumHostedByCounts();
+            return counts[1];
+        }
+
+        public int facebookAlbumsCount()
+        {
+            var counts = GetAlbumHostedByCounts();
+            return counts[2];
+        }
+
+        public int googleAlbumsCount()
+        {
+            var counts = GetAlbumHostedByCounts();
+            return counts[3];
+        }
+
+        public int otherAlbumsCount()
+        {
+            var counts = GetAlbumHostedByCounts();
+            return counts[4];
+        }
+
         private void CalculateColumnCounts(int totalItems, out int[] colCounts)
         {
             var itemsPerCol = new int[4];

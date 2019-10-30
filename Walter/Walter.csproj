@@ -185,6 +185,7 @@
     <Compile Include="SQLHelper\WalterSqlHelper.cs" />
     <Compile Include="ViewModels\PageInfo.cs" />
     <Compile Include="ViewModels\VmAcDc.cs" />
+    <Compile Include="ViewModels\VMAllPhotoAlbums.cs" />
     <Compile Include="ViewModels\VMBand.cs" />
     <Compile Include="ViewModels\VMClimb.cs" />
     <Compile Include="ViewModels\VMContact.cs" />
