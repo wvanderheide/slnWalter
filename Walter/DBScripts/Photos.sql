@@ -497,7 +497,8 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (178, N'Zion Narrows
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (179, N'Mt. Marcy', N'http://vanman798.shutterfly.com/pictures/488', CAST(N'2005-07-04' AS Date), 'https://www.summitpost.org/a-two-day-hike-up-mt-marcy-via-south-meadows/341784')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (180, N'West Virginia', N'http://vanman798.shutterfly.com/pictures/472', CAST(N'2005-05-28' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (180, N'West Virginia', N'http://vanman798.shutterfly.com/pictures/472',
+ CAST(N'2005-05-28' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2005_05_28_Backbone_MD.txt')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (181, N'Desert SW', N'http://vanman798.shutterfly.com/pictures/440', CAST(N'2005-05-17' AS Date))
 GO
@@ -866,8 +867,8 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (325, N'Mustache', N
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (326, N'Over the Years', N'https://vanman798.shutterfly.com/pictures/2218', CAST(N'1972-01-01' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (327, N'Humphreys Peak', 
-N'https://photos.app.goo.gl/tRGp2yHGJxHkjzzv7', CAST(N'2010-11-18' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (327, N'Humphreys Peak', 
+N'https://photos.app.goo.gl/tRGp2yHGJxHkjzzv7', CAST(N'2010-11-18' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2010_10_18_HumphreysPeak_AZ.txt')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (328, N'Joe''s Valley', 
 N'https://photos.app.goo.gl/jewGa3P2Xp3ifwrKA', CAST(N'2010-11-27' AS Date))
