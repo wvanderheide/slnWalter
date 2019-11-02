@@ -394,7 +394,8 @@ CAST(N'2009-10-24' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/mas
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (131, N'Borah Peak', N'http://vanman798.shutterfly.com/pictures/1973', CAST(N'2009-09-15' AS Date))
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (132, N'Gannett Peak', N'http://vanman798.shutterfly.com/pictures/1886', CAST(N'2009-08-19' AS Date))
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (132, N'Gannett Peak', N'http://vanman798.shutterfly.com/pictures/1886', 
+CAST(N'2009-08-19' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2009_08_19_GannettPeak.txt')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (133, N'Decadence', N'http://vanman798.shutterfly.com/pictures/1875', CAST(N'2009-07-07' AS Date))
 GO
