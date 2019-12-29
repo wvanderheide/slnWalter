@@ -509,6 +509,18 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 CAST(-81.5449 AS Decimal(30, 10)),  N'US State High Point')    
 GO
 
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (186, N'Mt. Sunflower', 4039, N'USA', N'KS', CAST(39.02190 AS Decimal(30, 10)), 
+CAST(-102.037 AS Decimal(30, 10)),  N'US State High Point')    
+GO
+
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (187, N'Black Mesa', 4975, N'USA', N'OK', CAST(36.93190 AS Decimal(30, 10)), 
+CAST(-102.9977 AS Decimal(30, 10)),  N'US State High Point')    
+GO
+
 --Add New Mountains ABOVE HERE
 
 
@@ -1281,6 +1293,16 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 go
 
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (344, 155, CAST(N'2019-10-07' AS Date), NULL)
+
+
+go
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (345, 186, CAST(N'2019-12-23' AS Date), NULL)
+
+
+go
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (346, 187, CAST(N'2019-12-24' AS Date), NULL)
 
 
 --Id max should match count
