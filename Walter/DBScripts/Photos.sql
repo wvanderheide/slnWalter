@@ -1239,14 +1239,14 @@ GO
 
 
 
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (397, N'Royal Gorge Bridge', 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (398, N'Royal Gorge Bridge', 
 N'https://photos.app.goo.gl/9SU6LtMdwGfKweph8'
 , CAST(N'2019-12-23' AS Date), 
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_12_23_RoyalGorge.txt')
 GO
 
 
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (398, N'Mount Sunflower', 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (397, N'Mount Sunflower', 
 N'https://photos.app.goo.gl/Q3LVpNN5FkDAhrQ57'
 , CAST(N'2019-12-23' AS Date), 
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_12_23_SunflowerKS.txt')
