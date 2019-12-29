@@ -1238,6 +1238,42 @@ N'https://photos.app.goo.gl/qFNwv84nWpLxVZNa8'
 GO
 
 
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (397, N'Royal Gorge Bridge', 
+N'https://photos.app.goo.gl/9SU6LtMdwGfKweph8'
+, CAST(N'2019-12-23' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_12_23_RoyalGorge.txt')
+GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (398, N'Mount Sunflower', 
+N'https://photos.app.goo.gl/Q3LVpNN5FkDAhrQ57'
+, CAST(N'2019-12-23' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_12_23_SunflowerKS.txt')
+GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (399, N'Black Mesa', 
+N'https://photos.app.goo.gl/wK7YiKfQkwxiGX7e6'
+, CAST(N'2019-12-24' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_12_24_BlackMesa.txt')
+GO
+
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (400, N'Black Mesa', 
+N'https://photos.app.goo.gl/wK7YiKfQkwxiGX7e6'
+, CAST(N'2019-12-24' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_12_24_BlackMesa.txt')
+GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (401, N'Moki Dugway', 
+N'https://photos.app.goo.gl/B89rZy2Hjfdy2i6r7'
+, CAST(N'2019-12-26' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_12_25 and DEc 26 Moki Dugway.txt')
+GO
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
