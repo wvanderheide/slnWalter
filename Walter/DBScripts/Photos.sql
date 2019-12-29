@@ -1261,14 +1261,7 @@ GO
 
 
 
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (400, N'Black Mesa', 
-N'https://photos.app.goo.gl/wK7YiKfQkwxiGX7e6'
-, CAST(N'2019-12-24' AS Date), 
-'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_12_24_BlackMesa.txt')
-GO
-
-
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (401, N'Moki Dugway', 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (400, N'Moki Dugway', 
 N'https://photos.app.goo.gl/B89rZy2Hjfdy2i6r7'
 , CAST(N'2019-12-26' AS Date), 
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_12_25 and DEc 26 Moki Dugway.txt')
