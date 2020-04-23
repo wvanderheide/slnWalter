@@ -34,7 +34,7 @@ namespace Walter.Controllers
 
             ViewBag.PageInfo = PageInfo;
 
-            return View("Quote", HomeBusinessLayer.GetQuotes().OrderBy(x => x.Id).ToList());
+            return View("Quote", HomeBusinessLayer.GetQuotes().OrderByDescending(x => x.Id).ToList());
         }
 
         public ActionResult ImageAdmin()
