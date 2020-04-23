@@ -15,9 +15,9 @@ namespace Walter.Controllers
 
         public ActionResult Index()
         {
-            PageInfo.Title = "Walter VanderHeide";
+            PageInfo.Title = "About Me";
             PageInfo.Icon = "<i class=\"fa fa-home fa-lg\"></i>";
-            PageInfo.SubTitle = "Web Developer, Outdoor Enthusiast";
+            PageInfo.SubTitle = "Walter VanderHeide: Outdoor Enthusiast, Handyman, Web Developer";
             PageInfo.Description = homeDesc();
 
             ViewBag.PageInfo = PageInfo;
