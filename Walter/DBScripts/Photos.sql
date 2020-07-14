@@ -1285,6 +1285,24 @@ N'https://photos.app.goo.gl/idULmaKra1fsr5u76'
 null)
 GO
 
+
+--
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (403, N'MN/MI Highpoints', 
+N'https://photos.app.goo.gl/P8K5vpRWUX1mZF7F9'
+, CAST(N'2020-07-10' AS Date), 
+null)
+GO
+
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (404, N'WI/IA Highpoints', 
+N'https://photos.app.goo.gl/hWpy5K2UKboqaU356'
+, CAST(N'2020-07-11' AS Date), 
+null)
+GO
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
