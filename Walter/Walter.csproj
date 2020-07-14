@@ -207,6 +207,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\about\2000_InterImage.jpg" />
+    <Content Include="Images\about\RockCanyon.jpg" />
+    <Content Include="Images\about\titling.JPG" />
     <Content Include="Images\carousel\001.jpg" />
     <Content Include="Images\carousel\002.jpg" />
     <Content Include="Images\carousel\003.jpg" />

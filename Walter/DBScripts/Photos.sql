@@ -1267,6 +1267,24 @@ N'https://photos.app.goo.gl/B89rZy2Hjfdy2i6r7'
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_12_25 and DEc 26 Moki Dugway.txt')
 GO
 
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (401, N'2020 Overview', 
+N'https://www.facebook.com/walter.van.theman/media_set?set=a.10156562966481441&type=3'
+, CAST(N'2020-12-31' AS Date), 
+null)
+GO
+
+
+--
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (402, N'2019/2020 Ice Season', 
+N'https://photos.app.goo.gl/idULmaKra1fsr5u76'
+, CAST(N'2020-01-01' AS Date), 
+null)
+GO
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
