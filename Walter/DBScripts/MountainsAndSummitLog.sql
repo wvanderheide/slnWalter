@@ -521,6 +521,31 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 CAST(-102.9977 AS Decimal(30, 10)),  N'US State High Point')    
 GO
 
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (188, N'Eagle Mt', 2301, N'USA', N'MN', CAST(47.89745 AS Decimal(30, 10)), 
+CAST(-90.56057 AS Decimal(30, 10)),  N'US State High Point')    
+GO
+
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (189, N'Mt. Arvon', 1979, N'USA', N'MI', CAST(46.75600 AS Decimal(30, 10)), 
+CAST(-88.156 AS Decimal(30, 10)),  N'US State High Point')    
+GO
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (190, N'Timms Hill', 1951, N'USA', N'WI', CAST(45.45100 AS Decimal(30, 10)), 
+CAST(-90.1954 AS Decimal(30, 10)),  N'US State High Point')    
+GO
+
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (191, N'Hawkeye Point', 1670, N'USA', N'IA', CAST(43.46050 AS Decimal(30, 10)), 
+CAST(-95.7083 AS Decimal(30, 10)),  N'US State High Point')    
+GO
+
+
+
 --Add New Mountains ABOVE HERE
 
 
@@ -1303,6 +1328,21 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 go
 
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (346, 187, CAST(N'2019-12-24' AS Date), NULL)
+
+go
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (347, 188, CAST(N'2020-07-10' AS Date), NULL)
+go
+
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (348, 189, CAST(N'2020-07-10' AS Date), NULL)
+
+
+go
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (349, 190, CAST(N'2020-07-11' AS Date), NULL)
+
+go
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (350, 191, CAST(N'2020-07-11' AS Date), NULL)
+
 
 
 --Id max should match count
