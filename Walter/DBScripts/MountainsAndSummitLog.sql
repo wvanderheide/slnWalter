@@ -1343,6 +1343,8 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 go
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (350, 191, CAST(N'2020-07-11' AS Date), NULL)
 
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (351, 9, CAST(N'2020-07-26' AS Date), NULL)
 
 
 --Id max should match count
