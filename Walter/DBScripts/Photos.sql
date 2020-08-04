@@ -1303,6 +1303,15 @@ N'https://photos.app.goo.gl/hWpy5K2UKboqaU356'
 null)
 GO
 
+--
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (405, N'Chicago and IL HP', 
+N'https://photos.app.goo.gl/xgTdo84rNPERvKkz9'
+, CAST(N'2020-08-01' AS Date), 
+null)
+
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
