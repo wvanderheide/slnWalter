@@ -1170,7 +1170,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL]) VALUES (387, 
  N'US State High Points', 
 N'https://photos.app.goo.gl/FobQCm6vB5upy9Qc6'
-, CAST(N'2020-07-11' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/STATE%20HIGH%20POINTS.xlsx')
+, CAST(N'2020-08-01' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/STATE%20HIGH%20POINTS.xlsx')
 
 GO
 
@@ -1292,7 +1292,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (403, N'MN/MI Highpoints', 
 N'https://photos.app.goo.gl/P8K5vpRWUX1mZF7F9'
 , CAST(N'2020-07-10' AS Date), 
-null)
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_07_10_MN_MI_Highpoints.txt')
 GO
 
 
