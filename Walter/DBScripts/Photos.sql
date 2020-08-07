@@ -1308,7 +1308,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (405, N'Chicago and IL HP', 
 N'https://photos.app.goo.gl/xgTdo84rNPERvKkz9'
 , CAST(N'2020-08-01' AS Date), 
-null)
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_08_01_Chicago_IL_Highpoint.txt')
 
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
