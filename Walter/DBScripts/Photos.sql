@@ -1285,7 +1285,6 @@ N'https://photos.app.goo.gl/idULmaKra1fsr5u76'
 null)
 GO
 
-
 --
 
 
@@ -1300,7 +1299,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (404, N'WI/IA Highpoints', 
 N'https://photos.app.goo.gl/hWpy5K2UKboqaU356'
 , CAST(N'2020-07-11' AS Date), 
-null)
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_07_11_WI_IA_Highpoints.txt')
 GO
 
 --
