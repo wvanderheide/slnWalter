@@ -550,6 +550,11 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 CAST(-90.2401 AS Decimal(30, 10)),  N'US State High Point')    
 GO
 
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (193, N'Notch Mountain', 11267, N'USA', N'UT', CAST(40.70700 AS Decimal(30, 10)), 
+CAST(- 110.948 AS Decimal(30, 10)), null)    
+GO
+
 
 --Add New Mountains ABOVE HERE
 
@@ -1353,6 +1358,10 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 
 GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (352, 192, CAST(N'2020-08-01' AS Date), NULL)
+
+
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (353, 193, CAST(N'2020-08-09' AS Date), NULL)
 
 
 --Id max should match count
