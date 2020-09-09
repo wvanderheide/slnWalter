@@ -1170,7 +1170,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL]) VALUES (387, 
  N'US State High Points', 
 N'https://photos.app.goo.gl/FobQCm6vB5upy9Qc6'
-, CAST(N'2020-08-01' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/STATE%20HIGH%20POINTS.xlsx')
+, CAST(N'2020-09-02' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/STATE%20HIGH%20POINTS.xlsx')
 
 GO
 
@@ -1309,6 +1309,13 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (4
 N'https://photos.app.goo.gl/xgTdo84rNPERvKkz9'
 , CAST(N'2020-08-01' AS Date), 
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_08_01_Chicago_IL_Highpoint.txt')
+
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (406, N'Gateway and Taum Sauk', 
+N'https://photos.app.goo.gl/LkJ68PggQTo3J7Mb6'
+, CAST(N'2020-08-29' AS Date), 
+'')
 
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
