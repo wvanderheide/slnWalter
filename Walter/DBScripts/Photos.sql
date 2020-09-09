@@ -1315,7 +1315,44 @@ N'https://photos.app.goo.gl/xgTdo84rNPERvKkz9'
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (406, N'Gateway and Taum Sauk', 
 N'https://photos.app.goo.gl/LkJ68PggQTo3J7Mb6'
 , CAST(N'2020-08-29' AS Date), 
-'')
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_08_29_to_Sept9_southernHPs.txt')
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (407, N'Magazine Mountain', 
+N'https://photos.app.goo.gl/wipx5FkwfPnEobE27'
+, CAST(N'2020-08-30' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_08_29_to_Sept9_southernHPs.txt')
+
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (408, N'Driskill Mountain', 
+N'https://photos.app.goo.gl/ohpyrqAhn4QswgPm6'
+, CAST(N'2020-08-31' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_08_29_to_Sept9_southernHPs.txt')
+
+
+
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (409, N'Lakewood Park', 
+N'https://photos.app.goo.gl/FT6yA2i4e3DxhhTk7'
+, CAST(N'2020-09-01' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_08_29_to_Sept9_southernHPs.txt')
+
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (410, N'Mount Cheaha', 
+N'https://photos.app.goo.gl/vywXu96tpAbhMJEn8'
+, CAST(N'2020-09-01' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_08_29_to_Sept9_southernHPs.txt')
+
+
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (411, N'Woodall Mountain', 
+N'https://photos.app.goo.gl/q3br3kuPYe1j7htx5'
+, CAST(N'2020-09-02' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_08_29_to_Sept9_southernHPs.txt')
 
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF

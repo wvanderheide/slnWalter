@@ -20,7 +20,7 @@ namespace Walter.Models
                 Year = x.Date.Year,
                 Id = x.Id,
                 TripReportURL = x.TripReportURL
-            }).OrderByDescending(y => y.Year).ThenByDescending(m => m.Month).ThenByDescending(d => d.Day).ToList();
+            }).OrderByDescending(y => y.Year).ThenByDescending(m => m.Month).ThenByDescending(d => d.Day).ThenByDescending(e => e.Id).ToList();
 
             return PutPhotosInColumns(photos);
         }
