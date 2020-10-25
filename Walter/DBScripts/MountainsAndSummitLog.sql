@@ -601,6 +601,74 @@ INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitu
 [MountainNote]) VALUES (200, N'Woodall Mountain', 807, N'USA', N'MS', CAST(34.78790 AS Decimal(30, 10)), 
 CAST(-88.2418 AS Decimal(30, 10)),  N'US State High Point')  
 GO
+
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (201, N'Campbell Hill', 1550, N'USA', N'OH', CAST(40.36970 AS Decimal(30, 10)), 
+CAST(-83.7206 AS Decimal(30, 10)),  N'US State High Point')  
+GO
+
+
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (202, N'Hoosier Hill', 1257, N'USA', N'IN', CAST(40.0004 AS Decimal(30, 10)), 
+CAST(-84.8504 AS Decimal(30, 10)),  N'US State High Point')  
+GO
+
+
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (203, N'Mount Davis', 3213, N'USA', N'PA', CAST(39.78610 AS Decimal(30, 10)), 
+CAST(-79.1761 AS Decimal(30, 10)),  N'US State High Point')  
+GO
+
+
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (204, N'Ebright Azimuth', 448, N'USA', N'DE', CAST(39.8358 AS Decimal(30, 10)), 
+CAST(-75.522 AS Decimal(30, 10)),  N'US State High Point')  
+GO
+
+
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (205, N'High Point', 1803, N'USA', N'NJ', CAST(41.31580 AS Decimal(30, 10)), 
+CAST(-74.68021 AS Decimal(30, 10)),  N'US State High Point')  
+GO
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (206, N'Round Mountain', 2280, N'USA', N'CT', CAST(42.04870 AS Decimal(30, 10)), 
+CAST(-73.47559 AS Decimal(30, 10)), null)  
+GO
+
+
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (207, N'Mt. Frissell', 2450, N'USA', N'MA', CAST(42.05126 AS Decimal(30, 10)), 
+CAST(-73.48214 AS Decimal(30, 10)),  null)  
+GO
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (208, N'Mt. Frissell (MA/CT border)', 2380, N'USA', N'CT', CAST(42.04940 AS Decimal(30, 10)), 
+CAST(-73.4846 AS Decimal(30, 10)),  N'US State High Point')  
+GO
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (209, N'Brace Mountain', 2311, N'USA', N'NY', CAST(42.0448 AS Decimal(30, 10)), 
+CAST(-73.49274 AS Decimal(30, 10)),  null)  
+GO
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (210, N'Bear Mountain', 2316, N'USA', N'CT', CAST(42.0447 AS Decimal(30, 10)), 
+CAST(-73.4553 AS Decimal(30, 10)),  null)  
+GO
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (211, N'Jerimoth Hill', 812, N'USA', N'RI', CAST(41.84940 AS Decimal(30, 10)), 
+CAST(-71.7792 AS Decimal(30, 10)),  N'US State High Point')  
+GO
+
+
 --Add New Mountains ABOVE HERE
 
 
@@ -1441,6 +1509,40 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 
 GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (360, 200, CAST(N'2020-09-02' AS Date), NULL)
+
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (361, 201, CAST(N'2020-10-18' AS Date), NULL)
+
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (362, 202, CAST(N'2020-10-18' AS Date), NULL)
+
+
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (363, 203, CAST(N'2020-10-18' AS Date), NULL)
+
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (364, 204, CAST(N'2020-10-19' AS Date), NULL)
+
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (365, 205, CAST(N'2020-10-20' AS Date), NULL)
+
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (366, 206, CAST(N'2020-10-20' AS Date), NULL)
+
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (367, 207, CAST(N'2020-10-20' AS Date), NULL)
+
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (368, 208, CAST(N'2020-10-20' AS Date), NULL)
+
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (369, 209, CAST(N'2020-10-20' AS Date), NULL)
+
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (370, 210, CAST(N'2020-10-21' AS Date), NULL)
+
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (371, 211, CAST(N'2020-10-21' AS Date), NULL)
 
 --Id max should match count
 
