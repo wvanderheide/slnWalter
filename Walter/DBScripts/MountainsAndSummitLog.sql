@@ -598,7 +598,7 @@ GO
 
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
-[MountainNote]) VALUES (200, N'Woodall Mountain', 807, N'USA', N'MS', CAST(34.78790 AS Decimal(30, 10)), 
+[MountainNote]) VALUES (200, N'Woodall Mountain', 806, N'USA', N'MS', CAST(34.78790 AS Decimal(30, 10)), 
 CAST(-88.2418 AS Decimal(30, 10)),  N'US State High Point')  
 GO
 
