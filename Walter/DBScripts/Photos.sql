@@ -1360,7 +1360,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (412, N'Campbell Hill, OH', 
 N'https://photos.app.goo.gl/DyAA3LKNkzFi6JkL9'
 , CAST(N'2020-10-18' AS Date), 
-null)
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_10_18_OH.txt')
 
 GO
 
@@ -1368,14 +1368,14 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (413, N'Hoosier Hill, IN', 
 N'https://photos.app.goo.gl/qV8kDVVRc4GqVBeS8'
 , CAST(N'2020-10-18' AS Date), 
-null)
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_10_18_IN.txt')
 
 
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (414, N'Mount Davis, PA', 
 N'https://photos.app.goo.gl/7PhwXhNBeyYPzFei6'
 , CAST(N'2020-10-18' AS Date), 
-null)
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_10_18_PA.txt')
 
 GO
 
@@ -1383,26 +1383,26 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (415, N'Ebright Azimuth, DE', 
 N'https://photos.app.goo.gl/HxgHgyBhT4w5kqo5A'
 , CAST(N'2020-10-19' AS Date), 
-null)
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_10_19_DE.txt')
 
 GO
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (416, N'High Point, NJ', 
 N'https://photos.app.goo.gl/aNsbTtoUZpmViz1z5'
 , CAST(N'2020-10-20' AS Date), 
-null)
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_10_20_NJ.txt')
 GO
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (417, N'Frissell, CT', 
 N'https://photos.app.goo.gl/8UHnZFbMJqPNXrdX9'
 , CAST(N'2020-10-20' AS Date), 
-null)
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_10_20_CT.txt')
 
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (387, N'Jerimoth Hill, RI', 
 N'https://photos.app.goo.gl/E1fBGqpXQ8j3r8gHA'
 , CAST(N'2020-10-21' AS Date), 
-null)
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_10_21_RI.txt')
 GO
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL]) VALUES (418, 
@@ -1410,6 +1410,15 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL]) VALUES (41
 N'https://photos.app.goo.gl/FobQCm6vB5upy9Qc6'
 , CAST(N'2020-10-21' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/STATE%20HIGH%20POINTS.xlsx')
 
+GO
+
+--add Niagara photos
+--https://photos.app.goo.gl/nTQcTEtKeVb4FsrM6
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (419, N'Niagara & Erie', 
+N'https://photos.app.goo.gl/nTQcTEtKeVb4FsrM6'
+, CAST(N'2020-10-22' AS Date), 
+'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_10_22_Niagara.txt')
 GO
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
