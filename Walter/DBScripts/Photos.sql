@@ -1412,13 +1412,19 @@ N'https://photos.app.goo.gl/FobQCm6vB5upy9Qc6'
 
 GO
 
---add Niagara photos
---https://photos.app.goo.gl/nTQcTEtKeVb4FsrM6
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (419, N'Niagara & Erie', 
 N'https://photos.app.goo.gl/nTQcTEtKeVb4FsrM6'
 , CAST(N'2020-10-22' AS Date), 
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2020_10_22_Niagara.txt')
+GO
+
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (420, N'Early 1980s', 
+N'https://photos.app.goo.gl/k53Su4LZbpXZqg2F8'
+, CAST(N'1982-02-28' AS Date), 
+null)
 GO
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
