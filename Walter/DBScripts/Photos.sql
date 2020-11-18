@@ -1425,7 +1425,19 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (4
 N'https://photos.app.goo.gl/k53Su4LZbpXZqg2F8'
 , CAST(N'1982-02-28' AS Date), 
 null)
+
+
+--
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (421, N'Utah 13ers', 
+N'https://photos.app.goo.gl/zWEphpaB5jEvrrQ37'
+, CAST(N'2019-08-17' AS Date), 
+null)
+
+
 GO
+
+
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
