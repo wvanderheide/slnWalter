@@ -1440,8 +1440,16 @@ GO
  
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (422, N'Tri-State Corners', 
 N'https://photos.app.goo.gl/ezYUP2jHGn838UKq8'
-, CAST(N'2020-10-20' AS Date), null)
+, CAST(N'2020-11-28' AS Date), null)
 go
+
+--
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (423, N'UT-ID-WY Tri-State Corner', 
+N'https://photos.app.goo.gl/xGTvUoQjdHUuuFFXA'
+, CAST(N'2020-11-28' AS Date), null)
+go
+
 
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
