@@ -44,12 +44,7 @@
     }
 
 
-   <a target="_blank" class="btn btn-primary btn-lg" href="@item[randomItem].Url" title="Album: @item[randomItem].Title (@item[randomItem].Month/@item[randomItem].Day/@item[randomItem].Year)">This Album is Amazing!</a>
-
-    if (item[randomItem].TripReportURL != null)
-    {
-        <a href="@item[randomItem].TripReportURL" target="_blank" title="Download/Read Trip Report"><i class="fa fa-book" aria-hidden="true"></i></a>
-    }
+   <a target="_blank" class="btn btn-primary btn-lg" href="@item[randomItem].Url" title="Album: @item[randomItem].Title (@item[randomItem].Month/@item[randomItem].Day/@item[randomItem].Year)">This Album is Amazing!</a> <i class="fa fa-refresh pointer" aria-hidden="true" title="refresh amazing album" onclick="location.reload();"></i>
 }
 <br />
 <br />
