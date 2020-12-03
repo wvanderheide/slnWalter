@@ -6,6 +6,52 @@
     int albumsPerYear = 0;
     int totalAlbums = 0;
 }
+@{
+    Random rnd = new Random();
+    int randomNum = rnd.Next(0, Model.AlbumsByYear.Count);
+    int randomColumn = 1;
+    int randomItem = 0;
+
+
+    var randomAlbum = Model.AlbumsByYear[randomNum];
+    if (randomAlbum.Col1.Count > 0 && randomAlbum.Col2.Count > 0 && randomAlbum.Col3.Count > 0 && randomAlbum.Col4.Count > 0)
+    {
+
+        randomColumn = rnd.Next(1, 4);
+    }
+
+    List<VmPhoto> item = new List<VmPhoto>();
+
+    if (randomColumn == 1)
+    {
+        item = randomAlbum.Col1;
+        randomItem = rnd.Next(0, item.Count);
+    }
+    else if (randomColumn == 2)
+    {
+        item = randomAlbum.Col2;
+        randomItem = rnd.Next(0, item.Count);
+    }
+    else if (randomColumn == 3)
+    {
+        item = randomAlbum.Col3;
+        randomItem = rnd.Next(0, item.Count);
+    }
+    else if (randomColumn == 4)
+    {
+        item = randomAlbum.Col4;
+        randomItem = rnd.Next(0, item.Count);
+    }
+
+
+    <a target="_blank" href="@item[randomItem].Url"><span style="font-size: 30px; font-weight:bold" title="@item[randomItem].Title (@item[randomItem].Month/@item[randomItem].Day/@item[randomItem].Year)">Check out @item[randomItem].Title</span></a>
+
+    if (item[randomItem].TripReportURL != null)
+    {
+        <a href="@item[randomItem].TripReportURL" target="_blank" title="Download/Read Trip Report"><i class="fa fa-book" aria-hidden="true"></i></a>
+    }
+}
+<br />
 <br />
 <div id="jumpTo"></div>
 
@@ -70,8 +116,8 @@
 {
         <script>
             $(document).ready(function () {
-                createJumpAnchors(@yearList, 'Year','jumpTo');
-            });
+        createJumpAnchors(@yearList, 'Year','jumpTo');
+    });
         </script>
     }
 
@@ -91,7 +137,7 @@
     {
         foreach (var item in col)
         {
-            <li>   
+            <li>
                 <a target="_blank" href="@item.Url">@Html.Raw(item.TitleWithIcon)</a> <span class="small" title="@item.Id">(@item.Month/@item.Day)</span>
 
                 @if (item.TripReportURL != null)
