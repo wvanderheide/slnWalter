@@ -1450,7 +1450,31 @@ N'https://photos.app.goo.gl/xGTvUoQjdHUuuFFXA'
 , CAST(N'2020-11-28' AS Date), null)
 go
 
+--
 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (424, N'Utah County Highpoints', 
+N'https://photos.app.goo.gl/sGtJztRzXkibdWm8A'
+, CAST(N'2017-07-01' AS Date), null)
+
+
+GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (425, N'Belknap and Delano', 
+N'https://photos.app.goo.gl/cJDMDFTyKiJeHjH98'
+, CAST(N'2017-07-01' AS Date), null)
+
+
+--
+
+GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (426, N'Unitas Ice', 
+N'https://photos.app.goo.gl/hksrmTUf7NHwRs8w7'
+, CAST(N'2017-07-01' AS Date), null)
+
+GO
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
