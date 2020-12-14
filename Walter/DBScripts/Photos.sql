@@ -1476,6 +1476,12 @@ N'https://photos.app.goo.gl/hksrmTUf7NHwRs8w7'
 
 GO
 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (427, N'Millers Thriller', 
+N'https://photos.app.goo.gl/KfG1WeVuL6LNjJ5f7'
+, CAST(N'2020-12-12' AS Date), null)
+
+GO
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
