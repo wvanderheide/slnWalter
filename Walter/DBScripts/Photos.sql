@@ -1491,7 +1491,7 @@ go
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (429, N'GWI', 
 N'https://photos.app.goo.gl/gnGehiGK2FVqDVmEA'
-, CAST(N'2020-12-23' AS Date), null)
+, CAST(N'2020-12-19' AS Date), null)
 
 GO
 
