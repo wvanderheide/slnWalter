@@ -1482,6 +1482,19 @@ N'https://photos.app.goo.gl/KfG1WeVuL6LNjJ5f7'
 
 GO
 
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (428, N'Willard Falls', 
+N'https://photos.app.goo.gl/BSs1XdmPxSDEJqTq9'
+, CAST(N'2020-12-23' AS Date), null)
+go
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (429, N'GWI', 
+N'https://photos.app.goo.gl/gnGehiGK2FVqDVmEA'
+, CAST(N'2020-12-23' AS Date), null)
+
+GO
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
