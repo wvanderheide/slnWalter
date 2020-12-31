@@ -1495,10 +1495,21 @@ N'https://photos.app.goo.gl/gnGehiGK2FVqDVmEA'
 
 GO
 
-SET IDENTITY_INSERT [dbo].[Photos] OFF
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (430, N'Dirtcicle', 
+N'https://photos.app.goo.gl/LM54Upzst3Bpcfi17'
+, CAST(N'2020-12-26' AS Date), null)
+ 
+ go
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (431, N'Thurston Peak', 
+N'https://photos.app.goo.gl/CupiVMa16Efu11vu8'
+, CAST(N'2020-12-30' AS Date), null)
+
 GO
 
 
+SET IDENTITY_INSERT [dbo].[Photos] OFF
+GO
 
     SELECT max(id) as MaxId, count(Id) as Photos_Count
   FROM [Walter].[dbo].Photos

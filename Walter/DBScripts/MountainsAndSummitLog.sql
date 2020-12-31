@@ -660,12 +660,19 @@ GO
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (210, N'Bear Mountain', 2316, N'USA', N'CT', CAST(42.0447 AS Decimal(30, 10)), 
-CAST(-73.4553 AS Decimal(30, 10)),  null)  
+CAST(-73.4553 AS Decimal(30, 10)),  'Tallest Mountain in CT')  
 GO
 
 INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
 [MountainNote]) VALUES (211, N'Jerimoth Hill', 812, N'USA', N'RI', CAST(41.84940 AS Decimal(30, 10)), 
 CAST(-71.7792 AS Decimal(30, 10)),  N'US State High Point')  
+GO
+
+
+
+INSERT [dbo].[Mountains] ([Id], [Name], [Elevation], [Country], [State], [Latitude], [Longitude], 
+[MountainNote]) VALUES (212, N'Thurston Peak', 9706, N'USA', N'UT', CAST(41.08200 AS Decimal(30, 10)), 
+CAST(-111.851 AS Decimal(30, 10)),  N'Davis/Morgan County High Point')  
 GO
 
 
@@ -1543,6 +1550,10 @@ INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]
 
 GO
 INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (371, 211, CAST(N'2020-10-21' AS Date), NULL)
+
+
+GO
+INSERT [dbo].[MountainSummitLog] ([Id], [MountainID], [SummitDate], [SummitNote]) VALUES (372, 212, CAST(N'2020-12-30' AS Date), NULL)
 
 --Id max should match count
 
