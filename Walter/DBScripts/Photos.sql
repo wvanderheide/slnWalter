@@ -1440,7 +1440,7 @@ GO
  
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (422, N'Tri-State Corners', 
 N'https://photos.app.goo.gl/ezYUP2jHGn838UKq8'
-, CAST(N'2020-11-28' AS Date), null)
+, CAST(N'2021-01-02' AS Date), null)
 go
 
 --
@@ -1454,7 +1454,7 @@ go
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (424, N'Utah County Highpoints', 
 N'https://photos.app.goo.gl/sGtJztRzXkibdWm8A'
-, CAST(N'2017-07-01' AS Date), null)
+, CAST(N'2020-12-30' AS Date), null)
 
 
 GO
@@ -1506,6 +1506,21 @@ N'https://photos.app.goo.gl/CupiVMa16Efu11vu8'
 , CAST(N'2020-12-30' AS Date), null)
 
 GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (432, N'Hidden Haven', 
+N'https://photos.app.goo.gl/NKirHSFUW2TAivkS8'
+, CAST(N'2021-01-01' AS Date), null)
+
+GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (433, N'UT NV AZ Corner', 
+N'https://photos.app.goo.gl/kWB4HsB7h7xwXJvL6'
+, CAST(N'2021-01-02' AS Date), null)
+
+GO
+
 
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
