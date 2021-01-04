@@ -1521,7 +1521,13 @@ N'https://photos.app.goo.gl/kWB4HsB7h7xwXJvL6'
 
 GO
 
+--
 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (434, N'2021 Overview', 
+N'https://www.facebook.com/media/set?vanity=walter.van.theman&set=a.10157512391271441'
+, CAST(N'2021-12-31' AS Date), null)
+
+GO
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
