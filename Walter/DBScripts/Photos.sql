@@ -1472,7 +1472,7 @@ GO
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (426, N'Unitas Ice', 
 N'https://photos.app.goo.gl/hksrmTUf7NHwRs8w7'
-, CAST(N'2017-07-01' AS Date), null)
+, CAST(N'2020-12-06' AS Date), null)
 
 GO
 
