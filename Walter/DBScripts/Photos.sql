@@ -1529,6 +1529,14 @@ N'https://www.facebook.com/media/set?vanity=walter.van.theman&set=a.101575123912
 
 GO
 
+--
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (435, N'Cascade Falls', 
+N'https://photos.app.goo.gl/LwKqejkrB2jJ4x7f8'
+, CAST(N'2021-01-09' AS Date), null)
+
+GO
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
