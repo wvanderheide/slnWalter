@@ -1537,6 +1537,12 @@ N'https://photos.app.goo.gl/LwKqejkrB2jJ4x7f8'
 
 GO
 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (436, N'Highway to Heaven', 
+N'https://photos.app.goo.gl/Ur9ptRSBAaG8JMiq9'
+, CAST(N'2021-01-16' AS Date), null)
+
+GO
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
