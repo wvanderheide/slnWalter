@@ -355,7 +355,7 @@ N'https://photos.app.goo.gl/k4TFfxGDcP93UGBw8',
  CAST(N'2010-07-17' AS Date),'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_10_MtRainier.pdf')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (115, N'Mt. Hood',
- N'https://photos.app.goo.gl/ZPMCDZ7GCmcLgtPe6', CAST(N'2010-07-12' AS Date), 'https://www.summitpost.org/one-windy-monday/647576')
+ N'https://photos.app.goo.gl/ZPMCDZ7GCmcLgtPe6', CAST(N'2010-07-12' AS Date), 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_09_MtHood.pdf')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (116, N'South Timp', N'https://photos.app.goo.gl/4e18iyvu7TNe6BLq6', CAST(N'2010-07-04' AS Date))
 GO
@@ -612,7 +612,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (220, N'Dallas', N'https://photos.app.goo.gl/eJ9GE1oGRimfoGR37', CAST(N'2009-10-03' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (221, N'Mt. Elbert', 
-N'https://photos.app.goo.gl/1CzjpV2JJ7tbRMGVA', CAST(N'2009-09-18' AS Date), 'https://www.summitpost.org/mt-elbert-my-hundredth-mountain/556106')
+N'https://photos.app.goo.gl/1CzjpV2JJ7tbRMGVA', CAST(N'2009-09-18' AS Date), 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_08_MountElbert.pdf')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (222, N'Mt. Massive', N'https://photos.app.goo.gl/1815jasKQHSro9SBA', CAST(N'2009-09-19' AS Date))
 GO
