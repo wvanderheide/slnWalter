@@ -873,7 +873,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (326, N'Over the Years', N'https://vanman798.shutterfly.com/pictures/2218', CAST(N'1972-01-01' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (327, N'Humphreys Peak', 
-N'https://photos.app.goo.gl/tRGp2yHGJxHkjzzv7', CAST(N'2010-11-18' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2010_10_18_HumphreysPeak_AZ.txt')
+N'https://photos.app.goo.gl/tRGp2yHGJxHkjzzv7', CAST(N'2010-11-18' AS Date), 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_11_HumpreysPeak.pdf')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (328, N'Joe''s Valley', 
 N'https://photos.app.goo.gl/jewGa3P2Xp3ifwrKA', CAST(N'2010-11-27' AS Date))
