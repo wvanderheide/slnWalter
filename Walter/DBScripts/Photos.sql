@@ -308,7 +308,7 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (97, N'Mt. Olympus',
 N'https://photos.app.goo.gl/DGHwV9yhN59vJJY98', CAST(N'2011-12-09' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], tripReportURL) VALUES (98, N'Mt. Whitney', N'https://photos.app.goo.gl/DERSibTMDvKgSCKR7', 
-CAST(N'2011-09-23' AS Date), 'https://www.summitpost.org/yet-another-mount-whitney-trip-report-east-buttress/752046')
+CAST(N'2011-09-23' AS Date), 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_12_MtWhitney.pdf')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (99, N'Dirty Dash', N'https://photos.app.goo.gl/8bUH9h9FcSXGqomw5', CAST(N'2011-09-17' AS Date))
 GO
