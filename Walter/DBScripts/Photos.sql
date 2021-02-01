@@ -1571,6 +1571,12 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (440,
  CAST(N'2001-09-03' AS Date), 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_02_SpruceKnob.pdf')
 GO
 
+
+--
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (441, N'Dirtcicle', N'https://photos.app.goo.gl/BrEykMt8W84zJNnY8',
+ CAST(N'2021-01-30' AS Date))
+GO
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
