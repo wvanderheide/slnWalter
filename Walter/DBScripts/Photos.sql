@@ -259,7 +259,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (80, N'Portable Darkness', N'https://photos.app.goo.gl/GVTWt2nXLVqB78zB9', CAST(N'2012-08-11' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (81, N'Granite Peak', N'https://photos.app.goo.gl/GVUL9gqLKNZ37YaM6', 
-CAST(N'2012-08-21' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2012_08_18_GranitePeak.txt')
+CAST(N'2012-08-21' AS Date), 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_13_GranitePeak.pdf')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (82, N'Notch Peak', N'https://photos.app.goo.gl/VEGMsgnoF86ZAus86', 
 CAST(N'2012-09-01' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2012_09_01_NotchPeak.txt')
