@@ -185,7 +185,7 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (52, N'Moab',
 N'https://photos.app.goo.gl/mfZjVNTfZNmuSJG96', CAST(N'2013-05-04' AS Date))
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (53, N'Wheeler, NM', N'https://photos.app.goo.gl/HXka642pLkJbXXV29',
- CAST(N'2013-04-27' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_04_26-28_NewMexico.txt')
+ CAST(N'2013-04-27' AS Date), 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_14_WheelerPeak.pdf')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (54, N'Ice', N'https://photos.app.goo.gl/TDb9A2ZgXeNvfmzW9', CAST(N'2013-02-23' AS Date))
 GO
