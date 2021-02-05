@@ -171,7 +171,7 @@ N'https://photos.app.goo.gl/EJzHoe9Qd1qvLvWD6',
 CAST(N'2013-06-21' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_06_21_Teewinot.txt')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (48, N'Guadalupe Peak', N'https://photos.app.goo.gl/mmxFea7wveB9FnB77', 
-CAST(N'2013-06-08' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2013_06_08_GuadalupePeak.txt')
+CAST(N'2013-06-08' AS Date),'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_15_GuadalupePeak.pdf')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (49, N'Deseret Peak', 
 N'https://photos.app.goo.gl/aNUA9dnfLuCoBeAW7', CAST(N'2013-06-01' AS Date))
