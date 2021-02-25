@@ -53,7 +53,7 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date],TripReportURL) VALUES (6, N'
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2014_08_09_EnglesteadCanyon.txt')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (7, N'Denali', N'https://goo.gl/photos/Dm4UXe6kd9HDBGaB8', CAST(N'2014-06-07' AS Date),
-'https://www.summitpost.org/denali-s-west-buttress-2014/903191')
+'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_16_Denali.pdf')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (8, N'Coyote Gulch', N'https://photos.app.goo.gl/sQp1BucTJkobEgv16', CAST(N'2014-05-10' AS Date))
 GO
