@@ -1579,7 +1579,7 @@ GO
 
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (442, N'Black Elk Peak, SD', 
-N'https://goo.gl/photos/gHtQcqXtVf4qB9eFA',
+N'https://photos.app.goo.gl/HyHTyBAtBTLnJcsBA',
  CAST(N'2015-05-30' AS Date), 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_19_BlackElk.pdf')
 
  go 
