@@ -1587,7 +1587,7 @@ N'https://photos.app.goo.gl/HyHTyBAtBTLnJcsBA',
  
 
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (443, N'White Butte, ND', 
-N'https://goo.gl/photos/gHtQcqXtVf4qB9eFA',
+N'https://photos.app.goo.gl/tKAPr68T4pdrjXnV6',
  CAST(N'2015-05-31' AS Date), 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_20_WhiteButte.pdf')
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
