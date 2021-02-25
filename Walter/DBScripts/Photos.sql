@@ -45,7 +45,7 @@ N'https://photos.app.goo.gl/ayMHt8dBTC1zPyGW7',
 CAST(N'2015-08-06' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2015_08_06-16_Alberta.txt')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (5, N'Panorama Point, NE', 
-N'https://goo.gl/photos/gHtQcqXtVf4qB9eFA',
+N'https://photos.app.goo.gl/Y2RyGkFdcMScbVWg6',
  CAST(N'2015-05-29' AS Date), 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_18_PanoramaPoint.pdf')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date],TripReportURL) VALUES (6, N'Englestead',
