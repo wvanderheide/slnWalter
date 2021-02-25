@@ -44,9 +44,9 @@ INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date],TripReportURL) VALUES (4, N'
 N'https://photos.app.goo.gl/ayMHt8dBTC1zPyGW7', 
 CAST(N'2015-08-06' AS Date),'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2015_08_06-16_Alberta.txt')
 GO
-INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (5, N'NE, SD, ND', 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (5, N'Panorama Point, NE', 
 N'https://goo.gl/photos/gHtQcqXtVf4qB9eFA',
- CAST(N'2015-05-29' AS Date), 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2015_29_31_Nebraska_SD_ND.txt')
+ CAST(N'2015-05-29' AS Date), 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_18_PanoramaPoint.pdf')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date],TripReportURL) VALUES (6, N'Englestead',
  N'https://photos.app.goo.gl/tUk4Dn9kvMf7mJ5p9', CAST(N'2014-08-09' AS Date),
@@ -114,7 +114,7 @@ N'https://www.facebook.com/media/set/?set=a.10155368451086441.1073741880.6200764
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (30, N'Boundardy/Montgomery', 
 N'https://photos.app.goo.gl/wkdqQqRDwX1LLGzeA', CAST(N'2014-10-06' AS Date),
-'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2014_10_06_YosemiteTrip.txt')
+'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_17_BoundaryPeak.pdf')
 GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (31, N'Tuolumne', N'https://photos.app.goo.gl/SrWJbQDqVDrvSdcW7', CAST(N'2014-10-07' AS Date),
 'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2014_10_06_YosemiteTrip.txt')
@@ -1576,6 +1576,19 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date]) VALUES (441, N'Dirtcicle', N'https://photos.app.goo.gl/BrEykMt8W84zJNnY8',
  CAST(N'2021-01-30' AS Date))
 GO
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (442, N'Black Elk Peak, SD', 
+N'https://goo.gl/photos/gHtQcqXtVf4qB9eFA',
+ CAST(N'2015-05-30' AS Date), 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_19_BlackElk.pdf')
+
+ go 
+
+ 
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (443, N'White Butte, ND', 
+N'https://goo.gl/photos/gHtQcqXtVf4qB9eFA',
+ CAST(N'2015-05-31' AS Date), 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_20_WhiteButte.pdf')
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
