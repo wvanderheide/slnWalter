@@ -1212,7 +1212,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (393, N'Mt. Mansfield', 
 N'https://photos.app.goo.gl/jQCDhHAnAjHUokDh6'
 , CAST(N'2019-08-29' AS Date), 
-'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_08_26to31_Katahdin_Washington_Mansfield_Greylock_Portland.txt')
+'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_23_MountMansfield.pdf')
 GO
 
 
