@@ -1593,10 +1593,19 @@ N'https://photos.app.goo.gl/tKAPr68T4pdrjXnV6',
  CAST(N'2015-05-31' AS Date), 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_20_WhiteButte.pdf')
 
  go 
+
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (444, N'Sassafras Mountain', 
 N'https://photos.app.goo.gl/oMkjQfWqTyuCMjUv6'
 , CAST(N'2019-10-03' AS Date), 
 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_25_SassafrasMountain.pdf')
+
+go
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (445, N'Brasstown Bald', 
+N'https://photos.app.goo.gl/wzH43Vcj5gKSooLD8'
+, CAST(N'2019-10-03' AS Date), 
+'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_26_BrasstownBald.pdf')
 
 go
 
