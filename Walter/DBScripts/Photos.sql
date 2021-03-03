@@ -1586,9 +1586,19 @@ N'https://photos.app.goo.gl/HyHTyBAtBTLnJcsBA',
 
  
 
+ 
+
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], TripReportURL) VALUES (443, N'White Butte, ND', 
 N'https://photos.app.goo.gl/tKAPr68T4pdrjXnV6',
  CAST(N'2015-05-31' AS Date), 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_20_WhiteButte.pdf')
+
+ go 
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (444, N'Sassafras Mountain', 
+N'https://photos.app.goo.gl/oMkjQfWqTyuCMjUv6'
+, CAST(N'2019-10-03' AS Date), 
+'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_25_SassafrasMountain.pdf')
+
+go
 
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
