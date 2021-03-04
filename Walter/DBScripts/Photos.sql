@@ -1609,6 +1609,22 @@ N'https://photos.app.goo.gl/wzH43Vcj5gKSooLD8'
 
 go
 
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (446, N'Clingmans Dome', 
+N'https://photos.app.goo.gl/tjuUFF7WHf6DVU2NA'
+, CAST(N'2019-10-04' AS Date), 
+'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_27_ClingmansDome.pdf')
+
+go
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (447, N'Black Mountain', 
+N'https://photos.app.goo.gl/5kTQ44qyDZgTioMM7'
+, CAST(N'2019-10-05' AS Date), 
+'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_28_BlackMountain.pdf')
+
+go
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
