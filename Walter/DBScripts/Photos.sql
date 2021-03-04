@@ -1625,6 +1625,15 @@ N'https://photos.app.goo.gl/5kTQ44qyDZgTioMM7'
 
 go
 
+
+
+INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (448, N'Mount Rogers', 
+N'https://photos.app.goo.gl/gDNjdNi7Y6LymKgJ8'
+, CAST(N'2019-10-06' AS Date), 
+'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_29_MountRogers.pdf')
+
+go
+
 SET IDENTITY_INSERT [dbo].[Photos] OFF
 GO
 
