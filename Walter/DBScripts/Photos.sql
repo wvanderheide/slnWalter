@@ -1248,7 +1248,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (397, N'Mount Sunflower', 
 N'https://photos.app.goo.gl/Q3LVpNN5FkDAhrQ57'
 , CAST(N'2019-12-23' AS Date), 
-'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_12_23_SunflowerKS.txt')
+'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_30_MtSunflower')
 GO
 
 
