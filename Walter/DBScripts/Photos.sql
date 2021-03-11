@@ -1202,6 +1202,7 @@ N'https://photos.app.goo.gl/aSewQtkn5EPPhB1z5'
 'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_21_Katahdin.pdf')
 GO
 
+
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (392, N'Mt. Washington', 
 N'https://photos.app.goo.gl/xUR3Z85UhtwVaXHD6'
 , CAST(N'2019-08-28' AS Date), 
@@ -1255,7 +1256,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (399, N'Black Mesa', 
 N'https://photos.app.goo.gl/wK7YiKfQkwxiGX7e6'
 , CAST(N'2019-12-24' AS Date), 
-'https://github.com/wvanderheide/slnWalter/blob/master/Walter/TripReports/2019_12_24_BlackMesa.txt')
+'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_21_KatahdinHP_31_BlackMesa.pdf')
 GO
 
 
