@@ -1256,7 +1256,7 @@ GO
 INSERT [dbo].[Photos] ([Id], [Title], [URL], [Date], [TripReportURL] ) VALUES (399, N'Black Mesa', 
 N'https://photos.app.goo.gl/wK7YiKfQkwxiGX7e6'
 , CAST(N'2019-12-24' AS Date), 
-'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_21_KatahdinHP_31_BlackMesa.pdf')
+'https://github.com//wvanderheide/slnWalter/raw/master/Walter/TripReports/HP_31_BlackMesa.pdf')
 GO
 
 
